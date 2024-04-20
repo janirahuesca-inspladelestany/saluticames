@@ -8,7 +8,12 @@ public sealed class Catalogue
 {
     private readonly ICollection<Summit> _summits = new List<Summit>();
 
-    public Guid Id { get; private set; } = new Guid();
+    public Catalogue(Guid id)
+    {
+        Id = id;
+    }
+
+    public Guid Id { get; private set; }
     public IEnumerable<Summit> Summits => _summits;
 
     public void AddSummits(IEnumerable<SummitDto> summitDtos)

@@ -1,25 +1,32 @@
 ﻿using Domain.CatalogueContext.DTO;
 using Domain.CatalogueContext.Entities;
+using Domain.CatalogueContext.Repositories;
+using Domain.CatalogueContext.Services;
 using Domain.CatalogueContext.ValueObjects;
 
 namespace Application.CatalogueContext.Services;
 
 public class CatalogueService : ICatalogueService
 {
-    private readonly Catalogue _catalogueFake;
+    private readonly IRegionService _regionService;
+    private readonly ICatalogueRepository _catalogueRepository;
 
-    public CatalogueService()
+    public CatalogueService(
+        IRegionService regionService,
+        ICatalogueRepository catalogueRepository)
     {
-        _catalogueFake = new Catalogue();
-        _catalogueFake.AddSummit(new SummitDto("Name1", 1000, "Location1", "Region1"));
-        _catalogueFake.AddSummit(new SummitDto("Name2", 2000, "Location2", "Region2"));
-        _catalogueFake.AddSummit(new SummitDto("Name3", 3000, "Location3", "Region3"));
+        _regionService = regionService;
+        _catalogueRepository = catalogueRepository;
     }
 
-    public void CreateSummits(IEnumerable<SummitDto> summits)
+    public void CreateSummits(Guid catalogueId, IEnumerable<SummitDto> summits)
     {
+        if (summits.Any(summit => !_regionService.IsAvailableRegion(summit.Region)))
+            throw new ArgumentOutOfRangeException(nameof(SummitDto.Region));
+
         // Recuperar el catàleg
-        var catalogue = _catalogueFake;
+        var catalogue = _catalogueRepository.GetCatalogue(catalogueId);
+        if (catalogue is null) return;
 
         // Afegir cims al catàleg
         catalogue.AddSummits(summits);
@@ -28,67 +35,77 @@ public class CatalogueService : ICatalogueService
         // TODO: Pending to create catolgue repository
     }
 
-    public void DeleteSummits(IEnumerable<Guid> ids)
+    public void DeleteSummits(Guid catalogueId, IEnumerable<Guid> summitIds)
     {
         // Recuperar el catàleg
-        var catalogue = _catalogueFake;
+        var catalogue = _catalogueRepository.GetCatalogue(catalogueId);
+        if (catalogue is null) return;
 
         // Eliminar cims del catàleg
-        catalogue.RemoveSummits(ids);
+        catalogue.RemoveSummits(summitIds);
 
         // Persistir el catàleg
         // TODO: Pending to create catolgue repository
     }
 
-    public void ReadSummitsByAltitude(int altitude, Catalogue.OrderType order = Catalogue.OrderType.ASC)
+    public IEnumerable<Summit> ReadSummitsByAltitude(Guid catalogueId, int altitude, Catalogue.OrderType order = Catalogue.OrderType.ASC)
     {
         // Recuperar el catàleg
-        var catalogue = _catalogueFake;
+        var catalogue = _catalogueRepository.GetCatalogue(catalogueId);
+        if (catalogue is null) return Enumerable.Empty<Summit>(); ;
 
         // Recuperar cims del catàleg
-        catalogue.List(altitude, Catalogue.FilterType.ALTITUDE, order);
+        return catalogue.List(altitude, Catalogue.FilterType.ALTITUDE, order);
     }
 
-    public void ReadSummitsByDifficulty(DifficultyLevel difficulty, Catalogue.OrderType order = Catalogue.OrderType.ASC)
+    public IEnumerable<Summit> ReadSummitsByDifficulty(Guid catalogueId, DifficultyLevel difficulty, Catalogue.OrderType order = Catalogue.OrderType.ASC)
     {
         // Recuperar el catàleg
-        var catalogue = _catalogueFake;
+        var catalogue = _catalogueRepository.GetCatalogue(catalogueId);
+        if (catalogue is null) return Enumerable.Empty<Summit>();
 
         // Recuperar cims del catàleg
-        catalogue.List(difficulty, Catalogue.FilterType.DIFICULTY, order);
+        return catalogue.List(difficulty, Catalogue.FilterType.DIFICULTY, order);
     }
 
-    public void ReadSummitsByLocation(string location, Catalogue.OrderType order = Catalogue.OrderType.ASC)
+    public IEnumerable<Summit> ReadSummitsByLocation(Guid catalogueId, string location, Catalogue.OrderType order = Catalogue.OrderType.ASC)
     {
         // Recuperar el catàleg
-        var catalogue = _catalogueFake;
+        var catalogue = _catalogueRepository.GetCatalogue(catalogueId);
+        if (catalogue is null) return Enumerable.Empty<Summit>(); ;
 
         // Recuperar cims del catàleg
-        catalogue.List(location, Catalogue.FilterType.LOCATION, order);
+        return catalogue.List(location, Catalogue.FilterType.LOCATION, order);
     }
 
-    public void ReadSummitsByName(string name, Catalogue.OrderType order = Catalogue.OrderType.ASC)
+    public IEnumerable<Summit> ReadSummitsByName(Guid catalogueId, string name, Catalogue.OrderType order = Catalogue.OrderType.ASC)
     {
         // Recuperar el catàleg
-        var catalogue = _catalogueFake;
+        var catalogue = _catalogueRepository.GetCatalogue(catalogueId);
+        if (catalogue is null) return Enumerable.Empty<Summit>(); ;
 
         // Recuperar cims del catàleg
-        catalogue.List(name, Catalogue.FilterType.NAME, order);
+        return catalogue.List(name, Catalogue.FilterType.NAME, order);
     }
 
-    public void ReadSummitsByRegion(string region, Catalogue.OrderType order = Catalogue.OrderType.ASC)
+    public IEnumerable<Summit> ReadSummitsByRegion(Guid catalogueId, string region, Catalogue.OrderType order = Catalogue.OrderType.ASC)
     {
         // Recuperar el catàleg
-        var catalogue = _catalogueFake;
+        var catalogue = _catalogueRepository.GetCatalogue(catalogueId);
+        if (catalogue is null) return Enumerable.Empty<Summit>(); ;
 
         // Recuperar cims del catàleg
-        catalogue.List(region, Catalogue.FilterType.REGION, order);
+        return catalogue.List(region, Catalogue.FilterType.REGION, order);
     }
 
-    public void UpdateSummits(IDictionary<Guid, SummitDto> summits)
+    public void UpdateSummits(Guid catalogueId, IDictionary<Guid, SummitDto> summits)
     {
+        if (summits.Any(summit => !_regionService.IsAvailableRegion(summit.Value.Region)))
+            throw new ArgumentOutOfRangeException(nameof(SummitDto.Region));
+
         // Recuperar el catàleg
-        var catalogue = _catalogueFake;
+        var catalogue = _catalogueRepository.GetCatalogue(catalogueId);
+        if (catalogue is null) return;
 
         // Afegir cims al catàleg
         catalogue.EditSummits(summits);

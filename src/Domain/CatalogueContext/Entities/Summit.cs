@@ -5,8 +5,7 @@ namespace Domain.CatalogueContext.Entities;
 
 public sealed class Summit
 {
-    // TODO: Pending to implement repository
-    private readonly List<string> _availableRegionsFake = ["Pla de l'Estany", "Garrotxa"];
+    private int _altitude;
 
     private Summit() { }
 
@@ -23,7 +22,7 @@ public sealed class Summit
         return summit;
     }
 
-    public Guid Id { get; private init; } = new Guid();
+    public Guid Id { get; private init; } = Guid.NewGuid();
 
     public string Name { get; internal set; } = null!;
 
@@ -31,30 +30,19 @@ public sealed class Summit
     {
         get
         {
-            return Altitude;
+            return _altitude;
         }
         internal set
         {
             if (value <= 0 || value > 3150) throw new ArgumentOutOfRangeException(nameof(Altitude));
-            Altitude = value;
+            _altitude = value;
             CalculateDifficulty();
         }
     }
 
     public string Location { get; internal set; } = null!;
 
-    public string Region
-    {
-        get
-        {
-            return Region;
-        }
-        internal set
-        {
-            if (!_availableRegionsFake.Contains(value)) throw new ArgumentOutOfRangeException(nameof(Region));
-            Region = value;
-        }
-    }
+    public string Region { get; internal set; } = null!;
 
     public DifficultyLevel Difficulty { get; private set; }
 
