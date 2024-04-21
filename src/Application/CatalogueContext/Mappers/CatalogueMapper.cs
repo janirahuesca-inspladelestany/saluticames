@@ -12,6 +12,6 @@ public static class CatalogueMapper
 
     public static CatalogueQueryResult FromBoToDto(Catalogue catalogue) 
     {
-        return new CatalogueQueryResult(Id: catalogue.Id, SummitMapper.FromBoToDto(catalogue.Summits));
+        return new CatalogueQueryResult(catalogue.Id, catalogue.Name, SummitMapper.FromBoToDto(catalogue.Summits));
     }
 }

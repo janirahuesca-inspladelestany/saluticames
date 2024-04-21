@@ -16,7 +16,7 @@ builder.Services.AddSwaggerGen();
 builder.Services
     .AddCore()
     .AddInfrastructure()
-    .AddPersistence();
+    .AddPersistence(builder.Configuration);
 
 var app = builder.Build();
 

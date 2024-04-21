@@ -1,7 +1,9 @@
 ﻿using Application.CatalogueContext.Services;
 using Domain.CatalogueContext.Repositories;
 using Domain.CatalogueContext.Services;
-using Persistence;
+using Microsoft.EntityFrameworkCore;
+using Persistence.CatalogueContext.Data;
+using Persistence.CatalogueContext.Repositories;
 
 namespace Api.Extensions
 {
@@ -20,9 +22,14 @@ namespace Api.Extensions
             return services;
         }
 
-        public static IServiceCollection AddPersistence(this IServiceCollection services)
+        public static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddSingleton<ICatalogueRepository, FakeCatalogueRepository>();
+            services.AddDbContext<CatalogueDbContext>(options =>
+            {
+                options.UseSqlServer(configuration.GetConnectionString("AZURE_SQL_CONNECTIONSTRING"), providerOptions => providerOptions.EnableRetryOnFailure());
+            }).AddHostedService<DbInitializerHostedService>();
+
+            services.AddScoped<ICatalogueRepository, CatalogueRepository>();
 
             return services;
         }

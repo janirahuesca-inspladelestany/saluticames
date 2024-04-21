@@ -6,9 +6,15 @@ public sealed class Summit
 {
     private Summit() { }
 
-    internal static Summit Create(SummitDetails summitDetails)
+    private Summit(Guid id, Guid catalogueId)
     {
-        Summit summit = new()
+        Id = id;
+        CatalogueId = catalogueId;
+    }
+
+    internal static Summit Create(Guid catalogueId, SummitDetails summitDetails, Guid? id = null)
+    {
+        Summit summit = new(id ?? Guid.NewGuid(), catalogueId)
         {
             SummitDetails = summitDetails
         };
@@ -17,6 +23,7 @@ public sealed class Summit
     }
 
     public Guid Id { get; private init; } = Guid.NewGuid();
+    public Guid CatalogueId { get; internal set; }
 
     public SummitDetails SummitDetails { get; internal set; } = new();
 }

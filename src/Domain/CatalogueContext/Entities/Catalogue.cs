@@ -13,34 +13,60 @@ public sealed class Catalogue
     }
 
     public Guid Id { get; private init; }
+    public string Name { get; set; } = null!;
     public IEnumerable<Summit> Summits => _summits;
 
-    public void AddSummits(IEnumerable<SummitDetails> summitDetailss)
+    public IEnumerable<Summit> AddSummits(IDictionary<Guid, SummitDetails> summits) 
     {
-        foreach (var summitDetails in summitDetailss)
+        var newSummits = new List<Summit>();
+
+        foreach (var summit in summits)
         {
-            AddSummit(summitDetails);
+            var newSummit = AddSummit(summit.Value, summit.Key);
+            newSummits.Add(newSummit);
         }
+
+        return newSummits;
     }
 
-    public void AddSummit(SummitDetails summitDetails)
+    public IEnumerable<Summit> AddSummits(IEnumerable<SummitDetails> summits)
     {
-        var summitToAdd = Summit.Create(summitDetails);
+        var newSummits = new List<Summit>();
+
+        foreach (var summit in summits)
+        {
+            var newSummit = AddSummit(summit);
+            newSummits.Add(newSummit);
+        }
+
+        return newSummits;
+    }
+
+    public Summit AddSummit(SummitDetails summitDetails, Guid? id = null)
+    {
+        var summitToAdd = Summit.Create(Id, summitDetails, id);
         _summits.Add(summitToAdd);
+        return summitToAdd;
     }
 
-    public void EditSummits(IDictionary<Guid, SummitDetails> summits)
+    public IEnumerable<Summit> EditSummits(IDictionary<Guid, SummitDetails> summits)
     {
-        foreach (var summitDetails in summits)
+        var newSummits = new List<Summit>();
+
+        foreach (var summit in summits)
         {
-            EditSummit(summitDetails.Key, summitDetails.Value);
+            var newSummit = EditSummit(summit.Key, summit.Value);
+            if (newSummit is null) continue;
+            newSummits.Add(newSummit);
         }
+
+        return newSummits;
     }
 
-    public void EditSummit(Guid id, SummitDetails summitDetails)
+    public Summit? EditSummit(Guid id, SummitDetails summitDetails)
     {
         var summitToEdit = _summits.SingleOrDefault(summit => summit.Id == id);
-        if (summitToEdit is null) return;
+        if (summitToEdit is null) return null;
 
         summitToEdit.SummitDetails = new()
         {
@@ -49,22 +75,28 @@ public sealed class Catalogue
             Name = summitDetails.Name,
             Region = summitDetails.Region
         };
+
+        return summitToEdit;
     }
 
-    public void RemoveSummits(IEnumerable<Guid> ids)
+    public IEnumerable<Guid> RemoveSummits(IEnumerable<Guid> ids)
     {
+        var oldSummitIds = new List<Guid>();
+
         foreach (var id in ids)
         {
-            RemoveSummit(id);
+            if (RemoveSummit(id)) oldSummitIds.Add(id);
         }
+
+        return oldSummitIds;
     }
 
-    public void RemoveSummit(Guid id)
+    public bool RemoveSummit(Guid id)
     {
         var summitToRemove = _summits.SingleOrDefault(summit => summit.Id == id);
-        if (summitToRemove is null) return;
+        if (summitToRemove is null) return false;
 
-        _summits.Remove(summitToRemove);
+        return _summits.Remove(summitToRemove);
     }
 
     public IEnumerable<Summit> List(OrderType order = OrderType.ASC)
@@ -86,8 +118,8 @@ public sealed class Catalogue
             _ => throw new UnreachableException()
         });
 
-        return order == OrderType.ASC 
-            ? filteredSummits.OrderBy(summit => typeof(SummitDetails).GetProperty(filter.ToString(), System.Reflection.BindingFlags.IgnoreCase)) 
+        return order == OrderType.ASC
+            ? filteredSummits.OrderBy(summit => typeof(SummitDetails).GetProperty(filter.ToString(), System.Reflection.BindingFlags.IgnoreCase))
             : filteredSummits.OrderByDescending(summit => typeof(SummitDetails).GetProperty(filter.ToString(), System.Reflection.BindingFlags.IgnoreCase));
     }
 
