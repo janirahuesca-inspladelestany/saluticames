@@ -1,99 +1,162 @@
-﻿using Domain.CatalogueContext.DTO;
+﻿using Application.CatalogueContext.Contracts;
+using Application.CatalogueContext.Mappers;
 using Domain.CatalogueContext.Entities;
-using Domain.CatalogueContext.ValueObjects;
+using Domain.CatalogueContext.Repositories;
+using Domain.CatalogueContext.Services;
 
 namespace Application.CatalogueContext.Services;
 
 public class CatalogueService : ICatalogueService
 {
-    private readonly Catalogue _catalogueFake;
+    private readonly IRegionService _regionService;
+    private readonly ICatalogueRepository _catalogueRepository;
 
-    public CatalogueService()
+    public CatalogueService(
+        IRegionService regionService,
+        ICatalogueRepository catalogueRepository)
     {
-        _catalogueFake = new Catalogue();
-        _catalogueFake.AddSummit(new SummitDto("Name1", 1000, "Location1", "Region1"));
-        _catalogueFake.AddSummit(new SummitDto("Name2", 2000, "Location2", "Region2"));
-        _catalogueFake.AddSummit(new SummitDto("Name3", 3000, "Location3", "Region3"));
+        _regionService = regionService;
+        _catalogueRepository = catalogueRepository;
     }
 
-    public void CreateSummits(IEnumerable<SummitDto> summits)
+    public void CreateSummits(Guid catalogueId, IEnumerable<SummitCommand> summits)
     {
+        if (summits.Any(summit => !_regionService.IsAvailableRegion(summit.Region)))
+            throw new ArgumentOutOfRangeException();
+
         // Recuperar el catàleg
-        var catalogue = _catalogueFake;
+        var catalogue = _catalogueRepository.GetById(catalogueId);
+        if (catalogue is null) return;
+
+        // Mapejar DTO a BO
+        var summitsDetails = SummitMapper.FromDtoToBo(summits);
 
         // Afegir cims al catàleg
-        catalogue.AddSummits(summits);
+        catalogue.AddSummits(summitsDetails);
 
         // Persistir el catàleg
         // TODO: Pending to create catolgue repository
     }
 
-    public void DeleteSummits(IEnumerable<Guid> ids)
+    public void DeleteSummits(Guid catalogueId, IEnumerable<Guid> summitIds)
     {
         // Recuperar el catàleg
-        var catalogue = _catalogueFake;
+        var catalogue = _catalogueRepository.GetById(catalogueId);
+        if (catalogue is null) return;
 
         // Eliminar cims del catàleg
-        catalogue.RemoveSummits(ids);
+        catalogue.RemoveSummits(summitIds);
 
         // Persistir el catàleg
         // TODO: Pending to create catolgue repository
     }
 
-    public void ReadSummitsByAltitude(int altitude, Catalogue.OrderType order = Catalogue.OrderType.ASC)
+    public IEnumerable<SummitQueryResult> ReadSummits(Guid catalogueId, bool ascOrder = true)
     {
         // Recuperar el catàleg
-        var catalogue = _catalogueFake;
+        var catalogue = _catalogueRepository.GetById(catalogueId);
+        if (catalogue is null) return Enumerable.Empty<SummitQueryResult>();
 
         // Recuperar cims del catàleg
-        catalogue.List(altitude, Catalogue.FilterType.ALTITUDE, order);
+        var summitsByAltitude = catalogue.List(ascOrder ? Catalogue.OrderType.ASC : Catalogue.OrderType.DESC);
+
+        // Mapejar de BO a DTO
+        return SummitMapper.FromBoToDto(summitsByAltitude);
     }
 
-    public void ReadSummitsByDifficulty(DifficultyLevel difficulty, Catalogue.OrderType order = Catalogue.OrderType.ASC)
+    public IEnumerable<SummitQueryResult> ReadSummitsByAltitude(Guid catalogueId, int altitude, bool ascOrder = true)
     {
         // Recuperar el catàleg
-        var catalogue = _catalogueFake;
+        var catalogue = _catalogueRepository.GetById(catalogueId);
+        if (catalogue is null) return Enumerable.Empty<SummitQueryResult>();
 
         // Recuperar cims del catàleg
-        catalogue.List(difficulty, Catalogue.FilterType.DIFICULTY, order);
+        var summitsByAltitude = catalogue.Filter(altitude, Catalogue.FilterType.ALTITUDE, ascOrder ? Catalogue.OrderType.ASC : Catalogue.OrderType.DESC);
+
+        // Mapejar de BO a DTO
+        return SummitMapper.FromBoToDto(summitsByAltitude);
     }
 
-    public void ReadSummitsByLocation(string location, Catalogue.OrderType order = Catalogue.OrderType.ASC)
+    public IEnumerable<SummitQueryResult> ReadSummitsByDifficulty(Guid catalogueId, DifficultyLevel difficultyLevel, bool ascOrder = true)
     {
         // Recuperar el catàleg
-        var catalogue = _catalogueFake;
+        var catalogue = _catalogueRepository.GetById(catalogueId);
+        if (catalogue is null) return Enumerable.Empty<SummitQueryResult>();
+
+        // Mapejar de DTO a BO
+        var difficulty = SummitMapper.FromDtoToBo(difficultyLevel);
 
         // Recuperar cims del catàleg
-        catalogue.List(location, Catalogue.FilterType.LOCATION, order);
+        var summitsByDifficulty = catalogue.Filter(difficulty, Catalogue.FilterType.DIFICULTY, ascOrder ? Catalogue.OrderType.ASC : Catalogue.OrderType.DESC);
+
+        // Mapejar de BO a DTO
+        return SummitMapper.FromBoToDto(summitsByDifficulty);
     }
 
-    public void ReadSummitsByName(string name, Catalogue.OrderType order = Catalogue.OrderType.ASC)
+    public IEnumerable<SummitQueryResult> ReadSummitsByLocation(Guid catalogueId, string location, bool ascOrder = true)
     {
         // Recuperar el catàleg
-        var catalogue = _catalogueFake;
+        var catalogue = _catalogueRepository.GetById(catalogueId);
+        if (catalogue is null) return Enumerable.Empty<SummitQueryResult>(); ;
 
         // Recuperar cims del catàleg
-        catalogue.List(name, Catalogue.FilterType.NAME, order);
+        var summitsByLocation = catalogue.Filter(location, Catalogue.FilterType.LOCATION, ascOrder ? Catalogue.OrderType.ASC : Catalogue.OrderType.DESC);
+
+        // Mapejar de BO a DTO
+        return SummitMapper.FromBoToDto(summitsByLocation);
     }
 
-    public void ReadSummitsByRegion(string region, Catalogue.OrderType order = Catalogue.OrderType.ASC)
+    public IEnumerable<SummitQueryResult> ReadSummitsByName(Guid catalogueId, string name, bool ascOrder = true)
     {
         // Recuperar el catàleg
-        var catalogue = _catalogueFake;
+        var catalogue = _catalogueRepository.GetById(catalogueId);
+        if (catalogue is null) return Enumerable.Empty<SummitQueryResult>(); ;
 
         // Recuperar cims del catàleg
-        catalogue.List(region, Catalogue.FilterType.REGION, order);
+        var summitsByName = catalogue.Filter(name, Catalogue.FilterType.NAME, ascOrder ? Catalogue.OrderType.ASC : Catalogue.OrderType.DESC);
+
+        // Mapejar de BO a DTO
+        return SummitMapper.FromBoToDto(summitsByName);
     }
 
-    public void UpdateSummits(IDictionary<Guid, SummitDto> summits)
+    public IEnumerable<SummitQueryResult> ReadSummitsByRegion(Guid catalogueId, string region, bool ascOrder = true)
     {
         // Recuperar el catàleg
-        var catalogue = _catalogueFake;
+        var catalogue = _catalogueRepository.GetById(catalogueId);
+        if (catalogue is null) return Enumerable.Empty<SummitQueryResult>(); ;
+
+        // Recuperar cims del catàleg
+        var summitsByRegion = catalogue.Filter(region, Catalogue.FilterType.REGION, ascOrder ? Catalogue.OrderType.ASC : Catalogue.OrderType.DESC);
+
+        // Mapejar de BO a DTO
+        return SummitMapper.FromBoToDto(summitsByRegion);
+    }
+
+    public void UpdateSummits(Guid catalogueId, IDictionary<Guid, SummitCommand> summits)
+    {
+        if (summits.Any(summit => !_regionService.IsAvailableRegion(summit.Value.Region)))
+            throw new ArgumentOutOfRangeException();
+
+        // Recuperar el catàleg
+        var catalogue = _catalogueRepository.GetById(catalogueId);
+        if (catalogue is null) return;
+
+        // Mapejar de DTO a BO
+        var summitsDetails = summits.ToDictionary(summit => summit.Key, summit => SummitMapper.FromDtoToBo(summit.Value));
 
         // Afegir cims al catàleg
-        catalogue.EditSummits(summits);
+        catalogue.EditSummits(summitsDetails);
 
         // Persistir el catàleg
         // TODO: Pending to create catolgue repository
+    }
+
+    public IEnumerable<CatalogueQueryResult> GetCatalogues()
+    {
+        // Recuperar catàlegs
+        var catalogues = _catalogueRepository.GetAll();
+
+        // Mapejar de BO a DTO
+        return CatalogueMapper.FromBoToDto(catalogues);
     }
 }

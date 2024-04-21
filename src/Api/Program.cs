@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Authentication;
+using Api.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Identity.Web;
 
@@ -12,6 +12,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services
+    .AddCore()
+    .AddInfrastructure()
+    .AddPersistence();
 
 var app = builder.Build();
 

@@ -1,5 +1,4 @@
-﻿using Domain.CatalogueContext.DTO;
-using Domain.CatalogueContext.ValueObjects;
+﻿using Domain.CatalogueContext.ValueObjects;
 using System.Diagnostics;
 
 namespace Domain.CatalogueContext.Entities;
@@ -8,40 +7,48 @@ public sealed class Catalogue
 {
     private readonly ICollection<Summit> _summits = new List<Summit>();
 
-    public Guid Id { get; private set; } = new Guid();
+    public Catalogue(Guid id)
+    {
+        Id = id;
+    }
+
+    public Guid Id { get; private init; }
     public IEnumerable<Summit> Summits => _summits;
 
-    public void AddSummits(IEnumerable<SummitDto> summitDtos)
+    public void AddSummits(IEnumerable<SummitDetails> summitDetailss)
     {
-        foreach (var summitDto in summitDtos)
+        foreach (var summitDetails in summitDetailss)
         {
-            AddSummit(summitDto);
+            AddSummit(summitDetails);
         }
     }
 
-    public void AddSummit(SummitDto summitDto)
+    public void AddSummit(SummitDetails summitDetails)
     {
-        var summitToAdd = Summit.Create(summitDto);
+        var summitToAdd = Summit.Create(summitDetails);
         _summits.Add(summitToAdd);
     }
 
-    public void EditSummits(IDictionary<Guid, SummitDto> summits)
+    public void EditSummits(IDictionary<Guid, SummitDetails> summits)
     {
-        foreach(var summitDto in summits) 
+        foreach (var summitDetails in summits)
         {
-            EditSummit(summitDto.Key, summitDto.Value);
+            EditSummit(summitDetails.Key, summitDetails.Value);
         }
     }
 
-    public void EditSummit(Guid id, SummitDto summitDto)
+    public void EditSummit(Guid id, SummitDetails summitDetails)
     {
         var summitToEdit = _summits.SingleOrDefault(summit => summit.Id == id);
         if (summitToEdit is null) return;
 
-        summitToEdit.Altitude = summitDto.Altitude;
-        summitToEdit.Location = summitDto.Location;
-        summitToEdit.Name = summitDto.Name;
-        summitToEdit.Region = summitDto.Region;
+        summitToEdit.SummitDetails = new()
+        {
+            Altitude = summitDetails.Altitude,
+            Location = summitDetails.Location,
+            Name = summitDetails.Name,
+            Region = summitDetails.Region
+        };
     }
 
     public void RemoveSummits(IEnumerable<Guid> ids)
@@ -60,19 +67,28 @@ public sealed class Catalogue
         _summits.Remove(summitToRemove);
     }
 
-    public IEnumerable<Summit> List<T>(T value, FilterType filter = FilterType.NONE, OrderType order = OrderType.ASC)
+    public IEnumerable<Summit> List(OrderType order = OrderType.ASC)
     {
-        var summitsToList = filter is FilterType.NONE ? _summits : _summits.Where(summit => filter switch
+        return order == OrderType.ASC ? _summits.OrderBy(summit => summit.SummitDetails.Name) : _summits.OrderByDescending(summit => summit.SummitDetails.Name);
+    }
+
+    public IEnumerable<Summit> Filter<T>(T value, FilterType filter, OrderType order = OrderType.ASC)
+    {
+        if (filter == FilterType.NONE) return Enumerable.Empty<Summit>();
+
+        var filteredSummits = _summits.Where(summit => filter switch
         {
-            FilterType.NAME when value is string name => summit.Name.Contains(name, StringComparison.OrdinalIgnoreCase),
-            FilterType.ALTITUDE when value is int altitude => summit.Altitude == altitude,
-            FilterType.LOCATION when value is string location => summit.Location.Contains(location, StringComparison.OrdinalIgnoreCase),
-            FilterType.REGION when value is string region => summit.Region.Contains(region, StringComparison.OrdinalIgnoreCase),
-            FilterType.DIFICULTY when value is DifficultyLevel difficulty => summit.Difficulty == difficulty,
+            FilterType.NAME when value is string name => summit.SummitDetails.Name.Contains(name, StringComparison.OrdinalIgnoreCase),
+            FilterType.ALTITUDE when value is int altitude => summit.SummitDetails.Altitude == altitude,
+            FilterType.LOCATION when value is string location => summit.SummitDetails.Location.Contains(location, StringComparison.OrdinalIgnoreCase),
+            FilterType.REGION when value is string region => summit.SummitDetails.Region.Contains(region, StringComparison.OrdinalIgnoreCase),
+            FilterType.DIFICULTY when value is DifficultyLevel difficulty => summit.SummitDetails.Difficulty == difficulty,
             _ => throw new UnreachableException()
         });
 
-        return order == OrderType.ASC ? summitsToList.Order() : summitsToList.OrderDescending();
+        return order == OrderType.ASC 
+            ? filteredSummits.OrderBy(summit => typeof(SummitDetails).GetProperty(filter.ToString(), System.Reflection.BindingFlags.IgnoreCase)) 
+            : filteredSummits.OrderByDescending(summit => typeof(SummitDetails).GetProperty(filter.ToString(), System.Reflection.BindingFlags.IgnoreCase));
     }
 
     public enum FilterType
