@@ -16,15 +16,33 @@ namespace Api.Controllers
         }
 
         [HttpPost]
-        public void Post(Guid id, IEnumerable<SummitCommand> summits)
+        public IActionResult Post(Guid id, IEnumerable<SummitCommand> summits)
         {
-            _catalogueService.CreateSummits(id, summits);
+            var isSuccessful = _catalogueService.CreateSummits(id, summits);
+            
+            if (!isSuccessful) 
+            {
+                return new EmptyResult(); 
+            }
+            else
+            {
+                return Ok();
+            }
         }
 
         [HttpDelete]
-        public void Delete(Guid id, IEnumerable<Guid> summitIds)
+        public IActionResult Delete(Guid id, IEnumerable<Guid> summitIds)
         {
-            _catalogueService.DeleteSummits(id, summitIds);
+            var isSuccessful = _catalogueService.DeleteSummits(id, summitIds);
+
+            if (!isSuccessful)
+            {
+                return new EmptyResult();
+            }
+            else
+            {
+                return Ok();
+            }
         }
 
         [HttpGet]
@@ -65,9 +83,18 @@ namespace Api.Controllers
         }
 
         [HttpPut]
-        public void Put(Guid id, IDictionary<Guid, SummitCommand> summits)
+        public IActionResult Put(Guid id, IDictionary<Guid, SummitCommand> summits)
         {
-            _catalogueService.UpdateSummits(id, summits);
+            var isSuccessful = _catalogueService.UpdateSummits(id, summits);
+
+            if (!isSuccessful)
+            {
+                return new EmptyResult();
+            }
+            else
+            {
+                return Ok();
+            }
         }
     }
 }

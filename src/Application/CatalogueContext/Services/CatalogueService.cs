@@ -19,36 +19,40 @@ public class CatalogueService : ICatalogueService
         _catalogueRepository = catalogueRepository;
     }
 
-    public void CreateSummits(Guid catalogueId, IEnumerable<SummitCommand> summits)
+    public bool CreateSummits(Guid catalogueId, IEnumerable<SummitCommand> summits)
     {
         if (summits.Any(summit => !_regionService.IsAvailableRegion(summit.Region)))
             throw new ArgumentOutOfRangeException();
 
         // Recuperar el catàleg
         var catalogue = _catalogueRepository.GetById(catalogueId);
-        if (catalogue is null) return;
+        if (catalogue is null) return false;
 
         // Mapejar DTO a BO
         var summitsDetails = SummitMapper.FromDtoToBo(summits);
 
         // Afegir cims al catàleg
-        catalogue.AddSummits(summitsDetails);
+        var newSummits = catalogue.AddSummits(summitsDetails);
 
         // Persistir el catàleg
-        // TODO: Pending to create catolgue repository
+        _catalogueRepository.AddSummits(newSummits);
+
+        return true;
     }
 
-    public void DeleteSummits(Guid catalogueId, IEnumerable<Guid> summitIds)
+    public bool DeleteSummits(Guid catalogueId, IEnumerable<Guid> summitIds)
     {
         // Recuperar el catàleg
         var catalogue = _catalogueRepository.GetById(catalogueId);
-        if (catalogue is null) return;
+        if (catalogue is null) return false;
 
         // Eliminar cims del catàleg
-        catalogue.RemoveSummits(summitIds);
+        var oldSummits = catalogue.RemoveSummits(summitIds);
 
         // Persistir el catàleg
-        // TODO: Pending to create catolgue repository
+        _catalogueRepository.RemoveSummits(oldSummits);
+
+        return true;
     }
 
     public IEnumerable<SummitQueryResult> ReadSummits(Guid catalogueId, bool ascOrder = true)
@@ -132,23 +136,25 @@ public class CatalogueService : ICatalogueService
         return SummitMapper.FromBoToDto(summitsByRegion);
     }
 
-    public void UpdateSummits(Guid catalogueId, IDictionary<Guid, SummitCommand> summits)
+    public bool UpdateSummits(Guid catalogueId, IDictionary<Guid, SummitCommand> summits)
     {
         if (summits.Any(summit => !_regionService.IsAvailableRegion(summit.Value.Region)))
             throw new ArgumentOutOfRangeException();
 
         // Recuperar el catàleg
         var catalogue = _catalogueRepository.GetById(catalogueId);
-        if (catalogue is null) return;
+        if (catalogue is null) return false;
 
         // Mapejar de DTO a BO
         var summitsDetails = summits.ToDictionary(summit => summit.Key, summit => SummitMapper.FromDtoToBo(summit.Value));
 
         // Afegir cims al catàleg
-        catalogue.EditSummits(summitsDetails);
+        var newSummits = catalogue.EditSummits(summitsDetails);
 
         // Persistir el catàleg
-        // TODO: Pending to create catolgue repository
+        _catalogueRepository.EditSummits(newSummits);
+
+        return true;
     }
 
     public IEnumerable<CatalogueQueryResult> GetCatalogues()
