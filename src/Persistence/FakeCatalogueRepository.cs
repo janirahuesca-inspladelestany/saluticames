@@ -16,9 +16,14 @@ public class FakeCatalogueRepository : ICatalogueRepository
         };
     }
 
-    public Catalogue? GetCatalogue(Guid id)
+    public Catalogue? GetById(Guid id)
     {
         return _catalogues.GetValueOrDefault(id);
+    }
+
+    public IEnumerable<Catalogue> GetAll()
+    {
+        return _catalogues.Any() ? _catalogues.Select(kv => kv.Value) : Enumerable.Empty<Catalogue>();
     }
 
     public IEnumerable<string> GetAvailableRegions()

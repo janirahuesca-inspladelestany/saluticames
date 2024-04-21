@@ -1,11 +1,11 @@
-﻿using Domain.CatalogueContext.DTO;
-using Domain.CatalogueContext.Entities;
+﻿using Domain.CatalogueContext.Entities;
 
 namespace Domain.CatalogueContext.Repositories
 {
     public interface ICatalogueRepository
     {
-        Catalogue? GetCatalogue(Guid id);
+        Catalogue? GetById(Guid id);
+        IEnumerable<Catalogue> GetAll();
         IEnumerable<string> GetAvailableRegions();
     }
 }

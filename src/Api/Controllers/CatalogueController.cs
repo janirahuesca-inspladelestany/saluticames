@@ -1,5 +1,5 @@
-﻿using Application.CatalogueContext.Services;
-using Domain.CatalogueContext.DTO;
+﻿using Application.CatalogueContext.Contracts;
+using Application.CatalogueContext.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
@@ -16,7 +16,7 @@ namespace Api.Controllers
         }
 
         [HttpPost]
-        public void Post(Guid id, IEnumerable<SummitDto> summits)
+        public void Post(Guid id, IEnumerable<SummitCommand> summits)
         {
             _catalogueService.CreateSummits(id, summits);
         }
@@ -27,23 +27,45 @@ namespace Api.Controllers
             _catalogueService.DeleteSummits(id, summitIds);
         }
 
-        [HttpGet("altitude")]
-        public IActionResult GetByAltitude(Guid id, int value, bool asc = true)
+        [HttpGet]
+        public IActionResult Get(Guid id, int? altitude, string? name, string? location, string? region, bool asc = true)
         {
-            var summitsByAltitude = _catalogueService.ReadSummitsByAltitude(id,
-                value,
-                order: asc ? Domain.CatalogueContext.Entities.Catalogue.OrderType.ASC : Domain.CatalogueContext.Entities.Catalogue.OrderType.DESC);
+            var summits = _catalogueService.ReadSummits(id, asc);
 
-            if(!summitsByAltitude.Any()) 
+            if (altitude.HasValue)
+            {
+                var summitsByAltitude = _catalogueService.ReadSummitsByAltitude(id, altitude.Value, asc);
+                summits = summits.Intersect(summitsByAltitude);
+            }
+
+            if (!string.IsNullOrEmpty(name))
+            {
+                var summitsByName = _catalogueService.ReadSummitsByName(id, name, asc);
+                summits = summits.Intersect(summitsByName);
+            }
+
+            if (!string.IsNullOrEmpty(location))
+            {
+                var summitsByLocation = _catalogueService.ReadSummitsByLocation(id, location, asc);
+                summits = summits.Intersect(summitsByLocation);
+            }
+
+            if (!string.IsNullOrEmpty(region))
+            {
+                var summitsByRegion = _catalogueService.ReadSummitsByRegion(id, region, asc);
+                summits = summits.Intersect(summitsByRegion);
+            }
+
+            if (!summits.Any())
             {
                 return NoContent();
             }
 
-            return Ok(summitsByAltitude);
+            return Ok(summits);
         }
 
         [HttpPut]
-        public void Put(Guid id, IDictionary<Guid, SummitDto> summits)
+        public void Put(Guid id, IDictionary<Guid, SummitCommand> summits)
         {
             _catalogueService.UpdateSummits(id, summits);
         }
