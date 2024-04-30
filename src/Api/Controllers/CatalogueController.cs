@@ -1,100 +1,69 @@
-﻿using Application.CatalogueContext.Contracts;
-using Application.CatalogueContext.Services;
+﻿using Api.Extensions;
+using Api.Models;
+using Application.Catalogues.Services;
+using Contracts.Catalogues.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
 {
-    [Route("api/[controller]/{id}/summit")]
+    [Route("api/v{version:apiVersion}/[controller]/{id}/summit")]
     [ApiController]
-    public class CatalogueController : ControllerBase
+    public class CatalogueController(ICatalogueService _catalogueService) : ControllerBase
     {
-        private readonly ICatalogueService _catalogueService;
-
-        public CatalogueController(ICatalogueService catalogueService)
-        {
-            _catalogueService = catalogueService;
-        }
-
         [HttpPost]
-        public IActionResult Post(Guid id, IEnumerable<SummitCommand> summits)
+        public async Task<IResult> CreateSummitsAsync(Guid id, CreateSummitsRequest request, CancellationToken cancellationToken = default)
         {
-            var isSuccessful = _catalogueService.CreateSummits(id, summits);
-            
-            if (!isSuccessful) 
-            {
-                return new EmptyResult(); 
-            }
-            else
-            {
-                return Ok();
-            }
+            var summitsToCreate = request.Summits
+                .ToList()
+                .ConvertAll(summit =>
+                    new SummitDto(
+                        Altitude: summit.Altitude,
+                        Name: summit.Name,
+                        Location: summit.Location,
+                        RegionName: summit.RegionName));
+
+            var result = await _catalogueService.CreateSummitsAsync(catalogueId: id, summitsToCreate, cancellationToken);
+
+            return result.Match(
+                result => Results.Ok(result),
+                error => result.ToProblemDetails());
         }
 
-        [HttpDelete]
-        public IActionResult Delete(Guid id, IEnumerable<Guid> summitIds)
+        [HttpGet("{summitId}")]
+        public async Task<IResult> ReadSummitsAsync(Guid id, ReadSummitsRequest request, CancellationToken cancellationToken = default)
         {
-            var isSuccessful = _catalogueService.DeleteSummits(id, summitIds);
+            var result = await _catalogueService.GetSummitsAsync(catalogueId: id, cancellationToken);
 
-            if (!isSuccessful)
-            {
-                return new EmptyResult();
-            }
-            else
-            {
-                return Ok();
-            }
-        }
-
-        [HttpGet]
-        public IActionResult Get(Guid id, int? altitude, string? name, string? location, string? region, bool asc = true)
-        {
-            var summits = _catalogueService.ReadSummits(id, asc);
-
-            if (altitude.HasValue)
-            {
-                var summitsByAltitude = _catalogueService.ReadSummitsByAltitude(id, altitude.Value, asc);
-                summits = summits.Intersect(summitsByAltitude);
-            }
-
-            if (!string.IsNullOrEmpty(name))
-            {
-                var summitsByName = _catalogueService.ReadSummitsByName(id, name, asc);
-                summits = summits.Intersect(summitsByName);
-            }
-
-            if (!string.IsNullOrEmpty(location))
-            {
-                var summitsByLocation = _catalogueService.ReadSummitsByLocation(id, location, asc);
-                summits = summits.Intersect(summitsByLocation);
-            }
-
-            if (!string.IsNullOrEmpty(region))
-            {
-                var summitsByRegion = _catalogueService.ReadSummitsByRegion(id, region, asc);
-                summits = summits.Intersect(summitsByRegion);
-            }
-
-            if (!summits.Any())
-            {
-                return NoContent();
-            }
-
-            return Ok(summits);
+            return result.Match(
+                result => Results.Ok(result),
+                error => result.ToProblemDetails());
         }
 
         [HttpPut]
-        public IActionResult Put(Guid id, IDictionary<Guid, SummitCommand> summits)
+        public async Task<IResult> UpdateSummitsAsync(Guid id, UpdateSummitsRequest request, CancellationToken cancellationToken = default)
         {
-            var isSuccessful = _catalogueService.UpdateSummits(id, summits);
+            var summitsToUpdate = request.Summits.ToDictionary(summit => summit.Key, summit =>
+                new SummitDto(
+                    Altitude: summit.Value.Altitude,
+                    Name: summit.Value.Name,
+                    Location: summit.Value.Location,
+                    RegionName: summit.Value.RegionName));
 
-            if (!isSuccessful)
-            {
-                return new EmptyResult();
-            }
-            else
-            {
-                return Ok();
-            }
+            var result = await _catalogueService.ReplaceSummitsAsync(catalogueId: id, summitsToUpdate, cancellationToken);
+
+            return result.Match(
+                result => Results.Ok(result),
+                error => result.ToProblemDetails());
+        }
+
+        [HttpDelete]
+        public async Task<IResult> DeleteSummitsAsync(Guid id, IEnumerable<Guid> summitIdsToDelete, CancellationToken cancellationToken = default)
+        {
+            var result = await _catalogueService.RemoveSummitsAsync(catalogueId: id, summitIdsToDelete, cancellationToken);
+
+            return result.Match(
+                result => Results.Ok(result),
+                error => result.ToProblemDetails());
         }
     }
 }

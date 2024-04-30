@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence.Data;
 
@@ -11,9 +12,11 @@ using Persistence.Data;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(CatalogueDbContext))]
-    partial class CatalogueDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240429180626_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,13 +38,6 @@ namespace Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Catalogues", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = new Guid("21bb85b0-811f-42bc-979a-a45b976685dd"),
-                            Name = "Repte dels 100 Cims de la FEEC"
-                        });
                 });
 
             modelBuilder.Entity("Domain.Catalogues.Entities.Summit", b =>

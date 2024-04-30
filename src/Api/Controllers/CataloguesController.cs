@@ -1,26 +1,21 @@
-﻿using Application.CatalogueContext.Services;
+﻿using Api.Extensions;
+using Application.Catalogues.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
 
 namespace Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
-    public class CataloguesController : ControllerBase
+    public class CataloguesController(ICatalogueService _catalogueService) : ControllerBase
     {
-        private readonly ICatalogueService _catalogueService;
-
-        public CataloguesController(ICatalogueService catalogueService)
-        {
-            _catalogueService = catalogueService;
-        }
-
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IResult> GetCataloguesAsync(CancellationToken cancellationToken = default)
         {
-            var catalogues = _catalogueService.GetCatalogues();
-            if(catalogues.IsNullOrEmpty()) return NoContent();
-            return Ok(catalogues);
+            var result = await _catalogueService.GetCataloguesAsync(cancellationToken);
+
+            return result.Match(
+                result => Results.Ok(result),
+                error => result.ToProblemDetails());
         }
     }
 }
