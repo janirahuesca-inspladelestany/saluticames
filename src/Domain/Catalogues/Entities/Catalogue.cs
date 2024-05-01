@@ -1,6 +1,4 @@
-﻿using Domain.Catalogues.Enums;
-using SharedKernel.Abstractions;
-using System.Diagnostics;
+﻿using SharedKernel.Abstractions;
 
 namespace Domain.Catalogues.Entities;
 
@@ -72,6 +70,11 @@ public sealed class Catalogue : AggregateRoot<Guid>
         summit.Region = summitToReplace.Region;
     }
 
+    public void ClearSummits()
+    {
+        _summits.Clear();
+    }
+
     public IEnumerable<Summit> RemoveSummits(IEnumerable<Guid> summitIdsToRemove)
     {
         var summits = new List<Summit>();
@@ -98,24 +101,5 @@ public sealed class Catalogue : AggregateRoot<Guid>
     public IEnumerable<Summit> GetSummits(OrderType order = OrderType.ASC)
     {
         return order == OrderType.ASC ? _summits.OrderBy(summit => summit.Name) : _summits.OrderByDescending(summit => summit.Name);
-    }
-
-    public IEnumerable<Summit> FilterSummitsBy<T>(T value, FilterType filter, OrderType order = OrderType.ASC)
-    {
-        if (filter == FilterType.NONE) return Enumerable.Empty<Summit>();
-
-        var filteredSummits = _summits.Where(summit => filter switch
-        {
-            FilterType.NAME when value is string name => summit.Name.Contains(name, StringComparison.OrdinalIgnoreCase),
-            FilterType.ALTITUDE when value is int altitude => summit.Altitude == altitude,
-            FilterType.LOCATION when value is string location => summit.Location.Contains(location, StringComparison.OrdinalIgnoreCase),
-            //FilterType.REGION when value is string region => summit.Region.Name.Contains(region, StringComparison.OrdinalIgnoreCase),
-            FilterType.DIFICULTY when value is DifficultyLevel difficulty => summit.DifficultyLevel == difficulty,
-            _ => throw new UnreachableException()
-        });
-
-        return order == OrderType.ASC
-            ? filteredSummits.OrderBy(summit => typeof(Summit).GetProperty(filter.ToString(), System.Reflection.BindingFlags.IgnoreCase))
-            : filteredSummits.OrderByDescending(summit => typeof(Summit).GetProperty(filter.ToString(), System.Reflection.BindingFlags.IgnoreCase));
     }
 }

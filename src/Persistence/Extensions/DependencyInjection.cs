@@ -1,10 +1,10 @@
-﻿using Domain.Catalogues.Repositories;
+﻿using Application.Abstractions;
+using Application.Catalogues.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Persistence.Data;
 using Persistence.Repositories;
-using SharedKernel.Abstractions;
 
 namespace Persistence.Extensions;
 

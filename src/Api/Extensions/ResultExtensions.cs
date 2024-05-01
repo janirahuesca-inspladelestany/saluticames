@@ -1,22 +1,27 @@
-﻿using SharedKernel.Common;
+﻿using Microsoft.AspNetCore.Mvc;
+using SharedKernel.Common;
 
 namespace Api.Extensions;
 
 public static class ResultExtensions
 {
-    public static IResult ToProblemDetails<TValue, TError>(this Result<TValue, TError> result)
+    public static IActionResult ToProblemDetails<TValue, TError>(this Result<TValue, TError> result)
         where TError : Error
     {
         if (result.IsSuccess()) throw new InvalidOperationException();
 
-        return Results.Problem(
-            statusCode: GetStatusCode(result.Error.Type),
-            title: result.Error.Type.ToString(),
-            type: GetType(result.Error.Type),
-            extensions: new Dictionary<string, object?>
+        var problem = new ProblemDetails()
+        {
+            Status = GetStatusCode(result.Error.Type),
+            Type = GetType(result.Error.Type),
+            Title = result.Error.Type.ToString(),
+            Extensions = new Dictionary<string, object?>()
             {
-                { "error", result.Error }
-            });
+                [nameof(result.Error)] = result.Error
+            }
+        };
+
+        return new ObjectResult(problem);
 
         static int GetStatusCode(Error.ErrorType errorType) =>
             errorType switch

@@ -1,4 +1,4 @@
-﻿namespace Contracts.Catalogues.Models;
+﻿namespace Contracts.DTO.Catalogues;
 
 public record CatalogueDto(string Name);
 

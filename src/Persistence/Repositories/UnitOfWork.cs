@@ -1,18 +1,24 @@
-﻿using Domain.Catalogues.Enums;
-using Microsoft.EntityFrameworkCore;
+﻿using Application.Abstractions;
+using Application.Catalogues.Repositories;
 using Persistence.Data;
-using SharedKernel.Abstractions;
 
 namespace Persistence.Repositories;
 
-internal sealed class UnitOfWork(CatalogueDbContext catalogueDbContext) : IUnitOfWork
+public sealed class UnitOfWork(CatalogueDbContext _catalogueDbContext) : IUnitOfWork
 {
+    private CatalogueRepository _catalogueRepository = null!;
+
+    public ICatalogueRepository CatalogueRepository
+    {
+        get
+        {
+            _catalogueRepository ??= new CatalogueRepository(_catalogueDbContext);
+            return _catalogueRepository;
+        }
+    }
+
     public Task SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        catalogueDbContext.ChangeTracker.Entries()
-            .Where(e => e.Entity is Region).ToList()
-            .ForEach(e => e.State = EntityState.Detached);
-        
-        return catalogueDbContext.SaveChangesAsync(cancellationToken);
+        return _catalogueDbContext.SaveChangesAsync(cancellationToken);
     }
 }

@@ -1,7 +1,8 @@
 ﻿using Api.Extensions;
-using Api.Models;
+using Api.Models.Requests;
+using Api.Models.Requests.Queries;
 using Application.Catalogues.Services;
-using Contracts.Catalogues.Models;
+using Contracts.DTO.Catalogues;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
@@ -11,7 +12,7 @@ namespace Api.Controllers
     public class CatalogueController(ICatalogueService _catalogueService) : ControllerBase
     {
         [HttpPost]
-        public async Task<IResult> CreateSummitsAsync(Guid id, CreateSummitsRequest request, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> CreateSummitsAsync(Guid id, CreateSummitsRequest request, CancellationToken cancellationToken = default)
         {
             var summitsToCreate = request.Summits
                 .ToList()
@@ -25,22 +26,29 @@ namespace Api.Controllers
             var result = await _catalogueService.CreateSummitsAsync(catalogueId: id, summitsToCreate, cancellationToken);
 
             return result.Match(
-                result => Results.Ok(result),
+                result => Ok(result),
                 error => result.ToProblemDetails());
         }
 
-        [HttpGet("{summitId}")]
-        public async Task<IResult> ReadSummitsAsync(Guid id, ReadSummitsRequest request, CancellationToken cancellationToken = default)
+        [HttpGet]
+        public async Task<IActionResult> ReadSummitsAsync(Guid id, [FromQuery] ReadSummitsQuery summitsQuery, CancellationToken cancellationToken = default)
         {
-            var result = await _catalogueService.GetSummitsAsync(catalogueId: id, cancellationToken);
+            var filter = new GetSummitsFilterDto(
+                Id: summitsQuery.Id,
+                Altitude: (summitsQuery.MinAltitude, summitsQuery.MaxAltitude),
+                Name: summitsQuery.Name,
+                Location: summitsQuery.Location,
+                RegionName: summitsQuery.RegionName);
+
+            var result = await _catalogueService.GetSummitsAsync(catalogueId: id, filter, cancellationToken);
 
             return result.Match(
-                result => Results.Ok(result),
+                result => Ok(result),
                 error => result.ToProblemDetails());
         }
 
         [HttpPut]
-        public async Task<IResult> UpdateSummitsAsync(Guid id, UpdateSummitsRequest request, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> UpdateSummitsAsync(Guid id, UpdateSummitsRequest request, CancellationToken cancellationToken = default)
         {
             var summitsToUpdate = request.Summits.ToDictionary(summit => summit.Key, summit =>
                 new SummitDto(
@@ -52,17 +60,17 @@ namespace Api.Controllers
             var result = await _catalogueService.ReplaceSummitsAsync(catalogueId: id, summitsToUpdate, cancellationToken);
 
             return result.Match(
-                result => Results.Ok(result),
+                result => Ok(result),
                 error => result.ToProblemDetails());
         }
 
         [HttpDelete]
-        public async Task<IResult> DeleteSummitsAsync(Guid id, IEnumerable<Guid> summitIdsToDelete, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> DeleteSummitsAsync(Guid id, IEnumerable<Guid> summitIdsToDelete, CancellationToken cancellationToken = default)
         {
             var result = await _catalogueService.RemoveSummitsAsync(catalogueId: id, summitIdsToDelete, cancellationToken);
 
             return result.Match(
-                result => Results.Ok(result),
+                result => Ok(result),
                 error => result.ToProblemDetails());
         }
     }

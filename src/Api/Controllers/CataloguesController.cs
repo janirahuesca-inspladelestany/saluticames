@@ -1,5 +1,7 @@
 ﻿using Api.Extensions;
+using Api.Models.Requests.Queries;
 using Application.Catalogues.Services;
+using Contracts.DTO.Catalogues;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
@@ -9,12 +11,13 @@ namespace Api.Controllers
     public class CataloguesController(ICatalogueService _catalogueService) : ControllerBase
     {
         [HttpGet]
-        public async Task<IResult> GetCataloguesAsync(CancellationToken cancellationToken = default)
+        public async Task<IActionResult> ReadCataloguesAsync([FromQuery] ReadCataloguesQuery cataloguesQuery, CancellationToken cancellationToken = default)
         {
-            var result = await _catalogueService.GetCataloguesAsync(cancellationToken);
+            var filter = new GetCataloguesFilterDto(cataloguesQuery.Id, cataloguesQuery.Name);
+            var result = await _catalogueService.GetCatalogues(filter, cancellationToken);
 
             return result.Match(
-                result => Results.Ok(result),
+                result => Ok(result),
                 error => result.ToProblemDetails());
         }
     }

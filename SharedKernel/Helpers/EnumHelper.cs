@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Reflection;
 
 namespace SharedKernel.Helpers;
 
@@ -37,5 +38,12 @@ public static class EnumHelper
         }
 
         throw new ArgumentException($"No enum value found with description: {description}", nameof(description));
+    }
+
+    public static string GetDescription<T>(T value) where T : Enum
+    {
+        var fieldInfo = value.GetType().GetField(value.ToString());
+        var attribute = (DescriptionAttribute)fieldInfo.GetCustomAttribute(typeof(DescriptionAttribute));
+        return attribute != null ? attribute.Description : value.ToString();
     }
 }
