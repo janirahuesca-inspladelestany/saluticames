@@ -125,7 +125,7 @@ public class CatalogueService(IUnitOfWork _unitOfWork) : ICatalogueService
     {
         // Recuperar els catàlegs
         var cataloguesQuery = await _unitOfWork.CatalogueRepository.ListAsync(
-            filter: c => c.Id == filter.Id || c.Name.Contains(filter.Name ?? string.Empty, StringComparison.InvariantCultureIgnoreCase),
+            filter: c => c.Id == filter.Id || c.Name.Contains(filter.Name ?? string.Empty),
             cancellationToken: cancellationToken);
 
         // Mapejar de BO a DTO

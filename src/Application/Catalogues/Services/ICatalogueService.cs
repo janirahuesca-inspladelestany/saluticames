@@ -1,6 +1,5 @@
 ﻿using Contracts.DTO.Catalogues;
 using SharedKernel.Common;
-using System.Threading;
 
 namespace Application.Catalogues.Services;
 

@@ -1,9 +1,7 @@
 ﻿using Application.Catalogues.Repositories;
-using Contracts.DTO.Catalogues;
 using Domain.Catalogues.Entities;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Data;
-using System.Linq;
 using System.Linq.Expressions;
 
 namespace Persistence.Repositories;
