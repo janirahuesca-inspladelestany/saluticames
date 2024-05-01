@@ -8,5 +8,7 @@ public enum Region
     [Description("Pla de l'Estany")]
     PLA_DE_ESTANY = 1,
     [Description("Garrotxa")]
-    GARROTXA
+    GARROTXA,
+    [Description("Ripollès")]
+    RIPOLLES
 }

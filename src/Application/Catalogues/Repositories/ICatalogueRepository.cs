@@ -11,8 +11,6 @@ public interface ICatalogueRepository : IRepository<Catalogue, Guid>
         string includeProperties = "",
         CancellationToken cancellationToken = default);
     Task<Catalogue?> FindByIdAsync(Guid id, CancellationToken cancellationToken = default);
-    Task AddSummitRangeAsync(IEnumerable<Summit> summits, CancellationToken cancellationToken = default);
-    void ReplaceSummitRange(IEnumerable<Summit> summits);
     void RemoveSummitRange(IEnumerable<Summit> summits);
     Task<Catalogue?> GetSummitsAsync(Guid id,
         Expression<Func<Summit, bool>>? filter = null,

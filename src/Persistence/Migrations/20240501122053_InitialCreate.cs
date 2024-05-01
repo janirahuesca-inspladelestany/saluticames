@@ -74,7 +74,8 @@ namespace Persistence.Migrations
                         name: "FK_Summits_Catalogues_CatalogueId",
                         column: x => x.CatalogueId,
                         principalTable: "Catalogues",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Summits_EnumLookup<DifficultyLevel>_DifficultyLevel",
                         column: x => x.DifficultyLevel,
@@ -88,6 +89,11 @@ namespace Persistence.Migrations
                         principalColumn: "Value",
                         onDelete: ReferentialAction.Cascade);
                 });
+
+            migrationBuilder.InsertData(
+                table: "Catalogues",
+                columns: new[] { "Id", "Name" },
+                values: new object[] { new Guid("1e54e5d1-2e7f-472f-a6f3-9b7d59128be8"), "Repte dels 100 Cims de la FEEC" });
 
             migrationBuilder.InsertData(
                 table: "EnumLookup<DifficultyLevel>",

@@ -1,6 +1,4 @@
-﻿using static System.Runtime.InteropServices.JavaScript.JSType;
-
-namespace SharedKernel.Common;
+﻿namespace SharedKernel.Common;
 
 public record EmptyResult<TError>
     where TError : Error

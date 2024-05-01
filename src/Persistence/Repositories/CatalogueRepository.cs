@@ -43,16 +43,6 @@ public sealed class CatalogueRepository : ICatalogueRepository
         return await _catalogues.Include(c => c.Summits).SingleOrDefaultAsync(c => c.Id == id, cancellationToken);
     }
 
-    public async Task AddSummitRangeAsync(IEnumerable<Summit> summits, CancellationToken cancellationToken = default)
-    {
-        await _summits.AddRangeAsync(summits, cancellationToken);
-    }
-
-    public void ReplaceSummitRange(IEnumerable<Summit> summits)
-    {
-        _summits.UpdateRange(summits);
-    }
-
     public void RemoveSummitRange(IEnumerable<Summit> summits)
     {
         _summits.RemoveRange(summits);

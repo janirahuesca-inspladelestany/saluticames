@@ -11,64 +11,63 @@ namespace Application.Catalogues.Services;
 public class CatalogueService(IUnitOfWork _unitOfWork) : ICatalogueService
 {
     public async Task<Result<IEnumerable<Guid>, Error>> CreateSummitsAsync(Guid catalogueId,
-        IEnumerable<SummitDto> summitsToCreate,
+        IEnumerable<CreateSummitDetailDto> summitDetailsToCreate,
         CancellationToken cancellationToken = default)
     {
         // Validar dades d'entrada
-        if (!AreAvailableAllSummitRegions(summitsToCreate)) return CatalogueErrors.RegionNotAvailable;
+        if (!summitDetailsToCreate.Any(summitDetailToCreate => IsAvailableRegionName(summitDetailToCreate.RegionName)))
+            return CatalogueErrors.RegionNotAvailable;
 
         // Recuperar el catàleg
         var catalogue = await _unitOfWork.CatalogueRepository.FindByIdAsync(catalogueId, cancellationToken);
         if (catalogue is null) return CatalogueErrors.CatalogueIdNotFound;
 
         // Mapejar de DTO a BO
-        var createdSummits = summitsToCreate.ToList().ConvertAll(summit =>
+        var summitsToCreate = summitDetailsToCreate.ToList().ConvertAll(summit =>
             Summit.Create(
                 altitude: summit.Altitude,
                 location: summit.Location,
                 name: summit.Name,
-                region: Region.PLA_DE_ESTANY));
+                region: EnumHelper.GetEnumValueByDescription<Region>(summit.RegionName)));
 
         // Afegir cims al catàleg
-        catalogue.AddSummits(createdSummits);
+        catalogue.AddSummits(summitsToCreate);
 
         // Persistir el catàleg
-        await _unitOfWork.CatalogueRepository.AddSummitRangeAsync(createdSummits, cancellationToken);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
 
         // Retornar el resultat
-        return createdSummits.Select(summit => summit.Id).ToList();
+        return summitsToCreate.Select(summit => summit.Id).ToList();
     }
 
     public async Task<Result<IEnumerable<Guid>, Error>> ReplaceSummitsAsync(Guid catalogueId,
-        IDictionary<Guid, SummitDto> summitsToReplace,
+        IDictionary<Guid, ReplaceSummitDetailDto> summitDetailsToReplace,
         CancellationToken cancellationToken = default)
     {
         // Validar dades d'entrada
-        if (!AreAvailableAllSummitRegions(summitsToReplace.Values)) return CatalogueErrors.RegionNotAvailable;
+        if (summitDetailsToReplace.Values.Any(summitDetailToReplace =>
+            !string.IsNullOrEmpty(summitDetailToReplace.RegionName) && !IsAvailableRegionName(summitDetailToReplace.RegionName)))
+        {
+            return CatalogueErrors.RegionNotAvailable;
+        }
 
         // Recuperar el catàleg
         var catalogue = await _unitOfWork.CatalogueRepository.FindByIdAsync(catalogueId, cancellationToken);
         if (catalogue is null) return CatalogueErrors.CatalogueIdNotFound;
 
         // Mapejar de DTO a BO
-        var replacedSummits = summitsToReplace.Select(summit =>
-            Summit.Create(
-                id: summit.Key,
-                altitude: summit.Value.Altitude,
-                location: summit.Value.Location,
-                name: summit.Value.Name,
-                region: EnumHelper.GetEnumValueByDescription<Region>(summit.Value.RegionName)));
+        var summitsToReplace = summitDetailsToReplace
+            .Where(summitDetailToReplace => catalogue.Summits.Any(s => s.Id == summitDetailToReplace.Key))
+            .ToDictionary(kv => kv.Key, kv => (kv.Value.Altitude, kv.Value.Location, kv.Value.Name, kv.Value.RegionName));
 
         // Actualizar cims del catàleg
-        catalogue.ReplaceSummits(replacedSummits);
+        catalogue.ReplaceSummits(summitsToReplace);
 
         // Persistir el catàleg
-        _unitOfWork.CatalogueRepository.ReplaceSummitRange(replacedSummits);
         await _unitOfWork.SaveChangesAsync(cancellationToken);
 
         // Retornar el resultat
-        return replacedSummits.Select(summit => summit.Id).ToList();
+        return summitsToReplace.Select(summit => summit.Key).ToList();
     }
 
     public async Task<Result<IEnumerable<Guid>, Error>> RemoveSummitsAsync(Guid catalogueId,
@@ -90,7 +89,7 @@ public class CatalogueService(IUnitOfWork _unitOfWork) : ICatalogueService
         return removedSummits.Select(summit => summit.Id).ToList();
     }
 
-    public async Task<Result<IDictionary<Guid, SummitDto>, Error>> GetSummitsAsync(Guid catalogueId, GetSummitsFilterDto filter, CancellationToken cancellationToken = default)
+    public async Task<Result<IDictionary<Guid, GetSummitDetailDto>, Error>> GetSummitsAsync(Guid catalogueId, GetSummitsFilterDto filter, CancellationToken cancellationToken = default)
     {
         // Recuperar el catàleg
         var catalogue = await _unitOfWork.CatalogueRepository.GetSummitsAsync(catalogueId,
@@ -106,12 +105,9 @@ public class CatalogueService(IUnitOfWork _unitOfWork) : ICatalogueService
 
         if (catalogue is null) return CatalogueErrors.CatalogueIdNotFound;
 
-        // Llegir cims del catàleg
-        var summits = catalogue.GetSummits();
-
         // Mapejar de BO a DTO
-        var result = summits.ToDictionary(summit => summit.Id, summit =>
-            new SummitDto(
+        var result = catalogue.Summits.ToDictionary(summit => summit.Id, summit =>
+            new GetSummitDetailDto(
                 Altitude: summit.Altitude,
                 Name: summit.Name,
                 Location: summit.Location,
@@ -121,23 +117,25 @@ public class CatalogueService(IUnitOfWork _unitOfWork) : ICatalogueService
         return result;
     }
 
-    public async Task<Result<IDictionary<Guid, CatalogueDto>, Error>> GetCatalogues(GetCataloguesFilterDto filter, CancellationToken cancellationToken = default)
+    public async Task<Result<IDictionary<Guid, GetCatalogueDetailDto>, Error>> GetCatalogues(GetCataloguesFilterDto filter, CancellationToken cancellationToken = default)
     {
         // Recuperar els catàlegs
         var cataloguesQuery = await _unitOfWork.CatalogueRepository.ListAsync(
-            filter: c => c.Id == filter.Id || c.Name.Contains(filter.Name ?? string.Empty),
+            filter: c =>
+                (filter.Id != null ? c.Id == filter.Id : true) &&
+                (!string.IsNullOrEmpty(filter.Name) ? c.Name.Contains(filter.Name) : true),
             cancellationToken: cancellationToken);
 
         // Mapejar de BO a DTO
         var result = cataloguesQuery.ToDictionary(catalogue => catalogue.Id, catalogue =>
-            new CatalogueDto(Name: catalogue.Name));
+            new GetCatalogueDetailDto(Name: catalogue.Name));
 
         // Retornar el resultat
         return result;
     }
 
-    private bool AreAvailableAllSummitRegions(IEnumerable<SummitDto> summits)
+    private bool IsAvailableRegionName(string regionName)
     {
-        return summits.All(summit => EnumHelper.IsDefinedByDescription<Region>(summit.RegionName));
+        return EnumHelper.IsDefinedByDescription<Region>(regionName);
     }
 }

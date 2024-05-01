@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
 {
-    [Route("api/v{version:apiVersion}/[controller]/{id}/summit")]
+    [Route("api/v{version:apiVersion}/[controller]/{id}/summits")]
     [ApiController]
     public class CatalogueController(ICatalogueService _catalogueService) : ControllerBase
     {
@@ -17,7 +17,7 @@ namespace Api.Controllers
             var summitsToCreate = request.Summits
                 .ToList()
                 .ConvertAll(summit =>
-                    new SummitDto(
+                    new CreateSummitDetailDto(
                         Altitude: summit.Altitude,
                         Name: summit.Name,
                         Location: summit.Location,
@@ -51,7 +51,7 @@ namespace Api.Controllers
         public async Task<IActionResult> UpdateSummitsAsync(Guid id, UpdateSummitsRequest request, CancellationToken cancellationToken = default)
         {
             var summitsToUpdate = request.Summits.ToDictionary(summit => summit.Key, summit =>
-                new SummitDto(
+                new ReplaceSummitDetailDto(
                     Altitude: summit.Value.Altitude,
                     Name: summit.Value.Name,
                     Location: summit.Value.Location,

@@ -1,6 +1,6 @@
 ﻿namespace Api.Models.Requests;
 
-public record CreateSummitsRequest(IEnumerable<CreateSummitsRequest.SummitDetail> Summits)
+public record CreateSummitsRequest(IEnumerable<CreateSummitsRequest.CreateSummitDetail> Summits)
 {
-    public record SummitDetail(int Altitude, string Name, string Location, string RegionName);
+    public record CreateSummitDetail(int Altitude, string Name, string Location, string RegionName);
 }

@@ -12,7 +12,7 @@ using Persistence.Data;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(CatalogueDbContext))]
-    [Migration("20240429180626_InitialCreate")]
+    [Migration("20240501122053_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -38,6 +38,13 @@ namespace Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Catalogues", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("1e54e5d1-2e7f-472f-a6f3-9b7d59128be8"),
+                            Name = "Repte dels 100 Cims de la FEEC"
+                        });
                 });
 
             modelBuilder.Entity("Domain.Catalogues.Entities.Summit", b =>
@@ -172,7 +179,8 @@ namespace Persistence.Migrations
                 {
                     b.HasOne("Domain.Catalogues.Entities.Catalogue", null)
                         .WithMany("Summits")
-                        .HasForeignKey("CatalogueId");
+                        .HasForeignKey("CatalogueId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Persistence.Data.EnumLookup<Domain.Catalogues.Enums.DifficultyLevel>", null)
                         .WithMany()

@@ -39,7 +39,7 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("21bb85b0-811f-42bc-979a-a45b976685dd"),
+                            Id = new Guid("eba4215e-87b6-4fcf-91e4-e90f16c97736"),
                             Name = "Repte dels 100 Cims de la FEEC"
                         });
                 });
@@ -166,6 +166,12 @@ namespace Persistence.Migrations
                         },
                         new
                         {
+                            Id = 3,
+                            Name = "Ripollès",
+                            Value = 3
+                        },
+                        new
+                        {
                             Id = -1,
                             Name = "NONE",
                             Value = -1
@@ -176,7 +182,8 @@ namespace Persistence.Migrations
                 {
                     b.HasOne("Domain.Catalogues.Entities.Catalogue", null)
                         .WithMany("Summits")
-                        .HasForeignKey("CatalogueId");
+                        .HasForeignKey("CatalogueId")
+                        .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("Persistence.Data.EnumLookup<Domain.Catalogues.Enums.DifficultyLevel>", null)
                         .WithMany()
