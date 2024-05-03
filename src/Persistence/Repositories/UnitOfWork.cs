@@ -1,24 +1,32 @@
 ﻿using Application.Abstractions;
-using Application.Catalogues.Repositories;
+using Application.CatalogueContext.Repositories;
+using Application.ChallengeContext.Repositories;
 using Persistence.Data;
 
 namespace Persistence.Repositories;
 
-public sealed class UnitOfWork(CatalogueDbContext _catalogueDbContext) : IUnitOfWork
+public sealed class UnitOfWork(SalutICamesDbContext _salutICamesDbContext, 
+    ICatalogueRepository _catalogueRepository,
+    IChallengeRepository _challengeRepository) : IUnitOfWork
 {
-    private CatalogueRepository _catalogueRepository = null!;
-
     public ICatalogueRepository CatalogueRepository
     {
         get
         {
-            _catalogueRepository ??= new CatalogueRepository(_catalogueDbContext);
             return _catalogueRepository;
+        }
+    }
+
+    public IChallengeRepository ChallengeRepository
+    {
+        get
+        {
+            return _challengeRepository;
         }
     }
 
     public Task SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        return _catalogueDbContext.SaveChangesAsync(cancellationToken);
+        return _salutICamesDbContext.SaveChangesAsync(cancellationToken);
     }
 }

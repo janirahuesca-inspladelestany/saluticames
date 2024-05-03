@@ -1,8 +1,8 @@
 ﻿using Api.Extensions;
 using Api.Models.Requests;
 using Api.Models.Requests.Queries;
-using Application.Catalogues.Services;
-using Contracts.DTO.Catalogues;
+using Application.CatalogueContext.Services;
+using Contracts.DTO.Catalogue;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers

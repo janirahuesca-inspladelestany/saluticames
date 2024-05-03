@@ -1,5 +1,5 @@
-﻿using Application.Catalogues.Repositories;
-using Domain.Catalogues.Entities;
+﻿using Application.CatalogueContext.Repositories;
+using Domain.CatalogueContext.Entities;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Data;
 using System.Linq.Expressions;
@@ -11,7 +11,7 @@ public sealed class CatalogueRepository : ICatalogueRepository
     private readonly DbSet<Catalogue> _catalogues;
     private readonly DbSet<Summit> _summits;
 
-    public CatalogueRepository(CatalogueDbContext catalogueDbContext)
+    public CatalogueRepository(SalutICamesDbContext catalogueDbContext)
     {
         _catalogues = catalogueDbContext.Set<Catalogue>();
         _summits = catalogueDbContext.Set<Summit>();
@@ -28,7 +28,7 @@ public sealed class CatalogueRepository : ICatalogueRepository
 
         foreach (var includeProperty in includeProperties.Split(',', StringSplitOptions.RemoveEmptyEntries))
         {
-            query.Include(includeProperty);
+            query = query.Include(includeProperty);
         }
 
         var catalogues = orderBy is not null
@@ -48,14 +48,14 @@ public sealed class CatalogueRepository : ICatalogueRepository
         _summits.RemoveRange(summits);
     }
 
-    public async Task<Catalogue?> GetSummitsAsync(Guid id,
+    public async Task<IEnumerable<Summit>> GetSummitsAsync(Guid id,
         Expression<Func<Summit, bool>>? filter = null,
         Func<IQueryable<Summit>, IOrderedQueryable<Summit>>? orderBy = null,
         string includeProperties = "",
         CancellationToken cancellationToken = default)
     {
         var catalogue = await _catalogues.Include(c => c.Summits).SingleOrDefaultAsync(c => c.Id == id, cancellationToken);
-        if (catalogue is null) return null;
+        if (catalogue is null) return Enumerable.Empty<Summit>();
 
         IQueryable<Summit> query = catalogue.Summits.AsQueryable();
 
@@ -70,9 +70,6 @@ public sealed class CatalogueRepository : ICatalogueRepository
             ? orderBy(query).ToList()
             : query.ToList();
 
-        catalogue.ClearSummits();
-        catalogue.AddSummits(summits); 
-        
-        return catalogue;
+        return summits;
     }
 }

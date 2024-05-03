@@ -1,5 +1,6 @@
 ﻿using Application.Abstractions;
-using Application.Catalogues.Repositories;
+using Application.CatalogueContext.Repositories;
+using Application.ChallengeContext.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,12 +13,13 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddDbContext<CatalogueDbContext>(options =>
+        services.AddDbContext<SalutICamesDbContext>(options =>
         {
-            options.UseSqlServer(configuration.GetConnectionString("CatalogueDbContext"), providerOptions => providerOptions.EnableRetryOnFailure());
+            options.UseSqlServer(configuration.GetConnectionString("SalutICamesDbContext"), providerOptions => providerOptions.EnableRetryOnFailure());
         });
 
         services.AddScoped<ICatalogueRepository, CatalogueRepository>();
+        services.AddScoped<IChallengeRepository, ChallengeRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         return services;
