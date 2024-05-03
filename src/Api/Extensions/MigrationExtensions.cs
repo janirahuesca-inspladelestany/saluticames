@@ -9,7 +9,7 @@ public static class MigrationExtensions
     {
         using var scope = app.ApplicationServices.CreateScope();
 
-        using var dbContext = scope.ServiceProvider.GetRequiredService<CatalogueDbContext>();
+        using var dbContext = scope.ServiceProvider.GetRequiredService<SalutICamesDbContext>();
 
         dbContext.Database.Migrate();
     }
