@@ -13,14 +13,15 @@ namespace Api.Controllers
         [HttpGet]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> ReadCataloguesAsync([FromQuery] ReadCataloguesQuery cataloguesQuery, CancellationToken cancellationToken = default)
         {
             var filter = new GetCataloguesFilterDto(cataloguesQuery.Id, cataloguesQuery.Name);
-            var result = await _catalogueService.GetCatalogues(filter, cancellationToken);
+            var getCataloguesResult = await _catalogueService.GetCatalogues(filter, cancellationToken);
 
-            return result.Match(
+            return getCataloguesResult.Match(
                 result => Ok(result),
-                error => result.ToProblemDetails());
+                error => error.ToProblemDetails());
         }
     }
 }

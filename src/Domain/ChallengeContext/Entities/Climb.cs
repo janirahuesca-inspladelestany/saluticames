@@ -10,11 +10,11 @@ public sealed class Climb : Entity<Guid>
         
     }
 
-    public Guid HikerId { get; internal set; }
+    public string HikerId { get; internal set; } = null!;
     public Guid SummitId { get; internal set; }
     public DateTime AscensionDate { get; internal set; }
 
-    public static Climb Create(Guid hikerId, Guid summitId, DateTime? ascensionDate = null) 
+    public static Climb Create(string hikerId, Guid summitId, DateTime? ascensionDate = null) 
     {
         return new Climb(Guid.NewGuid())
         {

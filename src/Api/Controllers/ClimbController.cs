@@ -1,7 +1,7 @@
 ﻿using Api.Extensions;
 using Api.Models.Requests;
 using Application.ChallengeContext.Services;
-using Contracts.DTO.Catalogue;
+using Contracts.DTO.Challenge;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers;
@@ -12,8 +12,8 @@ public class ClimbController(IChallengeService _challengeService) : ControllerBa
 {
     [HttpPost("hiker/{hikerId}")]
     [Produces("application/json")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<IActionResult> CreateClimbsAsync(Guid hikerId, IEnumerable<CreateClimbRequest> createClimbRequests, CancellationToken cancellationToken = default)
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    public async Task<IActionResult> CreateClimbsAsync(string hikerId, IEnumerable<CreateClimbRequest> createClimbRequests, CancellationToken cancellationToken = default)
     {
         var climbsToCreate = createClimbRequests
             .ToList()
@@ -22,10 +22,23 @@ public class ClimbController(IChallengeService _challengeService) : ControllerBa
                     SummitId: climb.summitId, 
                     AscensionDateTime: climb.ascensionDateTime));
 
-        var result = await _challengeService.CreateClimbsAsync(hikerId, climbsToCreate, cancellationToken);
+        var createClimbsResult = await _challengeService.CreateClimbsAsync(hikerId, climbsToCreate, cancellationToken);
 
-        return result.Match(
+        return createClimbsResult.Match(
             result => Ok(result),
-            error => result.ToProblemDetails());
+            error => error.ToProblemDetails());
+    }
+
+    [HttpGet("hiker/{hikerId}")]
+    [Produces("application/json")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public async Task<IActionResult> ReadClimbsAsync(string hikerId, CancellationToken cancellationToken = default)
+    {
+        var getClimbsResult = await _challengeService.GetClimbsAsync(hikerId, cancellationToken);
+
+        return getClimbsResult.Match(
+            result => Ok(result),
+            error => error.ToProblemDetails());
     }
 }

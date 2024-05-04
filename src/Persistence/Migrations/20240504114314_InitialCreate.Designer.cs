@@ -12,7 +12,7 @@ using Persistence.Data;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(SalutICamesDbContext))]
-    [Migration("20240503172935_InitialCreate")]
+    [Migration("20240504114314_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -42,7 +42,7 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("c7c691ee-47b4-4564-8fd1-3c8c8c5f020d"),
+                            Id = new Guid("972008bb-bbca-4bea-bfb2-2d4b2f9ef31b"),
                             Name = "Repte dels 100 Cims de la FEEC"
                         });
                 });
@@ -58,9 +58,6 @@ namespace Persistence.Migrations
 
                     b.Property<Guid?>("CatalogueId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("DifficultyLevel")
-                        .HasColumnType("int");
 
                     b.Property<string>("Location")
                         .IsRequired()
@@ -78,8 +75,6 @@ namespace Persistence.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CatalogueId");
-
-                    b.HasIndex("DifficultyLevel");
 
                     b.HasIndex("Name")
                         .IsUnique();
@@ -100,8 +95,9 @@ namespace Persistence.Migrations
                     b.Property<Guid?>("DiaryId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("HikerId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("HikerId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<Guid>("SummitId")
                         .HasColumnType("uniqueidentifier");
@@ -120,8 +116,9 @@ namespace Persistence.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("HikerId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("HikerId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -138,8 +135,8 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.ChallengeContext.Entities.Hiker", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -154,52 +151,6 @@ namespace Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Hikers", (string)null);
-                });
-
-            modelBuilder.Entity("Persistence.Data.EnumLookup<Domain.CatalogueContext.Enums.DifficultyLevel>", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Value")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("EnumLookup<DifficultyLevel>");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "EASY",
-                            Value = 1
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "MODERATE",
-                            Value = 2
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "DIFFICULT",
-                            Value = 3
-                        },
-                        new
-                        {
-                            Id = -1,
-                            Name = "NONE",
-                            Value = -1
-                        });
                 });
 
             modelBuilder.Entity("Persistence.Data.EnumLookup<Domain.CatalogueContext.Enums.Region>", b =>
@@ -254,13 +205,6 @@ namespace Persistence.Migrations
                         .WithMany("Summits")
                         .HasForeignKey("CatalogueId")
                         .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("Persistence.Data.EnumLookup<Domain.CatalogueContext.Enums.DifficultyLevel>", null)
-                        .WithMany()
-                        .HasForeignKey("DifficultyLevel")
-                        .HasPrincipalKey("Value")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
 
                     b.HasOne("Persistence.Data.EnumLookup<Domain.CatalogueContext.Enums.Region>", null)
                         .WithMany()

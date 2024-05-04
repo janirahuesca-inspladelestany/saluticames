@@ -1,4 +1,5 @@
 ﻿using SharedKernel.Abstractions;
+using SharedKernel.Common;
 
 namespace Domain.ChallengeContext.Entities;
 
@@ -16,9 +17,9 @@ public sealed class Diary : AggregateRoot<Guid>
     public Hiker Hiker { get; private set; } = null!;
     public IEnumerable<Climb> Climbs => _climbs;
 
-    public static Diary Create(string name, Hiker hiker)
+    public static Result<Diary, Error> Create(string name, Hiker hiker)
     {
-        return new Diary(new Guid())
+        return new Diary(Guid.NewGuid())
         {
             Name = name,
             Hiker = hiker

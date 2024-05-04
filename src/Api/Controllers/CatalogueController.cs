@@ -29,16 +29,17 @@ namespace Api.Controllers
                         Location: summit.Location,
                         RegionName: summit.RegionName));
 
-            var result = await _catalogueService.CreateSummitsAsync(catalogueId: id, summitsToCreate, cancellationToken);
+            var createSummitsResult = await _catalogueService.CreateSummitsAsync(catalogueId: id, summitsToCreate, cancellationToken);
 
-            return result.Match(
+            return createSummitsResult.Match(
                 result => Ok(result),
-                error => result.ToProblemDetails());
+                error => error.ToProblemDetails());
         }
 
         [HttpGet]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> ReadSummitsAsync(Guid id, [FromQuery] ReadSummitsQuery readSummitsQuery, CancellationToken cancellationToken = default)
         {
             var filter = new GetSummitsFilterDto(
@@ -48,11 +49,11 @@ namespace Api.Controllers
                 Location: readSummitsQuery.Location,
                 RegionName: readSummitsQuery.RegionName);
 
-            var result = await _catalogueService.GetSummitsAsync(catalogueId: id, filter, cancellationToken);
+            var getSummitsResult = await _catalogueService.GetSummitsAsync(catalogueId: id, filter, cancellationToken);
 
-            return result.Match(
+            return getSummitsResult.Match(
                 result => Ok(result),
-                error => result.ToProblemDetails());
+                error => error.ToProblemDetails());
         }
 
         [HttpPut]
@@ -70,11 +71,11 @@ namespace Api.Controllers
                     Location: summit.Value.Location,
                     RegionName: summit.Value.RegionName));
 
-            var result = await _catalogueService.ReplaceSummitsAsync(catalogueId: id, summitsToUpdate, cancellationToken);
+            var replaceSummitsResult = await _catalogueService.ReplaceSummitsAsync(catalogueId: id, summitsToUpdate, cancellationToken);
 
-            return result.Match(
+            return replaceSummitsResult.Match(
                 result => Accepted(result),
-                error => result.ToProblemDetails());
+                error => error.ToProblemDetails());
         }
 
         [HttpDelete]
@@ -84,11 +85,11 @@ namespace Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> DeleteSummitsAsync(Guid id, IEnumerable<Guid> summitIdsToDelete, CancellationToken cancellationToken = default)
         {
-            var result = await _catalogueService.RemoveSummitsAsync(catalogueId: id, summitIdsToDelete, cancellationToken);
+            var removeSummitsResult = await _catalogueService.RemoveSummitsAsync(catalogueId: id, summitIdsToDelete, cancellationToken);
 
-            return result.Match(
+            return removeSummitsResult.Match(
                 result => Accepted(result),
-                error => result.ToProblemDetails());
+                error => error.ToProblemDetails());
         }
     }
 }

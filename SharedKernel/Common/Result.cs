@@ -18,8 +18,10 @@ public record EmptyResult<TError>
 
     public static implicit operator EmptyResult<TError>(TError error) => new(error);
 
-    public TResult? Match<TResult>(Func<TError, TResult> failure) =>
-            IsSuccess() ? default : failure(_error);
+    public TResult Match<TResult>(
+        Func<TResult> success,
+        Func<TError, TResult> failure) =>
+            IsSuccess() ? success() : failure(_error);
 }
 
 public record Result<TValue, TError> : EmptyResult<TError>
