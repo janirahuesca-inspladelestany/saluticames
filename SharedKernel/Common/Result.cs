@@ -12,6 +12,7 @@ public record EmptyResult<TError>
 
     public Error Error => _error;
 
+    public static EmptyResult<Error> Success() => new EmptyResult<Error>(Error.None);
     public bool IsFailure() => _error != Error.None;
     public bool IsSuccess() => !IsFailure();
 
@@ -37,6 +38,8 @@ public record Result<TValue, TError> : EmptyResult<TError>
     {
         _value = default;
     }
+
+    public TValue? Value => _value;
 
     public static implicit operator Result<TValue, TError>(TValue? value) => new(value);
     public static implicit operator Result<TValue, TError>(TError error) => new(error);

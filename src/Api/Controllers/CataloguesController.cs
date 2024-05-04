@@ -11,6 +11,8 @@ namespace Api.Controllers
     public class CataloguesController(ICatalogueService _catalogueService) : ControllerBase
     {
         [HttpGet]
+        [Produces("application/json")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> ReadCataloguesAsync([FromQuery] ReadCataloguesQuery cataloguesQuery, CancellationToken cancellationToken = default)
         {
             var filter = new GetCataloguesFilterDto(cataloguesQuery.Id, cataloguesQuery.Name);

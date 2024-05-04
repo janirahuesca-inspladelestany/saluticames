@@ -1,18 +1,24 @@
 ﻿using Application.ChallengeContext.Repositories;
-using Domain.CatalogueContext.Entities;
 using Domain.ChallengeContext.Entities;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Data;
 
 namespace Persistence.Repositories;
 
-public class ChallengeRepository : IChallengeRepository
+public class DiaryRepository : IDiaryRepository
 {
+    private readonly DbSet<Diary> _diaries;
     private readonly DbSet<Climb> _climbs;
 
-    public ChallengeRepository(SalutICamesDbContext catalogueDbContext)
+    public DiaryRepository(SalutICamesDbContext salutICamesDbContext)
     {
-        _climbs = catalogueDbContext.Set<Climb>();
+        _diaries = salutICamesDbContext.Set<Diary>();
+        _climbs = salutICamesDbContext.Set<Climb>();
+    }
+
+    public Task<Diary?> GetByHikerId(Guid hikerId, CancellationToken cancellation = default)
+    {
+        return _diaries.FirstOrDefaultAsync(diary => diary.Hiker.Id == hikerId, cancellation);
     }
 
     public async Task<IEnumerable<Climb>> GetClimbsByHikerIdAsync(Guid hikerId, CancellationToken cancellationToken = default)

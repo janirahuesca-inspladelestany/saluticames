@@ -1,5 +1,7 @@
 ﻿using Domain.CatalogueContext.Enums;
+using Domain.CatalogueContext.Errors;
 using SharedKernel.Abstractions;
+using SharedKernel.Common;
 using SharedKernel.Helpers;
 
 namespace Domain.CatalogueContext.Entities;
@@ -37,24 +39,51 @@ public sealed class Catalogue : AggregateRoot<Guid>
         _summits.Add(summitToAdd);
     }
 
-    public void ReplaceSummits(IDictionary<Guid, (int? Altitude, string? Location, string? Name, string? Region)> summitsToReplace)
+    public Result<IEnumerable<Guid>, Error> ReplaceSummits(IDictionary<Guid, SummitDetail> summitsToReplace)
     {
-        foreach (var summit in summitsToReplace)
+        var summits = new List<Guid>();
+
+        foreach (var summitToReplace in summitsToReplace)
         {
-            ReplaceSummit(summit.Key, (summit.Value.Altitude, summit.Value.Location, summit.Value.Name, summit.Value.Region));
+            var replaceSummitResult = ReplaceSummit(summitToReplace.Key, summitToReplace.Value, out var summit);
+            if (replaceSummitResult.IsFailure()) return replaceSummitResult.Error;
+            summits.Add(summit!.Id);
         }
+
+        return summits;
     }
 
-    public void ReplaceSummit(Guid id, (int? Altitude, string? Location, string? Name, string? Region) summitDetailToReplace)
+    public EmptyResult<Error> ReplaceSummit(Guid id, SummitDetail summitDetailToReplace, out Summit? summit)
     {
-        var summit = _summits.SingleOrDefault(summit => summit.Id == id);
-        if (summit is null) return;
+        summit = _summits.SingleOrDefault(summit => summit.Id == id);
+        if (summit is null) return EmptyResult<Error>.Success();
 
-        summit.Altitude = summitDetailToReplace.Altitude ?? summit.Altitude;
-        summit.Location = summitDetailToReplace.Location ?? summit.Location;
-        summit.Name = summitDetailToReplace.Name ?? summit.Name;
-        summit.Region = !string.IsNullOrEmpty(summitDetailToReplace.Region) && EnumHelper.IsDefinedByDescription<Region>(summitDetailToReplace.Region)
-            ? EnumHelper.GetEnumValueByDescription<Region>(summitDetailToReplace.Region) : summit.Region;
+        if (summitDetailToReplace.Altitude.HasValue) 
+        {
+            var setAltitudeResult = summit.SetAltitude(summitDetailToReplace.Altitude.Value);
+            if (setAltitudeResult.IsFailure()) return setAltitudeResult.Error;
+        }
+
+        if (!string.IsNullOrEmpty(summitDetailToReplace.Location))
+        {
+            var setLocationResult = summit.SetLocation(summitDetailToReplace.Location);
+            if (setLocationResult.IsFailure()) return setLocationResult.Error;
+        }
+
+        if (!string.IsNullOrEmpty(summitDetailToReplace.Name))
+        {
+            var setNameResult = summit.SetName(summitDetailToReplace.Name);
+            if (setNameResult.IsFailure()) return setNameResult.Error;
+        }
+
+        if (!string.IsNullOrEmpty(summitDetailToReplace.RegionName))
+        {
+            if (!EnumHelper.IsDefinedByDescription<Region>(summitDetailToReplace.RegionName)) return CatalogueErrors.RegionNotAvailable;
+            var setRegionResult = summit.SetRegion(EnumHelper.GetEnumValueByDescription<Region>(summitDetailToReplace.RegionName));
+            if (setRegionResult.IsFailure()) return setRegionResult.Error;
+        }
+
+        return EmptyResult<Error>.Success();
     }
 
     public IEnumerable<Summit> RemoveSummits(IEnumerable<Guid> summitIdsToRemove)
@@ -79,4 +108,6 @@ public sealed class Catalogue : AggregateRoot<Guid>
 
         return _summits.Remove(summit);
     }
+
+    public record SummitDetail(int? Altitude, string? Location, string? Name, string? RegionName);
 }

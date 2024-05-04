@@ -1,5 +1,7 @@
 ﻿using Domain.CatalogueContext.Enums;
+using Domain.CatalogueContext.Errors;
 using SharedKernel.Abstractions;
+using SharedKernel.Common;
 
 namespace Domain.CatalogueContext.Entities;
 
@@ -7,12 +9,16 @@ public sealed class Summit : Entity<Guid>
 {
     private int _altitude;
     private DifficultyLevel _difficultyLevel;
+    private Region _region;
 
     private Summit(Guid id)
         : base(id)
     {
-        _difficultyLevel = GetDifficultyLevel();
     }
+
+    public string Location { get; private set; } = null!;
+    public string Name { get; private set; } = null!;
+    public DifficultyLevel DifficultyLevel => GetDifficultyLevel();
 
     public int Altitude
     {
@@ -20,40 +26,85 @@ public sealed class Summit : Entity<Guid>
         {
             return _altitude;
         }
-        internal set
+        private set
         {
             if (value <= 0 || value > 3150) throw new ArgumentOutOfRangeException(nameof(Altitude));
             _altitude = value;
         }
     }
-    public string Location { get; internal set; } = null!;
-    public string Name { get; internal set; } = null!;
-    public Region Region { get; internal set; } = Region.NONE;
-    public DifficultyLevel DifficultyLevel
+
+    public Region Region
     {
         get
         {
-            return _difficultyLevel;
+            return _region;
         }
-        internal set
+        private set
         {
-            var expectedDifficultyLevel = GetDifficultyLevel();
-            if (value != expectedDifficultyLevel) throw new ArgumentOutOfRangeException(nameof(value));
-            _difficultyLevel = value;
+            if (value == Region.NONE) throw new ArgumentOutOfRangeException(nameof(Region));
+            _region = value;
         }
     }
 
-    public static Summit Create(int altitude, string location, string name, Region region, Guid? id = null)
+    public static Result<Summit, Error> Create(int altitude, string location, string name, Region region, Guid? id = null)
     {
-        Summit summit = new(id ?? Guid.NewGuid())
+        Summit summit = new(id ?? Guid.NewGuid());
+
+        try
         {
-            Altitude = altitude,
-            Location = location,
-            Name = name,
-            Region = region,
-        };
+            summit.Altitude = altitude;
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            return CatalogueErrors.InvalidAltitude;
+        }
+
+        summit.Location = location;
+        summit.Name = name;
+        summit.Region = region;
 
         return summit;
+    }
+
+    internal EmptyResult<Error> SetAltitude(int altitude)
+    {
+        try
+        {
+            _altitude = altitude;
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            return CatalogueErrors.InvalidAltitude;
+        }
+
+        return EmptyResult<Error>.Success();
+    }
+
+    internal EmptyResult<Error> SetLocation(string location)
+    {
+        Location = location;
+        return EmptyResult<Error>.Success();
+    }
+
+    internal EmptyResult<Error> SetName(string name)
+    {
+        Name = name;
+        return EmptyResult<Error>.Success();
+    }
+
+    internal EmptyResult<Error> SetRegion(Region region)
+    {
+        try
+        {
+            Region = region;
+
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            return CatalogueErrors.RegionNotAvailable;
+        }        
+        
+        return EmptyResult<Error>.Success();
     }
 
     private DifficultyLevel GetDifficultyLevel()
