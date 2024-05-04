@@ -26,21 +26,6 @@ namespace Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "EnumLookup<DifficultyLevel>",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Value = table.Column<int>(type: "int", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_EnumLookup<DifficultyLevel>", x => x.Id);
-                    table.UniqueConstraint("AK_EnumLookup<DifficultyLevel>_Value", x => x.Value);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "EnumLookup<Region>",
                 columns: table => new
                 {
@@ -59,7 +44,7 @@ namespace Persistence.Migrations
                 name: "Hikers",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Surname = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
                 },
@@ -73,11 +58,10 @@ namespace Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Altitude = table.Column<int>(type: "int", nullable: false),
                     Location = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Altitude = table.Column<int>(type: "int", nullable: false),
                     Region = table.Column<int>(type: "int", nullable: false),
-                    DifficultyLevel = table.Column<int>(type: "int", nullable: false),
                     CatalogueId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
@@ -88,12 +72,6 @@ namespace Persistence.Migrations
                         column: x => x.CatalogueId,
                         principalTable: "Catalogues",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Summits_EnumLookup<DifficultyLevel>_DifficultyLevel",
-                        column: x => x.DifficultyLevel,
-                        principalTable: "EnumLookup<DifficultyLevel>",
-                        principalColumn: "Value",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Summits_EnumLookup<Region>_Region",
@@ -109,7 +87,7 @@ namespace Persistence.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    HikerId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    HikerId = table.Column<string>(type: "nvarchar(450)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -127,8 +105,8 @@ namespace Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    HikerId = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     SummitId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    HikerId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     AscensionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DiaryId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
@@ -147,18 +125,7 @@ namespace Persistence.Migrations
             migrationBuilder.InsertData(
                 table: "Catalogues",
                 columns: new[] { "Id", "Name" },
-                values: new object[] { new Guid("c7c691ee-47b4-4564-8fd1-3c8c8c5f020d"), "Repte dels 100 Cims de la FEEC" });
-
-            migrationBuilder.InsertData(
-                table: "EnumLookup<DifficultyLevel>",
-                columns: new[] { "Id", "Name", "Value" },
-                values: new object[,]
-                {
-                    { -1, "NONE", -1 },
-                    { 1, "EASY", 1 },
-                    { 2, "MODERATE", 2 },
-                    { 3, "DIFFICULT", 3 }
-                });
+                values: new object[] { new Guid("972008bb-bbca-4bea-bfb2-2d4b2f9ef31b"), "Repte dels 100 Cims de la FEEC" });
 
             migrationBuilder.InsertData(
                 table: "EnumLookup<Region>",
@@ -188,11 +155,6 @@ namespace Persistence.Migrations
                 column: "CatalogueId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Summits_DifficultyLevel",
-                table: "Summits",
-                column: "DifficultyLevel");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Summits_Name",
                 table: "Summits",
                 column: "Name",
@@ -218,9 +180,6 @@ namespace Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "Catalogues");
-
-            migrationBuilder.DropTable(
-                name: "EnumLookup<DifficultyLevel>");
 
             migrationBuilder.DropTable(
                 name: "EnumLookup<Region>");

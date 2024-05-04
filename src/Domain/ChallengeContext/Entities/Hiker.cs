@@ -1,10 +1,11 @@
 ﻿using SharedKernel.Abstractions;
+using SharedKernel.Common;
 
 namespace Domain.ChallengeContext.Entities;
 
-public sealed class Hiker : Entity<Guid>
+public sealed class Hiker : Entity<string>
 {
-    private Hiker(Guid id)
+    private Hiker(string id)
         : base(id)
     {
         
@@ -13,9 +14,9 @@ public sealed class Hiker : Entity<Guid>
     public string Name { get; internal set; } = null!;
     public string Surname { get; internal set; } = null!;
 
-    public static Hiker Create(string name, string surname) 
+    public static Result<Hiker, Error> Create(string id, string name, string surname) 
     {
-        return new Hiker(Guid.NewGuid())
+        return new Hiker(id)
         {
             Name = name,
             Surname = surname

@@ -5,19 +5,17 @@ namespace Api.Extensions;
 
 public static class ResultExtensions
 {
-    public static IActionResult ToProblemDetails<TValue, TError>(this Result<TValue, TError> result)
+    public static IActionResult ToProblemDetails<TError>(this TError error)
         where TError : Error
     {
-        if (result.IsSuccess()) throw new InvalidOperationException();
-
         var problem = new ProblemDetails()
         {
-            Status = GetStatusCode(result.Error.Type),
-            Type = GetType(result.Error.Type),
-            Title = result.Error.Type.ToString(),
+            Status = GetStatusCode(error.Type),
+            Type = GetType(error.Type),
+            Title = error.Type.ToString(),
             Extensions = new Dictionary<string, object?>()
             {
-                [nameof(result.Error)] = result.Error
+                [nameof(error)] = error
             }
         };
 

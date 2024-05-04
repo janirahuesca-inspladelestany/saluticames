@@ -12,13 +12,16 @@ public record EmptyResult<TError>
 
     public Error Error => _error;
 
+    public static EmptyResult<Error> Success() => new EmptyResult<Error>(Error.None);
     public bool IsFailure() => _error != Error.None;
     public bool IsSuccess() => !IsFailure();
 
     public static implicit operator EmptyResult<TError>(TError error) => new(error);
 
-    public TResult? Match<TResult>(Func<TError, TResult> failure) =>
-            IsSuccess() ? default : failure(_error);
+    public TResult Match<TResult>(
+        Func<TResult> success,
+        Func<TError, TResult> failure) =>
+            IsSuccess() ? success() : failure(_error);
 }
 
 public record Result<TValue, TError> : EmptyResult<TError>
@@ -37,6 +40,8 @@ public record Result<TValue, TError> : EmptyResult<TError>
     {
         _value = default;
     }
+
+    public TValue? Value => _value;
 
     public static implicit operator Result<TValue, TError>(TValue? value) => new(value);
     public static implicit operator Result<TValue, TError>(TError error) => new(error);
