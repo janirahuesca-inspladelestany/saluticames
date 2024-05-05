@@ -14,8 +14,10 @@ internal sealed class SummitConfiguration : IEntityTypeConfiguration<Summit>
         builder.HasIndex(dl => dl.Name).IsUnique();
 
         builder.Property(c => c.Id).ValueGeneratedNever();
-        builder.Property(s => s.Altitude).HasColumnName("Altitude");
-        builder.Property(s => s.Location).HasColumnName("Location");
         builder.Property(s => s.Name).HasColumnName("Name");
+        builder.Property(s => s.Altitude).HasColumnName("Altitude");
+        builder.Property(s => s.Latitude).HasColumnName("Latitude");
+        builder.Property(s => s.Longitude).HasColumnName("Longitude");
+        builder.Property(s => s.IsEssential).HasColumnName("IsEssential");
     }
 }

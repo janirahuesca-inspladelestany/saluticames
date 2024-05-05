@@ -11,8 +11,9 @@ internal sealed class ClimbConfiguration : IEntityTypeConfiguration<Climb>
         builder.ToTable("Climbs");
 
         builder.HasKey(c => c.Id);
-        builder.HasAlternateKey(c => new { c.HikerId, c.SummitId });
 
-        builder.Property(d => d.Id).ValueGeneratedNever();
+        builder.Property(c => c.Id).ValueGeneratedNever();
+
+        builder.HasOne(c => c.Diary).WithMany(d => d.Climbs).HasForeignKey("DiaryId").OnDelete(DeleteBehavior.Cascade);
     }
 }

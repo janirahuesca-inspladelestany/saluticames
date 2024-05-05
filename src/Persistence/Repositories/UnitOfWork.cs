@@ -7,7 +7,7 @@ namespace Persistence.Repositories;
 
 public sealed class UnitOfWork(SalutICamesDbContext _salutICamesDbContext, 
     ICatalogueRepository _catalogueRepository,
-    IDiaryRepository _diaryRepository) : IUnitOfWork
+    IHikerRepository _hikerRepository) : IUnitOfWork
 {
     public ICatalogueRepository CatalogueRepository
     {
@@ -17,11 +17,11 @@ public sealed class UnitOfWork(SalutICamesDbContext _salutICamesDbContext,
         }
     }
 
-    public IDiaryRepository DiaryRepository
+    public IHikerRepository HikerRepository
     {
         get
         {
-            return _diaryRepository;
+            return _hikerRepository;
         }
     }
 

@@ -19,7 +19,7 @@ public static class DependencyInjection
         });
 
         services.AddScoped<ICatalogueRepository, CatalogueRepository>();
-        services.AddScoped<IDiaryRepository, DiaryRepository>();
+        services.AddScoped<IHikerRepository, HikerRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
 
         return services;

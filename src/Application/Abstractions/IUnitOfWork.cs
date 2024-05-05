@@ -6,6 +6,6 @@ namespace Application.Abstractions;
 public interface IUnitOfWork
 {
     ICatalogueRepository CatalogueRepository { get; }
-    IDiaryRepository DiaryRepository { get; }
+    IHikerRepository HikerRepository { get; }
     Task SaveChangesAsync(CancellationToken cancellationToken = default);
 }

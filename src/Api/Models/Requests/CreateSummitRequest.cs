@@ -1,3 +1,3 @@
 ﻿namespace Api.Models.Requests;
 
-public record CreateSummitRequest(int Altitude, string Name, string Location, string RegionName);
+public record CreateSummitRequest(string Name, int Altitude, string Location, bool IsEssential, string RegionName);

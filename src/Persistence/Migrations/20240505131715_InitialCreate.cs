@@ -58,11 +58,13 @@ namespace Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Location = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    Latitude = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Longitude = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsEssential = table.Column<bool>(type: "bit", nullable: false),
+                    CatalogueId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Altitude = table.Column<int>(type: "int", nullable: false),
-                    Region = table.Column<int>(type: "int", nullable: false),
-                    CatalogueId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    Region = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -87,7 +89,8 @@ namespace Persistence.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    HikerId = table.Column<string>(type: "nvarchar(450)", nullable: false)
+                    HikerId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    CatalogueId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -105,15 +108,13 @@ namespace Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    HikerId = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    DiaryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     SummitId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    AscensionDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    DiaryId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
+                    AscensionDate = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Climbs", x => x.Id);
-                    table.UniqueConstraint("AK_Climbs_HikerId_SummitId", x => new { x.HikerId, x.SummitId });
                     table.ForeignKey(
                         name: "FK_Climbs_Diaries_DiaryId",
                         column: x => x.DiaryId,
@@ -125,7 +126,7 @@ namespace Persistence.Migrations
             migrationBuilder.InsertData(
                 table: "Catalogues",
                 columns: new[] { "Id", "Name" },
-                values: new object[] { new Guid("972008bb-bbca-4bea-bfb2-2d4b2f9ef31b"), "Repte dels 100 Cims de la FEEC" });
+                values: new object[] { new Guid("b1d6e377-5446-4223-9c1e-f44d3f6398ad"), "Repte dels 100 Cims de la FEEC" });
 
             migrationBuilder.InsertData(
                 table: "EnumLookup<Region>",
@@ -146,8 +147,7 @@ namespace Persistence.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Diaries_HikerId",
                 table: "Diaries",
-                column: "HikerId",
-                unique: true);
+                column: "HikerId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Summits_CatalogueId",

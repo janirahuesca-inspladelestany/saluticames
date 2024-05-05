@@ -14,6 +14,6 @@ internal sealed class HikerConfiguration : IEntityTypeConfiguration<Hiker>
         builder.Property(h => h.Name).HasMaxLength(100);
         builder.Property(h => h.Surname).HasMaxLength(100);
 
-        builder.Property(d => d.Id).ValueGeneratedNever();
+        builder.Property(h => h.Id).ValueGeneratedNever();
     }
 }
