@@ -26,17 +26,30 @@ public sealed class Catalogue : AggregateRoot<Guid>
         };
     }
 
-    public void AddSummits(IEnumerable<Summit> summitsToAdd)
+    public Result<IEnumerable<Guid>, Error> AddSummits(IEnumerable<Summit> summitsToAdd)
     {
+        var summits = new List<Guid>();
+
         foreach (var summit in summitsToAdd)
         {
-            AddSummit(summit);
+            var addSummitResult = AddSummit(summit);
+            if (addSummitResult.IsFailure()) return addSummitResult.Error;
+            summits.Add(summit!.Id);
         }
+
+        return summits;
     }
 
-    public void AddSummit(Summit summitToAdd)
+    public EmptyResult<Error> AddSummit(Summit summitToAdd)
     {
+        if (DoesSummitNameExistInCatalogue(summitToAdd.Name))
+        {
+            return CatalogueErrors.SummitNameAlreadyExists;
+        }
+
         _summits.Add(summitToAdd);
+
+        return EmptyResult<Error>.Success();
     }
 
     public Result<IEnumerable<Guid>, Error> ReplaceSummits(IDictionary<Guid, SummitDetail> summitsToReplace)
@@ -56,58 +69,81 @@ public sealed class Catalogue : AggregateRoot<Guid>
     public EmptyResult<Error> ReplaceSummit(Guid id, SummitDetail summitDetailToReplace, out Summit? summit)
     {
         summit = _summits.SingleOrDefault(summit => summit.Id == id);
-        if (summit is null) return EmptyResult<Error>.Success();
 
-        if (summitDetailToReplace.Altitude.HasValue) 
+        if (summit is null) return CatalogueErrors.SummitIdNotFound;
+
+        if (!string.IsNullOrEmpty(summitDetailToReplace.Name))
+        {
+            if (DoesSummitNameExistInCatalogue(summitDetailToReplace.Name))
+            {
+                return CatalogueErrors.SummitIdNotFound;
+            }
+
+            var setNameResult = summit.SetName(summitDetailToReplace.Name);
+            if (setNameResult.IsFailure()) return setNameResult.Error;
+        }
+
+        if (summitDetailToReplace.Altitude.HasValue)
         {
             var setAltitudeResult = summit.SetAltitude(summitDetailToReplace.Altitude.Value);
             if (setAltitudeResult.IsFailure()) return setAltitudeResult.Error;
         }
 
-        if (!string.IsNullOrEmpty(summitDetailToReplace.Location))
+        if (!string.IsNullOrEmpty(summitDetailToReplace.Latitude))
         {
-            var setLocationResult = summit.SetLocation(summitDetailToReplace.Location);
-            if (setLocationResult.IsFailure()) return setLocationResult.Error;
+            var setLatitudeResult = summit.SetLatitude(summitDetailToReplace.Latitude);
+            if (setLatitudeResult.IsFailure()) return setLatitudeResult.Error;
         }
 
-        if (!string.IsNullOrEmpty(summitDetailToReplace.Name))
+        if (!string.IsNullOrEmpty(summitDetailToReplace.Longitude))
         {
-            var setNameResult = summit.SetName(summitDetailToReplace.Name);
-            if (setNameResult.IsFailure()) return setNameResult.Error;
+            var setLongitudeResult = summit.SetLongitude(summitDetailToReplace.Longitude);
+            if (setLongitudeResult.IsFailure()) return setLongitudeResult.Error;
         }
 
-        if (!string.IsNullOrEmpty(summitDetailToReplace.RegionName))
+        if (summitDetailToReplace.IsEssential.HasValue)
         {
-            if (!EnumHelper.IsDefinedByDescription<Region>(summitDetailToReplace.RegionName)) return CatalogueErrors.RegionNotAvailable;
-            var setRegionResult = summit.SetRegion(EnumHelper.GetEnumValueByDescription<Region>(summitDetailToReplace.RegionName));
+            var setIsEssentialResult = summit.SetIsEssential(summitDetailToReplace.IsEssential.Value);
+            if (setIsEssentialResult.IsFailure()) return setIsEssentialResult.Error;
+        }
+
+        if (summitDetailToReplace.Region.HasValue)
+        {
+            var setRegionResult = summit.SetRegion(summitDetailToReplace.Region.Value);
             if (setRegionResult.IsFailure()) return setRegionResult.Error;
         }
 
         return EmptyResult<Error>.Success();
     }
 
-    public IEnumerable<Summit> RemoveSummits(IEnumerable<Guid> summitIdsToRemove)
+    public Result<IEnumerable<Summit>, Error> RemoveSummits(IEnumerable<Guid> summitIdsToRemove)
     {
         var summits = new List<Summit>();
 
         foreach (var summitId in summitIdsToRemove)
         {
-            if (RemoveSummit(summitId, out var summit))
-            {
-                summits.Add(summit!);
-            }
+            var summitRemoveResult = RemoveSummit(summitId, out var summit);
+            if (summitRemoveResult.IsFailure()) return summitRemoveResult.Error;
+            
+            summits.Add(summit!);
         }
 
         return summits;
     }
 
-    public bool RemoveSummit(Guid summitIdToRemove, out Summit? summit)
+    public EmptyResult<Error> RemoveSummit(Guid summitIdToRemove, out Summit? summit)
     {
         summit = _summits.SingleOrDefault(summit => summit.Id == summitIdToRemove);
-        if (summit is null) return false;
+        if (summit is null) return CatalogueErrors.SummitIdNotFound;
 
-        return _summits.Remove(summit);
+        return _summits.Remove(summit) ? EmptyResult<Error>.Success() : CatalogueErrors.SummitRemoveFailure;
     }
 
-    public record SummitDetail(int? Altitude, string? Location, string? Name, string? RegionName);
+    private bool DoesSummitNameExistInCatalogue(string summitName)
+    {
+        return _summits.Any(summit =>
+            summit.Name.Equals(summitName, StringComparison.InvariantCultureIgnoreCase));
+    }
+
+    public record SummitDetail(string? Name, int? Altitude, string? Latitude, string? Longitude, bool? IsEssential, Region? Region);
 }

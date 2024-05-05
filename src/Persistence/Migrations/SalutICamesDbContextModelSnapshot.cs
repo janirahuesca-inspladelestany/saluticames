@@ -39,7 +39,7 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("972008bb-bbca-4bea-bfb2-2d4b2f9ef31b"),
+                            Id = new Guid("b1d6e377-5446-4223-9c1e-f44d3f6398ad"),
                             Name = "Repte dels 100 Cims de la FEEC"
                         });
                 });
@@ -53,13 +53,22 @@ namespace Persistence.Migrations
                         .HasColumnType("int")
                         .HasColumnName("Altitude");
 
-                    b.Property<Guid?>("CatalogueId")
+                    b.Property<Guid>("CatalogueId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Location")
+                    b.Property<bool>("IsEssential")
+                        .HasColumnType("bit")
+                        .HasColumnName("IsEssential");
+
+                    b.Property<string>("Latitude")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
-                        .HasColumnName("Location");
+                        .HasColumnName("Latitude");
+
+                    b.Property<string>("Longitude")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)")
+                        .HasColumnName("Longitude");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -89,19 +98,13 @@ namespace Persistence.Migrations
                     b.Property<DateTime>("AscensionDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("DiaryId")
+                    b.Property<Guid>("DiaryId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("HikerId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
 
                     b.Property<Guid>("SummitId")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
-
-                    b.HasAlternateKey("HikerId", "SummitId");
 
                     b.HasIndex("DiaryId");
 
@@ -111,6 +114,9 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Domain.ChallengeContext.Entities.Diary", b =>
                 {
                     b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("CatalogueId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("HikerId")
@@ -124,8 +130,7 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("HikerId")
-                        .IsUnique();
+                    b.HasIndex("HikerId");
 
                     b.ToTable("Diaries", (string)null);
                 });
@@ -201,7 +206,8 @@ namespace Persistence.Migrations
                     b.HasOne("Domain.CatalogueContext.Entities.Catalogue", null)
                         .WithMany("Summits")
                         .HasForeignKey("CatalogueId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("Persistence.Data.EnumLookup<Domain.CatalogueContext.Enums.Region>", null)
                         .WithMany()
@@ -213,17 +219,20 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.ChallengeContext.Entities.Climb", b =>
                 {
-                    b.HasOne("Domain.ChallengeContext.Entities.Diary", null)
+                    b.HasOne("Domain.ChallengeContext.Entities.Diary", "Diary")
                         .WithMany("Climbs")
                         .HasForeignKey("DiaryId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Diary");
                 });
 
             modelBuilder.Entity("Domain.ChallengeContext.Entities.Diary", b =>
                 {
                     b.HasOne("Domain.ChallengeContext.Entities.Hiker", "Hiker")
-                        .WithOne()
-                        .HasForeignKey("Domain.ChallengeContext.Entities.Diary", "HikerId")
+                        .WithMany("Diaries")
+                        .HasForeignKey("HikerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -238,6 +247,11 @@ namespace Persistence.Migrations
             modelBuilder.Entity("Domain.ChallengeContext.Entities.Diary", b =>
                 {
                     b.Navigation("Climbs");
+                });
+
+            modelBuilder.Entity("Domain.ChallengeContext.Entities.Hiker", b =>
+                {
+                    b.Navigation("Diaries");
                 });
 #pragma warning restore 612, 618
         }

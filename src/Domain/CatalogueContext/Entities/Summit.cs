@@ -16,9 +16,12 @@ public sealed class Summit : Entity<Guid>
     {
     }
 
-    public string Location { get; private set; } = null!;
     public string Name { get; private set; } = null!;
+    public string Latitude { get; private set; } = null!;
+    public string Longitude { get; private set; } = null!;
+    public bool IsEssential { get; private set; }
     public DifficultyLevel DifficultyLevel => GetDifficultyLevel();
+    public Guid CatalogueId { get; private set; }
 
     public int Altitude
     {
@@ -46,7 +49,7 @@ public sealed class Summit : Entity<Guid>
         }
     }
 
-    public static Result<Summit, Error> Create(int altitude, string location, string name, Region region, Guid? id = null)
+    public static Result<Summit, Error> Create(string name, int altitude, string latitude, string longitude, bool isEssential, Region region, Guid? id = null)
     {
         Summit summit = new(id ?? Guid.NewGuid());
 
@@ -56,14 +59,22 @@ public sealed class Summit : Entity<Guid>
         }
         catch (ArgumentOutOfRangeException)
         {
-            return CatalogueErrors.InvalidAltitude;
+            return CatalogueErrors.SummitInvalidAltitude;
         }
 
-        summit.Location = location;
         summit.Name = name;
+        summit.Latitude = latitude;
+        summit.Longitude = longitude;
+        summit.IsEssential = isEssential;
         summit.Region = region;
 
         return summit;
+    }
+
+    internal EmptyResult<Error> SetName(string name)
+    {
+        Name = name;
+        return EmptyResult<Error>.Success();
     }
 
     internal EmptyResult<Error> SetAltitude(int altitude)
@@ -74,21 +85,27 @@ public sealed class Summit : Entity<Guid>
         }
         catch (ArgumentOutOfRangeException)
         {
-            return CatalogueErrors.InvalidAltitude;
+            return CatalogueErrors.SummitInvalidAltitude;
         }
 
         return EmptyResult<Error>.Success();
     }
 
-    internal EmptyResult<Error> SetLocation(string location)
+    internal EmptyResult<Error> SetLatitude(string latitude)
     {
-        Location = location;
+        Latitude = latitude;
         return EmptyResult<Error>.Success();
     }
 
-    internal EmptyResult<Error> SetName(string name)
+    internal EmptyResult<Error> SetLongitude(string longitude)
     {
-        Name = name;
+        Longitude = longitude;
+        return EmptyResult<Error>.Success();
+    }
+
+    internal EmptyResult<Error> SetIsEssential(bool isEssential)
+    {
+        IsEssential = isEssential;
         return EmptyResult<Error>.Success();
     }
 
@@ -97,11 +114,10 @@ public sealed class Summit : Entity<Guid>
         try
         {
             Region = region;
-
         }
         catch (ArgumentOutOfRangeException)
         {
-            return CatalogueErrors.RegionNotAvailable;
+            return CatalogueErrors.SummitRegionNotAvailable;
         }        
         
         return EmptyResult<Error>.Success();

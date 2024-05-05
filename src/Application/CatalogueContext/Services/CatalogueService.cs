@@ -29,13 +29,15 @@ public class CatalogueService(IUnitOfWork _unitOfWork) : ICatalogueService
             }
             catch (ArgumentException)
             {
-                return CatalogueErrors.RegionNotAvailable;
+                return CatalogueErrors.SummitRegionNotAvailable;
             }
 
             var summitCreateResult = Summit.Create(
-                altitude: summit.Altitude,
-                location: summit.Location,
                 name: summit.Name,
+                altitude: summit.Altitude,
+                latitude: summit.Latitude,
+                longitude: summit.Longitude,
+                isEssential: summit.IsEssential,
                 region: region);
 
             if (summitCreateResult.IsFailure()) return summitCreateResult.Error;
@@ -48,12 +50,13 @@ public class CatalogueService(IUnitOfWork _unitOfWork) : ICatalogueService
 
         var summitsToCreate = summitsToCreateResult.Select(result => result.Value!);
 
-        // Afegir cims al catàleg
-        catalogue.AddSummits(summitsToCreate);
-
-        // Persistir el catàleg
         if (summitsToCreate.Any())
         {
+            // Afegir cims al catàleg
+            var addSummitsResult = catalogue.AddSummits(summitsToCreate);
+            if (addSummitsResult.IsFailure()) return addSummitsResult.Error;
+
+            // Persistir el catàleg
             await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
 
@@ -74,18 +77,22 @@ public class CatalogueService(IUnitOfWork _unitOfWork) : ICatalogueService
             .Where(summitDetailToReplace => catalogue.Summits.Any(s => s.Id == summitDetailToReplace.Key))
             .ToDictionary(kv => kv.Key, kv =>
                 new Catalogue.SummitDetail(
-                    Altitude: kv.Value.Altitude,
-                    Location: kv.Value.Location,
                     Name: kv.Value.Name,
-                    RegionName: kv.Value.RegionName));
+                    Altitude: kv.Value.Altitude,
+                    Latitude: kv.Value.Latitude,
+                    Longitude: kv.Value.Longitude,
+                    IsEssential: kv.Value.IsEssential,
+                    Region: !string.IsNullOrEmpty(kv.Value.RegionName) 
+                        ? EnumHelper.GetEnumValueByDescription<Region>(kv.Value.RegionName)
+                        : Region.NONE));
 
         // Actualizar cims del catàleg
         var replaceSummitsResult = catalogue.ReplaceSummits(summitsToReplace);
         if (replaceSummitsResult.IsFailure()) return replaceSummitsResult.Error;
 
-        // Persistir el catàleg
         if (replaceSummitsResult.Value!.Any())
         {
+            // Persistir el catàleg
             await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
 
@@ -102,11 +109,13 @@ public class CatalogueService(IUnitOfWork _unitOfWork) : ICatalogueService
         if (catalogue is null) return CatalogueErrors.CatalogueIdNotFound;
 
         // Eliminar cims del catàleg
-        var removedSummits = catalogue.RemoveSummits(summitIdsToRemove);
+        var removedSummitsResult = catalogue.RemoveSummits(summitIdsToRemove);
+        if (removedSummitsResult.IsFailure()) return removedSummitsResult.Error;
 
-        // Persistir el catàleg
+        var removedSummits = removedSummitsResult.Value!;
         if (removedSummits.Any())
         {
+            // Persistir el catàleg
             _unitOfWork.CatalogueRepository.RemoveSummitRange(removedSummits);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
@@ -119,21 +128,23 @@ public class CatalogueService(IUnitOfWork _unitOfWork) : ICatalogueService
     {
         // Recuperar els cims
         var summits = await _unitOfWork.CatalogueRepository.GetSummitsAsync(catalogueId,
-            filter: s =>
-                (filter.Id != null ? s.Id == filter.Id : true) &&
+            filter: summit =>
+                (filter.Id != null ? summit.Id == filter.Id : true) &&
                 (filter.Altitude.HasValue && (filter.Altitude.Value.Min != null || filter.Altitude.Value.Max != null)
-                    ? (filter.Altitude.Value.Min ?? int.MinValue) <= s.Altitude && s.Altitude < (filter.Altitude.Value.Max ?? int.MaxValue) : true) &&
-                (!string.IsNullOrEmpty(filter.Name) ? s.Name.Contains(filter.Name, StringComparison.InvariantCultureIgnoreCase) : true) &&
-                (!string.IsNullOrEmpty(filter.Location) ? s.Location.Contains(filter.Location, StringComparison.InvariantCultureIgnoreCase) : true) &&
-                (!string.IsNullOrEmpty(filter.RegionName) ? EnumHelper.GetDescription(s.Region).Contains(filter.RegionName, StringComparison.InvariantCultureIgnoreCase) : true),
+                    ? (filter.Altitude.Value.Min ?? int.MinValue) <= summit.Altitude && summit.Altitude < (filter.Altitude.Value.Max ?? int.MaxValue) : true) &&
+                (!string.IsNullOrEmpty(filter.Name) ? summit.Name.Contains(filter.Name, StringComparison.InvariantCultureIgnoreCase) : true) &&
+                (filter.IsEssential.HasValue ? summit.IsEssential == filter.IsEssential : true) &&
+                (!string.IsNullOrEmpty(filter.RegionName) ? EnumHelper.GetDescription(summit.Region).Contains(filter.RegionName, StringComparison.InvariantCultureIgnoreCase) : true),
             cancellationToken: cancellationToken);
 
         // Mapejar de BO a DTO
         var result = summits.ToDictionary(summit => summit.Id, summit =>
             new GetSummitDetailDto(
-                Altitude: summit.Altitude,
                 Name: summit.Name,
-                Location: summit.Location,
+                Altitude: summit.Altitude,
+                Latitude: summit.Latitude,
+                Longitude: summit.Longitude,
+                IsEssential: summit.IsEssential,
                 RegionName: EnumHelper.GetDescription(summit.Region)));
 
         // Retornar el resultat
@@ -144,9 +155,9 @@ public class CatalogueService(IUnitOfWork _unitOfWork) : ICatalogueService
     {
         // Recuperar els catàlegs
         var cataloguesQuery = await _unitOfWork.CatalogueRepository.ListAsync(
-            filter: c =>
-                (filter.Id != null ? c.Id == filter.Id : true) &&
-                (!string.IsNullOrEmpty(filter.Name) ? c.Name.Contains(filter.Name) : true),
+            filter: catalogue =>
+                (filter.Id != null ? catalogue.Id == filter.Id : true) &&
+                (!string.IsNullOrEmpty(filter.Name) ? catalogue.Name.Contains(filter.Name) : true),
             cancellationToken: cancellationToken);
 
         // Mapejar de BO a DTO

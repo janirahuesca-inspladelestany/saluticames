@@ -15,7 +15,6 @@ internal sealed class DiaryConfiguration : IEntityTypeConfiguration<Diary>
         builder.Property(d => d.Id).ValueGeneratedNever();
         builder.Property(d => d.Name).HasMaxLength(100);
 
-        builder.HasMany(d => d.Climbs).WithOne().OnDelete(DeleteBehavior.Cascade);
-        builder.HasOne(d => d.Hiker).WithOne().HasForeignKey<Diary>("HikerId").OnDelete(DeleteBehavior.Cascade);
+        builder.HasOne(d => d.Hiker).WithMany(h => h.Diaries).HasForeignKey("HikerId").OnDelete(DeleteBehavior.Cascade);
     }
 }

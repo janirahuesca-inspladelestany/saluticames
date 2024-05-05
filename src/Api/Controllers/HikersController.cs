@@ -1,5 +1,6 @@
 ﻿using Api.Extensions;
 using Api.Models.Requests.Queries;
+using Api.Models.Responses;
 using Application.ChallengeContext.Services;
 using Contracts.DTO.Challenge;
 using Microsoft.AspNetCore.Mvc;
@@ -16,11 +17,23 @@ namespace Api.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> ReadHikersAsync([FromQuery] ReadHikersQuery readHikersQuery, CancellationToken cancellationToken = default)
         {
+            // Mapejar Model/Request a Contract/DTO
             var filter = new GetHikersFilterDto(readHikersQuery.Id, readHikersQuery.Name, readHikersQuery.Surname);
+
+            // Cridar servei d'aplicació
             var getHikersResult = await _challengeService.GetHikersAsync(filter, cancellationToken);
 
+            // Retornar Model/Resposta o error
             return getHikersResult.Match(
-                result => Ok(result),
+                result =>
+                {
+                    var readHikersResponse = result!.ToDictionary(kv => kv.Key, kv =>
+                        new ReadHikersResponse(
+                            Name: kv.Value.Name,
+                            Surname: kv.Value.Surname));
+
+                    return readHikersResponse.Any() ? Ok(readHikersResponse) : NoContent();
+                },
                 error => error.ToProblemDetails());
         }
     }

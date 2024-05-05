@@ -20,19 +20,24 @@ namespace Api.Controllers
         [ProducesResponseType(StatusCodes.Status409Conflict)]
         public async Task<IActionResult> CreateSummitsAsync(Guid id, IEnumerable<CreateSummitRequest> createSummitRequests, CancellationToken cancellationToken = default)
         {
+            // Mapejar Model/Request a Contract/DTO
             var summitsToCreate = createSummitRequests
                 .ToList()
                 .ConvertAll(summit =>
                     new CreateSummitDetailDto(
-                        Altitude: summit.Altitude,
                         Name: summit.Name,
-                        Location: summit.Location,
+                        Altitude: summit.Altitude,
+                        Latitude: summit.Location.Split(',').First(),
+                        Longitude: summit.Location.Split(',').Last(),
+                        IsEssential: summit.IsEssential,
                         RegionName: summit.RegionName));
 
+            // Cridar servei d'aplicació
             var createSummitsResult = await _catalogueService.CreateSummitsAsync(catalogueId: id, summitsToCreate, cancellationToken);
 
+            // Retornar Model/Resposta o error
             return createSummitsResult.Match(
-                result => Ok(result),
+                result => Created(string.Empty, new { createdSummitIds = result }),
                 error => error.ToProblemDetails());
         }
 
@@ -42,17 +47,31 @@ namespace Api.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> ReadSummitsAsync(Guid id, [FromQuery] ReadSummitsQuery readSummitsQuery, CancellationToken cancellationToken = default)
         {
+            // Mapejar Model/Request a Contract/DTO
             var filter = new GetSummitsFilterDto(
-                Id: readSummitsQuery.Id,
-                Altitude: (readSummitsQuery.MinAltitude, readSummitsQuery.MaxAltitude),
-                Name: readSummitsQuery.Name,
-                Location: readSummitsQuery.Location,
-                RegionName: readSummitsQuery.RegionName);
+                Id: readSummitsQuery?.Id,
+                Name: readSummitsQuery?.Name,
+                Altitude: (readSummitsQuery?.MinAltitude, readSummitsQuery?.MaxAltitude),
+                IsEssential: readSummitsQuery?.IsEssential,
+                RegionName: readSummitsQuery?.RegionName);
 
+            // Cridar servei d'aplicació
             var getSummitsResult = await _catalogueService.GetSummitsAsync(catalogueId: id, filter, cancellationToken);
 
+            // Retornar Model/Resposta o error
             return getSummitsResult.Match(
-                result => Ok(result),
+                result => 
+                {
+                    var readSummitsResponse = result!.ToDictionary(kv => kv.Key, kv =>
+                        new ReadSummitResponse(
+                            Name: kv.Value.Name,
+                            Altitude: kv.Value.Altitude,
+                            Location: $"{kv.Value.Latitude}, {kv.Value.Longitude}",
+                            IsEssential: kv.Value.IsEssential,
+                            RegionName: kv.Value.RegionName));
+
+                    return readSummitsResponse.Any() ? Ok(readSummitsResponse) : NoContent();
+                },
                 error => error.ToProblemDetails());
         }
 
@@ -64,15 +83,20 @@ namespace Api.Controllers
         [ProducesResponseType(StatusCodes.Status409Conflict)]
         public async Task<IActionResult> UpdateSummitsAsync(Guid id, IDictionary<Guid, UpdateSummitRequest> udpateSummitRequests, CancellationToken cancellationToken = default)
         {
+            // Mapejar Model/Request a Contract/DTO
             var summitsToUpdate = udpateSummitRequests.ToDictionary(summit => summit.Key, summit =>
                 new ReplaceSummitDetailDto(
-                    Altitude: summit.Value.Altitude,
                     Name: summit.Value.Name,
-                    Location: summit.Value.Location,
+                    Altitude: summit.Value.Altitude,
+                    Latitude: summit.Value.Location?.Split(',').First(),
+                    Longitude: summit.Value.Location?.Split(',').Last(),
+                    IsEssential: summit.Value.IsEssential,
                     RegionName: summit.Value.RegionName));
 
+            // Cridar servei d'aplicació
             var replaceSummitsResult = await _catalogueService.ReplaceSummitsAsync(catalogueId: id, summitsToUpdate, cancellationToken);
 
+            // Retornar Model/Resposta o error
             return replaceSummitsResult.Match(
                 result => Accepted(result),
                 error => error.ToProblemDetails());
@@ -83,10 +107,13 @@ namespace Api.Controllers
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> DeleteSummitsAsync(Guid id, IEnumerable<Guid> summitIdsToDelete, CancellationToken cancellationToken = default)
         {
+            // Cridar servei d'aplicació
             var removeSummitsResult = await _catalogueService.RemoveSummitsAsync(catalogueId: id, summitIdsToDelete, cancellationToken);
 
+            // Retornar Model/Resposta o error
             return removeSummitsResult.Match(
                 result => Accepted(result),
                 error => error.ToProblemDetails());

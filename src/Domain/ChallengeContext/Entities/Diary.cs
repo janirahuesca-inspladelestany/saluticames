@@ -1,9 +1,11 @@
-﻿using SharedKernel.Abstractions;
+﻿using Domain.ChallengeContext.Errors;
+using Domain.ChallengeContext.Rules;
+using SharedKernel.Abstractions;
 using SharedKernel.Common;
 
 namespace Domain.ChallengeContext.Entities;
 
-public sealed class Diary : AggregateRoot<Guid>
+public sealed class Diary : Entity<Guid>
 {
     private readonly ICollection<Climb> _climbs = new List<Climb>();
 
@@ -15,27 +17,48 @@ public sealed class Diary : AggregateRoot<Guid>
 
     public string Name { get; private set; } = null!;
     public Hiker Hiker { get; private set; } = null!;
+    public Guid CatalogueId { get; private set; }
     public IEnumerable<Climb> Climbs => _climbs;
 
-    public static Result<Diary, Error> Create(string name, Hiker hiker)
+    public static Result<Diary, Error> Create(string name, Hiker hiker, Guid catalogueId)
     {
         return new Diary(Guid.NewGuid())
         {
             Name = name,
-            Hiker = hiker
+            Hiker = hiker,
+            CatalogueId = catalogueId
         };
     }
 
-    public void AddClimbs(IEnumerable<Climb> climbsToCreate)
+    public Result<IEnumerable<Guid>, Error> AddClimbs(IEnumerable<Climb> climbsToCreate)
     {
+        var climbs = new List<Guid>();
+
         foreach (var climb in climbsToCreate)
         {
-            AddClimb(climb);
+            var addClimbResult = AddClimb(climb);
+            if (addClimbResult.IsFailure()) return addClimbResult.Error;
+            climbs.Add(climb!.Id);
         }
+
+        return climbs;
     }
 
-    public void AddClimb(Climb climbToCreate)
+    public EmptyResult<Error> AddClimb(Climb climbToCreate)
     {
+        if (HasHikerReachedMaxClimbsPerDay(climbToCreate.AscensionDate))
+        {
+            return ChallengeErrors.ClimbsPerDayExceeded;
+        }
+
         _climbs.Add(climbToCreate);
+
+        return EmptyResult<Error>.Success();
+    }
+
+    private bool HasHikerReachedMaxClimbsPerDay(DateTime ascensionDate)
+    {
+        var climbsOnDate = _climbs.Where(climb => climb.AscensionDate.Date == ascensionDate.Date).Count();
+        return climbsOnDate >= Constants.MAX_CLIMBS_PER_DAY;
     }
 }

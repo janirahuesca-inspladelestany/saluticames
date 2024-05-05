@@ -4,6 +4,7 @@ using Api.Models.Responses;
 using Application.ChallengeContext.Services;
 using Contracts.DTO.Challenge;
 using Microsoft.AspNetCore.Mvc;
+using System.Net.Mime;
 
 namespace Api.Controllers;
 
@@ -11,17 +12,24 @@ namespace Api.Controllers;
 [ApiController]
 public class DiaryController(IChallengeService _challengeService) : ControllerBase
 {
-    [HttpPost]
+    [HttpPost("hiker/{hikerId}/catalogue/{catalogueId}")]
+    [Consumes(MediaTypeNames.Application.Json)]
     [Produces("application/json")]
     [ProducesResponseType(StatusCodes.Status201Created)]
-    public async Task<IActionResult> CreateDiaryAsync(CreateDiaryRequest createDiaryRequest, CancellationToken cancellationToken = default)
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    [ProducesResponseType(StatusCodes.Status409Conflict)]
+    public async Task<IActionResult> CreateDiaryAsync(string hikerId, Guid catalogueId, CreateDiaryRequest createDiaryRequest, CancellationToken cancellationToken = default)
     {
+        // Mapejar Model/Request a Contract/DTO
         var diaryToCreate = new CreateDiaryDetailDto(
             Name: createDiaryRequest.Name,
-            HikerId: createDiaryRequest.HikerId);
+            HikerId: hikerId,
+            CatalogueId: catalogueId);
 
+        // Cridar servei d'aplicació
         var createDiaryResult = await _challengeService.CreateDiaryAsync(diaryToCreate, cancellationToken);
 
+        // Retornar Model/Resposta o error
         return createDiaryResult.Match(
             result => Ok(result),
             error => error.ToProblemDetails());
@@ -33,16 +41,20 @@ public class DiaryController(IChallengeService _challengeService) : ControllerBa
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     public async Task<IActionResult> ReadDiaryAsync(string hikerId, CancellationToken cancellationToken = default)
     {
+        // Mapejar Model/Request a Contract/DTO
         var filter = new GetDiariesFilterDto(HikerId: hikerId);
+
+        // Cridar servei d'aplicació
         var getDiaryResult = await _challengeService.GetDiariesAsync(filter, cancellationToken);
 
-        var diary = getDiaryResult.IsSuccess() ? getDiaryResult.Value : null;
-
         return getDiaryResult.Match(
-            result => 
+            result =>
             {
-                var response = diary is not null && diary.Any() ? new GetDiaryResponse(diary!.First().Value.Name) : null;
-                return response is null ? NoContent() : Ok(response);
+                var readDiaryResponse = result!.ToDictionary(kv => kv.Key, kv =>
+                    new ReadDiaryResponse(
+                        Name: kv.Value.Name));
+
+                return readDiaryResponse.Any() ? Ok(readDiaryResponse) : NoContent();
             },
             error => error.ToProblemDetails());
     }
