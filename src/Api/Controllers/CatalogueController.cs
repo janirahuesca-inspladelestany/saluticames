@@ -8,11 +8,11 @@ using System.Net.Mime;
 
 namespace Api.Controllers
 {
-    [Route("api/v{version:apiVersion}/[controller]/{id}/summits")]
+    [Route("api/v{version:apiVersion}/[controller]/{id}")]
     [ApiController]
     public class CatalogueController(ICatalogueService _catalogueService) : ControllerBase
     {
-        [HttpPost]
+        [HttpPost("summits")]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -41,7 +41,7 @@ namespace Api.Controllers
                 error => error.ToProblemDetails());
         }
 
-        [HttpGet]
+        [HttpGet("summits")]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
@@ -53,7 +53,8 @@ namespace Api.Controllers
                 Name: readSummitsQuery?.Name,
                 Altitude: (readSummitsQuery?.MinAltitude, readSummitsQuery?.MaxAltitude),
                 IsEssential: readSummitsQuery?.IsEssential,
-                RegionName: readSummitsQuery?.RegionName);
+                RegionName: readSummitsQuery?.RegionName,
+                DifficultyLevel: readSummitsQuery?.DifficultyLevel);
 
             // Cridar servei d'aplicació
             var getSummitsResult = await _catalogueService.GetSummitsAsync(catalogueId: id, filter, cancellationToken);
@@ -68,14 +69,15 @@ namespace Api.Controllers
                             Altitude: kv.Value.Altitude,
                             Location: $"{kv.Value.Latitude}, {kv.Value.Longitude}",
                             IsEssential: kv.Value.IsEssential,
-                            RegionName: kv.Value.RegionName));
+                            RegionName: kv.Value.RegionName,
+                            DifficultyLevel: kv.Value.DifficultyLevel));
 
                     return readSummitsResponse.Any() ? Ok(readSummitsResponse) : NoContent();
                 },
                 error => error.ToProblemDetails());
         }
 
-        [HttpPut]
+        [HttpPut("summits")]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
@@ -102,7 +104,7 @@ namespace Api.Controllers
                 error => error.ToProblemDetails());
         }
 
-        [HttpDelete]
+        [HttpDelete("summits")]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]

@@ -21,4 +21,7 @@ public class ReadSummitsQuery()
 
     [FromQuery(Name = "region")]
     public string? RegionName { get; init; }
+
+    [FromQuery(Name = "difficulty")]
+    public string? DifficultyLevel { get; init; }
 }

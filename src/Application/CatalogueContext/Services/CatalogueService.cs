@@ -134,7 +134,8 @@ public class CatalogueService(IUnitOfWork _unitOfWork) : ICatalogueService
                     ? (filter.Altitude.Value.Min ?? int.MinValue) <= summit.Altitude && summit.Altitude < (filter.Altitude.Value.Max ?? int.MaxValue) : true) &&
                 (!string.IsNullOrEmpty(filter.Name) ? summit.Name.Contains(filter.Name, StringComparison.InvariantCultureIgnoreCase) : true) &&
                 (filter.IsEssential.HasValue ? summit.IsEssential == filter.IsEssential : true) &&
-                (!string.IsNullOrEmpty(filter.RegionName) ? EnumHelper.GetDescription(summit.Region).Contains(filter.RegionName, StringComparison.InvariantCultureIgnoreCase) : true),
+                (!string.IsNullOrEmpty(filter.RegionName) ? EnumHelper.GetDescription(summit.Region).Contains(filter.RegionName, StringComparison.InvariantCultureIgnoreCase) : true) &&
+                (!string.IsNullOrEmpty(filter.DifficultyLevel) ? EnumHelper.GetDescription(summit.DifficultyLevel).Contains(filter.DifficultyLevel, StringComparison.InvariantCultureIgnoreCase) : true),
             cancellationToken: cancellationToken);
 
         // Mapejar de BO a DTO
@@ -145,7 +146,8 @@ public class CatalogueService(IUnitOfWork _unitOfWork) : ICatalogueService
                 Latitude: summit.Latitude,
                 Longitude: summit.Longitude,
                 IsEssential: summit.IsEssential,
-                RegionName: EnumHelper.GetDescription(summit.Region)));
+                RegionName: EnumHelper.GetDescription(summit.Region),
+                DifficultyLevel: EnumHelper.GetDescription(summit.DifficultyLevel)));
 
         // Retornar el resultat
         return result;

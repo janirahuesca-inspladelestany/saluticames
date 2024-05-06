@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Persistence.Data;
 using System.ComponentModel;
+using System.Runtime.Serialization;
 
 namespace Persistence.Extensions;
 
@@ -38,6 +39,8 @@ public static class EnumLookupExtensions
 
             if (createForeignKeys)
             {
+                modelBuilder.Entity(entityType.Name).Property(property.Name).HasColumnName($"{property.Name}Id");
+
                 modelBuilder.Entity(entityType.Name)
                     .HasOne(concreteType)
                     .WithMany()

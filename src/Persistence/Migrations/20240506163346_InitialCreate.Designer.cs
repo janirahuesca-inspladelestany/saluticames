@@ -12,7 +12,7 @@ using Persistence.Data;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(SalutICamesDbContext))]
-    [Migration("20240505131715_InitialCreate")]
+    [Migration("20240506163346_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -42,7 +42,7 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("b1d6e377-5446-4223-9c1e-f44d3f6398ad"),
+                            Id = new Guid("b3996ec9-34ae-4fef-bd30-5c666703ac00"),
                             Name = "Repte dels 100 Cims de la FEEC"
                         });
                 });
@@ -58,6 +58,10 @@ namespace Persistence.Migrations
 
                     b.Property<Guid>("CatalogueId")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("DifficultyLevel")
+                        .HasColumnType("int")
+                        .HasColumnName("DifficultyLevelId");
 
                     b.Property<bool>("IsEssential")
                         .HasColumnType("bit")
@@ -79,11 +83,14 @@ namespace Persistence.Migrations
                         .HasColumnName("Name");
 
                     b.Property<int>("Region")
-                        .HasColumnType("int");
+                        .HasColumnType("int")
+                        .HasColumnName("RegionId");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CatalogueId");
+
+                    b.HasIndex("DifficultyLevel");
 
                     b.HasIndex("Name")
                         .IsUnique();
@@ -158,6 +165,52 @@ namespace Persistence.Migrations
                     b.ToTable("Hikers", (string)null);
                 });
 
+            modelBuilder.Entity("Persistence.Data.EnumLookup<Domain.CatalogueContext.Enums.DifficultyLevel>", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Value")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EnumLookup<DifficultyLevel>");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "EASY",
+                            Value = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "MODERATE",
+                            Value = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "DIFFICULT",
+                            Value = 3
+                        },
+                        new
+                        {
+                            Id = -1,
+                            Name = "NONE",
+                            Value = -1
+                        });
+                });
+
             modelBuilder.Entity("Persistence.Data.EnumLookup<Domain.CatalogueContext.Enums.Region>", b =>
                 {
                     b.Property<int>("Id")
@@ -209,6 +262,13 @@ namespace Persistence.Migrations
                     b.HasOne("Domain.CatalogueContext.Entities.Catalogue", null)
                         .WithMany("Summits")
                         .HasForeignKey("CatalogueId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Persistence.Data.EnumLookup<Domain.CatalogueContext.Enums.DifficultyLevel>", null)
+                        .WithMany()
+                        .HasForeignKey("DifficultyLevel")
+                        .HasPrincipalKey("Value")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
