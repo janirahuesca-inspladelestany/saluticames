@@ -1,3 +1,3 @@
 ﻿namespace Api.Models.Requests;
 
-public record CreateDiaryRequest(string Name);
+public record CreateDiaryRequest(string Name, Guid CatalogueId);

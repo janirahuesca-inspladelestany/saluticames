@@ -7,47 +7,20 @@ namespace Domain.CatalogueContext.Entities;
 
 public sealed class Summit : Entity<Guid>
 {
-    private int _altitude;
-    private DifficultyLevel _difficultyLevel;
-    private Region _region;
-
     private Summit(Guid id)
         : base(id)
     {
+        DifficultyLevel = CalculateDifficultyLevel();
     }
 
     public string Name { get; private set; } = null!;
+    public int Altitude { get; private set; }
     public string Latitude { get; private set; } = null!;
     public string Longitude { get; private set; } = null!;
     public bool IsEssential { get; private set; }
-    public DifficultyLevel DifficultyLevel => GetDifficultyLevel();
+    public Region Region { get; private set; }
+    public DifficultyLevel DifficultyLevel { get; private set; }
     public Guid CatalogueId { get; private set; }
-
-    public int Altitude
-    {
-        get
-        {
-            return _altitude;
-        }
-        private set
-        {
-            if (value <= 0 || value > 3150) throw new ArgumentOutOfRangeException(nameof(Altitude));
-            _altitude = value;
-        }
-    }
-
-    public Region Region
-    {
-        get
-        {
-            return _region;
-        }
-        private set
-        {
-            if (value == Region.NONE) throw new ArgumentOutOfRangeException(nameof(Region));
-            _region = value;
-        }
-    }
 
     public static Result<Summit, Error> Create(string name, int altitude, string latitude, string longitude, bool isEssential, Region region, Guid? id = null)
     {
@@ -79,14 +52,13 @@ public sealed class Summit : Entity<Guid>
 
     internal EmptyResult<Error> SetAltitude(int altitude)
     {
-        try
-        {
-            _altitude = altitude;
-        }
-        catch (ArgumentOutOfRangeException)
+        if (altitude <= 0 || altitude > 3150)
         {
             return CatalogueErrors.SummitInvalidAltitude;
         }
+
+        Altitude = altitude;
+        DifficultyLevel = CalculateDifficultyLevel();
 
         return EmptyResult<Error>.Success();
     }
@@ -111,21 +83,19 @@ public sealed class Summit : Entity<Guid>
 
     internal EmptyResult<Error> SetRegion(Region region)
     {
-        try
-        {
-            Region = region;
-        }
-        catch (ArgumentOutOfRangeException)
+        if (region == Region.NONE)
         {
             return CatalogueErrors.SummitRegionNotAvailable;
-        }        
-        
+        }
+
+        Region = region;
+
         return EmptyResult<Error>.Success();
     }
 
-    private DifficultyLevel GetDifficultyLevel()
+    private DifficultyLevel CalculateDifficultyLevel()
     {
-        return _altitude switch
+        return Altitude switch
         {
             < 1500 => DifficultyLevel.EASY,
             >= 1500 and < 2500 => DifficultyLevel.MODERATE,

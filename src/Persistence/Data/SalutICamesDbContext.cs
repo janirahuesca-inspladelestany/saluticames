@@ -20,7 +20,5 @@ public sealed class SalutICamesDbContext : DbContext
     {
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(SalutICamesDbContext).Assembly);
         modelBuilder.CreateEnumLookupTable(createForeignKeys: true);
-
-        base.OnModelCreating(modelBuilder);
     }
 }
