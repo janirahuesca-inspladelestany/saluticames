@@ -15,8 +15,7 @@ internal sealed class CatalogueConfiguration : IEntityTypeConfiguration<Catalogu
         builder.Property(c => c.Id).ValueGeneratedNever();
         builder.Property(c => c.Name).HasMaxLength(100);
 
-        builder.HasMany(c => c.Summits).WithOne().OnDelete(DeleteBehavior.Cascade);
-
-        builder.HasData(Catalogue.Create("Repte dels 100 Cims de la FEEC"));
+        var catalogue = Catalogue.Create(id: Guid.Parse("3a711b1c-a40a-48b2-88e9-c1677591d546"), name: "Repte dels 100 Cims de la FEEC");
+        builder.HasData(catalogue);
     }
 }

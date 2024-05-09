@@ -1,4 +1,4 @@
 ﻿namespace Contracts.DTO.Catalogue;
 
-public record CreateSummitDetailDto(string Name, int Altitude, string Latitude, string Longitude, bool IsEssential, string RegionName);
+public record CreateSummitDetailDto(string Name, int Altitude, float Latitude, float Longitude, bool IsEssential, string RegionName);
 

@@ -21,7 +21,7 @@ public class CatalogueService(IUnitOfWork _unitOfWork) : ICatalogueService
         // Mapejar de DTO a BO
         var summitsToCreateResult = summitDetailsToCreate.ToList().ConvertAll<Result<Summit, Error>>(summit =>
         {
-            var region = Region.NONE;
+            var region = Region.None;
 
             try
             {
@@ -79,12 +79,12 @@ public class CatalogueService(IUnitOfWork _unitOfWork) : ICatalogueService
                 new Catalogue.SummitDetail(
                     Name: kv.Value.Name,
                     Altitude: kv.Value.Altitude,
-                    Latitude: kv.Value.Latitude,
-                    Longitude: kv.Value.Longitude,
+                    Latitude: string.IsNullOrEmpty(kv.Value.Latitude) ? null : float.Parse(kv.Value.Latitude),
+                    Longitude: string.IsNullOrEmpty(kv.Value.Longitude) ? null : float.Parse(kv.Value.Longitude),
                     IsEssential: kv.Value.IsEssential,
                     Region: !string.IsNullOrEmpty(kv.Value.RegionName) 
                         ? EnumHelper.GetEnumValueByDescription<Region>(kv.Value.RegionName)
-                        : Region.NONE));
+                        : Region.None));
 
         // Actualizar cims del catàleg
         var replaceSummitsResult = catalogue.ReplaceSummits(summitsToReplace);
@@ -116,7 +116,6 @@ public class CatalogueService(IUnitOfWork _unitOfWork) : ICatalogueService
         if (removedSummits.Any())
         {
             // Persistir el catàleg
-            _unitOfWork.CatalogueRepository.RemoveSummitRange(removedSummits);
             await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
 

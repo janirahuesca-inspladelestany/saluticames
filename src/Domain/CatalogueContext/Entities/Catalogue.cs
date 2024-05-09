@@ -2,7 +2,6 @@
 using Domain.CatalogueContext.Errors;
 using SharedKernel.Abstractions;
 using SharedKernel.Common;
-using SharedKernel.Helpers;
 
 namespace Domain.CatalogueContext.Entities;
 
@@ -18,9 +17,9 @@ public sealed class Catalogue : AggregateRoot<Guid>
     public string Name { get; private set; } = null!;
     public IEnumerable<Summit> Summits => _summits;
 
-    public static Catalogue Create(string name)
+    public static Catalogue Create(string name, Guid? id = null)
     {
-        return new Catalogue(Guid.NewGuid())
+        return new Catalogue(id ?? Guid.NewGuid())
         {
             Name = name
         };
@@ -89,15 +88,15 @@ public sealed class Catalogue : AggregateRoot<Guid>
             if (setAltitudeResult.IsFailure()) return setAltitudeResult.Error;
         }
 
-        if (!string.IsNullOrEmpty(summitDetailToReplace.Latitude))
+        if (summitDetailToReplace.Latitude.HasValue)
         {
-            var setLatitudeResult = summit.SetLatitude(summitDetailToReplace.Latitude);
+            var setLatitudeResult = summit.SetLatitude(summitDetailToReplace.Latitude.Value);
             if (setLatitudeResult.IsFailure()) return setLatitudeResult.Error;
         }
 
-        if (!string.IsNullOrEmpty(summitDetailToReplace.Longitude))
+        if (summitDetailToReplace.Longitude.HasValue)
         {
-            var setLongitudeResult = summit.SetLongitude(summitDetailToReplace.Longitude);
+            var setLongitudeResult = summit.SetLongitude(summitDetailToReplace.Longitude.Value);
             if (setLongitudeResult.IsFailure()) return setLongitudeResult.Error;
         }
 
@@ -145,5 +144,5 @@ public sealed class Catalogue : AggregateRoot<Guid>
             summit.Name.Equals(summitName, StringComparison.InvariantCultureIgnoreCase));
     }
 
-    public record SummitDetail(string? Name, int? Altitude, string? Latitude, string? Longitude, bool? IsEssential, Region? Region);
+    public record SummitDetail(string? Name, int? Altitude, float? Latitude, float? Longitude, bool? IsEssential, Region? Region);
 }

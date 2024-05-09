@@ -1,4 +1,5 @@
-﻿using Domain.ChallengeContext.Entities;
+﻿using Domain.CatalogueContext.Entities;
+using Domain.ChallengeContext.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -14,6 +15,7 @@ internal sealed class ClimbConfiguration : IEntityTypeConfiguration<Climb>
 
         builder.Property(c => c.Id).ValueGeneratedNever();
 
-        builder.HasOne(c => c.Diary).WithMany(d => d.Climbs).HasForeignKey("DiaryId").OnDelete(DeleteBehavior.Cascade);
+        builder.HasOne<Diary>().WithMany(d => d.Climbs).HasForeignKey("DiaryId").OnDelete(DeleteBehavior.Cascade);
+        builder.HasOne<Summit>().WithMany().HasForeignKey(c => c.SummitId).OnDelete(DeleteBehavior.Cascade);
     }
 }

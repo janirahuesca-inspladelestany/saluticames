@@ -16,16 +16,14 @@ public sealed class Diary : Entity<Guid>
     }
 
     public string Name { get; private set; } = null!;
-    public Hiker Hiker { get; private set; } = null!;
     public Guid CatalogueId { get; private set; }
     public IEnumerable<Climb> Climbs => _climbs;
 
-    public static Result<Diary, Error> Create(string name, Hiker hiker, Guid catalogueId)
+    public static Result<Diary, Error> Create(string name, Guid catalogueId)
     {
         return new Diary(Guid.NewGuid())
         {
             Name = name,
-            Hiker = hiker,
             CatalogueId = catalogueId
         };
     }

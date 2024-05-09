@@ -19,42 +19,33 @@ public class ChallengeService : IChallengeService
 
     public async Task<Result<IEnumerable<Guid>, Error>> CreateClimbsAsync(string hikerId, IEnumerable<CreateClimbDetailDto> climbDetailsToCreate, CancellationToken cancellationToken = default)
     {
-        // Recuperar el diaris del hiker
-        var diaries = await _unitOfWork.HikerRepository.ListDiariesAsync(
-            filter: diary => diary.Hiker.Id.Equals(hikerId),
-            includeProperties: nameof(Diary.Hiker),
-            cancellationToken: cancellationToken);
+        // Recuperar el diaries del hiker
+        var diaries = await _unitOfWork.HikerRepository.ListDiariesByHikerIdAsync(
+            hikerId, cancellationToken: cancellationToken);
 
         if (!diaries.Any()) return ChallengeErrors.DiaryNotFound;
-
-        // Recuperar els cims de les ascensions
-        var getDiarySummitsTasks = diaries.Select(diary => _unitOfWork.CatalogueRepository.GetSummitsAsync(diary.CatalogueId));
-        var diarySummits = await Task.WhenAll(getDiarySummitsTasks);
-        var summits = diarySummits.SelectMany(diarySummy => diarySummy);
 
         // Mapejar de DTO a BO
         var climbsToCreate = climbDetailsToCreate.Select(climbDetailToCreate =>
         {
-            var summit = summits.Single(summit => summit.Id == climbDetailToCreate.SummitId);
-            var diary = diaries.Single(diary => diary.CatalogueId == summit.CatalogueId);
-
-            return Climb.Create(diary, climbDetailToCreate.SummitId, climbDetailToCreate.AscensionDateTime);
+            return Climb.Create(climbDetailToCreate.SummitId, climbDetailToCreate.AscensionDateTime);
         });
 
-        var climbsToCreateGrouppingByDiary = climbsToCreate.GroupBy(climbToCreate => climbToCreate.Diary.Id);
-
-        foreach (var climbsToCreateGroup in climbsToCreateGrouppingByDiary)
+        foreach (var diary in diaries)
         {
-            var diary = diaries.Single(diary => diary.Id == climbsToCreateGroup.Key);
+            var catalogue = await _unitOfWork.CatalogueRepository.FindByIdAsync(diary.CatalogueId, cancellationToken);
+            if(catalogue is null) continue;
 
-            // Afegir ascensions al diari
-            var addClimbsResult = diary.AddClimbs(climbsToCreateGroup);
+            var diaryClimbsToCreate = climbsToCreate.Where(climbToCreate => catalogue.Summits.Any(summit => summit.Id == climbToCreate.SummitId));
+            
+            // Afegir ascensions al diary
+            var addClimbsResult = diary.AddClimbs(diaryClimbsToCreate);
             if (addClimbsResult.IsFailure()) return addClimbsResult.Error;
         }
 
         if (climbsToCreate.Any())
         {
-            // Persistir el diari
+            // Persistir els diaries
             await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
 
@@ -68,20 +59,14 @@ public class ChallengeService : IChallengeService
         var hiker = await _unitOfWork.HikerRepository.FindByIdAsync(diaryToCreate.HikerId, cancellationToken);
         if (hiker is null) return ChallengeErrors.HikerNotFound;
 
-        // Recuperar el diari
-        var diaries = await _unitOfWork.HikerRepository.ListDiariesAsync(
-            filter: diary => diary.Hiker.Id.Equals(diaryToCreate.HikerId),
-            includeProperties: nameof(Diary.Hiker),
-            cancellationToken: cancellationToken);
-        
-        var diary = diaries.FirstOrDefault(diary => diary.CatalogueId == diaryToCreate.CatalogueId);
-
+        // Validar el diari        
+        var diary = hiker.Diaries.FirstOrDefault(diary => diary.CatalogueId == diaryToCreate.CatalogueId);
         if (diary is not null) return ChallengeErrors.DiaryAlreadyExists;
 
         // Mapejar de DTO a BO
-        var createDiaryResult = Diary.Create(diaryToCreate.Name, hiker, diaryToCreate.CatalogueId);
+        var createDiaryResult = Diary.Create(diaryToCreate.Name, diaryToCreate.CatalogueId);
         if (createDiaryResult.IsFailure()) return createDiaryResult.Error;
-        
+
         diary = createDiaryResult.Value!;
         var addDiaryResult = hiker.AddDiary(diary);
         if (addDiaryResult.IsFailure()) return createDiaryResult.Error;
@@ -124,22 +109,22 @@ public class ChallengeService : IChallengeService
         return result;
     }
 
-    public async Task<Result<IDictionary<Guid, GetDiaryDetailDto>, Error>> GetDiariesAsync(GetDiariesFilterDto filter, CancellationToken cancellationToken = default)
+    public async Task<Result<IDictionary<string, IEnumerable<GetDiaryDetailDto>>, Error>> GetDiariesAsync(GetDiariesFilterDto filter, CancellationToken cancellationToken = default)
     {
         // Recuperar els diaries
-        var diaries = await _unitOfWork.HikerRepository.ListDiariesAsync(
-            filter: diary =>
-                (filter.Id != null ? diary.Id == filter.Id : true) &&
-                (!string.IsNullOrEmpty(filter.Name) ? diary.Name.Contains(filter.Name) : true) &&
-                (!string.IsNullOrEmpty(filter.HikerId) ? diary.Hiker.Id == filter.HikerId : true),
-            includeProperties: nameof(Diary.Hiker),
+        var diariesByHikerIds = await _unitOfWork.HikerRepository.ListDiariesAsync(
+            filter: hiker =>
+                (filter.Id != null ? hiker.Diaries.Any(diary => diary.Id == filter.Id) : true) &&
+                (!string.IsNullOrEmpty(filter.Name) ? hiker.Diaries.Any(diary => diary.Name.Contains(filter.Name)) : true) &&
+                (!string.IsNullOrEmpty(filter.HikerId) ? hiker.Id.Equals(filter.HikerId) : true),
             cancellationToken: cancellationToken);
 
         // Mapejar de BO a DTO
-        var result = diaries.ToDictionary(diary => diary.Id, diary =>
-            new GetDiaryDetailDto(
-                Name: diary.Name,
-                HikerId: diary.Hiker.Id));
+        var result = diariesByHikerIds.ToDictionary(diariesByHikerId => diariesByHikerId.Key, diariesByHikerId =>
+            diariesByHikerId.Value.Select(diaryByHikerId =>
+                new GetDiaryDetailDto(
+                    Id: diaryByHikerId.Id,
+                    Name: diaryByHikerId.Name)));
 
         // Retornar el resultat
         return result;

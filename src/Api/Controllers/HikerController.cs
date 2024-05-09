@@ -46,9 +46,9 @@ public class HikerController(IChallengeService _challengeService) : ControllerBa
         return getStatsResult.Match(
             result =>
             {
-                var readStatsResponse = result!.ToDictionary(kv => kv.Key, kv => 
+                var readStatsResponse = result!.ToDictionary(kv => kv.Key, kv =>
                     new ReadStatisticsResponse(
-                        ReachedSummits: kv.Value.ReachedSummits, 
+                        ReachedSummits: kv.Value.ReachedSummits,
                         PendingSummits: kv.Value.PendingSummits));
 
                 return readStatsResponse.Any() ? Ok(readStatsResponse) : NoContent();
@@ -140,12 +140,12 @@ public class HikerController(IChallengeService _challengeService) : ControllerBa
         // Cridar servei d'aplicació
         var getDiaryResult = await _challengeService.GetDiariesAsync(filter, cancellationToken);
 
+        // Retornar Model/Resposta o error
         return getDiaryResult.Match(
             result =>
             {
-                var readDiaryResponse = result!.ToDictionary(kv => kv.Key, kv =>
-                    new ReadDiaryResponse(
-                        Name: kv.Value.Name));
+                var readDiaryResponse = result!.ToDictionary(kv => kv.Key, kv => kv.Value.Select(
+                    value => new ReadDiaryResponse(Id: value.Id, Name: value.Name)));
 
                 return readDiaryResponse.Any() ? Ok(readDiaryResponse) : NoContent();
             },

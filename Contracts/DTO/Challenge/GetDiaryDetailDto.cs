@@ -1,4 +1,4 @@
 ﻿namespace Contracts.DTO.Catalogue;
 
-public record GetDiaryDetailDto(string Name, string HikerId);
+public record GetDiaryDetailDto(Guid Id, string Name);
 

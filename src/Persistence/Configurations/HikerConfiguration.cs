@@ -1,6 +1,7 @@
 ﻿using Domain.ChallengeContext.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Persistence.Configurations;
 
@@ -15,5 +16,12 @@ internal sealed class HikerConfiguration : IEntityTypeConfiguration<Hiker>
         builder.Property(h => h.Surname).HasMaxLength(100);
 
         builder.Property(h => h.Id).ValueGeneratedNever();
+
+        builder.HasData(new
+        {
+            Id = "12345678P",
+            Name = "Kilian",
+            Surname = "Gordet"
+        });
     }
 }

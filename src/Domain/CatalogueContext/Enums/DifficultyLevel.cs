@@ -4,14 +4,15 @@ namespace Domain.CatalogueContext.Enums;
 
 public enum DifficultyLevel
 {
-    NONE = -1,
+    [Description("N/A")]
+    None = -1,
 
     [Description("Fàcil")]
-    EASY = 1,
+    Easy = 1,
 
     [Description("Moderat")]
-    MODERATE,
+    Moderate,
     
     [Description("Difícil")]
-    DIFFICULT
+    Difficult
 }

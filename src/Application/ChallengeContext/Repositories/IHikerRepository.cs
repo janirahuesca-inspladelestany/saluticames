@@ -10,6 +10,7 @@ public interface IHikerRepository : IRepository<Hiker, string>
     Task<Hiker?> GetByIdAsync(string hikerId, CancellationToken cancellation = default);
     Task<IEnumerable<Hiker>> ListAsync(Expression<Func<Hiker, bool>>? filter = null, Func<IQueryable<Hiker>, IOrderedQueryable<Hiker>>? orderBy = null, string includeProperties = "", CancellationToken cancellationToken = default);
     Task<Hiker?> FindByIdAsync(string hikerId, CancellationToken cancellationToken = default);
-    Task<IEnumerable<Diary>> ListDiariesAsync(Expression<Func<Diary, bool>>? filter = null, Func<IQueryable<Diary>, IOrderedQueryable<Diary>>? orderBy = null, string includeProperties = "", CancellationToken cancellationToken = default);
+    Task<IEnumerable<Diary>> ListDiariesByHikerIdAsync(string hikerId, Expression<Func<Hiker, bool>>? filter = null, Func<IQueryable<Hiker>, IOrderedQueryable<Hiker>>? orderBy = null, string includeProperties = "", CancellationToken cancellationToken = default);
+    Task<IDictionary<string, IEnumerable<Diary>>> ListDiariesAsync(Expression<Func<Hiker, bool>>? filter = null, Func<IQueryable<Hiker>, IOrderedQueryable<Hiker>>? orderBy = null, string includeProperties = "", CancellationToken cancellationToken = default);
     Task<IEnumerable<Climb>> GetClimbsByHikerIdAsync(string hikerId, CancellationToken cancellationToken = default);
 }

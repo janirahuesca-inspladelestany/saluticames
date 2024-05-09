@@ -1,3 +1,3 @@
 ﻿namespace Api.Models.Responses;
 
-public record ReadDiariesResponse(string Name, string HikerId);
+public record ReadDiariesResponse(Guid Id, string Name);

@@ -15,14 +15,13 @@ public sealed class Summit : Entity<Guid>
 
     public string Name { get; private set; } = null!;
     public int Altitude { get; private set; }
-    public string Latitude { get; private set; } = null!;
-    public string Longitude { get; private set; } = null!;
+    public float Latitude { get; private set; }
+    public float Longitude { get; private set; }
     public bool IsEssential { get; private set; }
     public Region Region { get; private set; }
     public DifficultyLevel DifficultyLevel { get; private set; }
-    public Guid CatalogueId { get; private set; }
 
-    public static Result<Summit, Error> Create(string name, int altitude, string latitude, string longitude, bool isEssential, Region region, Guid? id = null)
+    public static Result<Summit, Error> Create(string name, int altitude, float latitude, float longitude, bool isEssential, Region region, Guid? id = null)
     {
         Summit summit = new(id ?? Guid.NewGuid());
 
@@ -63,13 +62,13 @@ public sealed class Summit : Entity<Guid>
         return EmptyResult<Error>.Success();
     }
 
-    internal EmptyResult<Error> SetLatitude(string latitude)
+    internal EmptyResult<Error> SetLatitude(float latitude)
     {
         Latitude = latitude;
         return EmptyResult<Error>.Success();
     }
 
-    internal EmptyResult<Error> SetLongitude(string longitude)
+    internal EmptyResult<Error> SetLongitude(float longitude)
     {
         Longitude = longitude;
         return EmptyResult<Error>.Success();
@@ -83,7 +82,7 @@ public sealed class Summit : Entity<Guid>
 
     internal EmptyResult<Error> SetRegion(Region region)
     {
-        if (region == Region.NONE)
+        if (region == Region.None)
         {
             return CatalogueErrors.SummitRegionNotAvailable;
         }
@@ -97,9 +96,9 @@ public sealed class Summit : Entity<Guid>
     {
         return Altitude switch
         {
-            < 1500 => DifficultyLevel.EASY,
-            >= 1500 and < 2500 => DifficultyLevel.MODERATE,
-            >= 2500 => DifficultyLevel.DIFFICULT
+            < 1500 => DifficultyLevel.Easy,
+            >= 1500 and < 2500 => DifficultyLevel.Moderate,
+            >= 2500 => DifficultyLevel.Difficult
         };
     }
 }

@@ -27,8 +27,8 @@ namespace Api.Controllers
                     new CreateSummitDetailDto(
                         Name: summit.Name,
                         Altitude: summit.Altitude,
-                        Latitude: summit.Location.Split(',').First(),
-                        Longitude: summit.Location.Split(',').Last(),
+                        Latitude: float.Parse(summit.Location.Split(',').First()),
+                        Longitude: float.Parse(summit.Location.Split(',').Last()),
                         IsEssential: summit.IsEssential,
                         RegionName: summit.RegionName));
 
