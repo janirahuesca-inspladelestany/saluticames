@@ -14,7 +14,6 @@ public sealed class Climb : Entity<Guid>
 
     }
 
-    public Diary Diary { get; private set; } = null!;
     public Guid SummitId { get; private set; }
     public DateTime AscensionDate
     {
@@ -29,11 +28,10 @@ public sealed class Climb : Entity<Guid>
         }
     }
 
-    public static Climb Create(Diary diary, Guid summitId, DateTime? ascensionDate = null)
+    public static Climb Create(Guid summitId, DateTime? ascensionDate = null)
     {
         return new Climb(Guid.NewGuid())
         {
-            Diary = diary,
             SummitId = summitId,
             AscensionDate = ascensionDate ?? DateTime.UtcNow
         };

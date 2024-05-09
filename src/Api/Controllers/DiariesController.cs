@@ -28,9 +28,9 @@ namespace Api.Controllers
                 result =>
                 {
                     var readDiariesResponse = result!.ToDictionary(kv => kv.Key, kv =>
-                        new ReadDiariesResponse(
-                            Name: kv.Value.Name,
-                            HikerId: kv.Value.HikerId));
+                        kv.Value.Select(value => new ReadDiariesResponse(
+                            Id: value.Id,
+                            Name: value.Name)));
 
                     return readDiariesResponse.Any() ? Ok(readDiariesResponse) : NoContent();
                 },

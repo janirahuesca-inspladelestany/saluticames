@@ -9,12 +9,10 @@ namespace Persistence.Repositories;
 public sealed class CatalogueRepository : ICatalogueRepository
 {
     private readonly DbSet<Catalogue> _catalogues;
-    private readonly DbSet<Summit> _summits;
 
     public CatalogueRepository(SalutICamesDbContext catalogueDbContext)
     {
         _catalogues = catalogueDbContext.Set<Catalogue>();
-        _summits = catalogueDbContext.Set<Summit>();
     }
 
     public async Task<IEnumerable<Catalogue>> ListAsync(Expression<Func<Catalogue, bool>>? filter = null,
@@ -41,11 +39,6 @@ public sealed class CatalogueRepository : ICatalogueRepository
     public async Task<Catalogue?> FindByIdAsync(Guid id, CancellationToken cancellationToken = default)
     {
         return await _catalogues.Include(c => c.Summits).SingleOrDefaultAsync(c => c.Id == id, cancellationToken);
-    }
-
-    public void RemoveSummitRange(IEnumerable<Summit> summits)
-    {
-        _summits.RemoveRange(summits);
     }
 
     public async Task<IEnumerable<Summit>> GetSummitsAsync(Guid id,
