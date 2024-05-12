@@ -83,7 +83,7 @@ public sealed class Hiker : AggregateRoot<string>
 
     private bool IsClimbPreviouslyRegisteredInDiary(Diary diary, Climb climb)
     {
-        return diary.Climbs.Any(climb => climb.SummitId == climb.SummitId);
+        return diary.Climbs.Any(diaryClimb => diaryClimb.SummitId == climb.SummitId);
     }
 
 

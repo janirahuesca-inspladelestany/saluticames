@@ -16,7 +16,7 @@ public class CatalogueService(IUnitOfWork _unitOfWork) : ICatalogueService
         if (catalogue.SummitIds.Any(summitId => summitIds.Contains(summitId))) return CatalogueErrors.SummitIdAlreadyExists;
 
         // Afegir summits al catalogue
-        var addSummitIdsResult = catalogue.AddSummitIds(summitIds.Select(summitId => summitId));
+        var addSummitIdsResult = catalogue.RegisterSummitIds(summitIds.Select(summitId => summitId));
         if (addSummitIdsResult.IsFailure()) return addSummitIdsResult.Error;
 
         // Persistir el catalogue
