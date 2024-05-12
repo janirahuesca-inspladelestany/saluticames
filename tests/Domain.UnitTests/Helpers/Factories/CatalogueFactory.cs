@@ -2,7 +2,7 @@
 using Domain.Content.ValueObjects;
 using System.Diagnostics;
 
-namespace Content.UnitTests.Helpers.Factories;
+namespace Domain.UnitTests.Helpers.Factories;
 
 public class CatalogueFactory
 {

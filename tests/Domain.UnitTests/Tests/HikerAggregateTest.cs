@@ -1,10 +1,10 @@
-using Content.UnitTests.Helpers.Factories;
 using Domain.Challenge.Entities;
 using Domain.Challenge.Errors;
 using Domain.Challenge.Rules;
+using Domain.UnitTests.Helpers.Factories;
 using FluentAssertions;
 
-namespace Challenge.UnitTests.Domain;
+namespace Domain.UnitTests.Tests;
 
 public class HikerAggregateTest
 {

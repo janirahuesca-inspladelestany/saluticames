@@ -3,7 +3,7 @@ using Domain.Content.ValueObjects;
 using System.Diagnostics;
 using Domain.Content.Enums;
 
-namespace Content.UnitTests.Helpers.Factories;
+namespace Domain.UnitTests.Helpers.Factories;
 
 public class SummitFactory
 {

@@ -1,10 +1,10 @@
-using Content.UnitTests.Helpers.Factories;
 using Domain.Content.Entities;
 using Domain.Content.Enums;
 using Domain.Content.Errors;
+using Domain.UnitTests.Helpers.Factories;
 using FluentAssertions;
 
-namespace Content.UnitTests.Domain;
+namespace Domain.UnitTests.Tests;
 
 public class SummitAggregateTest
 {
