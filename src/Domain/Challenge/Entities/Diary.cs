@@ -5,7 +5,7 @@ namespace Domain.Challenge.Entities;
 
 public sealed class Diary : Entity<Guid>
 {
-    private readonly ICollection<Climb> _climbs = new List<Climb>();
+    internal readonly ICollection<Climb> _climbs = new List<Climb>();
 
     private Diary(Guid id)
         : base(id)
@@ -13,8 +13,8 @@ public sealed class Diary : Entity<Guid>
 
     }
 
-    public string Name { get; private set; } = null!;
-    public Guid CatalogueId { get; private set; }
+    public string Name { get; internal set; } = null!;
+    public Guid CatalogueId { get; internal set; }
     public IEnumerable<Climb> Climbs => _climbs;
 
     public static Result<Diary?, Error> Create(string name, Guid catalogueId)

@@ -2,7 +2,7 @@
 using Domain.Content.ValueObjects;
 using System.Diagnostics;
 
-namespace Content.UnitTests.Helpers.Factories;
+namespace Domain.UnitTests.Helpers.Factories;
 
 public class CatalogueFactory
 {
@@ -10,7 +10,7 @@ public class CatalogueFactory
     {
         var catalogueCreateResult = Catalogue.Create(
             id: Guid.NewGuid(),
-            name: "El meu catàleg");
+            name: "El meu catalogue");
 
         if (catalogueCreateResult.IsFailure()) throw new UnreachableException();
 

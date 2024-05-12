@@ -7,7 +7,7 @@ namespace Domain.Challenge.Entities;
 
 public sealed class Hiker : AggregateRoot<string>
 {
-    private ICollection<Diary> _diaries = new List<Diary>();
+    internal ICollection<Diary> _diaries = new List<Diary>();
 
     private Hiker(string id)
         : base(id)
@@ -30,6 +30,11 @@ public sealed class Hiker : AggregateRoot<string>
 
     public EmptyResult<Error> AddDiary(Diary diary)
     {
+        if (diary is null)
+        {
+            return ChallengeErrors.DiaryNotFound;
+        }
+
         if (_diaries.Contains(diary))
         {
             return ChallengeErrors.DiaryAlreadyExists;
@@ -42,6 +47,11 @@ public sealed class Hiker : AggregateRoot<string>
 
     public EmptyResult<Error> AddClimbsToDiary(Diary diary, IEnumerable<Climb> climbs)
     {
+        if (diary is null) 
+        {
+            return ChallengeErrors.DiaryNotFound;
+        }
+
         var existingClimbs = diary.Climbs.ToList();
 
         foreach (var climb in climbs)
