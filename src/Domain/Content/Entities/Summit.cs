@@ -8,7 +8,7 @@ namespace Domain.Content.Entities;
 
 public sealed class Summit : AggregateRoot<Guid>
 {
-    private readonly List<CatalogueSummit> _catalogueSummit = new List<CatalogueSummit>();
+    internal readonly List<CatalogueSummit> _catalogueSummit = new List<CatalogueSummit>();
 
     private Summit(Guid id)
         : base(id)

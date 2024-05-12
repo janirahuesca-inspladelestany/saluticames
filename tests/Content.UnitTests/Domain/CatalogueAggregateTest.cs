@@ -1,4 +1,5 @@
 using Content.UnitTests.Helpers.Factories;
+using Domain.Content.Entities;
 using Domain.Content.Errors;
 using FluentAssertions;
 
@@ -6,6 +7,23 @@ namespace Content.UnitTests.Domain;
 
 public class CatalogueAggregateTest
 {
+    [Fact]
+    public void Create_WhenValidParameters_ThenSuccess()
+    {
+        // Arrange
+        string name = "El meu catalogue";
+        Guid id = Guid.NewGuid();
+
+        // Act
+        var result = Catalogue.Create(name, id);
+
+        // Assert
+        result.IsSuccess().Should().BeTrue();
+        var catalogue = result.Value!;
+        catalogue.Id.Should().Be(id);
+        catalogue.Name.Should().Be(name);
+    }
+
     [Fact]
     public void RegisterSummitIds_WhenSummitIdsAreValid_ThenSuccess()
     {

@@ -10,7 +10,7 @@ public class CatalogueFactory
     {
         var catalogueCreateResult = Catalogue.Create(
             id: Guid.NewGuid(),
-            name: "El meu catàleg");
+            name: "El meu catalogue");
 
         if (catalogueCreateResult.IsFailure()) throw new UnreachableException();
 

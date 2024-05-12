@@ -27,4 +27,7 @@ public static class ChallengeErrors
 
     public static readonly Error ClimbInvalidDuplicated = Error.Validation(
         "ChallengeErrors.ClimbInvalidDuplicated", "The climb is not valid: already registered.");
+
+    public static readonly Error ClimbInvalidSummitBadReference = Error.Conflict(
+            "ChallengeErrors.ClimbInvalidSummitBadReference", "The climb is not valid: bad summit reference.");
 }
