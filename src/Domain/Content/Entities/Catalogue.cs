@@ -7,7 +7,7 @@ namespace Domain.Content.Entities;
 
 public sealed class Catalogue : AggregateRoot<Guid>
 {
-    private readonly List<CatalogueSummit> _catalogueSummit = new List<CatalogueSummit>();
+    internal readonly List<CatalogueSummit> _catalogueSummit = new List<CatalogueSummit>();
 
     private Catalogue(Guid id)
         : base(id)
@@ -27,13 +27,18 @@ public sealed class Catalogue : AggregateRoot<Guid>
         };
     }
 
-    public EmptyResult<Error> AddSummitIds(IEnumerable<Guid> summitIds)
+    public EmptyResult<Error> RegisterSummitIds(IEnumerable<Guid> summitIds)
     {
+        if (summitIds is null || summitIds.Any(summitId => summitId == Guid.Empty)) 
+        {
+            return CatalogueErrors.SummitIdNotValid;
+        }
+        
         var existingSummitIds = _catalogueSummit.ToList();
 
         foreach (var summitId in summitIds)
         {
-            var addSummitIdResult = AddSummit(summitId);
+            var addSummitIdResult = RegisterSummitId(summitId);
             if (addSummitIdResult.IsFailure())
             {
                 _catalogueSummit.Clear();
@@ -46,9 +51,14 @@ public sealed class Catalogue : AggregateRoot<Guid>
         return EmptyResult<Error>.Success();
     }
 
-    public EmptyResult<Error> AddSummit(Guid summitId)
+    public EmptyResult<Error> RegisterSummitId(Guid summitId)
     {
-        if (IsAlreadySummitIdInCatalogue(summitId))
+        if (summitId == Guid.Empty) 
+        {
+            return CatalogueErrors.SummitIdNotValid;
+        }
+
+        if (IsAlreadySummitIdRegistered(summitId))
         {
             return CatalogueErrors.SummitIdAlreadyExists;
         }
@@ -61,11 +71,16 @@ public sealed class Catalogue : AggregateRoot<Guid>
 
     public EmptyResult<Error> RemoveSummitIds(IEnumerable<Guid> summitIds)
     {
+        if (summitIds is null || summitIds.Any(summitId => summitId == Guid.Empty))
+        {
+            return CatalogueErrors.SummitIdNotValid;
+        }
+
         var existingSummitIds = _catalogueSummit.ToList();
 
         foreach (var summitId in summitIds)
         {
-            var removeSummitIdResult = RemoveSummit(summitId);
+            var removeSummitIdResult = RemoveSummitId(summitId);
             if (removeSummitIdResult.IsFailure())
             {
                 _catalogueSummit.Clear();
@@ -78,14 +93,19 @@ public sealed class Catalogue : AggregateRoot<Guid>
         return EmptyResult<Error>.Success();
     }
 
-    public EmptyResult<Error> RemoveSummit(Guid summitId)
+    public EmptyResult<Error> RemoveSummitId(Guid summitId)
     {
+        if (summitId == Guid.Empty)
+        {
+            return CatalogueErrors.SummitIdNotValid;
+        }
+
         var catalogueSummit = _catalogueSummit.SingleOrDefault(catalogueSummit => catalogueSummit.SummitId == summitId);
-        return catalogueSummit is not null && _catalogueSummit.Remove(catalogueSummit) ? EmptyResult<Error>.Success() : CatalogueErrors.SummitIdNotFound;
+        return catalogueSummit is not null && _catalogueSummit.Remove(catalogueSummit) ? EmptyResult<Error>.Success() : CatalogueErrors.SummitIdNotRegistered;
     }
 
-    private bool IsAlreadySummitIdInCatalogue(Guid id)
+    private bool IsAlreadySummitIdRegistered(Guid id)
     {
-        return _catalogueSummit.Any(catalogueSummit => catalogueSummit.CatalogueId == id);
+        return _catalogueSummit.Any(catalogueSummit => catalogueSummit.SummitId == id);
     }
 }
