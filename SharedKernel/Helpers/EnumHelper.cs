@@ -21,23 +21,28 @@ public static class EnumHelper
             });
     }
 
-    public static T GetEnumValueByDescription<T>(string description) where T : Enum
+    public static bool TryGetEnumValueByDescription<T>(string description, out T? region) where T : Enum
     {
+        region = default;
+
         var enumValues = Enum.GetValues(typeof(T)).Cast<T>();
 
         foreach (var value in enumValues)
         {
-            var descriptionAttribute = value.GetType().GetField(value.ToString())
+            var descriptionAttribute = value.GetType().GetField(value.ToString())?
                 .GetCustomAttributes(typeof(DescriptionAttribute), false)
                 .FirstOrDefault() as DescriptionAttribute;
 
             var valueDescription = descriptionAttribute?.Description ?? value.ToString();
 
             if (string.Equals(valueDescription, description, StringComparison.InvariantCultureIgnoreCase))
-                return value;
+            {
+                region = value;
+                return true;
+            }
         }
 
-        throw new ArgumentException($"No enum value found with description: {description}", nameof(description));
+        return false;
     }
 
     public static string GetDescription<T>(T value) where T : Enum

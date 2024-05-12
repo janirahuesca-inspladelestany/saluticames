@@ -1,7 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Persistence.Data;
 using System.ComponentModel;
-using System.Runtime.Serialization;
 
 namespace Persistence.Extensions;
 

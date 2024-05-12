@@ -1,6 +1,6 @@
 ﻿using Api.Extensions;
 using Api.Models.Requests.Queries;
-using Application.CatalogueContext.Services;
+using Application.Content.Services;
 using Contracts.DTO.Catalogue;
 using Microsoft.AspNetCore.Mvc;
 
@@ -14,13 +14,13 @@ namespace Api.Controllers
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<IActionResult> ReadCataloguesAsync([FromQuery] ReadCataloguesQuery cataloguesQuery, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> RetrieveCataloguesAsync([FromQuery] RetrieveCataloguesQuery retrieveCatalogueQuery, CancellationToken cancellationToken = default)
         {
             // Mapejar Model/Request a Contract/DTO
-            var filter = new GetCataloguesFilterDto(cataloguesQuery.Id, cataloguesQuery.Name);
+            var filter = new ListCataloguesFilterDto(retrieveCatalogueQuery.Id, retrieveCatalogueQuery.Name);
 
             // Cridar servei d'aplicació
-            var getCataloguesResult = await _catalogueService.GetCatalogues(filter, cancellationToken);
+            var getCataloguesResult = await _catalogueService.ListCatalogues(filter, cancellationToken);
             
             // Retornar Model/Resposta o error
             return getCataloguesResult.Match(

@@ -1,8 +1,7 @@
-﻿using Domain.CatalogueContext.Entities;
-using Domain.ChallengeContext.Entities;
+﻿using Domain.Challenge.Entities;
+using Domain.Content.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Persistence.Configurations;
 
@@ -15,7 +14,7 @@ internal sealed class DiaryConfiguration : IEntityTypeConfiguration<Diary>
         builder.HasKey(d => d.Id);
 
         builder.Property(d => d.Id).ValueGeneratedNever();
-        builder.Property(d => d.Name).HasMaxLength(100);
+        builder.Property(d => d.Name).IsRequired().HasMaxLength(100);
 
         builder.HasOne<Hiker>().WithMany(h => h.Diaries).HasForeignKey("HikerId").OnDelete(DeleteBehavior.NoAction);
         builder.HasOne<Catalogue>().WithMany().HasForeignKey(d => d.CatalogueId).OnDelete(DeleteBehavior.NoAction);

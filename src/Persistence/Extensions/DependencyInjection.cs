@@ -1,6 +1,6 @@
 ﻿using Application.Abstractions;
-using Application.CatalogueContext.Repositories;
-using Application.ChallengeContext.Repositories;
+using Application.Challenge.Repositories;
+using Application.Content.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -19,6 +19,7 @@ public static class DependencyInjection
         });
 
         services.AddScoped<ICatalogueRepository, CatalogueRepository>();
+        services.AddScoped<ISummitRepository, SummitRepository>();
         services.AddScoped<IHikerRepository, HikerRepository>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
 

@@ -1,4 +1,4 @@
-﻿using Domain.CatalogueContext.Entities;
+﻿using Domain.Content.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -13,9 +13,9 @@ internal sealed class CatalogueConfiguration : IEntityTypeConfiguration<Catalogu
         builder.HasKey(c => c.Id);
 
         builder.Property(c => c.Id).ValueGeneratedNever();
-        builder.Property(c => c.Name).HasMaxLength(100);
+        builder.Property(c => c.Name).IsRequired().HasMaxLength(100);
 
-        var catalogue = Catalogue.Create(id: Guid.Parse("3a711b1c-a40a-48b2-88e9-c1677591d546"), name: "Repte dels 100 Cims de la FEEC");
-        builder.HasData(catalogue);
+        builder.HasData(
+            new { Id = Guid.Parse("3a711b1c-a40a-48b2-88e9-c1677591d546"), Name = "Repte dels 100 Cims de la FEEC" });
     }
 }
