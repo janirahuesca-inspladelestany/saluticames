@@ -1,7 +1,7 @@
 ﻿using Api.Extensions;
 using Api.Models.Requests.Queries;
 using Api.Models.Responses;
-using Application.ChallengeContext.Services;
+using Application.Challenge.Services;
 using Contracts.DTO.Challenge;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,24 +15,24 @@ namespace Api.Controllers
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<IActionResult> ReadHikersAsync([FromQuery] ReadHikersQuery readHikersQuery, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> RetrieveHikersAsync([FromQuery] RetrieveHikersQuery retrieveHikersQuery, CancellationToken cancellationToken = default)
         {
             // Mapejar Model/Request a Contract/DTO
-            var filter = new GetHikersFilterDto(readHikersQuery.Id, readHikersQuery.Name, readHikersQuery.Surname);
+            var filterDto = new ListHikersFilterDto(retrieveHikersQuery.Id, retrieveHikersQuery.Name, retrieveHikersQuery.Surname);
 
             // Cridar servei d'aplicació
-            var getHikersResult = await _challengeService.GetHikersAsync(filter, cancellationToken);
+            var listHikersResult = await _challengeService.ListHikersAsync(filterDto, cancellationToken);
 
             // Retornar Model/Resposta o error
-            return getHikersResult.Match(
+            return listHikersResult.Match(
                 result =>
                 {
-                    var readHikersResponse = result!.ToDictionary(kv => kv.Key, kv =>
-                        new ReadHikersResponse(
+                    var retrieveHikersResponse = result!.ToDictionary(kv => kv.Key, kv =>
+                        new RetrieveHikersResponse(
                             Name: kv.Value.Name,
                             Surname: kv.Value.Surname));
 
-                    return readHikersResponse.Any() ? Ok(readHikersResponse) : NoContent();
+                    return retrieveHikersResponse.Any() ? Ok(retrieveHikersResponse) : NoContent();
                 },
                 error => error.ToProblemDetails());
         }

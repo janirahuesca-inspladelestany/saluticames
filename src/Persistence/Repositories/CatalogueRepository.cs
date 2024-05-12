@@ -1,5 +1,6 @@
-﻿using Application.CatalogueContext.Repositories;
-using Domain.CatalogueContext.Entities;
+﻿using Application.Content.Repositories;
+using Domain.Content.Entities;
+using Domain.Content.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Data;
 using System.Linq.Expressions;
@@ -10,9 +11,9 @@ public sealed class CatalogueRepository : ICatalogueRepository
 {
     private readonly DbSet<Catalogue> _catalogues;
 
-    public CatalogueRepository(SalutICamesDbContext catalogueDbContext)
+    public CatalogueRepository(SalutICamesDbContext salutICamesDbContext)
     {
-        _catalogues = catalogueDbContext.Set<Catalogue>();
+        _catalogues = salutICamesDbContext.Set<Catalogue>();
     }
 
     public async Task<IEnumerable<Catalogue>> ListAsync(Expression<Func<Catalogue, bool>>? filter = null,
@@ -38,31 +39,6 @@ public sealed class CatalogueRepository : ICatalogueRepository
 
     public async Task<Catalogue?> FindByIdAsync(Guid id, CancellationToken cancellationToken = default)
     {
-        return await _catalogues.Include(c => c.Summits).SingleOrDefaultAsync(c => c.Id == id, cancellationToken);
-    }
-
-    public async Task<IEnumerable<Summit>> GetSummitsAsync(Guid id,
-        Expression<Func<Summit, bool>>? filter = null,
-        Func<IQueryable<Summit>, IOrderedQueryable<Summit>>? orderBy = null,
-        string includeProperties = "",
-        CancellationToken cancellationToken = default)
-    {
-        var catalogue = await _catalogues.Include(c => c.Summits).SingleOrDefaultAsync(c => c.Id == id, cancellationToken);
-        if (catalogue is null) return Enumerable.Empty<Summit>();
-
-        IQueryable<Summit> query = catalogue.Summits.AsQueryable();
-
-        if (filter is not null) query = query.Where(filter);
-
-        foreach (var includeProperty in includeProperties.Split(',', StringSplitOptions.RemoveEmptyEntries))
-        {
-            query.Include(includeProperty);
-        }
-
-        var summits = orderBy is not null
-            ? orderBy(query).ToList()
-            : query.ToList();
-
-        return summits;
+        return await _catalogues.Include(c => c.CatalogueSummits).SingleOrDefaultAsync(catalogue => catalogue.Id == id, cancellationToken);
     }
 }

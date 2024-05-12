@@ -1,7 +1,7 @@
 ﻿using Api.Extensions;
 using Api.Models.Requests.Queries;
 using Api.Models.Responses;
-using Application.ChallengeContext.Services;
+using Application.Challenge.Services;
 using Contracts.DTO.Challenge;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,24 +15,24 @@ namespace Api.Controllers
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
-        public async Task<IActionResult> ReadDiariesAsync([FromQuery] ReadDiariesQuery readDiariesQuery, CancellationToken cancellationToken = default)
+        public async Task<IActionResult> RetrieveDiariesAsync([FromQuery] RetrieveDiariesQuery retieveDiariesQuery, CancellationToken cancellationToken = default)
         {
             // Mapejar Model/Request a Contract/DTO
-            var filter = new GetDiariesFilterDto(readDiariesQuery.Id, readDiariesQuery.Name, readDiariesQuery.HikerId);
+            var filterDto = new ListDiariesFilterDto(retieveDiariesQuery.Id, retieveDiariesQuery.Name, retieveDiariesQuery.HikerId);
 
             // Cridar servei d'aplicació
-            var getDiariesResult = await _challengeService.GetDiariesAsync(filter, cancellationToken);
+            var listDiariesResult = await _challengeService.ListDiariesAsync(filterDto, cancellationToken);
 
             // Retornar Model/Resposta o error
-            return getDiariesResult.Match(
+            return listDiariesResult.Match(
                 result =>
                 {
-                    var readDiariesResponse = result!.ToDictionary(kv => kv.Key, kv =>
-                        kv.Value.Select(value => new ReadDiariesResponse(
+                    var retrieveDiariesResponse = result!.ToDictionary(kv => kv.Key, kv =>
+                        kv.Value.Select(value => new RetrieveDiariesResponse(
                             Id: value.Id,
                             Name: value.Name)));
 
-                    return readDiariesResponse.Any() ? Ok(readDiariesResponse) : NoContent();
+                    return retrieveDiariesResponse.Any() ? Ok(retrieveDiariesResponse) : NoContent();
                 },
                 error => error.ToProblemDetails());
         }

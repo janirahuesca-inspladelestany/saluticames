@@ -1,7 +1,7 @@
 ﻿using Api.Extensions;
 using Api.Models.Requests;
 using Api.Models.Responses;
-using Application.ChallengeContext.Services;
+using Application.Challenge.Services;
 using Contracts.DTO.Challenge;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
@@ -19,16 +19,16 @@ public class HikerController(IChallengeService _challengeService) : ControllerBa
     public async Task<IActionResult> CreateHikerAsync(CreateHikerRequest createHikerRequest, CancellationToken cancellationToken = default)
     {
         // Mapejar Model/Request a Contract/DTO
-        var hikerToCreate = new CreateHikerDetailDto(
+        var hikerDto = new AddNewHikerDto(
             Id: createHikerRequest.Id,
             Name: createHikerRequest.Name,
             Surname: createHikerRequest.Surname);
 
         // Cridar servei d'aplicació
-        var createHikerResult = await _challengeService.CreateHikerAsync(hikerToCreate, cancellationToken);
+        var addNewHikerResult = await _challengeService.AddNewHikerAsync(hikerDto, cancellationToken);
 
         // Retornar Model/Resposta o error
-        return createHikerResult.Match(
+        return addNewHikerResult.Match(
             () => Created(string.Empty, createHikerRequest.Id),
             error => error.ToProblemDetails());
     }
@@ -37,21 +37,21 @@ public class HikerController(IChallengeService _challengeService) : ControllerBa
     [Produces("application/json")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    public async Task<IActionResult> ReadStatsAsync(string id, [FromQuery] Guid? catalogueId = null, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> RetrieveStatisticsAsync(string id, [FromQuery] Guid? catalogueId = null, CancellationToken cancellationToken = default)
     {
         // Cridar servei d'aplicació
-        var getStatsResult = await _challengeService.GetStatisticsAsync(id, catalogueId, cancellationToken: cancellationToken);
+        var getStatisticsResult = await _challengeService.GetStatisticsAsync(id, catalogueId, cancellationToken: cancellationToken);
 
         // Retornar Model/Resposta o error
-        return getStatsResult.Match(
+        return getStatisticsResult.Match(
             result =>
             {
-                var readStatsResponse = result!.ToDictionary(kv => kv.Key, kv =>
-                    new ReadStatisticsResponse(
+                var retieveStatisticsResponse = result!.ToDictionary(kv => kv.Key, kv =>
+                    new RetieveStatisticsResponse(
                         ReachedSummits: kv.Value.ReachedSummits,
                         PendingSummits: kv.Value.PendingSummits));
 
-                return readStatsResponse.Any() ? Ok(readStatsResponse) : NoContent();
+                return retieveStatisticsResponse.Any() ? Ok(retieveStatisticsResponse) : NoContent();
             },
             error => error.ToProblemDetails());
     }
@@ -66,18 +66,18 @@ public class HikerController(IChallengeService _challengeService) : ControllerBa
     public async Task<IActionResult> CreateClimbsAsync(string id, IEnumerable<CreateClimbRequest> createClimbRequests, CancellationToken cancellationToken = default)
     {
         // Mapejar Model/Request a Contract/DTO
-        var climbsToCreate = createClimbRequests
+        var climbDtos = createClimbRequests
             .ToList()
             .ConvertAll(climb =>
-                new CreateClimbDetailDto(
+                new AddNewClimbDetailDto(
                     SummitId: climb.summitId,
                     AscensionDateTime: climb.ascensionDateTime));
 
         // Cridar servei d'aplicació
-        var createClimbsResult = await _challengeService.CreateClimbsAsync(id, climbsToCreate, cancellationToken);
+        var addNewClimbsResult = await _challengeService.AddNewClimbsAsync(id, climbDtos, cancellationToken);
 
         // Retornar Model/Resposta o error
-        return createClimbsResult.Match(
+        return addNewClimbsResult.Match(
             result => Created(string.Empty, result),
             error => error.ToProblemDetails());
     }
@@ -86,21 +86,21 @@ public class HikerController(IChallengeService _challengeService) : ControllerBa
     [Produces("application/json")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    public async Task<IActionResult> ReadClimbsAsync(string id, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> RetrieveClimbsAsync(string id, CancellationToken cancellationToken = default)
     {
         // Cridar servei d'aplicació
-        var getClimbsResult = await _challengeService.GetClimbsAsync(id, cancellationToken);
+        var findClimbsResult = await _challengeService.FindClimbsAsync(id, cancellationToken);
 
         // Retornar Model/Resposta o error
-        return getClimbsResult.Match(
+        return findClimbsResult.Match(
             result =>
             {
-                var readClimbsResponse = result!.ToDictionary(kv => kv.Key, kv =>
-                    new ReadClimbResponse(
+                var retrieveClimbsResponse = result!.ToDictionary(kv => kv.Key, kv =>
+                    new RetrieveClimbResponse(
                         SummitId: kv.Value.SummitId,
                         AscensionDate: kv.Value.AscensionDateTime));
 
-                return readClimbsResponse.Any() ? Ok(readClimbsResponse) : NoContent();
+                return retrieveClimbsResponse.Any() ? Ok(retrieveClimbsResponse) : NoContent();
             },
             error => error.ToProblemDetails());
     }
@@ -114,16 +114,16 @@ public class HikerController(IChallengeService _challengeService) : ControllerBa
     public async Task<IActionResult> CreateDiaryAsync(string id, CreateDiaryRequest createDiaryRequest, CancellationToken cancellationToken = default)
     {
         // Mapejar Model/Request a Contract/DTO
-        var diaryToCreate = new CreateDiaryDetailDto(
+        var diaryDto = new AddNewDiaryDto(
             Name: createDiaryRequest.Name,
             HikerId: id,
             CatalogueId: createDiaryRequest.CatalogueId);
 
         // Cridar servei d'aplicació
-        var createDiaryResult = await _challengeService.CreateDiaryAsync(diaryToCreate, cancellationToken);
+        var addNewDiaryResult = await _challengeService.AddNewDiaryAsync(diaryDto, cancellationToken);
 
         // Retornar Model/Resposta o error
-        return createDiaryResult.Match(
+        return addNewDiaryResult.Match(
             result => Created(string.Empty, result),
             error => error.ToProblemDetails());
     }
@@ -132,22 +132,22 @@ public class HikerController(IChallengeService _challengeService) : ControllerBa
     [Produces("application/json")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
-    public async Task<IActionResult> ReadDiaryAsync(string id, CancellationToken cancellationToken = default)
+    public async Task<IActionResult> RetrieveDiaryAsync(string id, CancellationToken cancellationToken = default)
     {
         // Mapejar Model/Request a Contract/DTO
-        var filter = new GetDiariesFilterDto(HikerId: id);
+        var filterDto = new ListDiariesFilterDto(HikerId: id);
 
         // Cridar servei d'aplicació
-        var getDiaryResult = await _challengeService.GetDiariesAsync(filter, cancellationToken);
+        var listDiariesResult = await _challengeService.ListDiariesAsync(filterDto, cancellationToken);
 
         // Retornar Model/Resposta o error
-        return getDiaryResult.Match(
+        return listDiariesResult.Match(
             result =>
             {
-                var readDiaryResponse = result!.ToDictionary(kv => kv.Key, kv => kv.Value.Select(
-                    value => new ReadDiaryResponse(Id: value.Id, Name: value.Name)));
+                var retrieveDiaryResponse = result!.ToDictionary(kv => kv.Key, kv => kv.Value.Select(
+                    value => new RetrieveDiaryResponse(Id: value.Id, Name: value.Name)));
 
-                return readDiaryResponse.Any() ? Ok(readDiaryResponse) : NoContent();
+                return retrieveDiaryResponse.Any() ? Ok(retrieveDiaryResponse) : NoContent();
             },
             error => error.ToProblemDetails());
     }

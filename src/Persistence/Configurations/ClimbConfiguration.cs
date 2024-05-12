@@ -1,5 +1,5 @@
-﻿using Domain.CatalogueContext.Entities;
-using Domain.ChallengeContext.Entities;
+﻿using Domain.Challenge.Entities;
+using Domain.Content.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

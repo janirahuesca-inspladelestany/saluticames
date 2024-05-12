@@ -1,5 +1,6 @@
-﻿using Domain.CatalogueContext.Entities;
-using Domain.ChallengeContext.Entities;
+﻿using Domain.Challenge.Entities;
+using Domain.Content.Entities;
+using Domain.Content.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Extensions;
 
@@ -13,11 +14,15 @@ public sealed class SalutICamesDbContext : DbContext
 
     }
 
-    public DbSet<Catalogue> Catalogue { get; set; } = null!;
-    public DbSet<Diary> Diary { get; set; } = null!;
+    public DbSet<Catalogue> Catalogues { get; set; } = null!;
+    public DbSet<CatalogueSummit> CatalogueSummits { get; set; } = null!;
+    public DbSet<Summit> Summits { get; set; } = null!;
+    public DbSet<Hiker> Hikers { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        base.OnModelCreating(modelBuilder);
+
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(SalutICamesDbContext).Assembly);
         modelBuilder.CreateEnumLookupTable(createForeignKeys: true);
     }

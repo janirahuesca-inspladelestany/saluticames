@@ -53,9 +53,6 @@ namespace Persistence.Migrations
                         .HasColumnType("int")
                         .HasColumnName("Altitude");
 
-                    b.Property<Guid?>("CatalogueId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<int>("DifficultyLevel")
                         .HasColumnType("int")
                         .HasColumnName("DifficultyLevelId");
@@ -83,8 +80,6 @@ namespace Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CatalogueId");
-
                     b.HasIndex("DifficultyLevel");
 
                     b.HasIndex("Name")
@@ -99,7 +94,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("f53d3d8b-c80c-4515-bc66-07ba1653b292"),
                             Altitude = 2588,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.61171f,
@@ -111,7 +105,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("2d9085db-8e41-45ad-9755-2791a5e14920"),
                             Altitude = 2573,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.56297f,
@@ -123,7 +116,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("00ade412-c791-470a-a463-53eb79e4c4ec"),
                             Altitude = 2874,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.52514f,
@@ -135,7 +127,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("ded5b31a-673a-4814-8aa8-60e1ca7a2d0d"),
                             Altitude = 2585,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.37011f,
@@ -147,7 +138,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("c2384471-bac7-4547-b6f5-067b0a18f5bc"),
                             Altitude = 1373,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 42.3128f,
@@ -159,7 +149,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("2a2bc2f5-ed4e-42a4-873b-2ff94360ac92"),
                             Altitude = 2881,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.42622f,
@@ -171,7 +160,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("4dfab0bd-7a55-4d25-9905-9479e4095b21"),
                             Altitude = 1248,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 42.10154f,
@@ -183,7 +171,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("c14de667-8442-4af4-aa91-ddc463b08c4c"),
                             Altitude = 3008,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.60526f,
@@ -195,7 +182,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("564ba7f1-5837-4ba6-9e55-f87a83107e76"),
                             Altitude = 3023,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.59379f,
@@ -207,7 +193,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("82558750-0355-4acb-b57f-25c7e9eb09ea"),
                             Altitude = 2405,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = true,
                             Latitude = 42.5048f,
@@ -219,7 +204,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("a1362d3c-8d87-47ad-a72d-d069176f0121"),
                             Altitude = 1308,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 42.076f,
@@ -231,7 +215,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("1924f7af-7e51-4629-be92-0fb90260fe9f"),
                             Altitude = 2750,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.45087f,
@@ -243,7 +226,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("c29cd54a-6e51-4377-88a0-9c456459a3b1"),
                             Altitude = 2633,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.65952f,
@@ -255,7 +237,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("a2fca415-0e16-4fe5-9491-7c783233bd22"),
                             Altitude = 2784,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.5189f,
@@ -267,7 +248,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("b348c9be-c622-4e47-b166-8992435f9c7f"),
                             Altitude = 2077,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = true,
                             Latitude = 42.23501f,
@@ -279,7 +259,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("c98e40fa-8ea6-49f7-bc7c-a9e91ce0789a"),
                             Altitude = 2741,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.69237f,
@@ -291,7 +270,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("a9be298e-0092-4339-8e11-dbb57d9a0708"),
                             Altitude = 1749,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.19357f,
@@ -303,7 +281,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("d9c9bc6a-e075-41b1-8dd3-75bbdf260a95"),
                             Altitude = 2449,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.52155f,
@@ -315,7 +292,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("0f15877a-01e1-4086-b691-12fae177f791"),
                             Altitude = 1820,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.28856f,
@@ -327,7 +303,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("04e79888-f093-4c03-88b4-35239aeb7d1c"),
                             Altitude = 2321,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = true,
                             Latitude = 42.18943f,
@@ -339,7 +314,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("c7470d06-ea2d-438d-a7f1-706cfef6c967"),
                             Altitude = 1846,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.27552f,
@@ -351,7 +325,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("4a1f602e-f88a-4b26-85b4-da165b64f350"),
                             Altitude = 2284,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = true,
                             Latitude = 42.20081f,
@@ -363,7 +336,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("00753579-504d-4808-895c-d82e344e997b"),
                             Altitude = 2921,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.56986f,
@@ -375,7 +347,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("b9523488-d81a-467b-a6a8-243b461fdd37"),
                             Altitude = 1441,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 40.80313f,
@@ -387,7 +358,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("cf79641f-b7af-494f-bb68-90315032192c"),
                             Altitude = 2750,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.58734f,
@@ -399,7 +369,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("f765751c-4f2e-4c3c-b9ed-0c488941984e"),
                             Altitude = 1030,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.12394f,
@@ -411,7 +380,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("c3293a08-f1ad-436c-93a6-8f129ec6091e"),
                             Altitude = 662,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.64237f,
@@ -423,7 +391,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("57bcdf96-fd5f-40f4-bfcb-e589ce2423c4"),
                             Altitude = 848,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.77064f,
@@ -435,7 +402,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("22d83c89-e1cc-4001-a62b-7e5d25e69dbc"),
                             Altitude = 392,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.53746f,
@@ -447,7 +413,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("32b9d24c-f722-40be-91f0-5f6e6826525c"),
                             Altitude = 1358,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.46785f,
@@ -459,7 +424,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("13fd35b2-9eb9-4d22-97b1-2c9dd257e2ac"),
                             Altitude = 895,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.05458f,
@@ -471,7 +435,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("28976631-9b96-4b70-b0a6-40dfc75d1c67"),
                             Altitude = 1529,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = true,
                             Latitude = 42.16555f,
@@ -483,7 +446,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("823c3f5a-9ace-484f-8d26-b64a01b34e42"),
                             Altitude = 303,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 42.05211f,
@@ -495,7 +457,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("faff830f-cae8-411f-abd2-2bd825c84f47"),
                             Altitude = 385,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 42.0069f,
@@ -507,7 +468,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("51fc94f0-c5f1-4940-b691-b331377199d4"),
                             Altitude = 682,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 42.31997f,
@@ -519,7 +479,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("50ba89b2-1906-4de4-908a-c6e550e55c1b"),
                             Altitude = 939,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.64452f,
@@ -531,7 +490,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("3a7c720b-d402-4a50-9e9a-a08b9343968b"),
                             Altitude = 1350,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 40.75873f,
@@ -543,7 +501,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("1ba3367d-881e-487e-a7b0-a3c4360e6fcc"),
                             Altitude = 840,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.08405f,
@@ -555,7 +512,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("5018e7e6-1cfc-4216-ac75-dce043835c0f"),
                             Altitude = 703,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.38805f,
@@ -567,7 +523,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("2aa559bd-a24e-4b1c-9204-00a5a2f93995"),
                             Altitude = 832,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.74094f,
@@ -577,9 +532,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c36597fb-e801-4395-979c-825a7836efc6"),
+                            Id = new Guid("bee2a01a-7ec2-4f51-af85-89d981df0b35"),
                             Altitude = 1870,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = true,
                             Latitude = 42.1216f,
@@ -589,9 +543,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("bee2a01a-7ec2-4f51-af85-89d981df0b35"),
+                            Id = new Guid("e6a51c72-aa7b-4d27-982b-5c64931a70d4"),
                             Altitude = 881,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.68747f,
@@ -601,9 +554,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e6a51c72-aa7b-4d27-982b-5c64931a70d4"),
+                            Id = new Guid("c36597fb-e801-4395-979c-825a7836efc6"),
                             Altitude = 1621,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = true,
                             Latitude = 42.15115f,
@@ -615,7 +567,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("8b6a7a2a-6c3f-4144-8ef5-614f51734f6f"),
                             Altitude = 500,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 40.98742f,
@@ -627,7 +578,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("d9b3c859-da2e-4a86-9b63-fd2f2d8dd7c1"),
                             Altitude = 543,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.74087f,
@@ -639,7 +589,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("bf85b812-95d0-4529-9256-547fc2f091bf"),
                             Altitude = 2548,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.28369f,
@@ -651,7 +600,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("bcdda778-c7d2-48d4-bd7a-ae70a358c2e6"),
                             Altitude = 1557,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = true,
                             Latitude = 42.33331f,
@@ -663,7 +611,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("51b21192-436d-419d-ac69-6ddfc59a5b44"),
                             Altitude = 2942,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.5918f,
@@ -675,7 +622,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("36e36a6f-14b9-4b76-a7f5-ba04d7b729f1"),
                             Altitude = 2056,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = true,
                             Latitude = 42.28572f,
@@ -687,7 +633,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("17677b5c-a489-4fa8-ba9f-aa51d5d2ed76"),
                             Altitude = 2465,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = true,
                             Latitude = 42.4169f,
@@ -699,7 +644,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("e8ff2258-cba7-4d48-b0f2-cd48cecc3b70"),
                             Altitude = 842,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.95209f,
@@ -711,7 +655,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("bc4a525c-19b1-4332-aea0-1948f70f98c5"),
                             Altitude = 942,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 40.94069f,
@@ -723,7 +666,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("556bd444-1536-45ec-b164-c705078ba6bf"),
                             Altitude = 525,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.15394f,
@@ -735,7 +677,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("bef5dbf6-352a-44bc-a254-b165539a210c"),
                             Altitude = 2113,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.26439f,
@@ -747,7 +688,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("83769397-545c-41b7-970c-084e5df21ea4"),
                             Altitude = 943,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.44833f,
@@ -759,7 +699,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("dd51ba01-5d0c-46c8-bba0-3ebcc02ee51d"),
                             Altitude = 465,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.33759f,
@@ -771,7 +710,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("3160de8e-4dd5-4edc-a47c-91e6b2649d19"),
                             Altitude = 1327,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.30152f,
@@ -783,7 +721,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("86e8d2bc-e818-4693-9c30-72a2f3e94f38"),
                             Altitude = 1526,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = true,
                             Latitude = 42.11003f,
@@ -795,7 +732,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("a3cffb33-4875-487a-b7ae-9636db6f953d"),
                             Altitude = 1002,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.99818f,
@@ -807,7 +743,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("0e95a512-1bda-4fcc-94c6-4d5214adb6aa"),
                             Altitude = 881,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.42904f,
@@ -819,7 +754,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("8445ca22-3e87-4d00-9910-b6449764b636"),
                             Altitude = 1610,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = true,
                             Latitude = 42.11414f,
@@ -831,7 +765,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("ac46da2c-fbd5-48ab-ad86-b508b07e41d8"),
                             Altitude = 1124,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.02084f,
@@ -843,7 +776,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("c05b086c-7918-45a1-a87e-fc9481912069"),
                             Altitude = 617,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.86126f,
@@ -855,7 +787,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("f1ecf49f-cafc-4f82-967c-c27efc7f44c8"),
                             Altitude = 1125,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 42.25885f,
@@ -867,7 +798,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("cf833d42-8d9d-4243-8e0a-f1ebc4541d9b"),
                             Altitude = 293,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 40.68303f,
@@ -879,7 +809,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("4daf0898-6823-4dd0-8137-b25a6f1a84bd"),
                             Altitude = 1345,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 40.73416f,
@@ -891,7 +820,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("778845db-6ce9-4048-847e-154189cddd25"),
                             Altitude = 2581,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.53058f,
@@ -903,7 +831,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("a3215ba8-279a-453e-bc90-71e166b7bf8f"),
                             Altitude = 1319,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.74911f,
@@ -915,7 +842,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("dca56994-5700-4058-99e3-4763ac2fd747"),
                             Altitude = 152,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 40.96575f,
@@ -927,7 +853,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("ed3f1fc5-d7fb-4a85-815e-58ec5570315b"),
                             Altitude = 867,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.37535f,
@@ -939,7 +864,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("df829a3a-83e9-4a2d-b769-59ee3b34edf6"),
                             Altitude = 483,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.9848f,
@@ -951,7 +875,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("cab65539-35e3-417f-b96d-207e5572fab5"),
                             Altitude = 593,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.46656f,
@@ -963,7 +886,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("25d4e13a-ac25-4070-8e59-b650606c70e4"),
                             Altitude = 1057,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.07873f,
@@ -975,7 +897,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("5b5c4cc4-0966-41e6-be41-af32f5dc187a"),
                             Altitude = 433,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 40.64303f,
@@ -987,7 +908,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("35941634-2f13-4677-a1bf-e25148a81569"),
                             Altitude = 1525,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.08925f,
@@ -999,7 +919,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("610db453-f6fd-44e7-9947-d4f1a1c0660c"),
                             Altitude = 507,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.72692f,
@@ -1011,7 +930,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("225e7c9c-384e-4a27-a579-6a2639b4528c"),
                             Altitude = 1687,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.18472f,
@@ -1023,7 +941,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("d5e03ce9-6248-419d-a426-102fc179c427"),
                             Altitude = 2714,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.41548f,
@@ -1035,7 +952,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("186a8c55-f551-42e7-8697-917a2e10e836"),
                             Altitude = 2749,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.56841f,
@@ -1047,7 +963,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("d00d2eef-3606-4e37-8581-8a033797538a"),
                             Altitude = 2894,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.50949f,
@@ -1059,7 +974,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("0fee6c73-4df1-495f-8ea2-b2ef79838b62"),
                             Altitude = 2933,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.58939f,
@@ -1071,7 +985,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("17faefb2-188d-4765-b481-aacb5f7f15ca"),
                             Altitude = 866,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.5167f,
@@ -1081,9 +994,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("3b30a4fb-2a92-4d8d-a0b2-2c611a914112"),
+                            Id = new Guid("e73b868f-2074-4a79-a821-a6fb0fb97ca3"),
                             Altitude = 1178,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.60102f,
@@ -1093,9 +1005,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("554daa6a-7f7a-4a91-aaec-884f90ca26cb"),
+                            Id = new Guid("14fc8081-3087-4fe4-89c4-e77917778856"),
                             Altitude = 383,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.02771f,
@@ -1105,9 +1016,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("24bc2c12-9647-4f8f-a514-7c61f29ba1e5"),
+                            Id = new Guid("670978f8-5e76-4210-8bad-3907e062aeca"),
                             Altitude = 465,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.83066f,
@@ -1117,9 +1027,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c16ee7fc-83c7-4de1-800c-6e49cc0ee0b2"),
+                            Id = new Guid("b5c2ac49-5fd3-4726-b617-c26c7d77f7c4"),
                             Altitude = 2532,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.54134f,
@@ -1129,9 +1038,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a6d21836-e44a-4bef-ad04-58a96b413b99"),
+                            Id = new Guid("d983fd88-3d04-42f6-af88-48710687d9f2"),
                             Altitude = 1839,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.31412f,
@@ -1141,9 +1049,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("55e36e7a-e9ad-42f2-921c-4775f07a1879"),
+                            Id = new Guid("e7c5f30f-2213-492e-8e16-4a702fbb18bb"),
                             Altitude = 867,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.87079f,
@@ -1153,9 +1060,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("00f3b59d-861b-4e8e-bad0-31c2542a73a2"),
+                            Id = new Guid("81b8b660-30eb-46d3-8997-a52bdf7db85e"),
                             Altitude = 1181,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 40.87937f,
@@ -1165,9 +1071,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("3982fde9-845a-4c2f-8d73-7cc0f023e468"),
+                            Id = new Guid("2f811efe-8b2d-4088-aa9d-e15ef1816817"),
                             Altitude = 1757,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.20137f,
@@ -1177,9 +1082,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e73b868f-2074-4a79-a821-a6fb0fb97ca3"),
+                            Id = new Guid("0ad9b3ff-e325-4963-bf90-2811bdf83d55"),
                             Altitude = 2740,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.45798f,
@@ -1189,9 +1093,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("14fc8081-3087-4fe4-89c4-e77917778856"),
+                            Id = new Guid("86f710f7-4ba3-4bcb-8a99-26b4b70cb2b3"),
                             Altitude = 406,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 40.57723f,
@@ -1201,9 +1104,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("670978f8-5e76-4210-8bad-3907e062aeca"),
+                            Id = new Guid("2a6fc132-dcfd-4d1d-bb02-673282caa25e"),
                             Altitude = 786,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.3488f,
@@ -1213,9 +1115,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("b5c2ac49-5fd3-4726-b617-c26c7d77f7c4"),
+                            Id = new Guid("49da0469-ddaa-4794-881e-6fe1f82881ce"),
                             Altitude = 1062,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.27753f,
@@ -1225,9 +1126,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d983fd88-3d04-42f6-af88-48710687d9f2"),
+                            Id = new Guid("9b9a0d9a-8192-492a-bbaf-2a3afa36623e"),
                             Altitude = 879,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 40.90238f,
@@ -1237,9 +1137,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e7c5f30f-2213-492e-8e16-4a702fbb18bb"),
+                            Id = new Guid("108bbe30-ae1a-46ad-a6e4-073888989862"),
                             Altitude = 2067,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.30555f,
@@ -1249,9 +1148,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("81b8b660-30eb-46d3-8997-a52bdf7db85e"),
+                            Id = new Guid("bdffd725-7733-49cc-9bff-6d6128ac374e"),
                             Altitude = 1699,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.37503f,
@@ -1261,9 +1159,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("2f811efe-8b2d-4088-aa9d-e15ef1816817"),
+                            Id = new Guid("c998c3c8-41eb-472a-ae22-3cb7527f15c3"),
                             Altitude = 289,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.61299f,
@@ -1273,9 +1170,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("0ad9b3ff-e325-4963-bf90-2811bdf83d55"),
+                            Id = new Guid("68962729-cc31-4292-88ce-1e5a831b4a3e"),
                             Altitude = 1448,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.09311f,
@@ -1285,9 +1181,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("86f710f7-4ba3-4bcb-8a99-26b4b70cb2b3"),
+                            Id = new Guid("bd5544e8-68db-459e-8b6c-2ff53113c113"),
                             Altitude = 1193,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 40.83501f,
@@ -1297,9 +1192,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("2a6fc132-dcfd-4d1d-bb02-673282caa25e"),
+                            Id = new Guid("907e4ec5-f23e-43d9-8106-8e18ad92961d"),
                             Altitude = 317,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.21166f,
@@ -1309,9 +1203,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("49da0469-ddaa-4794-881e-6fe1f82881ce"),
+                            Id = new Guid("a966494a-38fa-4af2-877f-d04de1f5b802"),
                             Altitude = 1102,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.64115f,
@@ -1321,9 +1214,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9b9a0d9a-8192-492a-bbaf-2a3afa36623e"),
+                            Id = new Guid("b8c82cdb-8087-49fd-8cbd-cb81f00d87a2"),
                             Altitude = 812,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 40.8993f,
@@ -1333,9 +1225,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("108bbe30-ae1a-46ad-a6e4-073888989862"),
+                            Id = new Guid("3b30a4fb-2a92-4d8d-a0b2-2c611a914112"),
                             Altitude = 594,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.29653f,
@@ -1345,9 +1236,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("bdffd725-7733-49cc-9bff-6d6128ac374e"),
+                            Id = new Guid("554daa6a-7f7a-4a91-aaec-884f90ca26cb"),
                             Altitude = 2861,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.47476f,
@@ -1357,9 +1247,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c998c3c8-41eb-472a-ae22-3cb7527f15c3"),
+                            Id = new Guid("24bc2c12-9647-4f8f-a514-7c61f29ba1e5"),
                             Altitude = 499,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.10941f,
@@ -1369,9 +1258,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("68962729-cc31-4292-88ce-1e5a831b4a3e"),
+                            Id = new Guid("c16ee7fc-83c7-4de1-800c-6e49cc0ee0b2"),
                             Altitude = 1098,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 40.71278f,
@@ -1381,9 +1269,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("bd5544e8-68db-459e-8b6c-2ff53113c113"),
+                            Id = new Guid("a6d21836-e44a-4bef-ad04-58a96b413b99"),
                             Altitude = 576,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.86568f,
@@ -1393,9 +1280,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("907e4ec5-f23e-43d9-8106-8e18ad92961d"),
+                            Id = new Guid("55e36e7a-e9ad-42f2-921c-4775f07a1879"),
                             Altitude = 1635,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.46007f,
@@ -1405,9 +1291,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a966494a-38fa-4af2-877f-d04de1f5b802"),
+                            Id = new Guid("3f95dfe9-23cb-409d-a012-b9a912434ddc"),
                             Altitude = 2536,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.32058f,
@@ -1417,9 +1302,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("b8c82cdb-8087-49fd-8cbd-cb81f00d87a2"),
+                            Id = new Guid("31961b64-80f6-4333-ac58-0cb10c503437"),
                             Altitude = 718,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.02895f,
@@ -1429,9 +1313,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("3f95dfe9-23cb-409d-a012-b9a912434ddc"),
+                            Id = new Guid("aa418db5-2ae0-4538-8104-2caf064bf200"),
                             Altitude = 1705,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = true,
                             Latitude = 41.78933f,
@@ -1441,9 +1324,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("31961b64-80f6-4333-ac58-0cb10c503437"),
+                            Id = new Guid("dd69325b-d3ec-4ded-86fd-c896f89d97cc"),
                             Altitude = 2693,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.39632f,
@@ -1453,9 +1335,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("aa418db5-2ae0-4538-8104-2caf064bf200"),
+                            Id = new Guid("17264261-b89c-47fb-ae71-7a99d65ba4da"),
                             Altitude = 425,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.03592f,
@@ -1465,9 +1346,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("dd69325b-d3ec-4ded-86fd-c896f89d97cc"),
+                            Id = new Guid("b01cf4fd-166f-4483-8a43-3d442c366d7e"),
                             Altitude = 2802,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.52716f,
@@ -1477,9 +1357,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("17264261-b89c-47fb-ae71-7a99d65ba4da"),
+                            Id = new Guid("4fff0b5a-23c3-417c-86de-2069bacbc4da"),
                             Altitude = 772,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 40.96349f,
@@ -1489,9 +1368,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("b01cf4fd-166f-4483-8a43-3d442c366d7e"),
+                            Id = new Guid("00f3b59d-861b-4e8e-bad0-31c2542a73a2"),
                             Altitude = 1969,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.32096f,
@@ -1501,9 +1379,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("4fff0b5a-23c3-417c-86de-2069bacbc4da"),
+                            Id = new Guid("894155cb-9a81-4367-8896-7f75a3cc408a"),
                             Altitude = 533,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.30846f,
@@ -1513,9 +1390,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("894155cb-9a81-4367-8896-7f75a3cc408a"),
+                            Id = new Guid("d1367498-8a95-4e22-9fef-d207f0e208dd"),
                             Altitude = 841,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 40.87077f,
@@ -1525,9 +1401,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d1367498-8a95-4e22-9fef-d207f0e208dd"),
+                            Id = new Guid("1de26af7-f512-40bc-a995-c51f00ca0c16"),
                             Altitude = 429,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 40.98711f,
@@ -1537,9 +1412,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("1de26af7-f512-40bc-a995-c51f00ca0c16"),
+                            Id = new Guid("81263375-f4d0-4590-9389-7a4533ceb21c"),
                             Altitude = 2543,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.46212f,
@@ -1549,9 +1423,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("81263375-f4d0-4590-9389-7a4533ceb21c"),
+                            Id = new Guid("e6e64b9b-b01a-447e-8334-028e44d099d9"),
                             Altitude = 682,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.1563f,
@@ -1561,9 +1434,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e6e64b9b-b01a-447e-8334-028e44d099d9"),
+                            Id = new Guid("49b87691-12a8-4104-8e2e-33e5709744e5"),
                             Altitude = 1471,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.02627f,
@@ -1573,9 +1445,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("49b87691-12a8-4104-8e2e-33e5709744e5"),
+                            Id = new Guid("3750a616-bd08-4917-bbcb-3cce2f73ddb4"),
                             Altitude = 2700,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.60837f,
@@ -1585,9 +1456,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("3750a616-bd08-4917-bbcb-3cce2f73ddb4"),
+                            Id = new Guid("3982fde9-845a-4c2f-8d73-7cc0f023e468"),
                             Altitude = 523,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.17904f,
@@ -1599,7 +1469,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("1b5cca46-6c02-4fe9-804b-0080003b1f91"),
                             Altitude = 951,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.92584f,
@@ -1611,7 +1480,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("5c4cad72-5fdb-4d96-a584-a2c1e15455e4"),
                             Altitude = 877,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.9299f,
@@ -1623,7 +1491,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("36bdfe77-db56-4dfa-afc5-25a1b0721a4b"),
                             Altitude = 2753,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.80581f,
@@ -1635,7 +1502,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("b46efee8-7d31-47d2-89b7-fe28425f1efa"),
                             Altitude = 2710,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.65862f,
@@ -1647,7 +1513,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("969f1313-26af-41fb-8048-4c805f53cf33"),
                             Altitude = 2883,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.64322f,
@@ -1659,7 +1524,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("9d51c6c4-678c-4bde-b642-82dedccefcee"),
                             Altitude = 1697,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = true,
                             Latitude = 41.80882f,
@@ -1671,7 +1535,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("1e03087d-1bf4-4034-a77c-7c5e55c9fe99"),
                             Altitude = 2882,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.79375f,
@@ -1683,7 +1546,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("de379061-6534-4b72-8010-114dc80bc704"),
                             Altitude = 2141,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.40455f,
@@ -1695,7 +1557,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("e6ef760e-f644-4bd2-aaaa-b21a28fba5ef"),
                             Altitude = 919,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.09263f,
@@ -1707,7 +1568,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("aa5c82d5-225b-4d40-9d2c-ffdef49b7fa4"),
                             Altitude = 834,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.19359f,
@@ -1719,7 +1579,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("3a684d05-192b-4fb1-ade4-87e17cb05627"),
                             Altitude = 1132,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.58841f,
@@ -1731,7 +1590,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("848d852c-3076-46a8-9d9e-95fb5c1756e4"),
                             Altitude = 993,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.6049f,
@@ -1743,7 +1601,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("2fec2d2f-2984-4a94-beb9-bf36fd958c15"),
                             Altitude = 1223,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.60441f,
@@ -1755,7 +1612,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("696f570c-cc1c-4143-b801-455085bbfc33"),
                             Altitude = 1034,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 40.79976f,
@@ -1765,9 +1621,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("be368112-816e-42d3-a715-c7ebed5e385f"),
+                            Id = new Guid("01951b92-a0be-490c-aaff-14d7482bc18d"),
                             Altitude = 1136,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.32555f,
@@ -1777,9 +1632,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d4be4dae-5832-4426-a3e5-1f2435b186ae"),
+                            Id = new Guid("faa737f8-ce05-418b-8917-85f695355dd3"),
                             Altitude = 538,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.04179f,
@@ -1789,9 +1643,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("01951b92-a0be-490c-aaff-14d7482bc18d"),
+                            Id = new Guid("9cfa3f32-37d4-4730-9749-9f4805648b19"),
                             Altitude = 922,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.10746f,
@@ -1801,9 +1654,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("faa737f8-ce05-418b-8917-85f695355dd3"),
+                            Id = new Guid("be368112-816e-42d3-a715-c7ebed5e385f"),
                             Altitude = 711,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.01629f,
@@ -1813,9 +1665,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9cfa3f32-37d4-4730-9749-9f4805648b19"),
+                            Id = new Guid("d4be4dae-5832-4426-a3e5-1f2435b186ae"),
                             Altitude = 1189,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.11667f,
@@ -1827,7 +1678,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("2b18177c-649f-49ba-83fd-cb6093d12366"),
                             Altitude = 1070,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 40.90903f,
@@ -1839,7 +1689,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("ace67c3b-320b-423c-9f59-338bc994179d"),
                             Altitude = 727,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 40.99062f,
@@ -1849,9 +1698,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("8268e8d0-e7dc-4768-94d9-e073d90ed716"),
+                            Id = new Guid("4cd320e9-dff7-4085-b1f5-fca73457030c"),
                             Altitude = 2864,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.7108f,
@@ -1861,9 +1709,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d37ec0c0-f4fd-4d92-81a2-024b6230735a"),
+                            Id = new Guid("c93b2fe1-915f-4cd3-bde1-0f2769472399"),
                             Altitude = 715,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.90299f,
@@ -1873,9 +1720,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("4cd320e9-dff7-4085-b1f5-fca73457030c"),
+                            Id = new Guid("1a859018-d94a-42a1-b6f8-4cf11f4aa69b"),
                             Altitude = 963,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.40688f,
@@ -1885,9 +1731,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c93b2fe1-915f-4cd3-bde1-0f2769472399"),
+                            Id = new Guid("a01b6d31-f01f-4cab-9269-dd037c72c0c5"),
                             Altitude = 597,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.60413f,
@@ -1897,9 +1742,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("1a859018-d94a-42a1-b6f8-4cf11f4aa69b"),
+                            Id = new Guid("ed44cdb3-9637-4b55-8b31-8d79e3946a82"),
                             Altitude = 766,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.06833f,
@@ -1909,9 +1753,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a01b6d31-f01f-4cab-9269-dd037c72c0c5"),
+                            Id = new Guid("0cf52172-70e5-4ff4-9a3f-109d11c0128f"),
                             Altitude = 2339,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.76561f,
@@ -1921,9 +1764,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("ed44cdb3-9637-4b55-8b31-8d79e3946a82"),
+                            Id = new Guid("551028d1-26ec-4139-96c9-7e8ea2d72f74"),
                             Altitude = 2833,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.63333f,
@@ -1933,9 +1775,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("0cf52172-70e5-4ff4-9a3f-109d11c0128f"),
+                            Id = new Guid("1a364983-b1c8-44c8-bb61-8d19160dc37e"),
                             Altitude = 2593,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.63799f,
@@ -1945,9 +1786,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("551028d1-26ec-4139-96c9-7e8ea2d72f74"),
+                            Id = new Guid("527da28d-15b7-4a2b-89b7-18244983f7eb"),
                             Altitude = 528,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 40.87558f,
@@ -1957,9 +1797,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("1a364983-b1c8-44c8-bb61-8d19160dc37e"),
+                            Id = new Guid("92457bc2-6973-4bc3-9c37-dac5f4756a11"),
                             Altitude = 658,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.34586f,
@@ -1969,9 +1808,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("527da28d-15b7-4a2b-89b7-18244983f7eb"),
+                            Id = new Guid("26b4b359-c3b1-4671-a389-dd1170bb1ac8"),
                             Altitude = 328,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.73551f,
@@ -1981,9 +1819,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("92457bc2-6973-4bc3-9c37-dac5f4756a11"),
+                            Id = new Guid("a3e7b20a-928c-47ec-bdde-190ffd10ed13"),
                             Altitude = 1057,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.67504f,
@@ -1993,9 +1830,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("26b4b359-c3b1-4671-a389-dd1170bb1ac8"),
+                            Id = new Guid("6f694baf-f781-467b-bb4c-d3658722b518"),
                             Altitude = 2291,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.59866f,
@@ -2005,9 +1841,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a3e7b20a-928c-47ec-bdde-190ffd10ed13"),
+                            Id = new Guid("6e3a6e52-311d-4bf1-a7bd-7bc5e2b82e83"),
                             Altitude = 401,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.78866f,
@@ -2017,9 +1852,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("6f694baf-f781-467b-bb4c-d3658722b518"),
+                            Id = new Guid("251fdead-2366-4566-a0e2-a3b30f13d59c"),
                             Altitude = 2173,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = true,
                             Latitude = 42.70782f,
@@ -2029,9 +1863,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("6e3a6e52-311d-4bf1-a7bd-7bc5e2b82e83"),
+                            Id = new Guid("4fcee297-2bc0-4334-b73f-c51a8cc9133f"),
                             Altitude = 2905,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.60175f,
@@ -2041,9 +1874,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("251fdead-2366-4566-a0e2-a3b30f13d59c"),
+                            Id = new Guid("ae835970-b3c0-4cd6-abdf-7b48f9afa5ee"),
                             Altitude = 574,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.86286f,
@@ -2053,9 +1885,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("4fcee297-2bc0-4334-b73f-c51a8cc9133f"),
+                            Id = new Guid("2775a152-e2e9-478c-b4c3-72a49bb5298c"),
                             Altitude = 1133,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.59999f,
@@ -2065,9 +1896,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("ae835970-b3c0-4cd6-abdf-7b48f9afa5ee"),
+                            Id = new Guid("3d13b5bd-6fdb-47f2-8158-bff8e7f323d8"),
                             Altitude = 464,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.96305f,
@@ -2077,9 +1907,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("2775a152-e2e9-478c-b4c3-72a49bb5298c"),
+                            Id = new Guid("2a53dd84-ec8d-4920-979b-ec68b961d410"),
                             Altitude = 1104,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.1466f,
@@ -2089,9 +1918,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("3d13b5bd-6fdb-47f2-8158-bff8e7f323d8"),
+                            Id = new Guid("9daa5b6d-5712-49e4-8fd5-2ebef9678e1d"),
                             Altitude = 2518,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.78526f,
@@ -2101,9 +1929,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("2a53dd84-ec8d-4920-979b-ec68b961d410"),
+                            Id = new Guid("2faaf23f-65da-4208-898c-36caf7710b3b"),
                             Altitude = 762,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.97656f,
@@ -2113,9 +1940,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9daa5b6d-5712-49e4-8fd5-2ebef9678e1d"),
+                            Id = new Guid("b1c0d2e1-fcae-421a-9a06-0390ff03fba0"),
                             Altitude = 1074,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.26878f,
@@ -2125,9 +1951,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("2faaf23f-65da-4208-898c-36caf7710b3b"),
+                            Id = new Guid("02efb02b-f3df-4ee1-ab8e-696e8f3c9909"),
                             Altitude = 2781,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.50893f,
@@ -2137,9 +1962,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("b1c0d2e1-fcae-421a-9a06-0390ff03fba0"),
+                            Id = new Guid("8268e8d0-e7dc-4768-94d9-e073d90ed716"),
                             Altitude = 707,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.91853f,
@@ -2149,9 +1973,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("02efb02b-f3df-4ee1-ab8e-696e8f3c9909"),
+                            Id = new Guid("d37ec0c0-f4fd-4d92-81a2-024b6230735a"),
                             Altitude = 264,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.64222f,
@@ -2163,7 +1986,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("0caf5823-2cef-4439-8834-cd097a8478f9"),
                             Altitude = 2890,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.6031f,
@@ -2175,7 +1997,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("ac261ff9-8bd4-4f03-a7db-55c27da5afd5"),
                             Altitude = 963,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.09578f,
@@ -2187,7 +2008,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("b9a64d0c-94f4-4b5b-a77a-ce70c70fe0f5"),
                             Altitude = 2883,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.49011f,
@@ -2199,7 +2019,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("83da1893-5afb-43b9-946f-8e8308828759"),
                             Altitude = 2760,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.44995f,
@@ -2211,7 +2030,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("4130d5a7-ddd9-4b98-93bc-5fe69930a7cb"),
                             Altitude = 753,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 40.89858f,
@@ -2223,7 +2041,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("c4470810-955c-47f0-9673-2f9d52bdfea2"),
                             Altitude = 591,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.88577f,
@@ -2235,7 +2052,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("4bfef8c6-81b2-42d4-8446-fb79bedbdd7e"),
                             Altitude = 2861,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.42465f,
@@ -2247,7 +2063,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("3bb097e7-4058-41c7-9a82-13c7f6bf82f2"),
                             Altitude = 947,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.89629f,
@@ -2259,7 +2074,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("4c5341eb-9847-4f94-9e8e-4d445fe4b379"),
                             Altitude = 1889,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = true,
                             Latitude = 42.31686f,
@@ -2271,7 +2085,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("00948c5b-ffcd-4532-b7bd-6eb7436e5461"),
                             Altitude = 287,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.60888f,
@@ -2283,7 +2096,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("41b090fa-0281-41bf-a833-e1ceae3f3ddf"),
                             Altitude = 1543,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.2202f,
@@ -2295,7 +2107,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("3929ebd1-39c1-4330-a76d-19e9b6620086"),
                             Altitude = 2387,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.1848f,
@@ -2307,7 +2118,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("ddd6797a-4c07-4616-9c3f-ca2eb60ffb77"),
                             Altitude = 1523,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.21453f,
@@ -2319,7 +2129,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("bdb6bb65-7306-4e5d-8f4a-3b4eaccb72bf"),
                             Altitude = 381,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.32295f,
@@ -2331,7 +2140,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("ddcb08b4-23be-4f83-b78c-a71461227bee"),
                             Altitude = 1675,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = true,
                             Latitude = 42.03986f,
@@ -2343,7 +2151,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("e961b51b-1828-4e2e-81c1-5ba557adafdf"),
                             Altitude = 2276,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = true,
                             Latitude = 42.3063f,
@@ -2355,7 +2162,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("f7726c56-11de-4156-b4a3-1cfa5b9b3981"),
                             Altitude = 2834,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.52778f,
@@ -2365,9 +2171,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("afa877f2-d093-43b3-9a6b-b9a3273dd300"),
+                            Id = new Guid("c9464b72-b5f1-4298-afc3-1189bbda771b"),
                             Altitude = 2780,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.60918f,
@@ -2377,9 +2182,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c9464b72-b5f1-4298-afc3-1189bbda771b"),
+                            Id = new Guid("91760181-6a70-49ec-9029-e59b8f74be4e"),
                             Altitude = 2934,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.65746f,
@@ -2389,9 +2193,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("91760181-6a70-49ec-9029-e59b8f74be4e"),
+                            Id = new Guid("f4f9bce0-c193-4fa8-868e-b71f10ad06a6"),
                             Altitude = 2546,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.66111f,
@@ -2401,9 +2204,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f4f9bce0-c193-4fa8-868e-b71f10ad06a6"),
+                            Id = new Guid("a7856a26-5bad-4d71-a6c6-f2dd0df47957"),
                             Altitude = 2732,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.63091f,
@@ -2413,9 +2215,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a7856a26-5bad-4d71-a6c6-f2dd0df47957"),
+                            Id = new Guid("ead9415c-b246-48d7-89e7-a2fff28e5194"),
                             Altitude = 2965,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.65658f,
@@ -2425,9 +2226,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("ead9415c-b246-48d7-89e7-a2fff28e5194"),
+                            Id = new Guid("3af6b127-6e57-431d-8d18-d3978be6af68"),
                             Altitude = 2805,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.61482f,
@@ -2437,9 +2237,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("3af6b127-6e57-431d-8d18-d3978be6af68"),
+                            Id = new Guid("34cb141b-ea0e-4595-b636-55cc3c0a4565"),
                             Altitude = 2853,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.71197f,
@@ -2449,9 +2248,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("34cb141b-ea0e-4595-b636-55cc3c0a4565"),
+                            Id = new Guid("260ab610-f99c-41dd-97e4-a322d597bb30"),
                             Altitude = 2721,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.78778f,
@@ -2461,9 +2259,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("260ab610-f99c-41dd-97e4-a322d597bb30"),
+                            Id = new Guid("c9d2338e-7aa4-4651-89c9-c0ccdbe3d1c5"),
                             Altitude = 2570,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.72431f,
@@ -2473,9 +2270,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c9d2338e-7aa4-4651-89c9-c0ccdbe3d1c5"),
+                            Id = new Guid("4761f041-c133-4b52-814f-82b774607536"),
                             Altitude = 2732,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.44176f,
@@ -2485,9 +2281,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("4761f041-c133-4b52-814f-82b774607536"),
+                            Id = new Guid("80e2c7f7-112a-43a8-b9c7-5f87f64f7798"),
                             Altitude = 3029,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.59138f,
@@ -2497,9 +2292,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("80e2c7f7-112a-43a8-b9c7-5f87f64f7798"),
+                            Id = new Guid("3bc99aa0-0a30-4629-b024-c6fed8a5837c"),
                             Altitude = 2958,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.58524f,
@@ -2509,9 +2303,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("3bc99aa0-0a30-4629-b024-c6fed8a5837c"),
+                            Id = new Guid("47dadff0-4614-44ce-984b-d9cdae410683"),
                             Altitude = 2604,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.28146f,
@@ -2521,9 +2314,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("47dadff0-4614-44ce-984b-d9cdae410683"),
+                            Id = new Guid("fc14d57c-eb4a-40ac-be03-3b60757ab146"),
                             Altitude = 2772,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.47294f,
@@ -2533,9 +2325,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("fc14d57c-eb4a-40ac-be03-3b60757ab146"),
+                            Id = new Guid("150d8b48-a43c-47bf-817e-7ca97da738bb"),
                             Altitude = 2782,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.71274f,
@@ -2545,9 +2336,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("150d8b48-a43c-47bf-817e-7ca97da738bb"),
+                            Id = new Guid("cb6b357b-faf4-4f5e-99ee-c489f9e5e46d"),
                             Altitude = 2903,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.64972f,
@@ -2557,9 +2347,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("cb6b357b-faf4-4f5e-99ee-c489f9e5e46d"),
+                            Id = new Guid("9f0c0b9f-fb5c-41f5-9991-f9cd43cd8035"),
                             Altitude = 2738,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.53635f,
@@ -2569,9 +2358,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9f0c0b9f-fb5c-41f5-9991-f9cd43cd8035"),
+                            Id = new Guid("9bdb76a1-0cd9-4448-8896-489069ef4dbf"),
                             Altitude = 2461,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.502f,
@@ -2581,9 +2369,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9bdb76a1-0cd9-4448-8896-489069ef4dbf"),
+                            Id = new Guid("f52ef253-c5ec-4384-b65f-3a7db66d1472"),
                             Altitude = 2859,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.59753f,
@@ -2593,9 +2380,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("00b5ece7-267c-47a5-8822-be4edcf72e7f"),
+                            Id = new Guid("d5054b7d-4865-4156-a588-69cfa66cd764"),
                             Altitude = 492,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.1399f,
@@ -2605,9 +2391,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("312e5673-82c1-4666-acc9-3c197bb204ba"),
+                            Id = new Guid("84a8b708-4402-4ad2-8593-10111ddff15e"),
                             Altitude = 2549,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.49918f,
@@ -2617,9 +2402,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("08b3ff3d-6c96-4b6f-ba26-b9430e5cb2f9"),
+                            Id = new Guid("c2e93cb4-0915-4e39-ba8b-77cdb230cc97"),
                             Altitude = 2915,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.6087f,
@@ -2629,9 +2413,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("1fa96340-9815-4c7d-995b-074318004012"),
+                            Id = new Guid("4477595b-d2e5-40db-a45c-110a505eebc3"),
                             Altitude = 2870,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.42393f,
@@ -2641,9 +2424,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f52ef253-c5ec-4384-b65f-3a7db66d1472"),
+                            Id = new Guid("00b5ece7-267c-47a5-8822-be4edcf72e7f"),
                             Altitude = 2760,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.61916f,
@@ -2653,9 +2435,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d5054b7d-4865-4156-a588-69cfa66cd764"),
+                            Id = new Guid("312e5673-82c1-4666-acc9-3c197bb204ba"),
                             Altitude = 2909,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.52448f,
@@ -2665,9 +2446,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("84a8b708-4402-4ad2-8593-10111ddff15e"),
+                            Id = new Guid("08b3ff3d-6c96-4b6f-ba26-b9430e5cb2f9"),
                             Altitude = 2983,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.57471f,
@@ -2677,9 +2457,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c2e93cb4-0915-4e39-ba8b-77cdb230cc97"),
+                            Id = new Guid("1fa96340-9815-4c7d-995b-074318004012"),
                             Altitude = 2493,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.66158f,
@@ -2689,9 +2468,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("4477595b-d2e5-40db-a45c-110a505eebc3"),
+                            Id = new Guid("db87eb6e-1b8a-4d74-93cc-a37a922990e1"),
                             Altitude = 2912,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.62553f,
@@ -2701,9 +2479,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("db87eb6e-1b8a-4d74-93cc-a37a922990e1"),
+                            Id = new Guid("f7ba76ae-435f-48c5-a614-e1a59640181c"),
                             Altitude = 2686,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.44689f,
@@ -2713,9 +2490,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f7ba76ae-435f-48c5-a614-e1a59640181c"),
+                            Id = new Guid("0b7a0f2f-3bbf-4ba0-abdf-d763112b3333"),
                             Altitude = 2517,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.50573f,
@@ -2725,9 +2501,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("0b7a0f2f-3bbf-4ba0-abdf-d763112b3333"),
+                            Id = new Guid("7644f6bc-2f15-4c27-b9e2-1cc2fd452d31"),
                             Altitude = 2663,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.72005f,
@@ -2737,9 +2512,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("7644f6bc-2f15-4c27-b9e2-1cc2fd452d31"),
+                            Id = new Guid("ed79fec3-4525-4fe3-aaad-cd7e4e175e5c"),
                             Altitude = 2857,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.53073f,
@@ -2749,9 +2523,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("ed79fec3-4525-4fe3-aaad-cd7e4e175e5c"),
+                            Id = new Guid("6262e97b-7539-48ff-8ac3-3f3292c72a63"),
                             Altitude = 2915,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.60373f,
@@ -2761,9 +2534,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("6262e97b-7539-48ff-8ac3-3f3292c72a63"),
+                            Id = new Guid("e1a9c73d-9428-4dd8-b028-5ba547200860"),
                             Altitude = 2496,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.75038f,
@@ -2773,9 +2545,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e1a9c73d-9428-4dd8-b028-5ba547200860"),
+                            Id = new Guid("1d2f75d9-eed0-4f44-8b5c-80d89c4227f3"),
                             Altitude = 2766,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.71894f,
@@ -2785,9 +2556,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("1d2f75d9-eed0-4f44-8b5c-80d89c4227f3"),
+                            Id = new Guid("ac424849-5588-43c3-aa56-5efd8a0b547f"),
                             Altitude = 2983,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.54054f,
@@ -2797,9 +2567,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("ac424849-5588-43c3-aa56-5efd8a0b547f"),
+                            Id = new Guid("e38433a7-6040-441e-8bd2-5682dbb77298"),
                             Altitude = 2656,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.68283f,
@@ -2809,9 +2578,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e38433a7-6040-441e-8bd2-5682dbb77298"),
+                            Id = new Guid("5a5afafc-39d3-4496-92c9-92f0240093ea"),
                             Altitude = 2639,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.69981f,
@@ -2821,9 +2589,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("5a5afafc-39d3-4496-92c9-92f0240093ea"),
+                            Id = new Guid("8c066db0-2bad-42e0-87d5-73f3c992dc22"),
                             Altitude = 2782,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.43222f,
@@ -2833,9 +2600,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("8c066db0-2bad-42e0-87d5-73f3c992dc22"),
+                            Id = new Guid("5c838b67-72ac-4e7d-9ba1-cefec694a628"),
                             Altitude = 2830,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.6079f,
@@ -2845,9 +2611,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("5c838b67-72ac-4e7d-9ba1-cefec694a628"),
+                            Id = new Guid("a3482fc0-9a77-4ae1-975a-b0ee1f42915d"),
                             Altitude = 994,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.47347f,
@@ -2857,9 +2622,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a3482fc0-9a77-4ae1-975a-b0ee1f42915d"),
+                            Id = new Guid("5971b05f-201e-4642-96c7-03a478c02aeb"),
                             Altitude = 2789,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.51445f,
@@ -2869,9 +2633,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("5971b05f-201e-4642-96c7-03a478c02aeb"),
+                            Id = new Guid("8a5d28b3-223f-4d11-8ac3-b007e78fe2cc"),
                             Altitude = 2889,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.58747f,
@@ -2881,9 +2644,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("8a5d28b3-223f-4d11-8ac3-b007e78fe2cc"),
+                            Id = new Guid("03d105bf-db3e-44a3-ae52-7e7fafe4aba1"),
                             Altitude = 3073,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.66871f,
@@ -2893,9 +2655,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("03d105bf-db3e-44a3-ae52-7e7fafe4aba1"),
+                            Id = new Guid("14d9f23c-dc6d-4ca2-acdc-cd0a2c84c6ea"),
                             Altitude = 2950,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.55495f,
@@ -2905,9 +2666,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("14d9f23c-dc6d-4ca2-acdc-cd0a2c84c6ea"),
+                            Id = new Guid("687eed42-c627-4a87-8a8f-3cc73ae843c8"),
                             Altitude = 2851,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.69065f,
@@ -2917,9 +2677,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("687eed42-c627-4a87-8a8f-3cc73ae843c8"),
+                            Id = new Guid("e63ed590-52be-4aeb-9a40-3c0ef99d0bcc"),
                             Altitude = 2860,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.6068f,
@@ -2929,9 +2688,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e63ed590-52be-4aeb-9a40-3c0ef99d0bcc"),
+                            Id = new Guid("cbfe22ba-e880-4836-8253-0e346ac95fda"),
                             Altitude = 2734,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.58374f,
@@ -2941,9 +2699,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("cbfe22ba-e880-4836-8253-0e346ac95fda"),
+                            Id = new Guid("e3cb63cd-f50d-4a55-a7c1-d6cd57fb47bb"),
                             Altitude = 816,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.6553f,
@@ -2953,9 +2710,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e3cb63cd-f50d-4a55-a7c1-d6cd57fb47bb"),
+                            Id = new Guid("c72431b1-a4c6-4582-9415-1666722c4d24"),
                             Altitude = 2137,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.51318f,
@@ -2965,9 +2721,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c72431b1-a4c6-4582-9415-1666722c4d24"),
+                            Id = new Guid("01325578-2fd6-481d-bfd9-b85f80b33496"),
                             Altitude = 2715,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.53151f,
@@ -2977,9 +2732,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("01325578-2fd6-481d-bfd9-b85f80b33496"),
+                            Id = new Guid("afa877f2-d093-43b3-9a6b-b9a3273dd300"),
                             Altitude = 2862,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.50812f,
@@ -2991,7 +2745,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("96f0d5e2-1880-472a-9bd0-8779389ab3a0"),
                             Altitude = 2822,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.51725f,
@@ -3003,7 +2756,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("5f8d5754-7382-48b7-9b5c-febdcae62c18"),
                             Altitude = 2585,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.56519f,
@@ -3015,7 +2767,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("b116b575-8d4a-420d-a76d-a625a4f218bf"),
                             Altitude = 2886,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.53375f,
@@ -3025,9 +2776,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("141f495e-d520-4027-956a-52fde724c25b"),
+                            Id = new Guid("8f4dc3d1-9222-4efc-bd01-6ae80eda7f1a"),
                             Altitude = 3144,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.66694f,
@@ -3037,9 +2787,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("8f4dc3d1-9222-4efc-bd01-6ae80eda7f1a"),
+                            Id = new Guid("141f495e-d520-4027-956a-52fde724c25b"),
                             Altitude = 2753,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.45294f,
@@ -3051,7 +2800,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("19edbd0e-b3e5-4030-91f6-dee636db8900"),
                             Altitude = 2903,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.625f,
@@ -3063,7 +2811,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("5dd19e23-8c52-4b31-b187-41b97db94eb3"),
                             Altitude = 991,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.28789f,
@@ -3075,7 +2822,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("d7caf9db-967a-4b80-87c1-af89488081be"),
                             Altitude = 2903,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.60667f,
@@ -3087,7 +2833,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("49cc1b6b-94be-41c1-ac35-c8447f89088b"),
                             Altitude = 459,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.75341f,
@@ -3099,7 +2844,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("ae682039-da93-4c72-ba89-628111711f12"),
                             Altitude = 1281,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.43206f,
@@ -3111,7 +2855,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("163ec71f-784c-4218-b033-2cd1ec3dcb86"),
                             Altitude = 2445,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.23563f,
@@ -3123,7 +2866,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("14fcf911-51dd-45c0-92e9-406720f93fe4"),
                             Altitude = 2506,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.23994f,
@@ -3133,9 +2875,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f64bddcc-fd7d-4fdf-8a5c-17829d5acc65"),
+                            Id = new Guid("c19853df-afe0-4799-980d-8376045b1760"),
                             Altitude = 2226,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.47118f,
@@ -3145,9 +2886,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c19853df-afe0-4799-980d-8376045b1760"),
+                            Id = new Guid("49e90b5f-4740-41cd-94ab-f0a8cb0243b3"),
                             Altitude = 2085,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.5607f,
@@ -3157,9 +2897,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("49e90b5f-4740-41cd-94ab-f0a8cb0243b3"),
+                            Id = new Guid("dde2e31a-a5de-4f56-9b2d-d7be5fc61455"),
                             Altitude = 2778,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.6272f,
@@ -3169,9 +2908,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("dde2e31a-a5de-4f56-9b2d-d7be5fc61455"),
+                            Id = new Guid("bf7cea58-250f-4696-8341-8aa8b6e19bef"),
                             Altitude = 2870,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.56599f,
@@ -3181,9 +2919,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("bf7cea58-250f-4696-8341-8aa8b6e19bef"),
+                            Id = new Guid("f64bddcc-fd7d-4fdf-8a5c-17829d5acc65"),
                             Altitude = 1692,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = true,
                             Latitude = 42.2692f,
@@ -3195,7 +2932,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("31923123-f7a5-42ed-8ee8-c000fa0225b2"),
                             Altitude = 1718,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.58848f,
@@ -3207,7 +2943,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("9b6b1d72-4cda-4171-bee3-a6df7c36506f"),
                             Altitude = 519,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.75733f,
@@ -3219,7 +2954,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("04122ef7-a059-45bd-9177-8faf60117554"),
                             Altitude = 303,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.4703f,
@@ -3231,7 +2965,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("d0328b09-c8a9-4fb1-98e2-cc532e95a482"),
                             Altitude = 706,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.02776f,
@@ -3243,7 +2976,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("6cb944a2-2bf4-4abe-8451-bb4b4d302547"),
                             Altitude = 499,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.57564f,
@@ -3255,7 +2987,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("c6cb4279-67c3-479d-817d-85e796a92480"),
                             Altitude = 315,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.13284f,
@@ -3267,7 +2998,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("ae97dc66-a120-4868-8e3b-a235f3138b68"),
                             Altitude = 1229,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.13974f,
@@ -3279,7 +3009,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("1ff192d5-8925-4066-934e-c0a040e1839b"),
                             Altitude = 1488,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.13767f,
@@ -3291,7 +3020,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("b01872ab-de48-4ccf-9715-5dd0ebd9a171"),
                             Altitude = 626,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.60479f,
@@ -3303,7 +3031,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("ad6b0013-94f0-433c-bd4c-8f636e4c322c"),
                             Altitude = 653,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.40808f,
@@ -3315,7 +3042,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("a529bab3-41d4-4c8e-80ca-da99ebc13b24"),
                             Altitude = 533,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.88873f,
@@ -3325,9 +3051,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("31a3ab32-1212-4a81-b3c6-32fd453c09a1"),
+                            Id = new Guid("ee7ffd76-5d48-4cbd-99d0-262780cedf9e"),
                             Altitude = 717,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.22026f,
@@ -3337,9 +3062,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("876332ab-ca30-474d-8cfe-6562d81e2e57"),
+                            Id = new Guid("b7ae97b7-c657-4988-946d-e4035b5cd445"),
                             Altitude = 754,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.42776f,
@@ -3349,9 +3073,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("813ec322-c7b6-4093-810b-198b463a86fd"),
+                            Id = new Guid("f1049deb-eab1-4024-9df5-84a181590b52"),
                             Altitude = 606,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.39268f,
@@ -3361,9 +3084,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e2207652-cc6a-4885-aad7-2f2f95e14050"),
+                            Id = new Guid("5c1ca8db-77b0-487c-8190-a5669c990ba0"),
                             Altitude = 450,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.41219f,
@@ -3373,9 +3095,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("ee7ffd76-5d48-4cbd-99d0-262780cedf9e"),
+                            Id = new Guid("8bad6113-718c-4ee5-ab22-55c1a2e86131"),
                             Altitude = 1056,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.29431f,
@@ -3385,9 +3106,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("b7ae97b7-c657-4988-946d-e4035b5cd445"),
+                            Id = new Guid("79b9dcb8-9633-4aad-97b7-c16047b7d819"),
                             Altitude = 207,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.43521f,
@@ -3397,9 +3117,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f1049deb-eab1-4024-9df5-84a181590b52"),
+                            Id = new Guid("55bd9768-40da-4251-a120-13abebfe5221"),
                             Altitude = 2826,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.58356f,
@@ -3409,9 +3128,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("5c1ca8db-77b0-487c-8190-a5669c990ba0"),
+                            Id = new Guid("52aedd06-cb0c-44c3-a08e-9d9fcdc5f25b"),
                             Altitude = 2547,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.36177f,
@@ -3421,9 +3139,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("8bad6113-718c-4ee5-ab22-55c1a2e86131"),
+                            Id = new Guid("11ac9921-4549-4d0a-96ae-98d89f6a47eb"),
                             Altitude = 2673,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.56914f,
@@ -3433,9 +3150,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("79b9dcb8-9633-4aad-97b7-c16047b7d819"),
+                            Id = new Guid("ff1df0df-4546-4ebd-a3c5-6bc502b4eef4"),
                             Altitude = 1010,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.2495f,
@@ -3445,9 +3161,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("55bd9768-40da-4251-a120-13abebfe5221"),
+                            Id = new Guid("be6c52d8-9791-4862-9f07-09badb90e40a"),
                             Altitude = 2624,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.47778f,
@@ -3457,9 +3172,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("52aedd06-cb0c-44c3-a08e-9d9fcdc5f25b"),
+                            Id = new Guid("f4659895-2672-4237-bcac-5c3b29fe8a09"),
                             Altitude = 667,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.90175f,
@@ -3469,9 +3183,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("39d16596-a9f9-4480-9743-9ce4ca17bf03"),
+                            Id = new Guid("f9f509a8-3930-473b-a845-15c2ccf9b2bc"),
                             Altitude = 464,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.28387f,
@@ -3481,9 +3194,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("2c979687-1c13-4bd3-bb23-cfe760ae42f2"),
+                            Id = new Guid("92ef9a82-82c1-48bb-bebd-1db82e8fc77b"),
                             Altitude = 463,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.28051f,
@@ -3493,9 +3205,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("1bb8099c-bd28-4dce-ae17-4441fc0a925b"),
+                            Id = new Guid("55c4d224-ac45-48e5-bc62-d5b9e26155a1"),
                             Altitude = 1778,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.51468f,
@@ -3505,9 +3216,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("11ac9921-4549-4d0a-96ae-98d89f6a47eb"),
+                            Id = new Guid("7d6ded5a-3cd8-43e8-a66f-abba982f28c2"),
                             Altitude = 614,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.05344f,
@@ -3517,9 +3227,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("ff1df0df-4546-4ebd-a3c5-6bc502b4eef4"),
+                            Id = new Guid("ae5e61c7-688e-46a0-b29f-be4892d1c913"),
                             Altitude = 1010,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.8758f,
@@ -3529,9 +3238,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("be6c52d8-9791-4862-9f07-09badb90e40a"),
+                            Id = new Guid("c06c85e5-709b-41a9-b939-24ce43e116de"),
                             Altitude = 2403,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.45461f,
@@ -3541,9 +3249,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f4659895-2672-4237-bcac-5c3b29fe8a09"),
+                            Id = new Guid("bbc0d51c-fbac-41fc-a3fb-9267cf8bae02"),
                             Altitude = 2763,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.61721f,
@@ -3553,9 +3260,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f9f509a8-3930-473b-a845-15c2ccf9b2bc"),
+                            Id = new Guid("39d16596-a9f9-4480-9743-9ce4ca17bf03"),
                             Altitude = 672,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.31511f,
@@ -3565,9 +3271,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("92ef9a82-82c1-48bb-bebd-1db82e8fc77b"),
+                            Id = new Guid("2c979687-1c13-4bd3-bb23-cfe760ae42f2"),
                             Altitude = 668,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.62921f,
@@ -3577,9 +3282,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("55c4d224-ac45-48e5-bc62-d5b9e26155a1"),
+                            Id = new Guid("dea5cf52-e2f1-48d9-b56a-1786daa1decf"),
                             Altitude = 740,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.98101f,
@@ -3589,9 +3293,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("7d6ded5a-3cd8-43e8-a66f-abba982f28c2"),
+                            Id = new Guid("39517e2a-ad0e-485a-81fe-183ebaa824d2"),
                             Altitude = 1057,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.36073f,
@@ -3601,9 +3304,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("ae5e61c7-688e-46a0-b29f-be4892d1c913"),
+                            Id = new Guid("f79bc4c1-a719-4a53-9344-468ab97be564"),
                             Altitude = 2671,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.60485f,
@@ -3613,9 +3315,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c06c85e5-709b-41a9-b939-24ce43e116de"),
+                            Id = new Guid("6425a188-1955-4f12-b5d9-0a646ab79aa8"),
                             Altitude = 534,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.31932f,
@@ -3625,9 +3326,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("bbc0d51c-fbac-41fc-a3fb-9267cf8bae02"),
+                            Id = new Guid("66d43ccd-43e1-44ab-85cb-c44ad5a05881"),
                             Altitude = 2370,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.62162f,
@@ -3637,9 +3337,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("dea5cf52-e2f1-48d9-b56a-1786daa1decf"),
+                            Id = new Guid("9f5f192c-009b-495a-a133-4f4cc8992ff2"),
                             Altitude = 1976,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.36338f,
@@ -3649,9 +3348,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("39517e2a-ad0e-485a-81fe-183ebaa824d2"),
+                            Id = new Guid("1bb8099c-bd28-4dce-ae17-4441fc0a925b"),
                             Altitude = 1344,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.10902f,
@@ -3661,9 +3359,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f79bc4c1-a719-4a53-9344-468ab97be564"),
+                            Id = new Guid("0c45d0d1-72f1-49f1-b56c-1a6268f1b2e7"),
                             Altitude = 1391,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.32449f,
@@ -3673,9 +3370,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("6425a188-1955-4f12-b5d9-0a646ab79aa8"),
+                            Id = new Guid("219b779e-696a-48c2-927a-bb61295763c6"),
                             Altitude = 417,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.78044f,
@@ -3685,9 +3381,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("66d43ccd-43e1-44ab-85cb-c44ad5a05881"),
+                            Id = new Guid("1e589668-834d-4b5b-90bd-b930112ac8f6"),
                             Altitude = 2211,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = true,
                             Latitude = 42.15092f,
@@ -3697,9 +3392,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9f5f192c-009b-495a-a133-4f4cc8992ff2"),
+                            Id = new Guid("8d16a126-2a0d-48e6-afd4-c2eaa949ed00"),
                             Altitude = 2099,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.50877f,
@@ -3709,9 +3403,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("0c45d0d1-72f1-49f1-b56c-1a6268f1b2e7"),
+                            Id = new Guid("8a4624ce-c771-4ab5-83d9-a8345a782c25"),
                             Altitude = 1025,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.00172f,
@@ -3721,9 +3414,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("219b779e-696a-48c2-927a-bb61295763c6"),
+                            Id = new Guid("9c05b0bc-951d-41ec-bcc5-3aa3b54f93f9"),
                             Altitude = 409,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.24371f,
@@ -3733,9 +3425,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("1e589668-834d-4b5b-90bd-b930112ac8f6"),
+                            Id = new Guid("7291c852-99e3-45b0-92e2-417521d1ec59"),
                             Altitude = 1015,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.49202f,
@@ -3745,9 +3436,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("8d16a126-2a0d-48e6-afd4-c2eaa949ed00"),
+                            Id = new Guid("4bec1d21-ed18-4331-9d1d-c0a255e2d420"),
                             Altitude = 733,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.63724f,
@@ -3757,9 +3447,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("8a4624ce-c771-4ab5-83d9-a8345a782c25"),
+                            Id = new Guid("6c2d31c3-149c-44fe-b7a2-456421dbf0dd"),
                             Altitude = 2731,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.4921f,
@@ -3769,9 +3458,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9c05b0bc-951d-41ec-bcc5-3aa3b54f93f9"),
+                            Id = new Guid("31a3ab32-1212-4a81-b3c6-32fd453c09a1"),
                             Altitude = 832,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.95963f,
@@ -3781,9 +3469,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("7291c852-99e3-45b0-92e2-417521d1ec59"),
+                            Id = new Guid("876332ab-ca30-474d-8cfe-6562d81e2e57"),
                             Altitude = 2470,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.60482f,
@@ -3793,9 +3480,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("4bec1d21-ed18-4331-9d1d-c0a255e2d420"),
+                            Id = new Guid("813ec322-c7b6-4093-810b-198b463a86fd"),
                             Altitude = 432,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.30107f,
@@ -3805,9 +3491,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("6c2d31c3-149c-44fe-b7a2-456421dbf0dd"),
+                            Id = new Guid("e2207652-cc6a-4885-aad7-2f2f95e14050"),
                             Altitude = 832,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.42801f,
@@ -3819,7 +3504,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("941882b6-7278-4779-b3b0-b95904c8264b"),
                             Altitude = 2013,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.2843f,
@@ -3831,7 +3515,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("2169f9a4-f731-4315-8609-44e4ec63ba9e"),
                             Altitude = 1097,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.37529f,
@@ -3843,7 +3526,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("e61b27b4-e84b-4572-8238-d94c60bc74d3"),
                             Altitude = 551,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.30117f,
@@ -3855,7 +3537,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("b14a54fc-8533-48cb-968d-313351c9d2b9"),
                             Altitude = 325,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.77502f,
@@ -3867,7 +3548,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("54a5d7e8-626c-4e3a-a42b-3e5f995e8844"),
                             Altitude = 341,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.4513f,
@@ -3879,7 +3559,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("9039bc6f-030d-42c8-b0c1-8ae9a11d2f0e"),
                             Altitude = 1257,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 42.4821f,
@@ -3891,7 +3570,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("3f95b872-bdb9-4b1f-b355-8cea0a9d697d"),
                             Altitude = 2833,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.54935f,
@@ -3903,7 +3581,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("6c241448-2ad2-47c9-8c28-3e93467698cf"),
                             Altitude = 1300,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 42.28413f,
@@ -3915,7 +3592,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("e981fbc5-c7e1-4a15-a1fe-26ee5bee6d38"),
                             Altitude = 2842,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.5885f,
@@ -3927,7 +3603,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("c8671a52-4aa3-487d-8c64-cac737b8e8bb"),
                             Altitude = 1076,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.26631f,
@@ -3939,7 +3614,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("d36e343f-f1cf-410d-9765-9c4acc65295e"),
                             Altitude = 2810,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.61363f,
@@ -3951,7 +3625,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("054c43bb-cfda-45e5-91a2-625160466126"),
                             Altitude = 175,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.11244f,
@@ -3963,7 +3636,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("ebe7f5d3-1f33-4e65-89b4-1621bf880353"),
                             Altitude = 1938,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.13404f,
@@ -3975,7 +3647,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("6d83bbe4-3512-436b-9a11-7356bc635bca"),
                             Altitude = 468,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.36781f,
@@ -3987,7 +3658,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("bdc86522-1ca2-4d44-b558-18bd64633813"),
                             Altitude = 522,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.81393f,
@@ -3999,7 +3669,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("f2c5391c-f784-481c-be99-24663fbfbcfd"),
                             Altitude = 524,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.31533f,
@@ -4011,7 +3680,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("bf15a562-f705-4584-87c2-cfdad729db97"),
                             Altitude = 839,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.96354f,
@@ -4023,7 +3691,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("21f139c8-9e2e-4cf3-8223-642a5c411ce1"),
                             Altitude = 808,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.70267f,
@@ -4035,7 +3702,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("1c683c0b-e5dd-4bea-81af-a5af49e105f6"),
                             Altitude = 2409,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.30048f,
@@ -4047,7 +3713,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("06ee1f8d-e81e-4483-95e6-6e5e75e66e4d"),
                             Altitude = 2910,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.38327f,
@@ -4059,7 +3724,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("48de7707-a3f3-4f9e-81da-2f56f288ce86"),
                             Altitude = 2915,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.48758f,
@@ -4071,7 +3735,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("2bfeed4b-932b-4ee2-a581-4237d2bee12f"),
                             Altitude = 1514,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = true,
                             Latitude = 42.12518f,
@@ -4083,7 +3746,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("79c7d2a1-2404-4a75-8a5c-60e7d09da07e"),
                             Altitude = 1027,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.11507f,
@@ -4095,7 +3757,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("7264c946-f38b-4bb3-89d7-200fa0ce7a80"),
                             Altitude = 524,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.66788f,
@@ -4107,7 +3768,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("d1c687c4-9ecd-44e0-ba61-0212114fafde"),
                             Altitude = 2504,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.6552f,
@@ -4119,7 +3779,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("aaab65d9-adaf-4509-b06a-660e5af24afb"),
                             Altitude = 770,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.68215f,
@@ -4131,7 +3790,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("e57e9249-2585-4a58-ae4c-c10d63de3b65"),
                             Altitude = 3014,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.5857f,
@@ -4141,9 +3799,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("05047290-54ba-4f83-b784-30d97eb7fa6c"),
+                            Id = new Guid("aada96b5-4865-4b09-b80f-6446a7ed2d76"),
                             Altitude = 2885,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.6104f,
@@ -4153,9 +3810,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("8faa4805-3912-42b0-a710-4ce7e596f0ab"),
+                            Id = new Guid("4df2ff5b-6307-471f-be59-6adf9a6c1ea4"),
                             Altitude = 1014,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.9498f,
@@ -4165,9 +3821,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("aada96b5-4865-4b09-b80f-6446a7ed2d76"),
+                            Id = new Guid("f3d77115-f53f-429b-9207-72f5f098344a"),
                             Altitude = 1092,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 40.92773f,
@@ -4177,9 +3832,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("4df2ff5b-6307-471f-be59-6adf9a6c1ea4"),
+                            Id = new Guid("3e71fed6-ed72-4803-8712-89464f6d9578"),
                             Altitude = 495,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.38871f,
@@ -4189,9 +3843,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f3d77115-f53f-429b-9207-72f5f098344a"),
+                            Id = new Guid("357b63a4-49c5-44e9-96de-c2642f7e5582"),
                             Altitude = 1022,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.3553f,
@@ -4201,9 +3854,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("3e71fed6-ed72-4803-8712-89464f6d9578"),
+                            Id = new Guid("3b677d9d-f2a1-450d-961d-fea95de3b6e1"),
                             Altitude = 923,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.34143f,
@@ -4213,9 +3865,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("357b63a4-49c5-44e9-96de-c2642f7e5582"),
+                            Id = new Guid("05047290-54ba-4f83-b784-30d97eb7fa6c"),
                             Altitude = 551,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.01247f,
@@ -4225,9 +3876,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("3b677d9d-f2a1-450d-961d-fea95de3b6e1"),
+                            Id = new Guid("8faa4805-3912-42b0-a710-4ce7e596f0ab"),
                             Altitude = 1062,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.30563f,
@@ -4239,7 +3889,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("c47cdf92-1375-4a4e-95cf-91ebbfb0aa7e"),
                             Altitude = 659,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.05885f,
@@ -4251,7 +3900,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("c1723748-9bb8-420b-a0a4-231074df4f3e"),
                             Altitude = 2952,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.59137f,
@@ -4263,7 +3911,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("bdea8b16-e29e-4a04-b15e-6e709414b810"),
                             Altitude = 228,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.96032f,
@@ -4275,7 +3922,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("bf4d48ee-7c27-4f4c-a850-5c10b15df127"),
                             Altitude = 672,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.43826f,
@@ -4287,7 +3933,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("478db2ba-664a-43a2-bd7d-7a7020bb2591"),
                             Altitude = 1681,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.37122f,
@@ -4299,7 +3944,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("3625987a-31ca-4ea1-9dd9-6778064f4789"),
                             Altitude = 885,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.06528f,
@@ -4311,7 +3955,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("09c8f3c9-5dbe-4071-868f-016573e05634"),
                             Altitude = 1630,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.19807f,
@@ -4323,7 +3966,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("d41efe2d-0e34-4e07-9f87-4a94826b0613"),
                             Altitude = 1415,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.09666f,
@@ -4335,7 +3977,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("17dacdfd-428b-460e-9ef0-4ccaee105ab3"),
                             Altitude = 854,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.09126f,
@@ -4347,7 +3988,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("12736894-9c04-4a6e-9049-4eaf8e5d6475"),
                             Altitude = 2469,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = true,
                             Latitude = 42.65182f,
@@ -4359,7 +3999,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("fba5435e-b924-41a9-9d9a-4ef655717300"),
                             Altitude = 443,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.616f,
@@ -4371,7 +4010,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("12afa194-e971-45e1-873b-5af1c6b64db0"),
                             Altitude = 1480,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.30723f,
@@ -4383,7 +4021,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("e51bd03a-fd30-462c-8765-3a0ef6e5c52b"),
                             Altitude = 1235,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.42735f,
@@ -4395,7 +4032,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("afce425a-6324-40fc-a959-619f37de2677"),
                             Altitude = 2774,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.44633f,
@@ -4407,7 +4043,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("da56f491-e369-4aef-b8f7-089b3cd9ed9a"),
                             Altitude = 1451,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 42.42279f,
@@ -4419,7 +4054,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("355c4e97-243f-40c5-a1ae-50a1d25a3463"),
                             Altitude = 1153,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.10453f,
@@ -4431,7 +4065,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("01348901-5fbc-42a7-9dab-f6bd13a52161"),
                             Altitude = 2811,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.58779f,
@@ -4443,7 +4076,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("26f5d1f3-14aa-4570-91a5-0ee01837aef9"),
                             Altitude = 2020,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.43535f,
@@ -4455,7 +4087,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("83599546-f907-4de7-9ac5-5f04a402d17b"),
                             Altitude = 2506,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.42515f,
@@ -4467,7 +4098,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("075aec91-78df-4dc9-aa80-8c51482175fc"),
                             Altitude = 1163,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.28859f,
@@ -4479,7 +4109,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("eabb072f-b295-4697-9210-bedaf1ebae00"),
                             Altitude = 1870,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.20793f,
@@ -4491,7 +4120,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("a8a8c4d4-a446-40e0-ac76-fc91a3464cfd"),
                             Altitude = 1156,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.59578f,
@@ -4503,7 +4131,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("c200347e-924d-4658-b1d8-a4ec18c58e56"),
                             Altitude = 1299,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.12782f,
@@ -4515,7 +4142,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("9053f883-67b7-445d-a452-f705fe6c491a"),
                             Altitude = 1615,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.21519f,
@@ -4527,7 +4153,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("c4fa7598-1295-4454-b551-cf7e51ac45a2"),
                             Altitude = 2929,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.5984f,
@@ -4539,7 +4164,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("bcb45d0e-6d15-473b-ae64-dd13296e774c"),
                             Altitude = 1110,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.68511f,
@@ -4551,7 +4175,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("0a2d28a2-0009-42dc-8ac9-f2bedd810092"),
                             Altitude = 2088,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.31628f,
@@ -4563,7 +4186,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("d885357a-c238-4112-9285-d31188ecea26"),
                             Altitude = 907,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.13652f,
@@ -4575,7 +4197,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("aaac54ad-ac46-4456-afbe-730423a550b4"),
                             Altitude = 225,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.0554f,
@@ -4587,7 +4208,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("b3f5d469-5fff-49ea-9c75-40b28e2021aa"),
                             Altitude = 1239,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.07221f,
@@ -4599,7 +4219,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("968d26c0-e5d2-4027-a696-8ffb9c2b4a75"),
                             Altitude = 804,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.6945f,
@@ -4611,7 +4230,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("7d60850e-5b16-45a2-ab7b-2b477a9352bb"),
                             Altitude = 1187,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 42.00981f,
@@ -4623,7 +4241,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("4228595c-e6a6-47ff-aba8-0e311b8baaa6"),
                             Altitude = 1489,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.21158f,
@@ -4635,7 +4252,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("8499f766-3438-48c9-83fd-3dfa1c752554"),
                             Altitude = 621,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 40.99286f,
@@ -4647,7 +4263,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("c94a18f5-4ee0-4b76-9ebc-43b8c080868c"),
                             Altitude = 1017,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 40.90065f,
@@ -4659,7 +4274,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("8a09f62c-a97a-4e2a-ab59-9d1adf4ff3aa"),
                             Altitude = 852,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.88528f,
@@ -4671,7 +4285,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("a49d2916-e51b-421d-b4dc-62c71f017f04"),
                             Altitude = 1172,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.11926f,
@@ -4683,7 +4296,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("7274ee63-19fc-4aaa-bb23-b0201231d483"),
                             Altitude = 1361,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.30512f,
@@ -4695,7 +4307,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("62fe0f46-44ad-4a02-99fa-29b0c3aef6ed"),
                             Altitude = 1150,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.94874f,
@@ -4707,7 +4318,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("d82e7183-4850-4018-b9a8-b7398ce7d8cb"),
                             Altitude = 1351,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 42.18282f,
@@ -4719,7 +4329,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("13f5d565-ef4f-4e37-bb79-cd7d452cf15a"),
                             Altitude = 500,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.99244f,
@@ -4731,7 +4340,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("706087f0-2849-4ec0-9c00-a73825280f03"),
                             Altitude = 1068,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 42.08379f,
@@ -4743,7 +4351,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("85a53ee5-d709-4e07-a92c-2903eca41b5c"),
                             Altitude = 1236,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.60538f,
@@ -4755,7 +4362,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("73a1add0-4910-48e8-a6b2-f8228d999f06"),
                             Altitude = 1391,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.97781f,
@@ -4767,7 +4373,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("d086ed40-b9d2-47e7-9d5e-f6844e9ff2fb"),
                             Altitude = 1611,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.26493f,
@@ -4779,7 +4384,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("bb1b2e3b-d530-4778-bbd8-453f4d309d3e"),
                             Altitude = 522,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.62474f,
@@ -4791,7 +4395,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("c572026a-12c1-416f-94ae-5b1209a74364"),
                             Altitude = 859,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.01025f,
@@ -4803,7 +4406,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("9dc3f8ba-33ad-40e3-8897-4d6db87723ed"),
                             Altitude = 948,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.46572f,
@@ -4815,7 +4417,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("b3e6e22e-c042-430a-9bfb-e26cc4432acd"),
                             Altitude = 1203,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.92312f,
@@ -4827,7 +4428,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("081a81aa-f049-475d-aea0-cc06ba84f1a6"),
                             Altitude = 793,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.19788f,
@@ -4839,7 +4439,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("18cf2c35-7f9d-4f2b-be7b-3dbd5c736464"),
                             Altitude = 646,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 42.11208f,
@@ -4851,7 +4450,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("b2da3f6e-ac98-4576-8832-7e8dfece56b7"),
                             Altitude = 389,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.39366f,
@@ -4863,7 +4461,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("30ef3da9-520a-43e5-ba12-8bb794fb373e"),
                             Altitude = 1503,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.30524f,
@@ -4875,7 +4472,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("89e3b0db-7a19-4205-9c47-fd4fc825d452"),
                             Altitude = 295,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.33778f,
@@ -4887,7 +4483,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("add42e19-8f44-47c3-9daa-a57496c726d8"),
                             Altitude = 598,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.01749f,
@@ -4899,7 +4494,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("29d7bb0e-454b-4600-a335-f747cb0d8177"),
                             Altitude = 942,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.70277f,
@@ -4911,7 +4505,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("625cfc04-ca3d-4ea6-bbf8-3c0e6169366a"),
                             Altitude = 1157,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.06136f,
@@ -4923,7 +4516,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("92e79514-64f3-41d4-8878-9e347dc4e53f"),
                             Altitude = 413,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.57909f,
@@ -4935,7 +4527,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("7d197a63-d97e-43d0-b070-e7dfacf8b5d6"),
                             Altitude = 110,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.1449f,
@@ -4947,7 +4538,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("02c94f25-b0e8-458f-97c5-e2177d1123bd"),
                             Altitude = 1348,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.56532f,
@@ -4959,7 +4549,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("b48f3849-c79e-4808-a77a-21817ee4ae07"),
                             Altitude = 752,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 40.95689f,
@@ -4971,7 +4560,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("fd99b392-f2a3-4755-9839-f916813bf1e7"),
                             Altitude = 641,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.12702f,
@@ -4983,7 +4571,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("652f092e-0fb5-48c5-9e97-daa5a98840fb"),
                             Altitude = 1613,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.3808f,
@@ -4995,7 +4582,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("05f7fcfb-5b64-4502-ae1d-10b5714d9455"),
                             Altitude = 1211,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 42.20906f,
@@ -5007,7 +4593,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("d94da097-e292-4496-8c0c-38ed7965728d"),
                             Altitude = 526,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.32455f,
@@ -5019,7 +4604,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("3a45f6b2-574e-4d54-9295-5434d8743198"),
                             Altitude = 1547,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.16899f,
@@ -5031,7 +4615,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("7806934d-8696-450d-acf5-4d99f8e926bc"),
                             Altitude = 928,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.83359f,
@@ -5043,7 +4626,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("474b2999-2a80-4f56-b605-7a450a348980"),
                             Altitude = 830,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.08041f,
@@ -5055,7 +4637,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("8bdedd08-0c60-4c91-a715-824c52b8ebba"),
                             Altitude = 1429,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.13255f,
@@ -5067,7 +4648,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("eae4c703-c090-47e4-a055-43bada5b8aa5"),
                             Altitude = 682,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.99049f,
@@ -5079,7 +4659,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("cfe27178-d861-4db4-a66e-aeb9f41b26a1"),
                             Altitude = 1082,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.11816f,
@@ -5091,7 +4670,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("93d0b048-84bb-4a9f-8da8-f04a485f2c86"),
                             Altitude = 1117,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.09051f,
@@ -5103,7 +4681,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("1370a695-ecd1-40d5-9505-98018f98e22e"),
                             Altitude = 2282,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.18812f,
@@ -5115,7 +4692,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("5a39d63e-5d53-4f70-8f49-793464050c2d"),
                             Altitude = 542,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.19965f,
@@ -5127,7 +4703,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("2eee10fe-16cf-444c-bbee-02a4b0aa4c41"),
                             Altitude = 1653,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.16772f,
@@ -5139,7 +4714,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("318d1de5-f8c4-462a-9bf8-90807578e10a"),
                             Altitude = 2040,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = true,
                             Latitude = 42.28077f,
@@ -5151,7 +4725,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("8b2a99bf-1eb3-40e9-9900-063cbbad00c8"),
                             Altitude = 1056,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.74748f,
@@ -5163,7 +4736,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("9b75b58b-604b-4596-bfa2-4c2b25e3203b"),
                             Altitude = 861,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.33579f,
@@ -5175,7 +4747,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("036d92c2-7ade-4f5e-beca-2a6c585e8d3b"),
                             Altitude = 842,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.61121f,
@@ -5185,9 +4756,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("830e5447-b768-4c52-9a98-399eeb702f80"),
+                            Id = new Guid("451eb440-6f9d-46ed-a2fc-b9e40f751054"),
                             Altitude = 2830,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.43444f,
@@ -5197,9 +4767,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("451eb440-6f9d-46ed-a2fc-b9e40f751054"),
+                            Id = new Guid("aaf04e71-e264-4cb1-8887-3aad1841c7b0"),
                             Altitude = 1267,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.52267f,
@@ -5209,9 +4778,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("aaf04e71-e264-4cb1-8887-3aad1841c7b0"),
+                            Id = new Guid("168502b2-ce1c-4785-87de-e87cba985a71"),
                             Altitude = 794,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.49817f,
@@ -5221,9 +4789,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("168502b2-ce1c-4785-87de-e87cba985a71"),
+                            Id = new Guid("1a217cb4-b571-4499-910f-6db6a200d789"),
                             Altitude = 699,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.01611f,
@@ -5233,9 +4800,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("1a217cb4-b571-4499-910f-6db6a200d789"),
+                            Id = new Guid("830e5447-b768-4c52-9a98-399eeb702f80"),
                             Altitude = 656,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 42.49043f,
@@ -5247,7 +4813,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("f07854af-dadf-4903-aaee-f0b6b12f900f"),
                             Altitude = 498,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.80541f,
@@ -5259,7 +4824,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("926a1917-f1c7-43ff-b832-d459cedf93eb"),
                             Altitude = 2713,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.39088f,
@@ -5271,7 +4835,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("1180e6ab-8bf1-402a-b486-e2b590089727"),
                             Altitude = 1344,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.36457f,
@@ -5283,7 +4846,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("4c1f7ab5-40e6-49f0-9eb8-aa76f7256601"),
                             Altitude = 2436,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = true,
                             Latitude = 42.40866f,
@@ -5295,7 +4857,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("67a3deaa-8788-4ef1-b1e6-b0ece61cca06"),
                             Altitude = 2562,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.28708f,
@@ -5307,7 +4868,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("41a309ed-5df1-4969-9e50-e9aac22fdb6b"),
                             Altitude = 763,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 40.61364f,
@@ -5317,9 +4877,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("3a153acd-6083-4293-bcf7-a1ee73d962e6"),
+                            Id = new Guid("7ff37d97-2c3a-4f36-90bc-b85c70b1fa09"),
                             Altitude = 1087,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.27343f,
@@ -5329,9 +4888,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("7ff37d97-2c3a-4f36-90bc-b85c70b1fa09"),
+                            Id = new Guid("3a153acd-6083-4293-bcf7-a1ee73d962e6"),
                             Altitude = 2657,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.50298f,
@@ -5343,7 +4901,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("6192895e-3c88-45c5-89ee-0a2f53dc20fd"),
                             Altitude = 387,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.25345f,
@@ -5355,7 +4912,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("9b88ea1f-c973-4b19-b7cf-92bcbc2e8cf0"),
                             Altitude = 2905,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.4682f,
@@ -5367,7 +4923,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("6f764eda-7143-4e00-ba8a-336276659e01"),
                             Altitude = 2842,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.46275f,
@@ -5377,9 +4932,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("570804da-73c8-46a7-a6a6-de87a09ed791"),
+                            Id = new Guid("258bd96f-1c55-45df-8506-3788d6ff4a16"),
                             Altitude = 1072,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 40.94304f,
@@ -5389,9 +4943,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("1acbd6ce-282a-48c2-9c51-14651be01ad7"),
+                            Id = new Guid("8ea15285-23fa-49e2-a88e-7bc6c9efe642"),
                             Altitude = 368,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.71127f,
@@ -5401,9 +4954,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("258bd96f-1c55-45df-8506-3788d6ff4a16"),
+                            Id = new Guid("ea7bf66f-86c1-49e1-8f4f-0a6357494a51"),
                             Altitude = 1818,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.32375f,
@@ -5413,9 +4965,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("8ea15285-23fa-49e2-a88e-7bc6c9efe642"),
+                            Id = new Guid("dc1b3280-6e8a-4970-91eb-8d2ef3bd3a33"),
                             Altitude = 1211,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.1884f,
@@ -5425,9 +4976,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("ea7bf66f-86c1-49e1-8f4f-0a6357494a51"),
+                            Id = new Guid("983a0481-939c-4ea8-80f9-93c5be949c85"),
                             Altitude = 1425,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.22797f,
@@ -5437,9 +4987,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("92f49e69-b0c8-4082-be28-f88054dd5586"),
+                            Id = new Guid("c23f7992-b21b-4790-bec5-517f9a398ed8"),
                             Altitude = 1315,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.29893f,
@@ -5449,9 +4998,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9405017c-6577-4ca1-8c0f-76b0b05dfb4d"),
+                            Id = new Guid("628d66f1-2d62-4e17-8adb-97a5aa3cd3fe"),
                             Altitude = 697,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 40.96809f,
@@ -5461,9 +5009,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("dc1b3280-6e8a-4970-91eb-8d2ef3bd3a33"),
+                            Id = new Guid("92f49e69-b0c8-4082-be28-f88054dd5586"),
                             Altitude = 1201,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.326f,
@@ -5473,9 +5020,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("983a0481-939c-4ea8-80f9-93c5be949c85"),
+                            Id = new Guid("9405017c-6577-4ca1-8c0f-76b0b05dfb4d"),
                             Altitude = 658,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.84657f,
@@ -5485,9 +5031,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c23f7992-b21b-4790-bec5-517f9a398ed8"),
+                            Id = new Guid("44a2b4c4-4f01-4e03-ad0f-6f1e59932792"),
                             Altitude = 243,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.61953f,
@@ -5497,9 +5042,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("628d66f1-2d62-4e17-8adb-97a5aa3cd3fe"),
+                            Id = new Guid("9d40e9ae-ed20-4754-98fd-c02ddd16fd0c"),
                             Altitude = 2753,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.45919f,
@@ -5509,9 +5053,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("44a2b4c4-4f01-4e03-ad0f-6f1e59932792"),
+                            Id = new Guid("a6eab5fc-79f8-4fd3-bd09-ec6e4ba9e764"),
                             Altitude = 2445,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = true,
                             Latitude = 42.51858f,
@@ -5521,9 +5064,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9d40e9ae-ed20-4754-98fd-c02ddd16fd0c"),
+                            Id = new Guid("6a42775a-c791-4cf5-95d6-da1921c25875"),
                             Altitude = 1379,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.11475f,
@@ -5533,9 +5075,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a6eab5fc-79f8-4fd3-bd09-ec6e4ba9e764"),
+                            Id = new Guid("e4780107-c02e-4f42-bb38-d3bf6c775663"),
                             Altitude = 1631,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.31177f,
@@ -5545,9 +5086,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("6a42775a-c791-4cf5-95d6-da1921c25875"),
+                            Id = new Guid("9f73f9ca-87c9-4b8a-8992-4489bd3e83e3"),
                             Altitude = 1672,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = true,
                             Latitude = 42.02107f,
@@ -5557,9 +5097,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e4780107-c02e-4f42-bb38-d3bf6c775663"),
+                            Id = new Guid("f7fd7578-3630-4eed-8411-b03a2b8ad25f"),
                             Altitude = 394,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 40.9413f,
@@ -5569,9 +5108,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9f73f9ca-87c9-4b8a-8992-4489bd3e83e3"),
+                            Id = new Guid("50cb4c69-412e-4f5d-8bab-a08e2856b026"),
                             Altitude = 326,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.77994f,
@@ -5581,9 +5119,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("f7fd7578-3630-4eed-8411-b03a2b8ad25f"),
+                            Id = new Guid("c23d449f-e976-40a2-846c-ce7266ec4fbe"),
                             Altitude = 740,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.89905f,
@@ -5593,9 +5130,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("50cb4c69-412e-4f5d-8bab-a08e2856b026"),
+                            Id = new Guid("391576ca-1cfa-4484-a156-8a916436e873"),
                             Altitude = 828,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.57278f,
@@ -5605,9 +5141,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c23d449f-e976-40a2-846c-ce7266ec4fbe"),
+                            Id = new Guid("9c6c2740-425f-46a0-a6e9-0fcddcfe1af1"),
                             Altitude = 526,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.82556f,
@@ -5617,9 +5152,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("391576ca-1cfa-4484-a156-8a916436e873"),
+                            Id = new Guid("570804da-73c8-46a7-a6a6-de87a09ed791"),
                             Altitude = 1913,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.34179f,
@@ -5629,9 +5163,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9c6c2740-425f-46a0-a6e9-0fcddcfe1af1"),
+                            Id = new Guid("1acbd6ce-282a-48c2-9c51-14651be01ad7"),
                             Altitude = 1350,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 40.73279f,
@@ -5643,7 +5176,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("3cd35a89-d489-4731-8263-71fbc89cb07e"),
                             Altitude = 2256,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.42023f,
@@ -5655,7 +5187,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("c18da1af-599a-4f8a-a303-e3d8fd7fd8f7"),
                             Altitude = 1546,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.33308f,
@@ -5667,7 +5198,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("b282186c-5bd5-4c58-afbc-54bf897fb0c7"),
                             Altitude = 346,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.33316f,
@@ -5679,7 +5209,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("639c08a9-688c-4328-b6bf-7015110067df"),
                             Altitude = 803,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.46886f,
@@ -5691,7 +5220,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("79c2d6cf-cba8-4343-ac67-783cc0948936"),
                             Altitude = 1326,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.20115f,
@@ -5703,7 +5231,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("d902cc78-9b7a-4b7d-bc77-1df117976ef3"),
                             Altitude = 2750,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.6303f,
@@ -5715,7 +5242,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("b50c7634-c14b-4aac-ba1c-4d9beddd3c7c"),
                             Altitude = 2869,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.49238f,
@@ -5727,7 +5253,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("86f0430e-ae7e-4bfd-8d16-86dcd0da4983"),
                             Altitude = 1217,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 40.84502f,
@@ -5739,7 +5264,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("04738947-55c6-49f3-97ce-a00fadc2162a"),
                             Altitude = 2878,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.65342f,
@@ -5751,7 +5275,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("d2307093-f441-4022-be09-91c41c8a7d87"),
                             Altitude = 2163,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.74371f,
@@ -5761,9 +5284,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("dabb8d7c-7c06-4b93-8f74-bbb7452ea19b"),
+                            Id = new Guid("e43e1c84-54d5-41d2-9134-b819f1195934"),
                             Altitude = 2269,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.71807f,
@@ -5773,9 +5295,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("e43e1c84-54d5-41d2-9134-b819f1195934"),
+                            Id = new Guid("7d7cf62e-177b-4b0a-aeea-318b01ecc77a"),
                             Altitude = 2802,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.78857f,
@@ -5785,9 +5306,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("7d7cf62e-177b-4b0a-aeea-318b01ecc77a"),
+                            Id = new Guid("c6d06ffa-bd94-4ac3-b48b-7d9a74d3f207"),
                             Altitude = 2630,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.8257f,
@@ -5797,9 +5317,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c6d06ffa-bd94-4ac3-b48b-7d9a74d3f207"),
+                            Id = new Guid("976f508f-d284-48bb-96fe-bc3b0279fa8f"),
                             Altitude = 2562,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.52643f,
@@ -5809,9 +5328,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("976f508f-d284-48bb-96fe-bc3b0279fa8f"),
+                            Id = new Guid("d3886449-db0f-4ec6-87f3-857ba0551383"),
                             Altitude = 2445,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = true,
                             Latitude = 42.4237f,
@@ -5821,9 +5339,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d3886449-db0f-4ec6-87f3-857ba0551383"),
+                            Id = new Guid("c2d236d8-35f6-4e4f-bb55-73f5dae06e23"),
                             Altitude = 2780,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.61552f,
@@ -5833,9 +5350,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c2d236d8-35f6-4e4f-bb55-73f5dae06e23"),
+                            Id = new Guid("44b6508a-b960-43c7-a77e-b9bb51fa5db9"),
                             Altitude = 2659,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.68406f,
@@ -5845,9 +5361,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("44b6508a-b960-43c7-a77e-b9bb51fa5db9"),
+                            Id = new Guid("52e8e43b-3e68-42ac-a604-d2f33cb2f328"),
                             Altitude = 2956,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.61677f,
@@ -5857,9 +5372,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("52e8e43b-3e68-42ac-a604-d2f33cb2f328"),
+                            Id = new Guid("3af6a6c4-1cdc-4782-af68-a738cf19ff33"),
                             Altitude = 2778,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.61029f,
@@ -5869,9 +5383,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("3af6a6c4-1cdc-4782-af68-a738cf19ff33"),
+                            Id = new Guid("c9efde68-14c8-4520-980a-183eb9198421"),
                             Altitude = 2679,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.70924f,
@@ -5881,9 +5394,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c9efde68-14c8-4520-980a-183eb9198421"),
+                            Id = new Guid("a7b7b0e7-82a3-4dc9-82a3-9a0196043787"),
                             Altitude = 3010,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.62948f,
@@ -5893,9 +5405,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a7b7b0e7-82a3-4dc9-82a3-9a0196043787"),
+                            Id = new Guid("1029d7d4-a72c-493f-a935-fdd323d1dc36"),
                             Altitude = 2731,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.76778f,
@@ -5905,9 +5416,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("1029d7d4-a72c-493f-a935-fdd323d1dc36"),
+                            Id = new Guid("2c698342-736f-47a3-8a22-75e3d21ef322"),
                             Altitude = 2861,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.60122f,
@@ -5917,9 +5427,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("2c698342-736f-47a3-8a22-75e3d21ef322"),
+                            Id = new Guid("37b474bd-28cc-4186-9c46-38fb28fdd20e"),
                             Altitude = 2676,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.62614f,
@@ -5929,9 +5438,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("37b474bd-28cc-4186-9c46-38fb28fdd20e"),
+                            Id = new Guid("b8f178c1-6ef8-4cee-97b3-98ca0ad347ff"),
                             Altitude = 2485,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.64687f,
@@ -5941,9 +5449,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("b8f178c1-6ef8-4cee-97b3-98ca0ad347ff"),
+                            Id = new Guid("c78b3f93-037a-4df2-a24b-8b0601922ff8"),
                             Altitude = 2634,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.64425f,
@@ -5953,9 +5460,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c78b3f93-037a-4df2-a24b-8b0601922ff8"),
+                            Id = new Guid("0e46887e-a42f-44d2-9730-13dcaef0875f"),
                             Altitude = 2508,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.75127f,
@@ -5965,9 +5471,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("0e46887e-a42f-44d2-9730-13dcaef0875f"),
+                            Id = new Guid("dabb8d7c-7c06-4b93-8f74-bbb7452ea19b"),
                             Altitude = 2645,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.71263f,
@@ -5979,7 +5484,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("f127e074-cfca-421b-835b-4f17c60c8a97"),
                             Altitude = 2536,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.74286f,
@@ -5991,7 +5495,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("3e22df65-a844-4f29-a0c1-1b4814edcc2c"),
                             Altitude = 2534,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.78125f,
@@ -6003,7 +5506,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("820b9d9c-3af2-48d2-9b2c-6aaf23a99eee"),
                             Altitude = 2791,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.51405f,
@@ -6015,7 +5517,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("03e0254c-5330-484d-b90d-99015930fe92"),
                             Altitude = 2699,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.62239f,
@@ -6027,7 +5528,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("d902d1ce-5b77-4eba-8627-a8a3a3a0530b"),
                             Altitude = 2194,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.84613f,
@@ -6039,7 +5539,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("d5f80276-0189-41dc-812a-7f45a2492f64"),
                             Altitude = 2606,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.64186f,
@@ -6051,7 +5550,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("e678b78b-f766-4f4d-a2ff-8bb82756a678"),
                             Altitude = 1843,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.70858f,
@@ -6063,7 +5561,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("a31a0356-697c-4e4b-8378-c7b3df1afee6"),
                             Altitude = 2703,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = false,
                             Latitude = 42.62392f,
@@ -6073,9 +5570,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("0b8ec28c-468d-4e25-957f-5cee7ccf55eb"),
+                            Id = new Guid("24332cf7-8f57-4178-8dfc-8b3c89612e14"),
                             Altitude = 484,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.50468f,
@@ -6085,9 +5581,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("76374015-df8e-40d6-90b4-e4fbf0f7ff1c"),
+                            Id = new Guid("08a5e34c-cdb3-49ee-9269-1c81db5359be"),
                             Altitude = 266,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.41843f,
@@ -6097,9 +5592,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9e0202d4-0acb-4baa-b260-c4bfe4bcd207"),
+                            Id = new Guid("75ddb443-7e35-41b1-b207-48c52bb178b5"),
                             Altitude = 131,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.55458f,
@@ -6109,9 +5603,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("24332cf7-8f57-4178-8dfc-8b3c89612e14"),
+                            Id = new Guid("c6c670c6-51d2-4697-bf7a-cbd00b8faefd"),
                             Altitude = 1702,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.48328f,
@@ -6121,9 +5614,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("08a5e34c-cdb3-49ee-9269-1c81db5359be"),
+                            Id = new Guid("ba345051-a0c6-4ad6-9b3e-773f7b1e6030"),
                             Altitude = 1045,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.84715f,
@@ -6133,9 +5625,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("75ddb443-7e35-41b1-b207-48c52bb178b5"),
+                            Id = new Guid("411edf02-e679-4163-b262-d97d1f1c6aa4"),
                             Altitude = 416,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.55541f,
@@ -6145,9 +5636,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("411edf02-e679-4163-b262-d97d1f1c6aa4"),
+                            Id = new Guid("c4a83a64-de81-42ab-b352-e3401afcabc9"),
                             Altitude = 595,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.62026f,
@@ -6157,9 +5647,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c4a83a64-de81-42ab-b352-e3401afcabc9"),
+                            Id = new Guid("d6b8e683-28df-4557-b96a-8c19f710fff0"),
                             Altitude = 447,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.62871f,
@@ -6169,9 +5658,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("d6b8e683-28df-4557-b96a-8c19f710fff0"),
+                            Id = new Guid("a351511e-ddf4-447a-9818-77052738cfae"),
                             Altitude = 1706,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 41.77649f,
@@ -6181,9 +5669,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c6c670c6-51d2-4697-bf7a-cbd00b8faefd"),
+                            Id = new Guid("3685a5f7-e5fe-4d05-bcc6-02e18be0fc26"),
                             Altitude = 930,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.64995f,
@@ -6193,9 +5680,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("ba345051-a0c6-4ad6-9b3e-773f7b1e6030"),
+                            Id = new Guid("649899f7-5926-4fc6-9618-bf7a5185ebe4"),
                             Altitude = 624,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.85092f,
@@ -6205,9 +5691,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("a351511e-ddf4-447a-9818-77052738cfae"),
+                            Id = new Guid("faa2136e-6fa9-41af-9a13-7dfa94024e85"),
                             Altitude = 430,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.44217f,
@@ -6217,9 +5702,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("3685a5f7-e5fe-4d05-bcc6-02e18be0fc26"),
+                            Id = new Guid("5040fc3e-0f20-48dc-8aed-237060413622"),
                             Altitude = 273,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.47721f,
@@ -6229,9 +5713,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("649899f7-5926-4fc6-9618-bf7a5185ebe4"),
+                            Id = new Guid("2eb6515c-f25c-41ef-8f41-b1151d88c96e"),
                             Altitude = 40,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.4659f,
@@ -6241,9 +5724,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("faa2136e-6fa9-41af-9a13-7dfa94024e85"),
+                            Id = new Guid("49ef6632-8e70-4326-905b-f23a2c6ded20"),
                             Altitude = 633,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = true,
                             Latitude = 41.78277f,
@@ -6253,9 +5735,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("5040fc3e-0f20-48dc-8aed-237060413622"),
+                            Id = new Guid("65fe4368-46a4-4f09-a55e-e6efd8a531c7"),
                             Altitude = 233,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.75455f,
@@ -6265,9 +5746,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("2eb6515c-f25c-41ef-8f41-b1151d88c96e"),
+                            Id = new Guid("6e3746d7-5431-4c00-b59b-cb1b55e56d4f"),
                             Altitude = 755,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.67138f,
@@ -6277,9 +5757,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("49ef6632-8e70-4326-905b-f23a2c6ded20"),
+                            Id = new Guid("daa0a809-791a-4d85-938f-2c7be0e05f06"),
                             Altitude = 1265,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.83259f,
@@ -6289,9 +5768,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("65fe4368-46a4-4f09-a55e-e6efd8a531c7"),
+                            Id = new Guid("0b8ec28c-468d-4e25-957f-5cee7ccf55eb"),
                             Altitude = 635,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.57634f,
@@ -6301,9 +5779,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("6e3746d7-5431-4c00-b59b-cb1b55e56d4f"),
+                            Id = new Guid("76374015-df8e-40d6-90b4-e4fbf0f7ff1c"),
                             Altitude = 1273,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.74268f,
@@ -6313,9 +5790,8 @@ namespace Persistence.Migrations
                         },
                         new
                         {
-                            Id = new Guid("daa0a809-791a-4d85-938f-2c7be0e05f06"),
+                            Id = new Guid("9e0202d4-0acb-4baa-b260-c4bfe4bcd207"),
                             Altitude = 442,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 41.86129f,
@@ -6327,7 +5803,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("16b31c1c-181d-4481-9c4c-1e8e4b7063c9"),
                             Altitude = 2493,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 2,
                             IsEssential = false,
                             Latitude = 42.42456f,
@@ -6339,7 +5814,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("921cae99-0ed2-499d-b86a-d2f006be8b33"),
                             Altitude = 789,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 1,
                             IsEssential = false,
                             Latitude = 42.15399f,
@@ -6351,7 +5825,6 @@ namespace Persistence.Migrations
                         {
                             Id = new Guid("eef3884e-ee54-48f9-8fb0-bd1a24f8ffba"),
                             Altitude = 2649,
-                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             DifficultyLevel = 3,
                             IsEssential = true,
                             Latitude = 42.28578f,
@@ -6411,7 +5884,7 @@ namespace Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("4bd06887-b4d7-49b7-a18b-0100b2dfc3fa"),
+                            Id = new Guid("6bb9b8cd-210a-42c5-899d-5c56810610d2"),
                             CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
                             HikerId = "12345678P",
                             Name = "El meu diari dels 100 cims de la FEEC"
@@ -6443,6 +5916,2633 @@ namespace Persistence.Migrations
                             Id = "12345678P",
                             Name = "Kilian",
                             Surname = "Gordet"
+                        });
+                });
+
+            modelBuilder.Entity("Domain.Content.ValueObjects.CatalogueSummit", b =>
+                {
+                    b.Property<Guid>("CatalogueId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("SummitId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("CatalogueId", "SummitId");
+
+                    b.HasIndex("SummitId");
+
+                    b.ToTable("CatalogueSummits", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("f53d3d8b-c80c-4515-bc66-07ba1653b292")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("2d9085db-8e41-45ad-9755-2791a5e14920")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("00ade412-c791-470a-a463-53eb79e4c4ec")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("ded5b31a-673a-4814-8aa8-60e1ca7a2d0d")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c2384471-bac7-4547-b6f5-067b0a18f5bc")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("2a2bc2f5-ed4e-42a4-873b-2ff94360ac92")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("4dfab0bd-7a55-4d25-9905-9479e4095b21")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c14de667-8442-4af4-aa91-ddc463b08c4c")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("564ba7f1-5837-4ba6-9e55-f87a83107e76")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("82558750-0355-4acb-b57f-25c7e9eb09ea")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("a1362d3c-8d87-47ad-a72d-d069176f0121")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("1924f7af-7e51-4629-be92-0fb90260fe9f")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c29cd54a-6e51-4377-88a0-9c456459a3b1")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("a2fca415-0e16-4fe5-9491-7c783233bd22")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("b348c9be-c622-4e47-b166-8992435f9c7f")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c98e40fa-8ea6-49f7-bc7c-a9e91ce0789a")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("a9be298e-0092-4339-8e11-dbb57d9a0708")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("d9c9bc6a-e075-41b1-8dd3-75bbdf260a95")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("0f15877a-01e1-4086-b691-12fae177f791")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("04e79888-f093-4c03-88b4-35239aeb7d1c")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c7470d06-ea2d-438d-a7f1-706cfef6c967")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("4a1f602e-f88a-4b26-85b4-da165b64f350")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("00753579-504d-4808-895c-d82e344e997b")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("b9523488-d81a-467b-a6a8-243b461fdd37")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("cf79641f-b7af-494f-bb68-90315032192c")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("f765751c-4f2e-4c3c-b9ed-0c488941984e")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c3293a08-f1ad-436c-93a6-8f129ec6091e")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("57bcdf96-fd5f-40f4-bfcb-e589ce2423c4")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("22d83c89-e1cc-4001-a62b-7e5d25e69dbc")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("32b9d24c-f722-40be-91f0-5f6e6826525c")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("13fd35b2-9eb9-4d22-97b1-2c9dd257e2ac")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("28976631-9b96-4b70-b0a6-40dfc75d1c67")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("823c3f5a-9ace-484f-8d26-b64a01b34e42")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("faff830f-cae8-411f-abd2-2bd825c84f47")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("51fc94f0-c5f1-4940-b691-b331377199d4")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("50ba89b2-1906-4de4-908a-c6e550e55c1b")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("3a7c720b-d402-4a50-9e9a-a08b9343968b")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("1ba3367d-881e-487e-a7b0-a3c4360e6fcc")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("5018e7e6-1cfc-4216-ac75-dce043835c0f")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("2aa559bd-a24e-4b1c-9204-00a5a2f93995")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("bee2a01a-7ec2-4f51-af85-89d981df0b35")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("e6a51c72-aa7b-4d27-982b-5c64931a70d4")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c36597fb-e801-4395-979c-825a7836efc6")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("8b6a7a2a-6c3f-4144-8ef5-614f51734f6f")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("d9b3c859-da2e-4a86-9b63-fd2f2d8dd7c1")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("bf85b812-95d0-4529-9256-547fc2f091bf")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("bcdda778-c7d2-48d4-bd7a-ae70a358c2e6")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("51b21192-436d-419d-ac69-6ddfc59a5b44")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("36e36a6f-14b9-4b76-a7f5-ba04d7b729f1")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("17677b5c-a489-4fa8-ba9f-aa51d5d2ed76")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("e8ff2258-cba7-4d48-b0f2-cd48cecc3b70")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("bc4a525c-19b1-4332-aea0-1948f70f98c5")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("556bd444-1536-45ec-b164-c705078ba6bf")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("bef5dbf6-352a-44bc-a254-b165539a210c")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("83769397-545c-41b7-970c-084e5df21ea4")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("dd51ba01-5d0c-46c8-bba0-3ebcc02ee51d")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("3160de8e-4dd5-4edc-a47c-91e6b2649d19")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("86e8d2bc-e818-4693-9c30-72a2f3e94f38")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("a3cffb33-4875-487a-b7ae-9636db6f953d")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("0e95a512-1bda-4fcc-94c6-4d5214adb6aa")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("8445ca22-3e87-4d00-9910-b6449764b636")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("ac46da2c-fbd5-48ab-ad86-b508b07e41d8")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c05b086c-7918-45a1-a87e-fc9481912069")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("f1ecf49f-cafc-4f82-967c-c27efc7f44c8")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("cf833d42-8d9d-4243-8e0a-f1ebc4541d9b")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("4daf0898-6823-4dd0-8137-b25a6f1a84bd")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("778845db-6ce9-4048-847e-154189cddd25")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("a3215ba8-279a-453e-bc90-71e166b7bf8f")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("dca56994-5700-4058-99e3-4763ac2fd747")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("ed3f1fc5-d7fb-4a85-815e-58ec5570315b")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("df829a3a-83e9-4a2d-b769-59ee3b34edf6")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("cab65539-35e3-417f-b96d-207e5572fab5")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("25d4e13a-ac25-4070-8e59-b650606c70e4")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("5b5c4cc4-0966-41e6-be41-af32f5dc187a")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("35941634-2f13-4677-a1bf-e25148a81569")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("610db453-f6fd-44e7-9947-d4f1a1c0660c")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("225e7c9c-384e-4a27-a579-6a2639b4528c")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("d5e03ce9-6248-419d-a426-102fc179c427")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("186a8c55-f551-42e7-8697-917a2e10e836")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("d00d2eef-3606-4e37-8581-8a033797538a")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("0fee6c73-4df1-495f-8ea2-b2ef79838b62")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("17faefb2-188d-4765-b481-aacb5f7f15ca")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("e73b868f-2074-4a79-a821-a6fb0fb97ca3")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("14fc8081-3087-4fe4-89c4-e77917778856")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("670978f8-5e76-4210-8bad-3907e062aeca")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("b5c2ac49-5fd3-4726-b617-c26c7d77f7c4")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("d983fd88-3d04-42f6-af88-48710687d9f2")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("e7c5f30f-2213-492e-8e16-4a702fbb18bb")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("81b8b660-30eb-46d3-8997-a52bdf7db85e")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("2f811efe-8b2d-4088-aa9d-e15ef1816817")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("0ad9b3ff-e325-4963-bf90-2811bdf83d55")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("86f710f7-4ba3-4bcb-8a99-26b4b70cb2b3")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("2a6fc132-dcfd-4d1d-bb02-673282caa25e")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("49da0469-ddaa-4794-881e-6fe1f82881ce")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("9b9a0d9a-8192-492a-bbaf-2a3afa36623e")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("108bbe30-ae1a-46ad-a6e4-073888989862")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("bdffd725-7733-49cc-9bff-6d6128ac374e")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c998c3c8-41eb-472a-ae22-3cb7527f15c3")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("68962729-cc31-4292-88ce-1e5a831b4a3e")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("bd5544e8-68db-459e-8b6c-2ff53113c113")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("907e4ec5-f23e-43d9-8106-8e18ad92961d")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("a966494a-38fa-4af2-877f-d04de1f5b802")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("b8c82cdb-8087-49fd-8cbd-cb81f00d87a2")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("3b30a4fb-2a92-4d8d-a0b2-2c611a914112")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("554daa6a-7f7a-4a91-aaec-884f90ca26cb")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("24bc2c12-9647-4f8f-a514-7c61f29ba1e5")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c16ee7fc-83c7-4de1-800c-6e49cc0ee0b2")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("a6d21836-e44a-4bef-ad04-58a96b413b99")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("55e36e7a-e9ad-42f2-921c-4775f07a1879")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("3f95dfe9-23cb-409d-a012-b9a912434ddc")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("31961b64-80f6-4333-ac58-0cb10c503437")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("aa418db5-2ae0-4538-8104-2caf064bf200")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("dd69325b-d3ec-4ded-86fd-c896f89d97cc")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("17264261-b89c-47fb-ae71-7a99d65ba4da")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("b01cf4fd-166f-4483-8a43-3d442c366d7e")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("4fff0b5a-23c3-417c-86de-2069bacbc4da")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("00f3b59d-861b-4e8e-bad0-31c2542a73a2")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("894155cb-9a81-4367-8896-7f75a3cc408a")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("d1367498-8a95-4e22-9fef-d207f0e208dd")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("1de26af7-f512-40bc-a995-c51f00ca0c16")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("81263375-f4d0-4590-9389-7a4533ceb21c")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("e6e64b9b-b01a-447e-8334-028e44d099d9")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("49b87691-12a8-4104-8e2e-33e5709744e5")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("3750a616-bd08-4917-bbcb-3cce2f73ddb4")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("3982fde9-845a-4c2f-8d73-7cc0f023e468")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("1b5cca46-6c02-4fe9-804b-0080003b1f91")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("5c4cad72-5fdb-4d96-a584-a2c1e15455e4")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("36bdfe77-db56-4dfa-afc5-25a1b0721a4b")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("b46efee8-7d31-47d2-89b7-fe28425f1efa")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("969f1313-26af-41fb-8048-4c805f53cf33")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("9d51c6c4-678c-4bde-b642-82dedccefcee")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("1e03087d-1bf4-4034-a77c-7c5e55c9fe99")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("de379061-6534-4b72-8010-114dc80bc704")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("e6ef760e-f644-4bd2-aaaa-b21a28fba5ef")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("aa5c82d5-225b-4d40-9d2c-ffdef49b7fa4")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("3a684d05-192b-4fb1-ade4-87e17cb05627")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("848d852c-3076-46a8-9d9e-95fb5c1756e4")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("2fec2d2f-2984-4a94-beb9-bf36fd958c15")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("696f570c-cc1c-4143-b801-455085bbfc33")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("01951b92-a0be-490c-aaff-14d7482bc18d")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("faa737f8-ce05-418b-8917-85f695355dd3")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("9cfa3f32-37d4-4730-9749-9f4805648b19")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("be368112-816e-42d3-a715-c7ebed5e385f")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("d4be4dae-5832-4426-a3e5-1f2435b186ae")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("2b18177c-649f-49ba-83fd-cb6093d12366")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("ace67c3b-320b-423c-9f59-338bc994179d")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("4cd320e9-dff7-4085-b1f5-fca73457030c")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c93b2fe1-915f-4cd3-bde1-0f2769472399")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("1a859018-d94a-42a1-b6f8-4cf11f4aa69b")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("a01b6d31-f01f-4cab-9269-dd037c72c0c5")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("ed44cdb3-9637-4b55-8b31-8d79e3946a82")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("0cf52172-70e5-4ff4-9a3f-109d11c0128f")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("551028d1-26ec-4139-96c9-7e8ea2d72f74")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("1a364983-b1c8-44c8-bb61-8d19160dc37e")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("527da28d-15b7-4a2b-89b7-18244983f7eb")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("92457bc2-6973-4bc3-9c37-dac5f4756a11")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("26b4b359-c3b1-4671-a389-dd1170bb1ac8")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("a3e7b20a-928c-47ec-bdde-190ffd10ed13")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("6f694baf-f781-467b-bb4c-d3658722b518")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("6e3a6e52-311d-4bf1-a7bd-7bc5e2b82e83")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("251fdead-2366-4566-a0e2-a3b30f13d59c")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("4fcee297-2bc0-4334-b73f-c51a8cc9133f")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("ae835970-b3c0-4cd6-abdf-7b48f9afa5ee")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("2775a152-e2e9-478c-b4c3-72a49bb5298c")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("3d13b5bd-6fdb-47f2-8158-bff8e7f323d8")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("2a53dd84-ec8d-4920-979b-ec68b961d410")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("9daa5b6d-5712-49e4-8fd5-2ebef9678e1d")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("2faaf23f-65da-4208-898c-36caf7710b3b")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("b1c0d2e1-fcae-421a-9a06-0390ff03fba0")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("02efb02b-f3df-4ee1-ab8e-696e8f3c9909")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("8268e8d0-e7dc-4768-94d9-e073d90ed716")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("d37ec0c0-f4fd-4d92-81a2-024b6230735a")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("0caf5823-2cef-4439-8834-cd097a8478f9")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("ac261ff9-8bd4-4f03-a7db-55c27da5afd5")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("b9a64d0c-94f4-4b5b-a77a-ce70c70fe0f5")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("83da1893-5afb-43b9-946f-8e8308828759")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("4130d5a7-ddd9-4b98-93bc-5fe69930a7cb")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c4470810-955c-47f0-9673-2f9d52bdfea2")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("4bfef8c6-81b2-42d4-8446-fb79bedbdd7e")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("3bb097e7-4058-41c7-9a82-13c7f6bf82f2")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("4c5341eb-9847-4f94-9e8e-4d445fe4b379")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("00948c5b-ffcd-4532-b7bd-6eb7436e5461")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("41b090fa-0281-41bf-a833-e1ceae3f3ddf")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("3929ebd1-39c1-4330-a76d-19e9b6620086")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("ddd6797a-4c07-4616-9c3f-ca2eb60ffb77")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("bdb6bb65-7306-4e5d-8f4a-3b4eaccb72bf")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("ddcb08b4-23be-4f83-b78c-a71461227bee")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("e961b51b-1828-4e2e-81c1-5ba557adafdf")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("f7726c56-11de-4156-b4a3-1cfa5b9b3981")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c9464b72-b5f1-4298-afc3-1189bbda771b")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("91760181-6a70-49ec-9029-e59b8f74be4e")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("f4f9bce0-c193-4fa8-868e-b71f10ad06a6")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("a7856a26-5bad-4d71-a6c6-f2dd0df47957")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("ead9415c-b246-48d7-89e7-a2fff28e5194")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("3af6b127-6e57-431d-8d18-d3978be6af68")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("34cb141b-ea0e-4595-b636-55cc3c0a4565")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("260ab610-f99c-41dd-97e4-a322d597bb30")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c9d2338e-7aa4-4651-89c9-c0ccdbe3d1c5")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("4761f041-c133-4b52-814f-82b774607536")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("80e2c7f7-112a-43a8-b9c7-5f87f64f7798")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("3bc99aa0-0a30-4629-b024-c6fed8a5837c")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("47dadff0-4614-44ce-984b-d9cdae410683")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("fc14d57c-eb4a-40ac-be03-3b60757ab146")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("150d8b48-a43c-47bf-817e-7ca97da738bb")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("cb6b357b-faf4-4f5e-99ee-c489f9e5e46d")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("9f0c0b9f-fb5c-41f5-9991-f9cd43cd8035")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("9bdb76a1-0cd9-4448-8896-489069ef4dbf")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("f52ef253-c5ec-4384-b65f-3a7db66d1472")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("d5054b7d-4865-4156-a588-69cfa66cd764")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("84a8b708-4402-4ad2-8593-10111ddff15e")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c2e93cb4-0915-4e39-ba8b-77cdb230cc97")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("4477595b-d2e5-40db-a45c-110a505eebc3")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("00b5ece7-267c-47a5-8822-be4edcf72e7f")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("312e5673-82c1-4666-acc9-3c197bb204ba")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("08b3ff3d-6c96-4b6f-ba26-b9430e5cb2f9")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("1fa96340-9815-4c7d-995b-074318004012")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("db87eb6e-1b8a-4d74-93cc-a37a922990e1")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("f7ba76ae-435f-48c5-a614-e1a59640181c")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("0b7a0f2f-3bbf-4ba0-abdf-d763112b3333")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("7644f6bc-2f15-4c27-b9e2-1cc2fd452d31")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("ed79fec3-4525-4fe3-aaad-cd7e4e175e5c")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("6262e97b-7539-48ff-8ac3-3f3292c72a63")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("e1a9c73d-9428-4dd8-b028-5ba547200860")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("1d2f75d9-eed0-4f44-8b5c-80d89c4227f3")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("ac424849-5588-43c3-aa56-5efd8a0b547f")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("e38433a7-6040-441e-8bd2-5682dbb77298")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("5a5afafc-39d3-4496-92c9-92f0240093ea")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("8c066db0-2bad-42e0-87d5-73f3c992dc22")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("5c838b67-72ac-4e7d-9ba1-cefec694a628")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("a3482fc0-9a77-4ae1-975a-b0ee1f42915d")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("5971b05f-201e-4642-96c7-03a478c02aeb")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("8a5d28b3-223f-4d11-8ac3-b007e78fe2cc")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("03d105bf-db3e-44a3-ae52-7e7fafe4aba1")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("14d9f23c-dc6d-4ca2-acdc-cd0a2c84c6ea")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("687eed42-c627-4a87-8a8f-3cc73ae843c8")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("e63ed590-52be-4aeb-9a40-3c0ef99d0bcc")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("cbfe22ba-e880-4836-8253-0e346ac95fda")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("e3cb63cd-f50d-4a55-a7c1-d6cd57fb47bb")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c72431b1-a4c6-4582-9415-1666722c4d24")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("01325578-2fd6-481d-bfd9-b85f80b33496")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("afa877f2-d093-43b3-9a6b-b9a3273dd300")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("96f0d5e2-1880-472a-9bd0-8779389ab3a0")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("5f8d5754-7382-48b7-9b5c-febdcae62c18")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("b116b575-8d4a-420d-a76d-a625a4f218bf")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("8f4dc3d1-9222-4efc-bd01-6ae80eda7f1a")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("141f495e-d520-4027-956a-52fde724c25b")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("19edbd0e-b3e5-4030-91f6-dee636db8900")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("5dd19e23-8c52-4b31-b187-41b97db94eb3")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("d7caf9db-967a-4b80-87c1-af89488081be")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("49cc1b6b-94be-41c1-ac35-c8447f89088b")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("ae682039-da93-4c72-ba89-628111711f12")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("163ec71f-784c-4218-b033-2cd1ec3dcb86")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("14fcf911-51dd-45c0-92e9-406720f93fe4")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c19853df-afe0-4799-980d-8376045b1760")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("49e90b5f-4740-41cd-94ab-f0a8cb0243b3")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("dde2e31a-a5de-4f56-9b2d-d7be5fc61455")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("bf7cea58-250f-4696-8341-8aa8b6e19bef")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("f64bddcc-fd7d-4fdf-8a5c-17829d5acc65")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("31923123-f7a5-42ed-8ee8-c000fa0225b2")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("9b6b1d72-4cda-4171-bee3-a6df7c36506f")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("04122ef7-a059-45bd-9177-8faf60117554")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("d0328b09-c8a9-4fb1-98e2-cc532e95a482")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("6cb944a2-2bf4-4abe-8451-bb4b4d302547")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c6cb4279-67c3-479d-817d-85e796a92480")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("ae97dc66-a120-4868-8e3b-a235f3138b68")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("1ff192d5-8925-4066-934e-c0a040e1839b")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("b01872ab-de48-4ccf-9715-5dd0ebd9a171")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("ad6b0013-94f0-433c-bd4c-8f636e4c322c")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("a529bab3-41d4-4c8e-80ca-da99ebc13b24")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("ee7ffd76-5d48-4cbd-99d0-262780cedf9e")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("b7ae97b7-c657-4988-946d-e4035b5cd445")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("f1049deb-eab1-4024-9df5-84a181590b52")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("5c1ca8db-77b0-487c-8190-a5669c990ba0")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("8bad6113-718c-4ee5-ab22-55c1a2e86131")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("79b9dcb8-9633-4aad-97b7-c16047b7d819")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("55bd9768-40da-4251-a120-13abebfe5221")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("52aedd06-cb0c-44c3-a08e-9d9fcdc5f25b")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("11ac9921-4549-4d0a-96ae-98d89f6a47eb")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("ff1df0df-4546-4ebd-a3c5-6bc502b4eef4")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("be6c52d8-9791-4862-9f07-09badb90e40a")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("f4659895-2672-4237-bcac-5c3b29fe8a09")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("f9f509a8-3930-473b-a845-15c2ccf9b2bc")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("92ef9a82-82c1-48bb-bebd-1db82e8fc77b")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("55c4d224-ac45-48e5-bc62-d5b9e26155a1")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("7d6ded5a-3cd8-43e8-a66f-abba982f28c2")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("ae5e61c7-688e-46a0-b29f-be4892d1c913")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c06c85e5-709b-41a9-b939-24ce43e116de")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("bbc0d51c-fbac-41fc-a3fb-9267cf8bae02")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("39d16596-a9f9-4480-9743-9ce4ca17bf03")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("2c979687-1c13-4bd3-bb23-cfe760ae42f2")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("dea5cf52-e2f1-48d9-b56a-1786daa1decf")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("39517e2a-ad0e-485a-81fe-183ebaa824d2")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("f79bc4c1-a719-4a53-9344-468ab97be564")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("6425a188-1955-4f12-b5d9-0a646ab79aa8")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("66d43ccd-43e1-44ab-85cb-c44ad5a05881")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("9f5f192c-009b-495a-a133-4f4cc8992ff2")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("1bb8099c-bd28-4dce-ae17-4441fc0a925b")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("0c45d0d1-72f1-49f1-b56c-1a6268f1b2e7")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("219b779e-696a-48c2-927a-bb61295763c6")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("1e589668-834d-4b5b-90bd-b930112ac8f6")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("8d16a126-2a0d-48e6-afd4-c2eaa949ed00")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("8a4624ce-c771-4ab5-83d9-a8345a782c25")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("9c05b0bc-951d-41ec-bcc5-3aa3b54f93f9")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("7291c852-99e3-45b0-92e2-417521d1ec59")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("4bec1d21-ed18-4331-9d1d-c0a255e2d420")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("6c2d31c3-149c-44fe-b7a2-456421dbf0dd")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("31a3ab32-1212-4a81-b3c6-32fd453c09a1")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("876332ab-ca30-474d-8cfe-6562d81e2e57")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("813ec322-c7b6-4093-810b-198b463a86fd")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("e2207652-cc6a-4885-aad7-2f2f95e14050")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("941882b6-7278-4779-b3b0-b95904c8264b")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("2169f9a4-f731-4315-8609-44e4ec63ba9e")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("e61b27b4-e84b-4572-8238-d94c60bc74d3")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("b14a54fc-8533-48cb-968d-313351c9d2b9")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("54a5d7e8-626c-4e3a-a42b-3e5f995e8844")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("9039bc6f-030d-42c8-b0c1-8ae9a11d2f0e")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("3f95b872-bdb9-4b1f-b355-8cea0a9d697d")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("6c241448-2ad2-47c9-8c28-3e93467698cf")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("e981fbc5-c7e1-4a15-a1fe-26ee5bee6d38")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c8671a52-4aa3-487d-8c64-cac737b8e8bb")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("d36e343f-f1cf-410d-9765-9c4acc65295e")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("054c43bb-cfda-45e5-91a2-625160466126")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("ebe7f5d3-1f33-4e65-89b4-1621bf880353")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("6d83bbe4-3512-436b-9a11-7356bc635bca")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("bdc86522-1ca2-4d44-b558-18bd64633813")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("f2c5391c-f784-481c-be99-24663fbfbcfd")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("bf15a562-f705-4584-87c2-cfdad729db97")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("21f139c8-9e2e-4cf3-8223-642a5c411ce1")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("1c683c0b-e5dd-4bea-81af-a5af49e105f6")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("06ee1f8d-e81e-4483-95e6-6e5e75e66e4d")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("48de7707-a3f3-4f9e-81da-2f56f288ce86")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("2bfeed4b-932b-4ee2-a581-4237d2bee12f")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("79c7d2a1-2404-4a75-8a5c-60e7d09da07e")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("7264c946-f38b-4bb3-89d7-200fa0ce7a80")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("d1c687c4-9ecd-44e0-ba61-0212114fafde")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("aaab65d9-adaf-4509-b06a-660e5af24afb")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("e57e9249-2585-4a58-ae4c-c10d63de3b65")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("aada96b5-4865-4b09-b80f-6446a7ed2d76")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("4df2ff5b-6307-471f-be59-6adf9a6c1ea4")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("f3d77115-f53f-429b-9207-72f5f098344a")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("3e71fed6-ed72-4803-8712-89464f6d9578")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("357b63a4-49c5-44e9-96de-c2642f7e5582")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("3b677d9d-f2a1-450d-961d-fea95de3b6e1")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("05047290-54ba-4f83-b784-30d97eb7fa6c")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("8faa4805-3912-42b0-a710-4ce7e596f0ab")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c47cdf92-1375-4a4e-95cf-91ebbfb0aa7e")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c1723748-9bb8-420b-a0a4-231074df4f3e")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("bdea8b16-e29e-4a04-b15e-6e709414b810")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("bf4d48ee-7c27-4f4c-a850-5c10b15df127")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("478db2ba-664a-43a2-bd7d-7a7020bb2591")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("3625987a-31ca-4ea1-9dd9-6778064f4789")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("09c8f3c9-5dbe-4071-868f-016573e05634")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("d41efe2d-0e34-4e07-9f87-4a94826b0613")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("17dacdfd-428b-460e-9ef0-4ccaee105ab3")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("12736894-9c04-4a6e-9049-4eaf8e5d6475")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("fba5435e-b924-41a9-9d9a-4ef655717300")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("12afa194-e971-45e1-873b-5af1c6b64db0")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("e51bd03a-fd30-462c-8765-3a0ef6e5c52b")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("afce425a-6324-40fc-a959-619f37de2677")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("da56f491-e369-4aef-b8f7-089b3cd9ed9a")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("355c4e97-243f-40c5-a1ae-50a1d25a3463")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("01348901-5fbc-42a7-9dab-f6bd13a52161")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("26f5d1f3-14aa-4570-91a5-0ee01837aef9")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("83599546-f907-4de7-9ac5-5f04a402d17b")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("075aec91-78df-4dc9-aa80-8c51482175fc")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("eabb072f-b295-4697-9210-bedaf1ebae00")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("a8a8c4d4-a446-40e0-ac76-fc91a3464cfd")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c200347e-924d-4658-b1d8-a4ec18c58e56")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("9053f883-67b7-445d-a452-f705fe6c491a")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c4fa7598-1295-4454-b551-cf7e51ac45a2")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("bcb45d0e-6d15-473b-ae64-dd13296e774c")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("0a2d28a2-0009-42dc-8ac9-f2bedd810092")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("d885357a-c238-4112-9285-d31188ecea26")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("aaac54ad-ac46-4456-afbe-730423a550b4")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("b3f5d469-5fff-49ea-9c75-40b28e2021aa")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("968d26c0-e5d2-4027-a696-8ffb9c2b4a75")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("7d60850e-5b16-45a2-ab7b-2b477a9352bb")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("4228595c-e6a6-47ff-aba8-0e311b8baaa6")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("8499f766-3438-48c9-83fd-3dfa1c752554")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c94a18f5-4ee0-4b76-9ebc-43b8c080868c")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("8a09f62c-a97a-4e2a-ab59-9d1adf4ff3aa")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("a49d2916-e51b-421d-b4dc-62c71f017f04")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("7274ee63-19fc-4aaa-bb23-b0201231d483")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("62fe0f46-44ad-4a02-99fa-29b0c3aef6ed")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("d82e7183-4850-4018-b9a8-b7398ce7d8cb")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("13f5d565-ef4f-4e37-bb79-cd7d452cf15a")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("706087f0-2849-4ec0-9c00-a73825280f03")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("85a53ee5-d709-4e07-a92c-2903eca41b5c")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("73a1add0-4910-48e8-a6b2-f8228d999f06")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("d086ed40-b9d2-47e7-9d5e-f6844e9ff2fb")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("bb1b2e3b-d530-4778-bbd8-453f4d309d3e")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c572026a-12c1-416f-94ae-5b1209a74364")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("9dc3f8ba-33ad-40e3-8897-4d6db87723ed")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("b3e6e22e-c042-430a-9bfb-e26cc4432acd")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("081a81aa-f049-475d-aea0-cc06ba84f1a6")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("18cf2c35-7f9d-4f2b-be7b-3dbd5c736464")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("b2da3f6e-ac98-4576-8832-7e8dfece56b7")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("30ef3da9-520a-43e5-ba12-8bb794fb373e")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("89e3b0db-7a19-4205-9c47-fd4fc825d452")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("add42e19-8f44-47c3-9daa-a57496c726d8")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("29d7bb0e-454b-4600-a335-f747cb0d8177")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("625cfc04-ca3d-4ea6-bbf8-3c0e6169366a")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("92e79514-64f3-41d4-8878-9e347dc4e53f")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("7d197a63-d97e-43d0-b070-e7dfacf8b5d6")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("02c94f25-b0e8-458f-97c5-e2177d1123bd")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("b48f3849-c79e-4808-a77a-21817ee4ae07")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("fd99b392-f2a3-4755-9839-f916813bf1e7")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("652f092e-0fb5-48c5-9e97-daa5a98840fb")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("05f7fcfb-5b64-4502-ae1d-10b5714d9455")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("d94da097-e292-4496-8c0c-38ed7965728d")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("3a45f6b2-574e-4d54-9295-5434d8743198")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("7806934d-8696-450d-acf5-4d99f8e926bc")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("474b2999-2a80-4f56-b605-7a450a348980")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("8bdedd08-0c60-4c91-a715-824c52b8ebba")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("eae4c703-c090-47e4-a055-43bada5b8aa5")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("cfe27178-d861-4db4-a66e-aeb9f41b26a1")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("93d0b048-84bb-4a9f-8da8-f04a485f2c86")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("1370a695-ecd1-40d5-9505-98018f98e22e")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("5a39d63e-5d53-4f70-8f49-793464050c2d")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("2eee10fe-16cf-444c-bbee-02a4b0aa4c41")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("318d1de5-f8c4-462a-9bf8-90807578e10a")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("8b2a99bf-1eb3-40e9-9900-063cbbad00c8")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("9b75b58b-604b-4596-bfa2-4c2b25e3203b")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("036d92c2-7ade-4f5e-beca-2a6c585e8d3b")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("451eb440-6f9d-46ed-a2fc-b9e40f751054")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("aaf04e71-e264-4cb1-8887-3aad1841c7b0")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("168502b2-ce1c-4785-87de-e87cba985a71")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("1a217cb4-b571-4499-910f-6db6a200d789")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("830e5447-b768-4c52-9a98-399eeb702f80")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("f07854af-dadf-4903-aaee-f0b6b12f900f")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("926a1917-f1c7-43ff-b832-d459cedf93eb")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("1180e6ab-8bf1-402a-b486-e2b590089727")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("4c1f7ab5-40e6-49f0-9eb8-aa76f7256601")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("67a3deaa-8788-4ef1-b1e6-b0ece61cca06")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("41a309ed-5df1-4969-9e50-e9aac22fdb6b")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("7ff37d97-2c3a-4f36-90bc-b85c70b1fa09")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("3a153acd-6083-4293-bcf7-a1ee73d962e6")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("6192895e-3c88-45c5-89ee-0a2f53dc20fd")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("9b88ea1f-c973-4b19-b7cf-92bcbc2e8cf0")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("6f764eda-7143-4e00-ba8a-336276659e01")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("258bd96f-1c55-45df-8506-3788d6ff4a16")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("8ea15285-23fa-49e2-a88e-7bc6c9efe642")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("ea7bf66f-86c1-49e1-8f4f-0a6357494a51")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("dc1b3280-6e8a-4970-91eb-8d2ef3bd3a33")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("983a0481-939c-4ea8-80f9-93c5be949c85")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c23f7992-b21b-4790-bec5-517f9a398ed8")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("628d66f1-2d62-4e17-8adb-97a5aa3cd3fe")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("92f49e69-b0c8-4082-be28-f88054dd5586")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("9405017c-6577-4ca1-8c0f-76b0b05dfb4d")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("44a2b4c4-4f01-4e03-ad0f-6f1e59932792")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("9d40e9ae-ed20-4754-98fd-c02ddd16fd0c")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("a6eab5fc-79f8-4fd3-bd09-ec6e4ba9e764")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("6a42775a-c791-4cf5-95d6-da1921c25875")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("e4780107-c02e-4f42-bb38-d3bf6c775663")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("9f73f9ca-87c9-4b8a-8992-4489bd3e83e3")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("f7fd7578-3630-4eed-8411-b03a2b8ad25f")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("50cb4c69-412e-4f5d-8bab-a08e2856b026")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c23d449f-e976-40a2-846c-ce7266ec4fbe")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("391576ca-1cfa-4484-a156-8a916436e873")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("9c6c2740-425f-46a0-a6e9-0fcddcfe1af1")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("570804da-73c8-46a7-a6a6-de87a09ed791")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("1acbd6ce-282a-48c2-9c51-14651be01ad7")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("3cd35a89-d489-4731-8263-71fbc89cb07e")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c18da1af-599a-4f8a-a303-e3d8fd7fd8f7")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("b282186c-5bd5-4c58-afbc-54bf897fb0c7")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("639c08a9-688c-4328-b6bf-7015110067df")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("79c2d6cf-cba8-4343-ac67-783cc0948936")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("d902cc78-9b7a-4b7d-bc77-1df117976ef3")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("b50c7634-c14b-4aac-ba1c-4d9beddd3c7c")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("86f0430e-ae7e-4bfd-8d16-86dcd0da4983")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("04738947-55c6-49f3-97ce-a00fadc2162a")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("d2307093-f441-4022-be09-91c41c8a7d87")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("e43e1c84-54d5-41d2-9134-b819f1195934")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("7d7cf62e-177b-4b0a-aeea-318b01ecc77a")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c6d06ffa-bd94-4ac3-b48b-7d9a74d3f207")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("976f508f-d284-48bb-96fe-bc3b0279fa8f")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("d3886449-db0f-4ec6-87f3-857ba0551383")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c2d236d8-35f6-4e4f-bb55-73f5dae06e23")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("44b6508a-b960-43c7-a77e-b9bb51fa5db9")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("52e8e43b-3e68-42ac-a604-d2f33cb2f328")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("3af6a6c4-1cdc-4782-af68-a738cf19ff33")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c9efde68-14c8-4520-980a-183eb9198421")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("a7b7b0e7-82a3-4dc9-82a3-9a0196043787")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("1029d7d4-a72c-493f-a935-fdd323d1dc36")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("2c698342-736f-47a3-8a22-75e3d21ef322")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("37b474bd-28cc-4186-9c46-38fb28fdd20e")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("b8f178c1-6ef8-4cee-97b3-98ca0ad347ff")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c78b3f93-037a-4df2-a24b-8b0601922ff8")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("0e46887e-a42f-44d2-9730-13dcaef0875f")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("dabb8d7c-7c06-4b93-8f74-bbb7452ea19b")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("f127e074-cfca-421b-835b-4f17c60c8a97")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("3e22df65-a844-4f29-a0c1-1b4814edcc2c")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("820b9d9c-3af2-48d2-9b2c-6aaf23a99eee")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("03e0254c-5330-484d-b90d-99015930fe92")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("d902d1ce-5b77-4eba-8627-a8a3a3a0530b")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("d5f80276-0189-41dc-812a-7f45a2492f64")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("e678b78b-f766-4f4d-a2ff-8bb82756a678")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("a31a0356-697c-4e4b-8378-c7b3df1afee6")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("24332cf7-8f57-4178-8dfc-8b3c89612e14")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("08a5e34c-cdb3-49ee-9269-1c81db5359be")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("75ddb443-7e35-41b1-b207-48c52bb178b5")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c6c670c6-51d2-4697-bf7a-cbd00b8faefd")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("ba345051-a0c6-4ad6-9b3e-773f7b1e6030")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("411edf02-e679-4163-b262-d97d1f1c6aa4")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("c4a83a64-de81-42ab-b352-e3401afcabc9")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("d6b8e683-28df-4557-b96a-8c19f710fff0")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("a351511e-ddf4-447a-9818-77052738cfae")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("3685a5f7-e5fe-4d05-bcc6-02e18be0fc26")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("649899f7-5926-4fc6-9618-bf7a5185ebe4")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("faa2136e-6fa9-41af-9a13-7dfa94024e85")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("5040fc3e-0f20-48dc-8aed-237060413622")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("2eb6515c-f25c-41ef-8f41-b1151d88c96e")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("49ef6632-8e70-4326-905b-f23a2c6ded20")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("65fe4368-46a4-4f09-a55e-e6efd8a531c7")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("6e3746d7-5431-4c00-b59b-cb1b55e56d4f")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("daa0a809-791a-4d85-938f-2c7be0e05f06")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("0b8ec28c-468d-4e25-957f-5cee7ccf55eb")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("76374015-df8e-40d6-90b4-e4fbf0f7ff1c")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("9e0202d4-0acb-4baa-b260-c4bfe4bcd207")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("16b31c1c-181d-4481-9c4c-1e8e4b7063c9")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("921cae99-0ed2-499d-b86a-d2f006be8b33")
+                        },
+                        new
+                        {
+                            CatalogueId = new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"),
+                            SummitId = new Guid("eef3884e-ee54-48f9-8fb0-bd1a24f8ffba")
                         });
                 });
 
@@ -6822,10 +8922,6 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Domain.CatalogueContext.Entities.Summit", b =>
                 {
-                    b.HasOne("Domain.CatalogueContext.Entities.Catalogue", null)
-                        .WithMany("Summits")
-                        .HasForeignKey("CatalogueId");
-
                     b.HasOne("Persistence.Data.EnumLookup<Domain.CatalogueContext.Enums.DifficultyLevel>", null)
                         .WithMany()
                         .HasForeignKey("DifficultyLevel")
@@ -6869,9 +8965,29 @@ namespace Persistence.Migrations
                         .OnDelete(DeleteBehavior.NoAction);
                 });
 
+            modelBuilder.Entity("Domain.Content.ValueObjects.CatalogueSummit", b =>
+                {
+                    b.HasOne("Domain.CatalogueContext.Entities.Catalogue", null)
+                        .WithMany("CatalogueSummits")
+                        .HasForeignKey("CatalogueId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.CatalogueContext.Entities.Summit", null)
+                        .WithMany("CatalogueSummits")
+                        .HasForeignKey("SummitId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("Domain.CatalogueContext.Entities.Catalogue", b =>
                 {
-                    b.Navigation("Summits");
+                    b.Navigation("CatalogueSummits");
+                });
+
+            modelBuilder.Entity("Domain.CatalogueContext.Entities.Summit", b =>
+                {
+                    b.Navigation("CatalogueSummits");
                 });
 
             modelBuilder.Entity("Domain.ChallengeContext.Entities.Diary", b =>
