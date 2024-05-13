@@ -1,12 +1,12 @@
 using Domain.Content.Entities;
 using Domain.Content.Enums;
 using Domain.Content.Errors;
-using Domain.UnitTests.Helpers.Factories;
 using FluentAssertions;
+using SharedKernel.UnitTests.Helpers.Factories;
 
 namespace Domain.UnitTests.Tests;
 
-public class SummitAggregateTest
+public class SummitAggregateTests
 {
     [Fact]
     public void Create_WhenValidParameters_ThenSuccess()
@@ -21,7 +21,7 @@ public class SummitAggregateTest
         Guid id = Guid.NewGuid();
 
         // Act
-        var result = Summit.Create(name, altitude, latitude, longitude, isEssential, region, id);
+        var result = SummitAggregate.Create(name, altitude, latitude, longitude, isEssential, region, id);
 
         // Assert
         result.IsSuccess().Should().BeTrue();

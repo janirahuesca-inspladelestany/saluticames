@@ -2,13 +2,13 @@
 using Domain.Content.ValueObjects;
 using System.Diagnostics;
 
-namespace Domain.UnitTests.Helpers.Factories;
+namespace SharedKernel.UnitTests.Helpers.Factories;
 
 public class CatalogueFactory
 {
-    public static Catalogue Create()
+    public static CatalogueAggregate Create()
     {
-        var catalogueCreateResult = Catalogue.Create(
+        var catalogueCreateResult = CatalogueAggregate.Create(
             id: Guid.NewGuid(),
             name: "El meu catalogue");
 
@@ -19,7 +19,7 @@ public class CatalogueFactory
         return catalogue;
     }
 
-    public static Catalogue CreateWithSummitIds(params Guid[] summitIds)
+    public static CatalogueAggregate CreateWithSummitIds(params Guid[] summitIds)
     {
         var catalogue = Create();
 

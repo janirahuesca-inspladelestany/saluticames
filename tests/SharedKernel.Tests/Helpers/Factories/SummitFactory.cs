@@ -3,13 +3,13 @@ using Domain.Content.ValueObjects;
 using System.Diagnostics;
 using Domain.Content.Enums;
 
-namespace Domain.UnitTests.Helpers.Factories;
+namespace SharedKernel.UnitTests.Helpers.Factories;
 
 public class SummitFactory
 {
-    public static Summit Create()
+    public static SummitAggregate Create()
     {
-        var summitCreateResult = Summit.Create(
+        var summitCreateResult = SummitAggregate.Create(
             id: Guid.NewGuid(),
             name: "El meu summit",
             altitude: 242,
@@ -25,7 +25,7 @@ public class SummitFactory
         return catalogue;
     }
 
-    public static Summit CreateWithCatalogueIds(params Guid[] catalogueIds)
+    public static SummitAggregate CreateWithCatalogueIds(params Guid[] catalogueIds)
     {
         var summit = Create();
 

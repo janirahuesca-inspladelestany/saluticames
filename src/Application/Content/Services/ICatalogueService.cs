@@ -1,4 +1,4 @@
-﻿using Contracts.DTO.Catalogue;
+﻿using Contracts.DTO.Content;
 using SharedKernel.Common;
 
 namespace Application.Content.Services;

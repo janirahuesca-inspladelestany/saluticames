@@ -6,11 +6,11 @@ using SharedKernel.Common;
 
 namespace Domain.Content.Entities;
 
-public sealed class Summit : AggregateRoot<Guid>
+public sealed class SummitAggregate : AggregateRoot<Guid>
 {
     internal readonly List<CatalogueSummit> _catalogueSummit = new List<CatalogueSummit>();
 
-    private Summit(Guid id)
+    private SummitAggregate(Guid id)
         : base(id)
     {
         DifficultyLevel = CalculateDifficultyLevel();
@@ -26,9 +26,9 @@ public sealed class Summit : AggregateRoot<Guid>
     public IEnumerable<Guid> CatalogueIds => _catalogueSummit.Select(catalogueSummit => catalogueSummit.CatalogueId);
     public IReadOnlyCollection<CatalogueSummit> CatalogueSummits => _catalogueSummit; // Navigation property
 
-    public static Result<Summit?, Error> Create(string name, int altitude, float latitude, float longitude, bool isEssential, Region region, Guid? id = null)
+    public static Result<SummitAggregate?, Error> Create(string name, int altitude, float latitude, float longitude, bool isEssential, Region region, Guid? id = null)
     {
-        Summit summit = new(id ?? Guid.NewGuid());
+        SummitAggregate summit = new(id ?? Guid.NewGuid());
 
         var setNameResult = summit.SetName(name);
         if (setNameResult.IsFailure()) return setNameResult.Error;

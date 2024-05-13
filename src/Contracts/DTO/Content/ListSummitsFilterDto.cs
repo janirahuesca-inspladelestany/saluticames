@@ -1,4 +1,4 @@
-﻿namespace Contracts.DTO.Catalogue;
+﻿namespace Contracts.DTO.Content;
 
 public record ListSummitsFilterDto(Guid? Id = null,
                                   string? Name = null,

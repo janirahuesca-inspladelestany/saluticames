@@ -1,5 +1,5 @@
 ﻿using Application.Abstractions;
-using Contracts.DTO.Catalogue;
+using Contracts.DTO.Content;
 using Domain.Content.Errors;
 using SharedKernel.Common;
 

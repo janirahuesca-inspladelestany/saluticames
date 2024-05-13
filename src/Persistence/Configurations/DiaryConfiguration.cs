@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Persistence.Configurations;
 
-internal sealed class DiaryConfiguration : IEntityTypeConfiguration<Diary>
+internal sealed class DiaryConfiguration : IEntityTypeConfiguration<DiaryEntity>
 {
-    public void Configure(EntityTypeBuilder<Diary> builder)
+    public void Configure(EntityTypeBuilder<DiaryEntity> builder)
     {
         builder.ToTable("Diaries");
 
@@ -16,8 +16,8 @@ internal sealed class DiaryConfiguration : IEntityTypeConfiguration<Diary>
         builder.Property(d => d.Id).ValueGeneratedNever();
         builder.Property(d => d.Name).IsRequired().HasMaxLength(100);
 
-        builder.HasOne<Hiker>().WithMany(h => h.Diaries).HasForeignKey("HikerId").OnDelete(DeleteBehavior.NoAction);
-        builder.HasOne<Catalogue>().WithMany().HasForeignKey(d => d.CatalogueId).OnDelete(DeleteBehavior.NoAction);
+        builder.HasOne<HikerAggregate>().WithMany(h => h.Diaries).HasForeignKey("HikerId").OnDelete(DeleteBehavior.NoAction);
+        builder.HasOne<CatalogueAggregate>().WithMany().HasForeignKey(d => d.CatalogueId).OnDelete(DeleteBehavior.NoAction);
 
         builder.HasData(new
         {

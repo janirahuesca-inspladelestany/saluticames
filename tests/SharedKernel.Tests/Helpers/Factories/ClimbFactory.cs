@@ -1,13 +1,13 @@
 ﻿using Domain.Challenge.Entities;
 using System.Diagnostics;
 
-namespace Domain.UnitTests.Helpers.Factories;
+namespace SharedKernel.UnitTests.Helpers.Factories;
 
 public class ClimbFactory
 {
-    public static Climb Create()
+    public static ClimbEntity Create()
     {
-        var climbCreateResult = Climb.Create(
+        var climbCreateResult = ClimbEntity.Create(
             summitId: Guid.NewGuid(),
             ascensionDate: DateTime.UtcNow);
 
@@ -18,7 +18,7 @@ public class ClimbFactory
         return climb;
     }
 
-    public static Climb CreateWithSummitIdOnGivenAscensionDate(Guid summitId, DateTime? date = null)
+    public static ClimbEntity CreateWithSummitIdOnGivenAscensionDate(Guid summitId, DateTime? date = null)
     {
         var climb = Create();
 

@@ -1,11 +1,11 @@
 using Domain.Content.Entities;
 using Domain.Content.Errors;
-using Domain.UnitTests.Helpers.Factories;
 using FluentAssertions;
+using SharedKernel.UnitTests.Helpers.Factories;
 
 namespace Domain.UnitTests.Tests;
 
-public class CatalogueAggregateTest
+public class CatalogueAggregateTests
 {
     [Fact]
     public void Create_WhenValidParameters_ThenSuccess()
@@ -15,7 +15,7 @@ public class CatalogueAggregateTest
         Guid id = Guid.NewGuid();
 
         // Act
-        var result = Catalogue.Create(name, id);
+        var result = CatalogueAggregate.Create(name, id);
 
         // Assert
         result.IsSuccess().Should().BeTrue();

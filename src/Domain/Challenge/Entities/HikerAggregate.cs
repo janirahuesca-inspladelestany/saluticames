@@ -5,11 +5,11 @@ using SharedKernel.Common;
 
 namespace Domain.Challenge.Entities;
 
-public sealed class Hiker : AggregateRoot<string>
+public sealed class HikerAggregate : AggregateRoot<string>
 {
-    internal ICollection<Diary> _diaries = new List<Diary>();
+    internal ICollection<DiaryEntity> _diaries = new List<DiaryEntity>();
 
-    private Hiker(string id)
+    private HikerAggregate(string id)
         : base(id)
     {
 
@@ -17,18 +17,18 @@ public sealed class Hiker : AggregateRoot<string>
 
     public string Name { get; private set; } = null!;
     public string Surname { get; private set; } = null!;
-    public IEnumerable<Diary> Diaries => _diaries;
+    public IEnumerable<DiaryEntity> Diaries => _diaries;
 
-    public static Result<Hiker?, Error> Create(string id, string name, string surname)
+    public static Result<HikerAggregate?, Error> Create(string id, string name, string surname)
     {
-        return new Hiker(id)
+        return new HikerAggregate(id)
         {
             Name = name,
             Surname = surname
         };
     }
 
-    public EmptyResult<Error> AddDiary(Diary diary)
+    public EmptyResult<Error> AddDiary(DiaryEntity diary)
     {
         if (diary is null)
         {
@@ -45,7 +45,7 @@ public sealed class Hiker : AggregateRoot<string>
         return EmptyResult<Error>.Success();
     }
 
-    public EmptyResult<Error> AddClimbsToDiary(Diary diary, IEnumerable<Climb> climbs)
+    public EmptyResult<Error> AddClimbsToDiary(DiaryEntity diary, IEnumerable<ClimbEntity> climbs)
     {
         if (diary is null) 
         {
@@ -69,7 +69,7 @@ public sealed class Hiker : AggregateRoot<string>
         return EmptyResult<Error>.Success();
     }
 
-    public EmptyResult<Error> AddClimbToDiary(Diary diary, Climb climb)
+    public EmptyResult<Error> AddClimbToDiary(DiaryEntity diary, ClimbEntity climb)
     {
         if (diary is null)
         {
@@ -91,7 +91,7 @@ public sealed class Hiker : AggregateRoot<string>
         return EmptyResult<Error>.Success();
     }
 
-    private bool IsClimbPreviouslyRegisteredInDiary(Diary diary, Climb climb)
+    private bool IsClimbPreviouslyRegisteredInDiary(DiaryEntity diary, ClimbEntity climb)
     {
         return diary.Climbs.Any(diaryClimb => diaryClimb.SummitId == climb.SummitId);
     }

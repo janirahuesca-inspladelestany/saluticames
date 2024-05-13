@@ -5,11 +5,11 @@ using SharedKernel.Common;
 
 namespace Domain.Content.Entities;
 
-public sealed class Catalogue : AggregateRoot<Guid>
+public sealed class CatalogueAggregate : AggregateRoot<Guid>
 {
     internal readonly List<CatalogueSummit> _catalogueSummit = new List<CatalogueSummit>();
 
-    private Catalogue(Guid id)
+    private CatalogueAggregate(Guid id)
         : base(id)
     {
 
@@ -19,9 +19,9 @@ public sealed class Catalogue : AggregateRoot<Guid>
     public IEnumerable<Guid> SummitIds => _catalogueSummit.Select(catalogueSummit => catalogueSummit.SummitId);
     public IReadOnlyCollection<CatalogueSummit> CatalogueSummits => _catalogueSummit; // Navigation property
 
-    public static Result<Catalogue?, Error> Create(string name, Guid? id = null)
+    public static Result<CatalogueAggregate?, Error> Create(string name, Guid? id = null)
     {
-        return new Catalogue(id ?? Guid.NewGuid())
+        return new CatalogueAggregate(id ?? Guid.NewGuid())
         {
             Name = name
         };

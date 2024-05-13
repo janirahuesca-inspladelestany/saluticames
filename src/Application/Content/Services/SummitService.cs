@@ -1,5 +1,5 @@
 ﻿using Application.Abstractions;
-using Contracts.DTO.Catalogue;
+using Contracts.DTO.Content;
 using Domain.Content.Entities;
 using Domain.Content.Enums;
 using Domain.Content.Errors;
@@ -20,7 +20,7 @@ public class SummitService(IUnitOfWork _unitOfWork) : ISummitService
         if (existingSummits.Any()) return SummitErrors.SummitAlreadyExists;
 
         // Mapejar de DTO a BO
-        var summitsToAdd = new List<Summit>();
+        var summitsToAdd = new List<SummitAggregate>();
         foreach (var summitDto in summitDtos)
         {
             if (!EnumHelper.TryGetEnumValueByDescription<Region>(summitDto.RegionName, out var region))
@@ -28,7 +28,7 @@ public class SummitService(IUnitOfWork _unitOfWork) : ISummitService
                 return SummitErrors.SummitRegionNotAvailable;
             }
 
-            var summitCreateResult = Summit.Create(
+            var summitCreateResult = SummitAggregate.Create(
                 name: summitDto.Name,
                 altitude: summitDto.Altitude,
                 latitude: summitDto.Latitude,
@@ -91,7 +91,7 @@ public class SummitService(IUnitOfWork _unitOfWork) : ISummitService
                 cancellationToken: cancellationToken);
 
         // Actualizar summits
-        var summitsToReplace = new List<Summit>();
+        var summitsToReplace = new List<SummitAggregate>();
         foreach (var summitDto in summitDtos)
         {
             var summitDetails = summitDto.Value;
@@ -157,7 +157,7 @@ public class SummitService(IUnitOfWork _unitOfWork) : ISummitService
                 filter: summit => summitIds.Any(summitId => summitId == summit.Id),
                 cancellationToken: cancellationToken);
 
-        var summitsToRemove = new List<Summit>();
+        var summitsToRemove = new List<SummitAggregate>();
         foreach (var summitId in summitIds)
         {
             var summitToRemove = existingSummits.SingleOrDefault(existingSummit => existingSummit.Id == summitId);

@@ -14,10 +14,10 @@ public sealed class SalutICamesDbContext : DbContext
 
     }
 
-    public DbSet<Catalogue> Catalogues { get; set; } = null!;
+    public DbSet<CatalogueAggregate> Catalogues { get; set; } = null!;
     public DbSet<CatalogueSummit> CatalogueSummits { get; set; } = null!;
-    public DbSet<Summit> Summits { get; set; } = null!;
-    public DbSet<Hiker> Hikers { get; set; } = null!;
+    public DbSet<SummitAggregate> Summits { get; set; } = null!;
+    public DbSet<HikerAggregate> Hikers { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
