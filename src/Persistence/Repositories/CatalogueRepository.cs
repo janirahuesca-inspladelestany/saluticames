@@ -9,19 +9,19 @@ namespace Persistence.Repositories;
 
 public sealed class CatalogueRepository : ICatalogueRepository
 {
-    private readonly DbSet<Catalogue> _catalogues;
+    private readonly DbSet<CatalogueAggregate> _catalogues;
 
     public CatalogueRepository(SalutICamesDbContext salutICamesDbContext)
     {
-        _catalogues = salutICamesDbContext.Set<Catalogue>();
+        _catalogues = salutICamesDbContext.Set<CatalogueAggregate>();
     }
 
-    public async Task<IEnumerable<Catalogue>> ListAsync(Expression<Func<Catalogue, bool>>? filter = null,
-        Func<IQueryable<Catalogue>, IOrderedQueryable<Catalogue>>? orderBy = null,
+    public async Task<IEnumerable<CatalogueAggregate>> ListAsync(Expression<Func<CatalogueAggregate, bool>>? filter = null,
+        Func<IQueryable<CatalogueAggregate>, IOrderedQueryable<CatalogueAggregate>>? orderBy = null,
         string includeProperties = "",
         CancellationToken cancellationToken = default)
     {
-        IQueryable<Catalogue> query = _catalogues;
+        IQueryable<CatalogueAggregate> query = _catalogues;
 
         if (filter is not null) query = query.Where(filter);
 
@@ -37,7 +37,7 @@ public sealed class CatalogueRepository : ICatalogueRepository
         return catalogues;
     }
 
-    public async Task<Catalogue?> FindByIdAsync(Guid id, CancellationToken cancellationToken = default)
+    public async Task<CatalogueAggregate?> FindByIdAsync(Guid id, CancellationToken cancellationToken = default)
     {
         return await _catalogues.Include(c => c.CatalogueSummits).SingleOrDefaultAsync(catalogue => catalogue.Id == id, cancellationToken);
     }

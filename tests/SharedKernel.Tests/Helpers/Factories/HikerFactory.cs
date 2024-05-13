@@ -1,13 +1,13 @@
 ﻿using Domain.Challenge.Entities;
 using System.Diagnostics;
 
-namespace Domain.UnitTests.Helpers.Factories;
+namespace SharedKernel.UnitTests.Helpers.Factories;
 
 public class HikerFactory
 {
-    public static Hiker Create()
+    public static HikerAggregate Create()
     {
-        var hikerCreateResult = Hiker.Create(
+        var hikerCreateResult = HikerAggregate.Create(
             id: "12345678P",
             name: "Kilian",
             surname: "Gordet");
@@ -19,7 +19,7 @@ public class HikerFactory
         return hiker;
     }
 
-    public static Hiker CreateWithDiary(Diary diary)
+    public static HikerAggregate CreateWithDiary(DiaryEntity diary)
     {
         var hiker = Create();
 

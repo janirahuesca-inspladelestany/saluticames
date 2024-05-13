@@ -1,12 +1,12 @@
 using Domain.Challenge.Entities;
 using Domain.Challenge.Errors;
 using Domain.Challenge.Rules;
-using Domain.UnitTests.Helpers.Factories;
 using FluentAssertions;
+using SharedKernel.UnitTests.Helpers.Factories;
 
 namespace Domain.UnitTests.Tests;
 
-public class HikerAggregateTest
+public class HikerAggregateTests
 {
     [Fact]
     public void Create_WhenValidParameters_ThenSuccess()
@@ -17,7 +17,7 @@ public class HikerAggregateTest
         string surname = "Gordet";
 
         // Act
-        var result = Hiker.Create(id, name, surname);
+        var result = HikerAggregate.Create(id, name, surname);
 
         // Assert
         result.IsSuccess().Should().BeTrue();
@@ -45,7 +45,7 @@ public class HikerAggregateTest
     public void AddDiary_WhenDiaryIsNull_ThenFailureDiaryNotFound()
     {
         // Arrange
-        Diary diary = null;
+        DiaryEntity diary = null;
         var sut = HikerFactory.Create();
 
         // Act
@@ -77,8 +77,8 @@ public class HikerAggregateTest
     public void AddClimbsToDiary_WhenDiaryIsNull_ThenFailureDiaryNotFound()
     {
         // Arrange
-        Diary diary = null;
-        var climbs = new List<Climb> { ClimbFactory.Create() };
+        DiaryEntity diary = null;
+        var climbs = new List<ClimbEntity> { ClimbFactory.Create() };
         var sut = HikerFactory.Create();
 
         // Act
@@ -95,7 +95,7 @@ public class HikerAggregateTest
         // Arrange
         var climb = ClimbFactory.Create();
         var diary = DiaryFactory.CreateWithClimbs(climb);
-        var newClimbs = new List<Climb> { climb };
+        var newClimbs = new List<ClimbEntity> { climb };
         var sut = HikerFactory.CreateWithDiary(diary);
 
         // Act
@@ -113,7 +113,7 @@ public class HikerAggregateTest
         // Arrange
         var diary = DiaryFactory.Create();
         var originalClimbs = diary.Climbs;
-        var climbs = new List<Climb> { ClimbFactory.Create(), ClimbFactory.Create() };
+        var climbs = new List<ClimbEntity> { ClimbFactory.Create(), ClimbFactory.Create() };
         var sut = HikerFactory.CreateWithDiary(diary);
 
         // Act
@@ -129,7 +129,7 @@ public class HikerAggregateTest
     public void AddClimbToDiary_WhenDiaryIsNull_ThenFailureDiaryNotFound()
     {
         // Arrange
-        Diary diary = null;
+        DiaryEntity diary = null;
         var climb = ClimbFactory.Create();
         var sut = HikerFactory.Create();
 
@@ -201,7 +201,7 @@ public class HikerAggregateTest
         DateTime ascensionDate = DateTime.UtcNow.AddDays(-1);
 
         // Act
-        var result = Climb.Create(summitId, ascensionDate);
+        var result = ClimbEntity.Create(summitId, ascensionDate);
 
         // Assert
         result.IsSuccess().Should().BeTrue();

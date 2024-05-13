@@ -1,14 +1,12 @@
 ﻿using Domain.Challenge.Errors;
-using Domain.Content.Entities;
 using SharedKernel.Abstractions;
 using SharedKernel.Common;
-using System.Xml.Linq;
 
 namespace Domain.Challenge.Entities;
 
-public sealed class Climb : Entity<Guid>
+public sealed class ClimbEntity : Entity<Guid>
 {
-    private Climb(Guid id)
+    private ClimbEntity(Guid id)
         : base(id)
     {
 
@@ -17,9 +15,9 @@ public sealed class Climb : Entity<Guid>
     public Guid SummitId { get; internal set; }
     public DateTime AscensionDate { get; internal set; }
 
-    public static Result<Climb?, Error> Create(Guid summitId, DateTime? ascensionDate = null)
+    public static Result<ClimbEntity?, Error> Create(Guid summitId, DateTime? ascensionDate = null)
     {
-        var climb = new Climb(Guid.NewGuid());
+        var climb = new ClimbEntity(Guid.NewGuid());
 
         var setSummitIdResult = climb.SetSummitId(summitId);
         if (setSummitIdResult.IsFailure()) return setSummitIdResult.Error;

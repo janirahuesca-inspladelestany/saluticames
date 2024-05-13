@@ -3,7 +3,7 @@ using Api.Models.Requests;
 using Api.Models.Requests.Queries;
 using Api.Models.Responses;
 using Application.Content.Services;
-using Contracts.DTO.Catalogue;
+using Contracts.DTO.Content;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
 

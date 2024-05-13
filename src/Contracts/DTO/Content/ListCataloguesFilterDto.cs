@@ -1,3 +1,3 @@
-﻿namespace Contracts.DTO.Catalogue;
+﻿namespace Contracts.DTO.Content;
 
 public record ListCataloguesFilterDto(Guid? Id = null, string? Name = null);

@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Persistence.Configurations;
 
-internal sealed class HikerConfiguration : IEntityTypeConfiguration<Hiker>
+internal sealed class HikerConfiguration : IEntityTypeConfiguration<HikerAggregate>
 {
-    public void Configure(EntityTypeBuilder<Hiker> builder)
+    public void Configure(EntityTypeBuilder<HikerAggregate> builder)
     {
         builder.ToTable("Hikers");
 

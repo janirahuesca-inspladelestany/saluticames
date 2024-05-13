@@ -23,7 +23,7 @@ public class ChallengeService : IChallengeService
         if (hiker is not null) return ChallengeErrors.HikerAlreadyExists;
 
         // Mapejar de DTO a BO
-        var createHikerResult = Hiker.Create(hikerDto.Id, hikerDto.Name, hikerDto.Surname);
+        var createHikerResult = HikerAggregate.Create(hikerDto.Id, hikerDto.Name, hikerDto.Surname);
         if (createHikerResult.IsFailure()) return createHikerResult.Error;
 
         // Persistir el hiker
@@ -45,7 +45,7 @@ public class ChallengeService : IChallengeService
         if (diary is not null) return ChallengeErrors.DiaryAlreadyExists;
 
         // Mapejar de DTO a BO
-        var createDiaryResult = Diary.Create(diaryDto.Name, diaryDto.CatalogueId);
+        var createDiaryResult = DiaryEntity.Create(diaryDto.Name, diaryDto.CatalogueId);
         if (createDiaryResult.IsFailure()) return createDiaryResult.Error;
 
         diary = createDiaryResult.Value!;
@@ -70,10 +70,10 @@ public class ChallengeService : IChallengeService
         if (!hiker.Diaries.Any()) return ChallengeErrors.DiaryNotFound;
 
         // Mapejar de DTO a BO
-        var climbsToAdd = new List<Climb>();
+        var climbsToAdd = new List<ClimbEntity>();
         foreach (var climbDto in climbDtos)
         {
-            var climbCreateResult = Climb.Create(climbDto.SummitId, climbDto.AscensionDateTime);
+            var climbCreateResult = ClimbEntity.Create(climbDto.SummitId, climbDto.AscensionDateTime);
             if (climbCreateResult.IsFailure())
             {
                 return climbCreateResult.Error;
@@ -167,7 +167,7 @@ public class ChallengeService : IChallengeService
 
         var catalogues = await _unitOfWork.CatalogueRepository.ListAsync(
             filter: catalogue => catalogueId.HasValue ? catalogue.Id == catalogueId.Value : true,
-            includeProperties: nameof(Catalogue.SummitIds), cancellationToken: cancellationToken);
+            includeProperties: nameof(CatalogueAggregate.SummitIds), cancellationToken: cancellationToken);
 
         // Mapejar de BO a DTO
         var statistics = catalogues.ToDictionary(catalogue => catalogue.Id, catalogue =>
@@ -181,7 +181,7 @@ public class ChallengeService : IChallengeService
         // Retornar el resultat
         return statistics;
 
-        bool IsReachedSummit(Guid summitId, IEnumerable<Climb> reachedSummits)
+        bool IsReachedSummit(Guid summitId, IEnumerable<ClimbEntity> reachedSummits)
         {
             return reachedSummits.Any(s => s.SummitId == summitId);
         }

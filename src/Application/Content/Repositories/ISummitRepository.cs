@@ -4,20 +4,20 @@ using System.Linq.Expressions;
 
 namespace Application.Content.Repositories;
 
-public interface ISummitRepository : IRepository<Summit, Guid>
+public interface ISummitRepository : IRepository<SummitAggregate, Guid>
 {
-    Task AddRangeAsync(IEnumerable<Summit> summits, CancellationToken cancellationToken = default);
+    Task AddRangeAsync(IEnumerable<SummitAggregate> summits, CancellationToken cancellationToken = default);
 
-    Task AddAsync(Summit summit, CancellationToken cancellationToken = default);
+    Task AddAsync(SummitAggregate summit, CancellationToken cancellationToken = default);
 
-    Task<IEnumerable<Summit>> ListAsync(Expression<Func<Summit, bool>>? filter = null,
-        Func<IQueryable<Summit>, IOrderedQueryable<Summit>>? orderBy = null,
+    Task<IEnumerable<SummitAggregate>> ListAsync(Expression<Func<SummitAggregate, bool>>? filter = null,
+        Func<IQueryable<SummitAggregate>, IOrderedQueryable<SummitAggregate>>? orderBy = null,
         string includeProperties = "",
         CancellationToken cancellationToken = default);
 
-    Task<Summit?> FindByIdAsync(Guid id, CancellationToken cancellationToken = default);
+    Task<SummitAggregate?> FindByIdAsync(Guid id, CancellationToken cancellationToken = default);
 
-    void RemoveRange(IEnumerable<Summit> summits);
+    void RemoveRange(IEnumerable<SummitAggregate> summits);
 
-    void Remove(Summit summit);
+    void Remove(SummitAggregate summit);
 }

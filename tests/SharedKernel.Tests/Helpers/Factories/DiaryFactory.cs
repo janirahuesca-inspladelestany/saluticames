@@ -1,13 +1,13 @@
 ﻿using Domain.Challenge.Entities;
 using System.Diagnostics;
 
-namespace Domain.UnitTests.Helpers.Factories;
+namespace SharedKernel.UnitTests.Helpers.Factories;
 
 public class DiaryFactory
 {
-    public static Diary Create()
+    public static DiaryEntity Create()
     {
-        var diaryCreateResult = Diary.Create(
+        var diaryCreateResult = DiaryEntity.Create(
             catalogueId: Guid.NewGuid(),
             name: "El meu diary");
 
@@ -18,7 +18,7 @@ public class DiaryFactory
         return diary;
     }
 
-    public static Diary CreateWithClimbs(params Climb[] climbs)
+    public static DiaryEntity CreateWithClimbs(params ClimbEntity[] climbs)
     {
         var diary = Create();
 
@@ -30,7 +30,7 @@ public class DiaryFactory
         return diary;
     }
 
-    public static Diary CreateWithCatalogueId(Guid catalogueId)
+    public static DiaryEntity CreateWithCatalogueId(Guid catalogueId)
     {
         var diary = Create();
 

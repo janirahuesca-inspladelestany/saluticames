@@ -4,11 +4,11 @@ using System.Linq.Expressions;
 
 namespace Application.Content.Repositories;
 
-public interface ICatalogueRepository : IRepository<Catalogue, Guid>
+public interface ICatalogueRepository : IRepository<CatalogueAggregate, Guid>
 {
-    Task<IEnumerable<Catalogue>> ListAsync(Expression<Func<Catalogue, bool>>? filter = null,
-        Func<IQueryable<Catalogue>, IOrderedQueryable<Catalogue>>? orderBy = null,
+    Task<IEnumerable<CatalogueAggregate>> ListAsync(Expression<Func<CatalogueAggregate, bool>>? filter = null,
+        Func<IQueryable<CatalogueAggregate>, IOrderedQueryable<CatalogueAggregate>>? orderBy = null,
         string includeProperties = "",
         CancellationToken cancellationToken = default);
-    Task<Catalogue?> FindByIdAsync(Guid id, CancellationToken cancellationToken = default);
+    Task<CatalogueAggregate?> FindByIdAsync(Guid id, CancellationToken cancellationToken = default);
 }

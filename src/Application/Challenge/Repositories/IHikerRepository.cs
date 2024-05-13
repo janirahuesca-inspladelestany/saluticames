@@ -4,12 +4,12 @@ using System.Linq.Expressions;
 
 namespace Application.Challenge.Repositories;
 
-public interface IHikerRepository : IRepository<Hiker, string>
+public interface IHikerRepository : IRepository<HikerAggregate, string>
 {
-    Task Add(Hiker hiker, CancellationToken cancellationToken = default);
-    Task<IEnumerable<Hiker>> ListAsync(Expression<Func<Hiker, bool>>? filter = null, Func<IQueryable<Hiker>, IOrderedQueryable<Hiker>>? orderBy = null, string includeProperties = "", CancellationToken cancellationToken = default);
-    Task<Hiker?> FindByIdAsync(string id, CancellationToken cancellationToken = default);
-    Task<IEnumerable<Diary>> ListDiariesAsync(string id, Expression<Func<Hiker, bool>>? filter = null, Func<IQueryable<Hiker>, IOrderedQueryable<Hiker>>? orderBy = null, string includeProperties = "", CancellationToken cancellationToken = default);
-    Task<IDictionary<string, IEnumerable<Diary>>> ListDiariesAsync(Expression<Func<Hiker, bool>>? filter = null, Func<IQueryable<Hiker>, IOrderedQueryable<Hiker>>? orderBy = null, string includeProperties = "", CancellationToken cancellationToken = default);
-    Task<IEnumerable<Climb>> ListClimbsByHikerIdAsync(string id, CancellationToken cancellationToken = default);
+    Task Add(HikerAggregate hiker, CancellationToken cancellationToken = default);
+    Task<IEnumerable<HikerAggregate>> ListAsync(Expression<Func<HikerAggregate, bool>>? filter = null, Func<IQueryable<HikerAggregate>, IOrderedQueryable<HikerAggregate>>? orderBy = null, string includeProperties = "", CancellationToken cancellationToken = default);
+    Task<HikerAggregate?> FindByIdAsync(string id, CancellationToken cancellationToken = default);
+    Task<IEnumerable<DiaryEntity>> ListDiariesAsync(string id, Expression<Func<HikerAggregate, bool>>? filter = null, Func<IQueryable<HikerAggregate>, IOrderedQueryable<HikerAggregate>>? orderBy = null, string includeProperties = "", CancellationToken cancellationToken = default);
+    Task<IDictionary<string, IEnumerable<DiaryEntity>>> ListDiariesAsync(Expression<Func<HikerAggregate, bool>>? filter = null, Func<IQueryable<HikerAggregate>, IOrderedQueryable<HikerAggregate>>? orderBy = null, string includeProperties = "", CancellationToken cancellationToken = default);
+    Task<IEnumerable<ClimbEntity>> ListClimbsByHikerIdAsync(string id, CancellationToken cancellationToken = default);
 }

@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Persistence.Configurations;
 
-internal sealed class CatalogueConfiguration : IEntityTypeConfiguration<Catalogue>
+internal sealed class CatalogueConfiguration : IEntityTypeConfiguration<CatalogueAggregate>
 {
-    public void Configure(EntityTypeBuilder<Catalogue> builder)
+    public void Configure(EntityTypeBuilder<CatalogueAggregate> builder)
     {
         builder.ToTable("Catalogues");
 

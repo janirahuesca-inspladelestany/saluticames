@@ -6,9 +6,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Persistence.Configurations;
 
-internal sealed class SummitConfiguration : IEntityTypeConfiguration<Summit>
+internal sealed class SummitConfiguration : IEntityTypeConfiguration<SummitAggregate>
 {
-    public void Configure(EntityTypeBuilder<Summit> builder)
+    public void Configure(EntityTypeBuilder<SummitAggregate> builder)
     {
         builder.ToTable("Summits");
 

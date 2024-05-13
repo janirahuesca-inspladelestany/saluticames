@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Persistence.Configurations;
 
-internal sealed class ClimbConfiguration : IEntityTypeConfiguration<Climb>
+internal sealed class ClimbConfiguration : IEntityTypeConfiguration<ClimbEntity>
 {
-    public void Configure(EntityTypeBuilder<Climb> builder)
+    public void Configure(EntityTypeBuilder<ClimbEntity> builder)
     {
         builder.ToTable("Climbs");
 
@@ -15,7 +15,7 @@ internal sealed class ClimbConfiguration : IEntityTypeConfiguration<Climb>
 
         builder.Property(c => c.Id).ValueGeneratedNever();
 
-        builder.HasOne<Diary>().WithMany(d => d.Climbs).HasForeignKey("DiaryId").OnDelete(DeleteBehavior.Cascade);
-        builder.HasOne<Summit>().WithMany().HasForeignKey(c => c.SummitId).OnDelete(DeleteBehavior.Cascade);
+        builder.HasOne<DiaryEntity>().WithMany(d => d.Climbs).HasForeignKey("DiaryId").OnDelete(DeleteBehavior.Cascade);
+        builder.HasOne<SummitAggregate>().WithMany().HasForeignKey(c => c.SummitId).OnDelete(DeleteBehavior.Cascade);
     }
 }
