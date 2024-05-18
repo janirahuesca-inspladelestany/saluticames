@@ -1,8 +1,8 @@
+using Common.Helpers.Factories;
 using Domain.Challenge.Entities;
 using Domain.Challenge.Errors;
 using Domain.Challenge.Rules;
 using FluentAssertions;
-using SharedKernel.UnitTests.Helpers.Factories;
 
 namespace Domain.UnitTests.Tests;
 

@@ -1,7 +1,7 @@
 ﻿using Domain.Challenge.Entities;
 using System.Diagnostics;
 
-namespace SharedKernel.UnitTests.Helpers.Factories;
+namespace Common.Helpers.Factories;
 
 public class ClimbFactory
 {
