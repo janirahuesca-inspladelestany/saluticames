@@ -21,9 +21,11 @@ public static class EnumHelper
             });
     }
 
-    public static bool TryGetEnumValueByDescription<T>(string description, out T? region) where T : Enum
+    public static bool TryGetEnumValueByDescription<T>(string? description, out T? region) where T : Enum
     {
         region = default;
+
+        if (string.IsNullOrEmpty(description)) return false;
 
         var enumValues = Enum.GetValues(typeof(T)).Cast<T>();
 

@@ -85,7 +85,7 @@ public class CatalogueServiceTests
         };
 
         _catalogueRepositoryMock
-            .Setup(r => r.ListAsync(It.IsAny<Expression<Func<CatalogueAggregate, bool>>>(), It.IsAny<Func<IQueryable<CatalogueAggregate>, IOrderedQueryable<CatalogueAggregate>>>(), It.IsAny<string>(), It.IsAny<CancellationToken>()))
+            .Setup(r => r.ListAsync(It.IsAny<Expression<Func<CatalogueAggregate, bool>>>(), It.IsAny<Func<IQueryable<CatalogueAggregate>, IOrderedQueryable<CatalogueAggregate>>>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync(catalogueList);
 
         // Act
@@ -93,7 +93,7 @@ public class CatalogueServiceTests
 
         // Assert
         _catalogueRepositoryMock
-            .Verify(r => r.ListAsync(It.IsAny<Expression<Func<CatalogueAggregate, bool>>>(), It.IsAny<Func<IQueryable<CatalogueAggregate>, IOrderedQueryable<CatalogueAggregate>>>(), It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Once);
+            .Verify(r => r.ListAsync(It.IsAny<Expression<Func<CatalogueAggregate, bool>>>(), It.IsAny<Func<IQueryable<CatalogueAggregate>, IOrderedQueryable<CatalogueAggregate>>>(), It.IsAny<CancellationToken>()), Times.Once);
 
         result.Should().NotBeNull();
         result.IsFailure().Should().BeFalse();
@@ -108,7 +108,7 @@ public class CatalogueServiceTests
         var catalogue = CatalogueFactory.Create();
 
         _catalogueRepositoryMock
-            .Setup(r => r.ListAsync(It.IsAny<Expression<Func<CatalogueAggregate, bool>>>(), It.IsAny<Func<IQueryable<CatalogueAggregate>, IOrderedQueryable<CatalogueAggregate>>>(), It.IsAny<string>(), It.IsAny<CancellationToken>()))
+            .Setup(r => r.ListAsync(It.IsAny<Expression<Func<CatalogueAggregate, bool>>>(), It.IsAny<Func<IQueryable<CatalogueAggregate>, IOrderedQueryable<CatalogueAggregate>>>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new List<CatalogueAggregate> { catalogue });
 
         // Act
@@ -116,7 +116,7 @@ public class CatalogueServiceTests
 
         // Assert
         _catalogueRepositoryMock
-            .Verify(r => r.ListAsync(It.IsAny<Expression<Func<CatalogueAggregate, bool>>>(), It.IsAny<Func<IQueryable<CatalogueAggregate>, IOrderedQueryable<CatalogueAggregate>>>(), It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Once);
+            .Verify(r => r.ListAsync(It.IsAny<Expression<Func<CatalogueAggregate, bool>>>(), It.IsAny<Func<IQueryable<CatalogueAggregate>, IOrderedQueryable<CatalogueAggregate>>>(), It.IsAny<CancellationToken>()), Times.Once);
         
         result.Should().NotBeNull();
         result.Value.Should().ContainKey(catalogue.Id).WhoseValue.Should().BeEquivalentTo(new ListCatalogueDetailDto(catalogue.Name));
@@ -130,7 +130,7 @@ public class CatalogueServiceTests
         var filterDto = new ListCataloguesFilterDto(Name: "NonExisting");
 
         _catalogueRepositoryMock
-            .Setup(r => r.ListAsync(It.IsAny<Expression<Func<CatalogueAggregate, bool>>>(), It.IsAny<Func<IQueryable<CatalogueAggregate>, IOrderedQueryable<CatalogueAggregate>>>(), It.IsAny<string>(), It.IsAny<CancellationToken>()))
+            .Setup(r => r.ListAsync(It.IsAny<Expression<Func<CatalogueAggregate, bool>>>(), It.IsAny<Func<IQueryable<CatalogueAggregate>, IOrderedQueryable<CatalogueAggregate>>>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new List<CatalogueAggregate>());
 
         // Act
@@ -138,7 +138,7 @@ public class CatalogueServiceTests
 
         // Assert
         _catalogueRepositoryMock
-            .Verify(r => r.ListAsync(It.IsAny<Expression<Func<CatalogueAggregate, bool>>>(), It.IsAny<Func<IQueryable<CatalogueAggregate>, IOrderedQueryable<CatalogueAggregate>>>(), It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Once);
+            .Verify(r => r.ListAsync(It.IsAny<Expression<Func<CatalogueAggregate, bool>>>(), It.IsAny<Func<IQueryable<CatalogueAggregate>, IOrderedQueryable<CatalogueAggregate>>>(), It.IsAny<CancellationToken>()), Times.Once);
         
         result.Should().NotBeNull();
         result.Value.Should().BeEmpty();

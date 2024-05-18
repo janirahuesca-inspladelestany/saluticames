@@ -57,6 +57,9 @@ public class SummitService(IUnitOfWork _unitOfWork) : ISummitService
     public async Task<Result<IDictionary<Guid, ListSummitDetailDto>, Error>> ListSummitsAsync(ListSummitsFilterDto filterDto, CancellationToken cancellationToken = default)
     {
         // Recuperar els summits
+        EnumHelper.TryGetEnumValueByDescription<Region>(filterDto.RegionName, out var region);
+        EnumHelper.TryGetEnumValueByDescription<DifficultyLevel>(filterDto.DifficultyLevel, out var difficulty);
+
         var summits = await _unitOfWork.SummitRepository.ListAsync(
             filter: summit =>
                 (filterDto.Id != null ? summit.Id == filterDto.Id : true) &&
@@ -64,8 +67,8 @@ public class SummitService(IUnitOfWork _unitOfWork) : ISummitService
                     ? (filterDto.Altitude.Value.Min ?? int.MinValue) <= summit.Altitude && summit.Altitude < (filterDto.Altitude.Value.Max ?? int.MaxValue) : true) &&
                 (!string.IsNullOrEmpty(filterDto.Name) ? summit.Name.Contains(filterDto.Name) : true) &&
                 (filterDto.IsEssential.HasValue ? summit.IsEssential == filterDto.IsEssential : true) &&
-                (!string.IsNullOrEmpty(filterDto.RegionName) ? EnumHelper.GetDescription(summit.Region).Contains(filterDto.RegionName) : true) &&
-                (!string.IsNullOrEmpty(filterDto.DifficultyLevel) ? EnumHelper.GetDescription(summit.DifficultyLevel).Contains(filterDto.DifficultyLevel) : true),
+                (!string.IsNullOrEmpty(filterDto.RegionName) ? summit.Region.Equals(region) : true) &&
+                (!string.IsNullOrEmpty(filterDto.DifficultyLevel) ? summit.DifficultyLevel.Equals(difficulty) : true),
             cancellationToken: cancellationToken);
 
         // Mapejar de BO a DTO
@@ -129,9 +132,13 @@ public class SummitService(IUnitOfWork _unitOfWork) : ISummitService
                 if (setIsEssentialResult.IsFailure()) return setIsEssentialResult.Error;
             }
 
-            if (!string.IsNullOrEmpty(summitDetails.RegionName) &&
-                EnumHelper.TryGetEnumValueByDescription<Region>(summitDetails.RegionName, out var region))
+            if (!string.IsNullOrEmpty(summitDetails.RegionName))
             {
+                if (!EnumHelper.TryGetEnumValueByDescription<Region>(summitDetails.RegionName, out var region)) 
+                {
+                    return SummitErrors.SummitInvalidRegion;
+                }
+
                 var setRegionResult = summitToReplace.SetRegion(region);
                 if (setRegionResult.IsFailure()) return setRegionResult.Error;
             }

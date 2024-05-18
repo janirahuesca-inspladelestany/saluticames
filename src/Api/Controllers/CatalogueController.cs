@@ -13,6 +13,7 @@ namespace Api.Controllers
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
         public async Task<IActionResult> CreateCatalogueSummitsAsync(Guid id, IEnumerable<Guid> summitIds, CancellationToken cancellationToken = default)
@@ -30,6 +31,7 @@ namespace Api.Controllers
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> RetrieveCatalogueSummitsAsync(Guid id, CancellationToken cancellationToken = default)
         {
             // Cridar servei d'aplicació
@@ -45,8 +47,8 @@ namespace Api.Controllers
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> DeleteCatalogueSummitsAsync(Guid id, IEnumerable<Guid> summitIds, CancellationToken cancellationToken = default)
         {
             // Cridar servei d'aplicació

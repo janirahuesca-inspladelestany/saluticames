@@ -167,7 +167,7 @@ public class ChallengeService : IChallengeService
 
         var catalogues = await _unitOfWork.CatalogueRepository.ListAsync(
             filter: catalogue => catalogueId.HasValue ? catalogue.Id == catalogueId.Value : true,
-            includeProperties: nameof(CatalogueAggregate.SummitIds), cancellationToken: cancellationToken);
+            cancellationToken: cancellationToken);
 
         // Mapejar de BO a DTO
         var statistics = catalogues.ToDictionary(catalogue => catalogue.Id, catalogue =>

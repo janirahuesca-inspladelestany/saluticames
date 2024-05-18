@@ -23,7 +23,7 @@ public sealed class SummitAggregate : AggregateRoot<Guid>
     public bool IsEssential { get; private set; }
     public Region Region { get; private set; }
     public DifficultyLevel DifficultyLevel { get; private set; }
-    public IEnumerable<Guid> CatalogueIds => _catalogueSummit.Select(catalogueSummit => catalogueSummit.CatalogueId);
+    public IEnumerable<Guid> CatalogueIds => _catalogueSummit.Select(catalogueSummit => catalogueSummit.CatalogueAggregateId);
     public IReadOnlyCollection<CatalogueSummit> CatalogueSummits => _catalogueSummit; // Navigation property
 
     public static Result<SummitAggregate?, Error> Create(string name, int altitude, float latitude, float longitude, bool isEssential, Region region, Guid? id = null)

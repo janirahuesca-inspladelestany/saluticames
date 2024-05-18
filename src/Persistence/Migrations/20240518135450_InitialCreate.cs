@@ -126,21 +126,21 @@ namespace Persistence.Migrations
                 name: "CatalogueSummits",
                 columns: table => new
                 {
-                    CatalogueId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    SummitId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    CatalogueAggregateId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    SummitAggregateId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CatalogueSummits", x => new { x.CatalogueId, x.SummitId });
+                    table.PrimaryKey("PK_CatalogueSummits", x => new { x.CatalogueAggregateId, x.SummitAggregateId });
                     table.ForeignKey(
-                        name: "FK_CatalogueSummits_Catalogues_CatalogueId",
-                        column: x => x.CatalogueId,
+                        name: "FK_CatalogueSummits_Catalogues_CatalogueAggregateId",
+                        column: x => x.CatalogueAggregateId,
                         principalTable: "Catalogues",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_CatalogueSummits_Summits_SummitId",
-                        column: x => x.SummitId,
+                        name: "FK_CatalogueSummits_Summits_SummitAggregateId",
+                        column: x => x.SummitAggregateId,
                         principalTable: "Summits",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -254,7 +254,7 @@ namespace Persistence.Migrations
             migrationBuilder.InsertData(
                 table: "Diaries",
                 columns: new[] { "Id", "CatalogueId", "HikerId", "Name" },
-                values: new object[] { new Guid("6bb9b8cd-210a-42c5-899d-5c56810610d2"), new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"), "12345678P", "El meu diari dels 100 cims de la FEEC" });
+                values: new object[] { new Guid("b7bfb811-19e0-4af0-84c6-554461bc4d42"), new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"), "12345678P", "El meu diari dels 100 cims de la FEEC" });
 
             migrationBuilder.InsertData(
                 table: "Summits",
@@ -787,7 +787,7 @@ namespace Persistence.Migrations
 
             migrationBuilder.InsertData(
                 table: "CatalogueSummits",
-                columns: new[] { "CatalogueId", "SummitId" },
+                columns: new[] { "CatalogueAggregateId", "SummitAggregateId" },
                 values: new object[,]
                 {
                     { new Guid("3a711b1c-a40a-48b2-88e9-c1677591d546"), new Guid("00753579-504d-4808-895c-d82e344e997b") },
@@ -1315,9 +1315,9 @@ namespace Persistence.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_CatalogueSummits_SummitId",
+                name: "IX_CatalogueSummits_SummitAggregateId",
                 table: "CatalogueSummits",
-                column: "SummitId");
+                column: "SummitAggregateId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Climbs_DiaryId",
