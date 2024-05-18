@@ -1,8 +1,8 @@
+using Common.Helpers.Factories;
 using Domain.Content.Entities;
 using Domain.Content.Enums;
 using Domain.Content.Errors;
 using FluentAssertions;
-using SharedKernel.UnitTests.Helpers.Factories;
 
 namespace Domain.UnitTests.Tests;
 

@@ -1,12 +1,12 @@
 using Application.Abstractions;
 using Application.Content.Repositories;
 using Application.Content.Services;
+using Common.Helpers.Factories;
 using Contracts.DTO.Content;
 using Domain.Content.Entities;
 using Domain.Content.Errors;
 using FluentAssertions;
 using Moq;
-using SharedKernel.UnitTests.Helpers.Factories;
 using System.Linq.Expressions;
 
 namespace Application.UnitTests.Tests;
