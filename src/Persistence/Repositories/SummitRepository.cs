@@ -27,17 +27,11 @@ public sealed class SummitRepository : ISummitRepository
 
     public async Task<IEnumerable<SummitAggregate>> ListAsync(Expression<Func<SummitAggregate, bool>>? filter = null,
         Func<IQueryable<SummitAggregate>, IOrderedQueryable<SummitAggregate>>? orderBy = null,
-        string includeProperties = "",
         CancellationToken cancellationToken = default)
     {
         IQueryable<SummitAggregate> query = _summits;
 
         if (filter is not null) query = query.Where(filter);
-
-        foreach (var includeProperty in includeProperties.Split(',', StringSplitOptions.RemoveEmptyEntries))
-        {
-            query = query.Include(includeProperty);
-        }
 
         var summits = orderBy is not null
             ? await orderBy(query).ToListAsync(cancellationToken)

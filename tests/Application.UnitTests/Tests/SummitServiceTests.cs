@@ -36,7 +36,7 @@ public class SummitServiceTests
         var summitsToAdd = new List<SummitAggregate>();
 
         _summitRepositoryMock
-            .Setup(r => r.ListAsync(It.IsAny<Expression<Func<SummitAggregate, bool>>>(), It.IsAny<Func<IQueryable<SummitAggregate>, IOrderedQueryable<SummitAggregate>>>(), It.IsAny<string>(), It.IsAny<CancellationToken>()))
+            .Setup(r => r.ListAsync(It.IsAny<Expression<Func<SummitAggregate, bool>>>(), It.IsAny<Func<IQueryable<SummitAggregate>, IOrderedQueryable<SummitAggregate>>>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new List<SummitAggregate>());
 
         _summitRepositoryMock
@@ -47,7 +47,7 @@ public class SummitServiceTests
         var result = await _sut.AddNewSummitsAsync(summitDtos);
 
         // Assert
-        _summitRepositoryMock.Verify(r => r.ListAsync(It.IsAny<Expression<Func<SummitAggregate, bool>>>(), It.IsAny<Func<IQueryable<SummitAggregate>, IOrderedQueryable<SummitAggregate>>>(), It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Once);
+        _summitRepositoryMock.Verify(r => r.ListAsync(It.IsAny<Expression<Func<SummitAggregate, bool>>>(), It.IsAny<Func<IQueryable<SummitAggregate>, IOrderedQueryable<SummitAggregate>>>(), It.IsAny<CancellationToken>()), Times.Once);
         _summitRepositoryMock.Verify(r => r.AddAsync(It.IsAny<SummitAggregate>(), It.IsAny<CancellationToken>()), Times.Exactly(summitDtos.Count));
         result.Should().NotBeNull();
         result.Value.Should().BeEquivalentTo(summitsToAdd.Select(s => s.Id));
@@ -65,14 +65,14 @@ public class SummitServiceTests
         var existingSummit = SummitFactory.Create();
 
         _summitRepositoryMock
-            .Setup(r => r.ListAsync(It.IsAny<Expression<Func<SummitAggregate, bool>>>(), It.IsAny<Func<IQueryable<SummitAggregate>, IOrderedQueryable<SummitAggregate>>>(), It.IsAny<string>(), It.IsAny<CancellationToken>()))
+            .Setup(r => r.ListAsync(It.IsAny<Expression<Func<SummitAggregate, bool>>>(), It.IsAny<Func<IQueryable<SummitAggregate>, IOrderedQueryable<SummitAggregate>>>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new List<SummitAggregate> { existingSummit });
 
         // Act
         var result = await _sut.AddNewSummitsAsync(summitDtos);
 
         // Assert
-        _summitRepositoryMock.Verify(r => r.ListAsync(It.IsAny<Expression<Func<SummitAggregate, bool>>>(), It.IsAny<Func<IQueryable<SummitAggregate>, IOrderedQueryable<SummitAggregate>>>(), It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Once);
+        _summitRepositoryMock.Verify(r => r.ListAsync(It.IsAny<Expression<Func<SummitAggregate, bool>>>(), It.IsAny<Func<IQueryable<SummitAggregate>, IOrderedQueryable<SummitAggregate>>>(), It.IsAny<CancellationToken>()), Times.Once);
         _summitRepositoryMock.Verify(r => r.AddAsync(It.IsAny<SummitAggregate>(), It.IsAny<CancellationToken>()), Times.Never);
         result.Should().NotBeNull();
         result.Error.Should().Be(SummitErrors.SummitAlreadyExists);
@@ -89,14 +89,14 @@ public class SummitServiceTests
         };
 
         _summitRepositoryMock
-            .Setup(r => r.ListAsync(It.IsAny<Expression<Func<SummitAggregate, bool>>>(), It.IsAny<Func<IQueryable<SummitAggregate>, IOrderedQueryable<SummitAggregate>>>(), It.IsAny<string>(), It.IsAny<CancellationToken>()))
+            .Setup(r => r.ListAsync(It.IsAny<Expression<Func<SummitAggregate, bool>>>(), It.IsAny<Func<IQueryable<SummitAggregate>, IOrderedQueryable<SummitAggregate>>>(), It.IsAny<CancellationToken>()))
             .ReturnsAsync(new List<SummitAggregate>());
 
         // Act
         var result = await _sut.AddNewSummitsAsync(summitDtos);
 
         // Assert
-        _summitRepositoryMock.Verify(r => r.ListAsync(It.IsAny<Expression<Func<SummitAggregate, bool>>>(), It.IsAny<Func<IQueryable<SummitAggregate>, IOrderedQueryable<SummitAggregate>>>(), It.IsAny<string>(), It.IsAny<CancellationToken>()), Times.Once);
+        _summitRepositoryMock.Verify(r => r.ListAsync(It.IsAny<Expression<Func<SummitAggregate, bool>>>(), It.IsAny<Func<IQueryable<SummitAggregate>, IOrderedQueryable<SummitAggregate>>>(), It.IsAny<CancellationToken>()), Times.Once);
         _summitRepositoryMock.Verify(r => r.AddAsync(It.IsAny<SummitAggregate>(), It.IsAny<CancellationToken>()), Times.Never);
         result.Should().NotBeNull();
         result.Error.Should().Be(SummitErrors.SummitRegionNotAvailable);

@@ -17,6 +17,7 @@ namespace Api.Controllers
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
         public async Task<IActionResult> CreateSummitsAsync(IEnumerable<CreateSummitRequest> createSummitRequests, CancellationToken cancellationToken = default)
@@ -46,6 +47,7 @@ namespace Api.Controllers
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> RetrieveSummitsAsync([FromQuery] RetrieveSummitsQuery retrieveSummitsQuery, CancellationToken cancellationToken = default)
         {
             // Mapejar Model/Request a Contract/DTO
@@ -82,6 +84,7 @@ namespace Api.Controllers
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
         public async Task<IActionResult> UpdateSummitsAsync(IDictionary<Guid, UpdateSummitRequest> udpateSummitRequests, CancellationToken cancellationToken = default)
@@ -109,8 +112,8 @@ namespace Api.Controllers
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> DeleteSummitsAsync(IEnumerable<Guid> summitIds, CancellationToken cancellationToken = default)
         {
             // Cridar servei d'aplicació

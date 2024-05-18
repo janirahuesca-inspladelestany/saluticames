@@ -14,6 +14,7 @@ namespace Api.Controllers
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> RetrieveCataloguesAsync([FromQuery] RetrieveCataloguesQuery retrieveCatalogueQuery, CancellationToken cancellationToken = default)
         {
             // Mapejar Model/Request a Contract/DTO

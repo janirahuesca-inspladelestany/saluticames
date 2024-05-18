@@ -15,6 +15,7 @@ namespace Api.Controllers
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<IActionResult> RetrieveHikersAsync([FromQuery] RetrieveHikersQuery retrieveHikersQuery, CancellationToken cancellationToken = default)
         {
             // Mapejar Model/Request a Contract/DTO

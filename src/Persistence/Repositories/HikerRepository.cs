@@ -20,16 +20,11 @@ public class HikerRepository : IHikerRepository
         await _hikers.AddAsync(hiker, cancellationToken);
     }
     
-    public async Task<IEnumerable<HikerAggregate>> ListAsync(Expression<Func<HikerAggregate, bool>>? filter = null, Func<IQueryable<HikerAggregate>, IOrderedQueryable<HikerAggregate>>? orderBy = null, string includeProperties = "", CancellationToken cancellationToken = default)
+    public async Task<IEnumerable<HikerAggregate>> ListAsync(Expression<Func<HikerAggregate, bool>>? filter = null, Func<IQueryable<HikerAggregate>, IOrderedQueryable<HikerAggregate>>? orderBy = null, CancellationToken cancellationToken = default)
     {
-        IQueryable<HikerAggregate> query = _hikers;
+        IQueryable<HikerAggregate> query = _hikers.Include(h => h.Diaries).ThenInclude(d => d.Climbs);
 
         if (filter is not null) query = query.Where(filter);
-
-        foreach (var includeProperty in includeProperties.Split(',', StringSplitOptions.RemoveEmptyEntries))
-        {
-            query = query.Include(includeProperty);
-        }
 
         var hikers = orderBy is not null
             ? await orderBy(query).ToListAsync(cancellationToken)
@@ -43,7 +38,7 @@ public class HikerRepository : IHikerRepository
         return await _hikers.Include(hiker => hiker.Diaries).ThenInclude(diary => diary.Climbs).SingleOrDefaultAsync(hiker => hiker.Id.Equals(id), cancellationToken);
     }
 
-    public async Task<IEnumerable<DiaryEntity>> ListDiariesAsync(string id, Expression<Func<HikerAggregate, bool>>? filter = null, Func<IQueryable<HikerAggregate>, IOrderedQueryable<HikerAggregate>>? orderBy = null, string includeProperties = "", CancellationToken cancellationToken = default)
+    public async Task<IEnumerable<DiaryEntity>> ListDiariesAsync(string id, Expression<Func<HikerAggregate, bool>>? filter = null, Func<IQueryable<HikerAggregate>, IOrderedQueryable<HikerAggregate>>? orderBy = null, CancellationToken cancellationToken = default)
     {
         IQueryable<HikerAggregate> query = _hikers
             .Include(hiker => hiker.Diaries)
@@ -52,11 +47,6 @@ public class HikerRepository : IHikerRepository
 
         if (filter is not null) query = query.Where(filter);
 
-        foreach (var includeProperty in includeProperties.Split(',', StringSplitOptions.RemoveEmptyEntries))
-        {
-            query = query.Include(includeProperty);
-        }
-
         var hiker = orderBy is not null
             ? await orderBy(query).SingleOrDefaultAsync(hiker => hiker.Id.Equals(id), cancellationToken)
             : await query.SingleOrDefaultAsync(hiker => hiker.Id.Equals(id), cancellationToken);
@@ -64,7 +54,7 @@ public class HikerRepository : IHikerRepository
         return hiker?.Diaries ?? Enumerable.Empty<DiaryEntity>();
     }
 
-    public async Task<IDictionary<string, IEnumerable<DiaryEntity>>> ListDiariesAsync(Expression<Func<HikerAggregate, bool>>? filter = null, Func<IQueryable<HikerAggregate>, IOrderedQueryable<HikerAggregate>>? orderBy = null, string includeProperties = "", CancellationToken cancellationToken = default)
+    public async Task<IDictionary<string, IEnumerable<DiaryEntity>>> ListDiariesAsync(Expression<Func<HikerAggregate, bool>>? filter = null, Func<IQueryable<HikerAggregate>, IOrderedQueryable<HikerAggregate>>? orderBy = null, CancellationToken cancellationToken = default)
     {
         IQueryable<HikerAggregate> query = _hikers
             .Include(h => h.Diaries)
@@ -72,11 +62,6 @@ public class HikerRepository : IHikerRepository
             .AsQueryable();
 
         if (filter is not null) query = query.Where(filter);
-
-        foreach (var includeProperty in includeProperties.Split(',', StringSplitOptions.RemoveEmptyEntries))
-        {
-            query = query.Include(includeProperty);
-        }
 
         var hikers = orderBy is not null
             ? await orderBy(query).ToListAsync(cancellationToken)

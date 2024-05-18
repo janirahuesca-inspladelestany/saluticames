@@ -1,6 +1,5 @@
 ﻿using Application.Content.Repositories;
 using Domain.Content.Entities;
-using Domain.Content.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Data;
 using System.Linq.Expressions;
@@ -18,17 +17,11 @@ public sealed class CatalogueRepository : ICatalogueRepository
 
     public async Task<IEnumerable<CatalogueAggregate>> ListAsync(Expression<Func<CatalogueAggregate, bool>>? filter = null,
         Func<IQueryable<CatalogueAggregate>, IOrderedQueryable<CatalogueAggregate>>? orderBy = null,
-        string includeProperties = "",
         CancellationToken cancellationToken = default)
     {
-        IQueryable<CatalogueAggregate> query = _catalogues;
+        IQueryable<CatalogueAggregate> query = _catalogues.Include(c => c.CatalogueSummits);
 
         if (filter is not null) query = query.Where(filter);
-
-        foreach (var includeProperty in includeProperties.Split(',', StringSplitOptions.RemoveEmptyEntries))
-        {
-            query = query.Include(includeProperty);
-        }
 
         var catalogues = orderBy is not null
             ? await orderBy(query).ToListAsync(cancellationToken)

@@ -12,7 +12,6 @@ public interface ISummitRepository : IRepository<SummitAggregate, Guid>
 
     Task<IEnumerable<SummitAggregate>> ListAsync(Expression<Func<SummitAggregate, bool>>? filter = null,
         Func<IQueryable<SummitAggregate>, IOrderedQueryable<SummitAggregate>>? orderBy = null,
-        string includeProperties = "",
         CancellationToken cancellationToken = default);
 
     Task<SummitAggregate?> FindByIdAsync(Guid id, CancellationToken cancellationToken = default);

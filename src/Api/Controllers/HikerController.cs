@@ -16,6 +16,7 @@ public class HikerController(IChallengeService _challengeService) : ControllerBa
     [Produces("application/json")]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> CreateHikerAsync(CreateHikerRequest createHikerRequest, CancellationToken cancellationToken = default)
     {
         // Mapejar Model/Request a Contract/DTO
@@ -37,6 +38,7 @@ public class HikerController(IChallengeService _challengeService) : ControllerBa
     [Produces("application/json")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> RetrieveStatisticsAsync(string id, [FromQuery] Guid? catalogueId = null, CancellationToken cancellationToken = default)
     {
         // Cridar servei d'aplicació
@@ -86,6 +88,7 @@ public class HikerController(IChallengeService _challengeService) : ControllerBa
     [Produces("application/json")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> RetrieveClimbsAsync(string id, CancellationToken cancellationToken = default)
     {
         // Cridar servei d'aplicació
@@ -109,6 +112,7 @@ public class HikerController(IChallengeService _challengeService) : ControllerBa
     [Consumes(MediaTypeNames.Application.Json)]
     [Produces("application/json")]
     [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
     public async Task<IActionResult> CreateDiaryAsync(string id, CreateDiaryRequest createDiaryRequest, CancellationToken cancellationToken = default)
@@ -132,6 +136,7 @@ public class HikerController(IChallengeService _challengeService) : ControllerBa
     [Produces("application/json")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> RetrieveDiaryAsync(string id, CancellationToken cancellationToken = default)
     {
         // Mapejar Model/Request a Contract/DTO

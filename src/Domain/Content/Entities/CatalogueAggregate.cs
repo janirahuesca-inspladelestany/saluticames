@@ -16,7 +16,7 @@ public sealed class CatalogueAggregate : AggregateRoot<Guid>
     }
 
     public string Name { get; private set; } = null!;
-    public IEnumerable<Guid> SummitIds => _catalogueSummit.Select(catalogueSummit => catalogueSummit.SummitId);
+    public IEnumerable<Guid> SummitIds => _catalogueSummit.Select(catalogueSummit => catalogueSummit.SummitAggregateId);
     public IReadOnlyCollection<CatalogueSummit> CatalogueSummits => _catalogueSummit; // Navigation property
 
     public static Result<CatalogueAggregate?, Error> Create(string name, Guid? id = null)
@@ -100,12 +100,12 @@ public sealed class CatalogueAggregate : AggregateRoot<Guid>
             return CatalogueErrors.SummitIdNotValid;
         }
 
-        var catalogueSummit = _catalogueSummit.SingleOrDefault(catalogueSummit => catalogueSummit.SummitId == summitId);
+        var catalogueSummit = _catalogueSummit.SingleOrDefault(catalogueSummit => catalogueSummit.SummitAggregateId == summitId);
         return catalogueSummit is not null && _catalogueSummit.Remove(catalogueSummit) ? EmptyResult<Error>.Success() : CatalogueErrors.SummitIdNotRegistered;
     }
 
     private bool IsAlreadySummitIdRegistered(Guid id)
     {
-        return _catalogueSummit.Any(catalogueSummit => catalogueSummit.SummitId == id);
+        return _catalogueSummit.Any(catalogueSummit => catalogueSummit.SummitAggregateId == id);
     }
 }
