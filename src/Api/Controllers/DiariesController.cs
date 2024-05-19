@@ -3,16 +3,18 @@ using Api.Models.Requests.Queries;
 using Api.Models.Responses;
 using Application.Challenge.Services;
 using Contracts.DTO.Challenge;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
 {
-    [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/v{version:apiVersion}/[controller]"), Authorize]
     [ApiController]
+    [Authorize]
     public class DiariesController(IChallengeService _challengeService) : ControllerBase
     {
         [HttpGet]
-        [Produces("application/json")]
+        [Produces("application/json"), Authorize(Roles = "Admin")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]

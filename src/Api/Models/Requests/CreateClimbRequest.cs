@@ -1,3 +1,5 @@
-﻿namespace Api.Models.Requests;
+﻿using System.ComponentModel.DataAnnotations;
 
-public record CreateClimbRequest(Guid summitId, DateTime? ascensionDateTime);
+namespace Api.Models.Requests;
+
+public record CreateClimbRequest([Required] Guid summitId, DateTime? ascensionDateTime);

@@ -1,15 +1,16 @@
 ﻿using Api.Extensions;
 using Application.Content.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
 
 namespace Api.Controllers
 {
-    [Route("api/v{version:apiVersion}/[controller]/{id:guid}")]
+    [Route("api/v{version:apiVersion}/[controller]/{id:guid}"), Authorize]
     [ApiController]
     public class CatalogueController(ICatalogueService _catalogueService) : ControllerBase
     {
-        [HttpPost("summits")]
+        [HttpPost("summits"), Authorize(Roles = "Admin")]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status201Created)]
@@ -32,6 +33,7 @@ namespace Api.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> RetrieveCatalogueSummitsAsync(Guid id, CancellationToken cancellationToken = default)
         {
             // Cridar servei d'aplicació
@@ -43,7 +45,7 @@ namespace Api.Controllers
                 error => error.ToProblemDetails());
         }
 
-        [HttpDelete("summits")]
+        [HttpDelete("summits"), Authorize(Roles = "Admin")]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]

@@ -1,3 +1,5 @@
-﻿namespace Api.Models.Requests;
+﻿using System.ComponentModel.DataAnnotations;
 
-public record CreateDiaryRequest(string Name, Guid CatalogueId);
+namespace Api.Models.Requests;
+
+public record CreateDiaryRequest([Required] string Name, [Required] Guid CatalogueId);

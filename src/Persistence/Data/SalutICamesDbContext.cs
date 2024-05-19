@@ -1,12 +1,14 @@
 ﻿using Domain.Challenge.Entities;
 using Domain.Content.Entities;
 using Domain.Content.ValueObjects;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Extensions;
 
 namespace Persistence.Data;
 
-public sealed class SalutICamesDbContext : DbContext
+public sealed class SalutICamesDbContext : IdentityDbContext<IdentityUser>
 {
     public SalutICamesDbContext(DbContextOptions<SalutICamesDbContext> options)
         : base(options)

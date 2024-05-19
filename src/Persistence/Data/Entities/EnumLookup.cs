@@ -1,4 +1,4 @@
-﻿namespace Persistence.Data;
+﻿namespace Persistence.Data.Entities;
 
 public class EnumLookup<T>
     where T : Enum
