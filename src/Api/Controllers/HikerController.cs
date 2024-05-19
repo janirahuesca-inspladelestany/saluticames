@@ -3,12 +3,13 @@ using Api.Models.Requests;
 using Api.Models.Responses;
 using Application.Challenge.Services;
 using Contracts.DTO.Challenge;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
 
 namespace Api.Controllers;
 
-[Route("api/v{version:apiVersion}/[controller]")]
+[Route("api/v{version:apiVersion}/[controller]"), Authorize]
 [ApiController]
 public class HikerController(IChallengeService _challengeService) : ControllerBase
 {
@@ -62,6 +63,7 @@ public class HikerController(IChallengeService _challengeService) : ControllerBa
     [Consumes(MediaTypeNames.Application.Json)]
     [Produces("application/json")]
     [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     [ProducesResponseType(StatusCodes.Status409Conflict)]
@@ -80,7 +82,7 @@ public class HikerController(IChallengeService _challengeService) : ControllerBa
 
         // Retornar Model/Resposta o error
         return addNewClimbsResult.Match(
-            result => Created(string.Empty, result),
+            result => result!.Any() ? Created(string.Empty, result) : NoContent(),
             error => error.ToProblemDetails());
     }
 

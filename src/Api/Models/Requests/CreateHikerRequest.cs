@@ -1,3 +1,5 @@
-﻿namespace Api.Models.Requests;
+﻿using System.ComponentModel.DataAnnotations;
 
-public record CreateHikerRequest(string Id, string Name, string Surname);
+namespace Api.Models.Requests;
+
+public record CreateHikerRequest([Required] string Id, [Required] string Name, [Required] string Surname);

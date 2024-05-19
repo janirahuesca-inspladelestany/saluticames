@@ -2,11 +2,12 @@
 using Api.Models.Requests.Queries;
 using Application.Content.Services;
 using Contracts.DTO.Content;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Api.Controllers
 {
-    [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/v{version:apiVersion}/[controller]"), Authorize]
     [ApiController]
     public class CataloguesController(ICatalogueService _catalogueService) : ControllerBase
     {

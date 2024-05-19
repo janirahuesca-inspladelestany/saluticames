@@ -1,3 +1,5 @@
-﻿namespace Api.Models.Requests;
+﻿using System.ComponentModel.DataAnnotations;
 
-public record CreateSummitRequest(string Name, int Altitude, string Location, bool IsEssential, string RegionName);
+namespace Api.Models.Requests;
+
+public record CreateSummitRequest([Required] string Name, [Required] int Altitude, [Required] string Location, [Required] bool IsEssential, [Required] string RegionName);

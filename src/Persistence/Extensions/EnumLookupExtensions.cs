@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Persistence.Data;
+using Persistence.Data.Entities;
 using System.ComponentModel;
 
 namespace Persistence.Extensions;

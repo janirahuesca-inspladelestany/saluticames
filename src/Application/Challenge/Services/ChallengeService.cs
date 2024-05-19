@@ -82,26 +82,35 @@ public class ChallengeService : IChallengeService
             climbsToAdd.Add(climbCreateResult.Value!);
         }
 
-        foreach (var diary in hiker.Diaries)
+        var catalogues = await _unitOfWork.CatalogueRepository.ListAsync(
+            filter: catalogue => hiker.Diaries.Select(diary => diary.CatalogueId).Any(catalogueId => catalogueId == catalogue.Id),
+            cancellationToken: cancellationToken);
+
+        var addedClimbs = new List<ClimbEntity>();
+        foreach (var catalogue in catalogues)
         {
-            var catalogue = await _unitOfWork.CatalogueRepository.FindByIdAsync(diary.CatalogueId, cancellationToken);
-            if (catalogue is null) return ChallengeErrors.DiaryInvalidCatalogueBadReference;
+            var diary = hiker.Diaries.SingleOrDefault(diary => diary.CatalogueId == catalogue.Id);
+            if (diary is null) return ChallengeErrors.DiaryNotFound;
 
             var climbsByDiary = climbsToAdd.Where(climbToAdd => catalogue.SummitIds.Any(summitId => summitId == climbToAdd.SummitId));
+            if (!climbsByDiary.Any()) return ChallengeErrors.ClimbInvalidSummitBadReference;
 
             // Afegir climbs al diary
             var addClimbsToDiaryResult = hiker.AddClimbsToDiary(diary, climbsByDiary);
             if (addClimbsToDiaryResult.IsFailure()) return addClimbsToDiaryResult.Error;
+
+            addedClimbs.AddRange(climbsByDiary);
+            climbsToAdd = climbsToAdd.Except(climbsByDiary).ToList();
         }
 
-        if (climbsToAdd.Any())
+        if (addedClimbs.Any())
         {
             // Persistir els diaries
             await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
 
         // Retornar el resultat
-        return climbsToAdd.Select(climb => climb.Id).ToList();
+        return addedClimbs.Select(climb => climb.Id).ToList();
     }
 
     public async Task<Result<IDictionary<string, ListHikerDetailDto>, Error>> ListHikersAsync(ListHikersFilterDto filterDto, CancellationToken cancellationToken = default)
@@ -162,8 +171,10 @@ public class ChallengeService : IChallengeService
 
     public async Task<Result<Dictionary<Guid, GetStatisticsDto>, Error>> GetStatisticsAsync(string hikerId, Guid? catalogueId = null, CancellationToken cancellationToken = default)
     {
-        // Recuperar els climbs i els catalogues
-        var climbs = await _unitOfWork.HikerRepository.ListClimbsByHikerIdAsync(hikerId);
+        // Recuperar el hiker i els catalogues
+        var hiker = await _unitOfWork.HikerRepository.FindByIdAsync(hikerId);
+
+        if (hiker is null) return ChallengeErrors.HikerNotFound;
 
         var catalogues = await _unitOfWork.CatalogueRepository.ListAsync(
             filter: catalogue => catalogueId.HasValue ? catalogue.Id == catalogueId.Value : true,
@@ -172,7 +183,8 @@ public class ChallengeService : IChallengeService
         // Mapejar de BO a DTO
         var statistics = catalogues.ToDictionary(catalogue => catalogue.Id, catalogue =>
         {
-            var reachedSummits = climbs.Where(climb => catalogue.SummitIds.Any(summitId => summitId == climb.SummitId));
+            var diary = hiker.Diaries.Single(diary => diary.CatalogueId == catalogue.Id);
+            var reachedSummits = diary.Climbs.Where(climb => catalogue.SummitIds.Any(summitId => summitId == climb.SummitId));
             var pendingSummits = catalogue.SummitIds.Where(summitId => !IsReachedSummit(summitId, reachedSummits));
 
             return new GetStatisticsDto(reachedSummits.Count(), pendingSummits.Count());

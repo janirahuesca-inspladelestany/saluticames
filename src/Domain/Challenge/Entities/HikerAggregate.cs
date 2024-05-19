@@ -21,6 +21,8 @@ public sealed class HikerAggregate : AggregateRoot<string>
 
     public static Result<HikerAggregate?, Error> Create(string id, string name, string surname)
     {
+        if (string.IsNullOrEmpty(id)) return ChallengeErrors.HikerInvalidId;
+
         return new HikerAggregate(id)
         {
             Name = name,
@@ -47,7 +49,7 @@ public sealed class HikerAggregate : AggregateRoot<string>
 
     public EmptyResult<Error> AddClimbsToDiary(DiaryEntity diary, IEnumerable<ClimbEntity> climbs)
     {
-        if (diary is null) 
+        if (diary is null)
         {
             return ChallengeErrors.DiaryNotFound;
         }

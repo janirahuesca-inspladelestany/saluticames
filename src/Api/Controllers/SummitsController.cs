@@ -4,21 +4,21 @@ using Api.Models.Requests.Queries;
 using Api.Models.Responses;
 using Application.Content.Services;
 using Contracts.DTO.Content;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Mime;
 
 namespace Api.Controllers
 {
-    [Route("api/v{version:apiVersion}/[controller]")]
+    [Route("api/v{version:apiVersion}/[controller]"), Authorize]
     [ApiController]
     public class SummitsController(ISummitService _summitService) : ControllerBase
     {
-        [HttpPost]
+        [HttpPost, Authorize(Roles = "Admin")]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status409Conflict)]
         public async Task<IActionResult> CreateSummitsAsync(IEnumerable<CreateSummitRequest> createSummitRequests, CancellationToken cancellationToken = default)
         {
@@ -80,7 +80,7 @@ namespace Api.Controllers
                 error => error.ToProblemDetails());
         }
 
-        [HttpPut]
+        [HttpPut, Authorize(Roles = "Admin")]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
@@ -108,7 +108,7 @@ namespace Api.Controllers
                 error => error.ToProblemDetails());
         }
 
-        [HttpDelete]
+        [HttpDelete, Authorize(Roles = "Admin")]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
