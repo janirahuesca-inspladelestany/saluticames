@@ -11,6 +11,12 @@ namespace Api.Controllers
     [ApiController]
     public class CataloguesController(ICatalogueService _catalogueService) : ControllerBase
     {
+        /// <summary>
+        /// Retorna una llista de catàlegs basats en els criteris de filtre especificats a RetrieveCataloguesQuery
+        /// </summary>
+        /// <param name="retrieveCatalogueQuery"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns>Retorna un codi de resposta segons el resultat</returns>
         [HttpGet]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]

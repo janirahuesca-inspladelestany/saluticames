@@ -12,6 +12,12 @@ namespace Api.Controllers
     [ApiController]
     public class HikersController(IChallengeService _challengeService) : ControllerBase
     {
+        /// <summary>
+        /// Recupera una llista d'excursionistes segons els filtres proporcionats a la consulta
+        /// </summary>
+        /// <param name="retrieveHikersQuery"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns>Retorna un codi de resposta segons el resultat</returns>
         [HttpGet, Authorize(Roles = "Admin")]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]

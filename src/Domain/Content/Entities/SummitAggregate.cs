@@ -10,12 +10,14 @@ public sealed class SummitAggregate : AggregateRoot<Guid>
 {
     internal readonly List<CatalogueSummit> _catalogueSummit = new List<CatalogueSummit>();
 
+    // Constructor privat per controlar la creació d'instàncies
     private SummitAggregate(Guid id)
         : base(id)
     {
         DifficultyLevel = CalculateDifficultyLevel();
     }
 
+    // Propietats de la classe
     public string Name { get; private set; } = null!;
     public int Altitude { get; private set; }
     public float Latitude { get; private set; }
@@ -26,10 +28,22 @@ public sealed class SummitAggregate : AggregateRoot<Guid>
     public IEnumerable<Guid> CatalogueIds => _catalogueSummit.Select(catalogueSummit => catalogueSummit.CatalogueAggregateId);
     public IReadOnlyCollection<CatalogueSummit> CatalogueSummits => _catalogueSummit; // Navigation property
 
+    /// <summary>
+    /// Mètode de fàbrica per crear instàncies de SummitAggregate
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="altitude"></param>
+    /// <param name="latitude"></param>
+    /// <param name="longitude"></param>
+    /// <param name="isEssential"></param>
+    /// <param name="region"></param>
+    /// <param name="id"></param>
+    /// <returns>Retorna una instància de SummitAggregate si s'han passat les validacions i s'ha pogut crear el Summit, o un objecte Error en cas que alguna validació falli durant la creació de la instància</returns>
     public static Result<SummitAggregate?, Error> Create(string name, int altitude, float latitude, float longitude, bool isEssential, Region region, Guid? id = null)
     {
         SummitAggregate summit = new(id ?? Guid.NewGuid());
 
+        // S'estableixen els diferents atributs del cim i es gestionen els possibles errors
         var setNameResult = summit.SetName(name);
         if (setNameResult.IsFailure()) return setNameResult.Error;
 
@@ -100,6 +114,10 @@ public sealed class SummitAggregate : AggregateRoot<Guid>
         return EmptyResult<Error>.Success();
     }
 
+    /// <summary>
+    /// Mètode per calcular el nivell de dificultat del cim en funció de l'altitud
+    /// </summary>
+    /// <returns>Retorna el nivell de dificultat d'un cim basat en la seva altitud</returns>
     private DifficultyLevel CalculateDifficultyLevel()
     {
         return Altitude switch

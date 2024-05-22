@@ -9,11 +9,16 @@ internal sealed class SummitConfiguration : IEntityTypeConfiguration<SummitAggre
 {
     public void Configure(EntityTypeBuilder<SummitAggregate> builder)
     {
+        // Configurar la taula a la base de dades
         builder.ToTable("Summits");
 
+        // Definir la clau primària
         builder.HasKey(s => s.Id);
+
+        // Índex únic per al nom del cim
         builder.HasIndex(dl => dl.Name).IsUnique();
 
+        // Configurar propietats
         builder.Property(c => c.Id).ValueGeneratedNever();
         builder.Property(s => s.Name).IsRequired().HasColumnName("Name");
         builder.Property(s => s.Altitude).HasColumnName("Altitude");
@@ -21,6 +26,7 @@ internal sealed class SummitConfiguration : IEntityTypeConfiguration<SummitAggre
         builder.Property(s => s.Longitude).HasColumnName("Longitude");
         builder.Property(s => s.IsEssential).HasColumnName("IsEssential");
 
+        // Afegir dades inicials a la taula
         builder.HasData(
             new { CatalogueId = Guid.Parse("3a711b1c-a40a-48b2-88e9-c1677591d546"), Id = Guid.Parse("f53d3d8b-c80c-4515-bc66-07ba1653b292"), Name = "Alt de Juclar", Altitude = 2588, Latitude = 42.611710F, Longitude = 1.709588F, IsEssential = false, Region = Region.Andorra, DifficultyLevel = DifficultyLevel.Difficult },
             new { CatalogueId = Guid.Parse("3a711b1c-a40a-48b2-88e9-c1677591d546"), Id = Guid.Parse("2d9085db-8e41-45ad-9755-2791a5e14920"), Name = "Alt de la Capa", Altitude = 2573, Latitude = 42.562970F, Longitude = 1.454193F, IsEssential = false, Region = Region.Andorra, DifficultyLevel = DifficultyLevel.Difficult },

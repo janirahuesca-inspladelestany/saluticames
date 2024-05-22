@@ -3,8 +3,15 @@ using System.Reflection;
 
 namespace SharedKernel.Helpers;
 
+// Classe estàtica EnumHelper que conté mètodes auxiliars per treballar amb enums i les seves descripcions
 public static class EnumHelper
 {
+    /// <summary>
+    /// // Mètode per comprovar si un valor d'enum està definit per una descripció específica
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="description"></param>
+    /// <returns></returns>
     public static bool IsDefinedByDescription<T>(string description) where T : Enum
     {
         return Enum.GetValues(typeof(T))
@@ -21,6 +28,13 @@ public static class EnumHelper
             });
     }
 
+    /// <summary>
+    /// Mètode per obtenir un valor d'enum a partir de la seva descripció
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="description"></param>
+    /// <param name="region"></param>
+    /// <returns></returns>
     public static bool TryGetEnumValueByDescription<T>(string? description, out T? region) where T : Enum
     {
         region = default;
@@ -47,6 +61,12 @@ public static class EnumHelper
         return false;
     }
 
+    /// <summary>
+    /// Mètode per obtenir la descripció d'un valor d'enum
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <param name="value"></param>
+    /// <returns></returns>
     public static string GetDescription<T>(T value) where T : Enum
     {
         var fieldInfo = value.GetType().GetField(value.ToString());

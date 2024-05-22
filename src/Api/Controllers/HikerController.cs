@@ -13,6 +13,12 @@ namespace Api.Controllers;
 [ApiController]
 public class HikerController(IChallengeService _challengeService) : ControllerBase
 {
+    /// <summary>
+    /// Crea un nou excursionista
+    /// </summary>
+    /// <param name="createHikerRequest"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns>Retorna un codi de resposta segons el resultat</returns>
     [HttpPost]
     [Produces("application/json")]
     [ProducesResponseType(StatusCodes.Status201Created)]
@@ -35,6 +41,13 @@ public class HikerController(IChallengeService _challengeService) : ControllerBa
             error => error.ToProblemDetails());
     }
 
+    /// <summary>
+    /// Recupera les estadístiques de l'excursionista especificat
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="catalogueId"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns>Retorna un codi de resposta segons el resultat</returns>
     [HttpGet("{id}/stats")]
     [Produces("application/json")]
     [ProducesResponseType(StatusCodes.Status200OK)]
@@ -50,7 +63,7 @@ public class HikerController(IChallengeService _challengeService) : ControllerBa
             result =>
             {
                 var retieveStatisticsResponse = result!.ToDictionary(kv => kv.Key, kv =>
-                    new RetieveStatisticsResponse(
+                    new RetrieveStatisticsResponse(
                         ReachedSummits: kv.Value.ReachedSummits,
                         PendingSummits: kv.Value.PendingSummits));
 
@@ -59,6 +72,13 @@ public class HikerController(IChallengeService _challengeService) : ControllerBa
             error => error.ToProblemDetails());
     }
 
+    /// <summary>
+    /// Registra noves ascensions per a l'excursionista especificat
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="createClimbRequests"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns>Retorna un codi de resposta segons el resultat</returns>
     [HttpPost("{id}/climbs")]
     [Consumes(MediaTypeNames.Application.Json)]
     [Produces("application/json")]
@@ -86,6 +106,12 @@ public class HikerController(IChallengeService _challengeService) : ControllerBa
             error => error.ToProblemDetails());
     }
 
+    /// <summary>
+    /// Recupera les ascensions registrades per a l'excursionista especificat
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns>Retorna un codi de resposta segons el resultat</returns>
     [HttpGet("{id}/climbs")]
     [Produces("application/json")]
     [ProducesResponseType(StatusCodes.Status200OK)]
@@ -110,6 +136,14 @@ public class HikerController(IChallengeService _challengeService) : ControllerBa
             error => error.ToProblemDetails());
     }
 
+
+    /// <summary>
+    /// Crea un nou diari per a l'excursionista especificat
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="createDiaryRequest"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns>Retorna un codi de resposta segons el resultat</returns>
     [HttpPost("{id}/diary")]
     [Consumes(MediaTypeNames.Application.Json)]
     [Produces("application/json")]
@@ -134,6 +168,12 @@ public class HikerController(IChallengeService _challengeService) : ControllerBa
             error => error.ToProblemDetails());
     }
 
+    /// <summary>
+    /// Recupera els diaris de l'excursionista especificat
+    /// </summary>
+    /// <param name="id"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
     [HttpGet("{id}/diary")]
     [Produces("application/json")]
     [ProducesResponseType(StatusCodes.Status200OK)]

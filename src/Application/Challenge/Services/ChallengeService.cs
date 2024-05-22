@@ -16,6 +16,12 @@ public class ChallengeService : IChallengeService
         _unitOfWork = unitOfWork;
     }
 
+    /// <summary>
+    /// Mètode per afegir un nou excursionista
+    /// </summary>
+    /// <param name="hikerDto"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns>Retorna una instància de EmptyResult<Error> que indica si l'operació ha estat un èxit o si s'ha produït algun error</returns>
     public async Task<EmptyResult<Error>> AddNewHikerAsync(AddNewHikerDto hikerDto, CancellationToken cancellationToken)
     {
         // Recuperar el hiker
@@ -34,6 +40,12 @@ public class ChallengeService : IChallengeService
         return EmptyResult<Error>.Success();
     }
 
+    /// <summary>
+    /// Mètode per afegir un nou diari a un excursionista existent
+    /// </summary>
+    /// <param name="diaryDto"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns>Retorna una instància de Result<Guid, Error> que conté l'identificador del diari afegit en cas d'èxit o un error si s'ha produït algun problema</returns>
     public async Task<Result<Guid, Error>> AddNewDiaryAsync(AddNewDiaryDto diaryDto, CancellationToken cancellationToken)
     {
         // Recuperar el hiker
@@ -60,6 +72,13 @@ public class ChallengeService : IChallengeService
         return diary.Id;
     }
 
+    /// <summary>
+    /// Mètode per afegir noves ascensions a diversos cims per a un excursionista existent
+    /// </summary>
+    /// <param name="hikerId"></param>
+    /// <param name="climbDtos"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns>Retorna una instància de Result<IEnumerable<Guid>, Error> que conté una llista d'identificadors de les ascensions afegides en cas d'èxit o un error si s'ha produït algun problema</returns>
     public async Task<Result<IEnumerable<Guid>, Error>> AddNewClimbsAsync(string hikerId, IEnumerable<AddNewClimbDetailDto> climbDtos, CancellationToken cancellationToken = default)
     {
         // Recuperar el hiker
@@ -113,6 +132,12 @@ public class ChallengeService : IChallengeService
         return addedClimbs.Select(climb => climb.Id).ToList();
     }
 
+    /// <summary>
+    /// Mètode per llistar els excursionistes
+    /// </summary>
+    /// <param name="filterDto"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns>Retorna una instància de Result<IDictionary<string, ListHikerDetailDto>, Error> que conté un diccionari amb els detalls dels excursionistes corresponents a les dades proporcionades o un error si s'ha produït algun problema</returns>
     public async Task<Result<IDictionary<string, ListHikerDetailDto>, Error>> ListHikersAsync(ListHikersFilterDto filterDto, CancellationToken cancellationToken = default)
     {
         // Recuperar els hikers
@@ -133,6 +158,12 @@ public class ChallengeService : IChallengeService
         return result;
     }
 
+    /// <summary>
+    /// Mètode per trobar les ascensions registrades per a un excursionista
+    /// </summary>
+    /// <param name="hikerId"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns>Retorna una instància de Result<Dictionary<Guid, FindClimbDetailDto>, Error> que conté un diccionari amb els detalls de les ascensions corresponents a l'excursionista especificat o un error si s'ha produït algun problema</returns>
     public async Task<Result<Dictionary<Guid, FindClimbDetailDto>, Error>> FindClimbsAsync(string hikerId, CancellationToken cancellationToken = default)
     {
         // Recuperar els climbs
@@ -148,6 +179,12 @@ public class ChallengeService : IChallengeService
         return result;
     }
 
+    /// <summary>
+    /// Mètode per llistar els diaris dels excursionistes
+    /// </summary>
+    /// <param name="filterDto"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns>Retorna una instància de Result<IDictionary<string, IEnumerable<ListDiaryDetailDto>>, Error> que conté un diccionari amb els detalls dels diaris corresponents als excursionistes segons les dades proporcionades o un error si s'ha produït algun problema</returns>
     public async Task<Result<IDictionary<string, IEnumerable<ListDiaryDetailDto>>, Error>> ListDiariesAsync(ListDiariesFilterDto filterDto, CancellationToken cancellationToken = default)
     {
         // Recuperar els diaries
@@ -169,6 +206,13 @@ public class ChallengeService : IChallengeService
         return result;
     }
 
+    /// <summary>
+    /// Mètode per a obtenir les estadístiques d'ascensions d'un excursionista per a un catàleg específic
+    /// </summary>
+    /// <param name="hikerId"></param>
+    /// <param name="catalogueId"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns>Retorna una instància de Result<Dictionary<Guid, GetStatisticsDto>, Error> que conté un diccionari amb les estadístiques d'ascensions per al catàleg especificat o un error si s'ha produït algun problema</returns>
     public async Task<Result<Dictionary<Guid, GetStatisticsDto>, Error>> GetStatisticsAsync(string hikerId, Guid? catalogueId = null, CancellationToken cancellationToken = default)
     {
         // Recuperar el hiker i els catalogues

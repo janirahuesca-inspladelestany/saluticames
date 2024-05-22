@@ -2,6 +2,7 @@
 
 namespace Domain.Content.Enums;
 
+//  Enumeració per representar els diferents nivells de dificultat associats amb els cims
 public enum DifficultyLevel
 {
     [Description("N/A")]
