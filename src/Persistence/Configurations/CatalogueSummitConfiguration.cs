@@ -8,10 +8,13 @@ internal sealed class CatalogueSummitConfiguration : IEntityTypeConfiguration<Ca
 {
     public void Configure(EntityTypeBuilder<CatalogueSummit> builder)
     {
+        // Configurar la taula a la base de dades
         builder.ToTable("CatalogueSummits");
 
+        // Definir la clau primària
         builder.HasKey(cs => new { cs.CatalogueAggregateId, cs.SummitAggregateId});
 
+        // Afegir dades inicials a la taula
         builder.HasData(
             new { Id = new Random().Next(), CatalogueAggregateId = Guid.Parse("3a711b1c-a40a-48b2-88e9-c1677591d546"), SummitAggregateId = Guid.Parse("f53d3d8b-c80c-4515-bc66-07ba1653b292") },
             new { Id = new Random().Next(), CatalogueAggregateId = Guid.Parse("3a711b1c-a40a-48b2-88e9-c1677591d546"), SummitAggregateId = Guid.Parse("2d9085db-8e41-45ad-9755-2791a5e14920") },

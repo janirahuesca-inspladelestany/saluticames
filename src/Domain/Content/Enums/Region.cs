@@ -2,6 +2,7 @@
 
 namespace Domain.Content.Enums;
 
+// Enumeració per representar les diferents comarques associades amb els cims
 public enum Region
 {
     [Description("N/A")]

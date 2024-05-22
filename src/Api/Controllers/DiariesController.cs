@@ -13,6 +13,12 @@ namespace Api.Controllers
     [Authorize]
     public class DiariesController(IChallengeService _challengeService) : ControllerBase
     {
+        /// <summary>
+        ///  Retorna una llista de diaris basats en els criteris de filtre especificats a RetrieveDiariesQuery
+        /// </summary>
+        /// <param name="retieveDiariesQuery"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns>Retorna un codi de resposta segons el resultat</returns>
         [HttpGet]
         [Produces("application/json"), Authorize(Roles = "Admin")]
         [ProducesResponseType(StatusCodes.Status200OK)]

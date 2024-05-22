@@ -10,6 +10,13 @@ namespace Api.Controllers
     [ApiController]
     public class CatalogueController(ICatalogueService _catalogueService) : ControllerBase
     {
+        /// <summary>
+        /// Afegeix una llista de cims a un catàleg existent identificat per id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="summitIds"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns>Retorna un codi de resposta segons el resultat</returns>
         [HttpPost("summits"), Authorize(Roles = "Admin")]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces("application/json")]
@@ -28,6 +35,12 @@ namespace Api.Controllers
                 error => error.ToProblemDetails());
         }
 
+        /// <summary>
+        /// Retorna una llista dels identificadors dels cims en un catàleg especificat per id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns>Retorna un codi de resposta segons el resultat</returns>
         [HttpGet("summits")]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -45,6 +58,13 @@ namespace Api.Controllers
                 error => error.ToProblemDetails());
         }
 
+        /// <summary>
+        /// Elimina una llista de cims d'un catàleg existent identificat per id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="summitIds"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns>Retorna un codi de resposta segons el resultat</returns>
         [HttpDelete("summits"), Authorize(Roles = "Admin")]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces("application/json")]

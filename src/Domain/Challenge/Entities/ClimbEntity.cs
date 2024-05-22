@@ -6,15 +6,23 @@ namespace Domain.Challenge.Entities;
 
 public sealed class ClimbEntity : Entity<Guid>
 {
+    // Constructor privat per controlar la creació d'instàncies
     private ClimbEntity(Guid id)
         : base(id)
     {
 
     }
 
+    // Propietats de la classe
     public Guid SummitId { get; internal set; }
     public DateTime AscensionDate { get; internal set; }
 
+    /// <summary>
+    /// Mètode de fàbrica per crear instàncies de ClimbEntity
+    /// </summary>
+    /// <param name="summitId"></param>
+    /// <param name="ascensionDate"></param>
+    /// <returns>Retorna una instància de ClimbEntity si s'han passat les validacions i s'ha pogut crear el Climb, o un objecte Error en cas que alguna validació falli durant la creació de la instància</returns>
     public static Result<ClimbEntity?, Error> Create(Guid summitId, DateTime? ascensionDate = null)
     {
         var climb = new ClimbEntity(Guid.NewGuid());

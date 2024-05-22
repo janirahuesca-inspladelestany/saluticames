@@ -2,6 +2,11 @@
 
 namespace Domain.Challenge.Errors;
 
+/*
+ * Classe estàtica que conté una sèrie de propietats estàtiques de tipus Error. 
+ * Aquestes propietats defineixen diversos errors que poden ser utilitzats en el context del domini de reptes (challenges). 
+ * Cada error està representat com un objecte Error amb un codi i un missatge associat.
+ */
 public static class ChallengeErrors
 {
     public static readonly Error HikerNotFound = Error.NotFound(

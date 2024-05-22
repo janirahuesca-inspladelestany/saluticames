@@ -14,6 +14,12 @@ namespace Api.Controllers
     [ApiController]
     public class SummitsController(ISummitService _summitService) : ControllerBase
     {
+        /// <summary>
+        /// Crea nous cims a partir de les sol·licituds rebudes
+        /// </summary>
+        /// <param name="createSummitRequests"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns>Retorna un codi de resposta segons el resultat</returns>
         [HttpPost, Authorize(Roles = "Admin")]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces("application/json")]
@@ -43,6 +49,12 @@ namespace Api.Controllers
                 error => error.ToProblemDetails());
         }
 
+        /// <summary>
+        /// Recupera els cims segons els paràmetres especificats
+        /// </summary>
+        /// <param name="retrieveSummitsQuery"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns>Retorna un codi de resposta segons el resultat</returns>
         [HttpGet]
         [Produces("application/json")]
         [ProducesResponseType(StatusCodes.Status200OK)]
@@ -80,6 +92,12 @@ namespace Api.Controllers
                 error => error.ToProblemDetails());
         }
 
+        /// <summary>
+        /// Actualitza els cims especificats
+        /// </summary>
+        /// <param name="udpateSummitRequests"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns>Retorna un codi de resposta segons el resultat</returns>
         [HttpPut, Authorize(Roles = "Admin")]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces("application/json")]
@@ -107,6 +125,12 @@ namespace Api.Controllers
                 error => error.ToProblemDetails());
         }
 
+        /// <summary>
+        /// Elimina els cims especificats
+        /// </summary>
+        /// <param name="summitIds"></param>
+        /// <param name="cancellationToken"></param>
+        /// <returns>Retorna un codi de resposta segons el resultat</returns>
         [HttpDelete, Authorize(Roles = "Admin")]
         [Consumes(MediaTypeNames.Application.Json)]
         [Produces("application/json")]

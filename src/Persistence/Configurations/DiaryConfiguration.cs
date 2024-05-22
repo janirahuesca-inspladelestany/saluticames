@@ -9,16 +9,21 @@ internal sealed class DiaryConfiguration : IEntityTypeConfiguration<DiaryEntity>
 {
     public void Configure(EntityTypeBuilder<DiaryEntity> builder)
     {
+        // Configurar la taula a la base de dades
         builder.ToTable("Diaries");
 
+        // Definir la clau primària
         builder.HasKey(d => d.Id);
 
+        // Configurar propietats
         builder.Property(d => d.Id).ValueGeneratedNever();
         builder.Property(d => d.Name).IsRequired().HasMaxLength(100);
 
+        // Configurar relacions amb altres entitats
         builder.HasOne<HikerAggregate>().WithMany(h => h.Diaries).HasForeignKey("HikerId").OnDelete(DeleteBehavior.NoAction);
         builder.HasOne<CatalogueAggregate>().WithMany().HasForeignKey(d => d.CatalogueId).OnDelete(DeleteBehavior.NoAction);
 
+        // Afegir dades inicials a la taula
         builder.HasData(new
         {
             Id = Guid.NewGuid(),

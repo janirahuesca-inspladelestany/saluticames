@@ -2,6 +2,8 @@
 using Domain.Content.ValueObjects;
 using SharedKernel.Abstractions;
 using SharedKernel.Common;
+using System.Numerics;
+using System.Xml.Linq;
 
 namespace Domain.Content.Entities;
 
@@ -9,24 +11,38 @@ public sealed class CatalogueAggregate : AggregateRoot<Guid>
 {
     internal readonly List<CatalogueSummit> _catalogueSummit = new List<CatalogueSummit>();
 
+    // Constructor privat per controlar la creació d'instàncies
     private CatalogueAggregate(Guid id)
         : base(id)
     {
 
     }
 
-    public string Name { get; private set; } = null!;
-    public IEnumerable<Guid> SummitIds => _catalogueSummit.Select(catalogueSummit => catalogueSummit.SummitAggregateId);
-    public IReadOnlyCollection<CatalogueSummit> CatalogueSummits => _catalogueSummit; // Navigation property
+    // Propietats de la classe
+    public string Name { get; private set; } = null!; 
+    public IEnumerable<Guid> SummitIds => _catalogueSummit.Select(catalogueSummit => catalogueSummit.SummitAggregateId); 
+    public IReadOnlyCollection<CatalogueSummit> CatalogueSummits => _catalogueSummit; // Propietat de navegació que exposa la llista de CatalogueSummit com una col·lecció només de lectura
 
+    /// <summary>
+    /// Mètode de fàbrica per crear instàncies de CatalogueAggregate
+    /// </summary>
+    /// <param name="name"></param>
+    /// <param name="id"></param>
+    /// <returns>Retorna una instància de CatalogueAggregate si s'han passat les validacions i s'ha pogut crear el Catalogue, o un objecte Error en cas que alguna validació falli durant la creació de la instància</returns>
     public static Result<CatalogueAggregate?, Error> Create(string name, Guid? id = null)
     {
+        // Crea una nova instància amb un ID proporcionat o generat
         return new CatalogueAggregate(id ?? Guid.NewGuid())
         {
-            Name = name
+            Name = name // Assigna el nom
         };
     }
 
+    /// <summary>
+    /// Registra múltiples identificadors de summits, validant i assegurant-se que cap identificador és buit. Si algun error ocorre, es restaura l'estat inicial
+    /// </summary>
+    /// <param name="summitIds"></param>
+    /// <returns>Retorna un objecte de tipus EmptyResult<Error> indicant que l'operació s'ha completat amb èxit</returns>
     public EmptyResult<Error> RegisterSummitIds(IEnumerable<Guid> summitIds)
     {
         if (summitIds is null || summitIds.Any(summitId => summitId == Guid.Empty)) 
@@ -51,6 +67,11 @@ public sealed class CatalogueAggregate : AggregateRoot<Guid>
         return EmptyResult<Error>.Success();
     }
 
+    /// <summary>
+    /// Registra un únic identificador de summit, assegurant-se que no estigui registrat prèviament i que no sigui buit
+    /// </summary>
+    /// <param name="summitId"></param>
+    /// <returns>Retorna un objecte de tipus EmptyResult<Error> indicant que l'operació s'ha completat amb èxit</returns>
     public EmptyResult<Error> RegisterSummitId(Guid summitId)
     {
         if (summitId == Guid.Empty) 
@@ -69,6 +90,11 @@ public sealed class CatalogueAggregate : AggregateRoot<Guid>
         return EmptyResult<Error>.Success();
     }
 
+    /// <summary>
+    /// Elimina múltiples identificadors de summits amb validacions similars a les del registre
+    /// </summary>
+    /// <param name="summitIds"></param>
+    /// <returns>Retorna un objecte de tipus EmptyResult<Error> indicant que l'operació s'ha completat amb èxit</returns>
     public EmptyResult<Error> RemoveSummitIds(IEnumerable<Guid> summitIds)
     {
         if (summitIds is null || summitIds.Any(summitId => summitId == Guid.Empty))
@@ -93,6 +119,11 @@ public sealed class CatalogueAggregate : AggregateRoot<Guid>
         return EmptyResult<Error>.Success();
     }
 
+    /// <summary>
+    /// Elimina un únic identificador de summit, validant que no sigui buit i que estigui prèviament registrat
+    /// </summary>
+    /// <param name="summitId"></param>
+    /// <returns>Retorna un objecte de tipus EmptyResult<Error> indicant que l'operació s'ha completat amb èxit</returns>
     public EmptyResult<Error> RemoveSummitId(Guid summitId)
     {
         if (summitId == Guid.Empty)
@@ -104,6 +135,11 @@ public sealed class CatalogueAggregate : AggregateRoot<Guid>
         return catalogueSummit is not null && _catalogueSummit.Remove(catalogueSummit) ? EmptyResult<Error>.Success() : CatalogueErrors.SummitIdNotRegistered;
     }
 
+    /// <summary>
+    /// Mètode privat verifica si un identificador de summit ja està registrat en el catàleg
+    /// </summary>
+    /// <param name="id"></param>
+    /// <returns>True: si almenys un element a la llista _catalogueSummit compleix la condició (hi ha almenys un CatalogueSummit amb un SummitAggregateId igual a l'id proporcionat). False: si cap element a la llista compleix la condició.</returns>
     private bool IsAlreadySummitIdRegistered(Guid id)
     {
         return _catalogueSummit.Any(catalogueSummit => catalogueSummit.SummitAggregateId == id);

@@ -10,6 +10,12 @@ namespace Application.Content.Services;
 
 public class SummitService(IUnitOfWork _unitOfWork) : ISummitService
 {
+    /// <summary>
+    /// Mètode per afegir nous cims a la base de dades
+    /// </summary>
+    /// <param name="summitDtos"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns>Retorna una instància de Result<IEnumerable<Guid>, Error> que conté una llista dels identificadors dels cims afegits o un error si s'ha produït algun problema</returns>
     public async Task<Result<IEnumerable<Guid>, Error>> AddNewSummitsAsync(IEnumerable<AddNewSummitDto> summitDtos, CancellationToken cancellationToken = default)
     {
         // Recuperar els summits
@@ -54,6 +60,12 @@ public class SummitService(IUnitOfWork _unitOfWork) : ISummitService
         return summitsToAdd.Select(summit => summit.Id).ToList();
     }
 
+    /// <summary>
+    /// Mètode per llistar els cims
+    /// </summary>
+    /// <param name="filterDto"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns>Retorna una instància de Result<IDictionary<Guid, ListSummitDetailDto>, Error> que conté un diccionari amb els detalls dels cims corresponents a les dades proporcionades o un error si s'ha produït algun problema</returns>
     public async Task<Result<IDictionary<Guid, ListSummitDetailDto>, Error>> ListSummitsAsync(ListSummitsFilterDto filterDto, CancellationToken cancellationToken = default)
     {
         // Recuperar els summits
@@ -86,6 +98,12 @@ public class SummitService(IUnitOfWork _unitOfWork) : ISummitService
         return result;
     }
 
+    /// <summary>
+    /// Mètode per reemplaçar els detalls dels cims existents amb els nous detalls proporcionats
+    /// </summary>
+    /// <param name="summitDtos"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns>Retorna una instància de Result<IEnumerable<Guid>, Error> que conté una llista dels identificadors dels cims reemplaçats o un error si s'ha produït algun problema</returns>
     public async Task<Result<IEnumerable<Guid>, Error>> ReplaceSummitsAsync(IDictionary<Guid, ReplaceSummitDetailDto> summitDtos, CancellationToken cancellationToken = default)
     {
         // Recuperar el summits
@@ -156,6 +174,12 @@ public class SummitService(IUnitOfWork _unitOfWork) : ISummitService
         return existingSummits.Select(summit => summit.Id).ToList();
     }
 
+    /// <summary>
+    /// Mètode per eliminar els cims de la base de dades
+    /// </summary>
+    /// <param name="summitIds"></param>
+    /// <param name="cancellationToken"></param>
+    /// <returns>Retorna una instància de Result<IEnumerable<Guid>, Error> que conté una llista dels identificadors dels cims eliminats o un error si s'ha produït algun problema</returns>
     public async Task<Result<IEnumerable<Guid>, Error>> RemoveSummitsAsync(IEnumerable<Guid> summitIds,
         CancellationToken cancellationToken = default)
     {
