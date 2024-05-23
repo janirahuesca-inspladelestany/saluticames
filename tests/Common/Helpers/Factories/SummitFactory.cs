@@ -5,8 +5,15 @@ using Domain.Content.Enums;
 
 namespace Common.Helpers.Factories;
 
+//// <summary>
+/// Fàbrica per crear instàncies de cims
+/// </summary>
 public class SummitFactory
 {
+    /// <summary>
+    /// Crea un nou cim amb els paràmetres especificats
+    /// </summary>
+    /// <returns>El nou cim creat</returns>
     public static SummitAggregate Create()
     {
         var summitCreateResult = SummitAggregate.Create(
@@ -25,6 +32,11 @@ public class SummitFactory
         return catalogue;
     }
 
+    /// <summary>
+    /// Crea un nou cim amb els identificadors del catàleg especificats
+    /// </summary>
+    /// <param name="catalogueIds">Els identificadors del catàleg per afegir al cim</param>
+    /// <returns>El nou cim creat amb els identificadors del catàleg especificats</returns>
     public static SummitAggregate CreateWithCatalogueIds(params Guid[] catalogueIds)
     {
         var summit = Create();
